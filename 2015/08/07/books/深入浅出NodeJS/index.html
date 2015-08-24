@@ -13,9 +13,9 @@ CommonJS 规范中存在 require() 方法，接受模块标识，以此引入一
 <meta property="og:site_name" content="(<ゝω·)Kira☆~">
 <meta property="og:description" content="模块机制CommonJS 规范模块引用var math = require(&apos;math&apos;);
 CommonJS 规范中存在 require() 方法，接受模块标识，以此引入一个模块的 API 到当前的上下文">
-<meta property="og:image" content="http://yoursite.com/../images/59-3-13.png">
-<meta property="og:image" content="http://yoursite.com/../images/61-3-14.png">
-<meta property="og:updated_time" content="2015-08-24T07:24:51.000Z">
+<meta property="og:image" content="http://yoursite.com/images/59-3-13.png">
+<meta property="og:image" content="http://yoursite.com/images/61-3-14.png">
+<meta property="og:updated_time" content="2015-08-24T09:00:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入浅出NodeJS">
 <meta name="twitter:description" content="模块机制CommonJS 规范模块引用var math = require(&apos;math&apos;);
@@ -105,7 +105,7 @@ CommonJS 规范中存在 require() 方法，接受模块标识，以此引入一
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Javascript/" style="font-size: 16.67px;">Javascript</a> <a href="/tags/css/" style="font-size: 13.33px;">css</a> <a href="/tags/抄袭/" style="font-size: 10px;">抄袭</a> <a href="/tags/读书笔记/" style="font-size: 20px;">读书笔记</a>
+						<a href="/tags/Javascript/" style="font-size: 16.67px;">Javascript</a> <a href="/tags/css/" style="font-size: 13.33px;">css</a> <a href="/tags/性能优化/" style="font-size: 10px;">性能优化</a> <a href="/tags/读书笔记/" style="font-size: 20px;">读书笔记</a>
 					</div>
 				</section>
 				
@@ -116,7 +116,7 @@ CommonJS 规范中存在 require() 方法，接受模块标识，以此引入一
 				
 				<section class="switch-part switch-part3">
 				
-					<div id="js-aboutme">在校学生，连滚带爬学习</div>
+					<div id="js-aboutme">在校学生，连滚带爬啃书</div>
 				</section>
 				
 			</div>
@@ -241,13 +241,13 @@ CommonJS 规范中存在 require() 方法，接受模块标识，以此引入一
 <p>事件循环是一个典型的生产者 / 消费者模型。异步 I/O、网络请求等则是事件的生产者，为 Node 提供不同类型的事件，这些事件被传递到对应的观察者，事件循环则从观察者那里取出事件并做处理</p>
 <h4 id="请求对象">请求对象</h4><p>从 Javascript 调用 Node 的核心模块，核心模块调用 C++ 内建模块，内建模块通过 libuv 进行系统调用，这是 Node 里经典的调用方式。这里 libuv 作为封装层，有两个平台的实现。调用过程中会创建一个请求对象并推入线程池中等待执行。不管当前的 I/O 操作是否阻塞 I/O，都不会影响到 Javascript 线程的后续执行</p>
 <h4 id="执行回调">执行回调</h4><p>组装好请求对象、送入 I/O 线程池等待执行，实际上完成了异步 I/O 的第一部分，回调通知是第二部分。在线程池中的 I/O 操作调用完毕之后，会储存获取的结果然后通知 IOCP，告知当前对象操作已经完成</p>
-<p><img src="../images/59-3-13.png" alt="异步 I/O 流程"></p>
+<p><img src="/images/59-3-13.png" alt="异步 I/O 流程"></p>
 <p>事件循环、观察者、请求对象、I/O 线程池这四者共同构成了 Node 异步 I/O 模型的基本要素</p>
 <p>Windows 下主要通过 IOCP 来向系统内核发送 I/O 调用和从内核获取已完成的 I/O 操作，配以事件循环，以此完成异步 I/O 的过程。在 Linux 下通过 epoll 实现这个过程，FreeBSD 下通过 kqueue 实现，Solaris 下通过 Event ports 实现。不同的是线程池在 Windows 下由内核（IOCP）直接提供，*nix 系列下由 libuv 自行实现</p>
 <h4 id="小结">小结</h4><p>在 Node 中，除了 Javascript 是单线程歪，Node 自身是多线程，只是 I/O 线程使用的 CPU 较少。另一个观点是，除了用户代码无法并行执行外，所有的 I/O 则是并行起来的</p>
 <h3 id="非_I/O_的异步_API">非 I/O 的异步 API</h3><h4 id="定时器">定时器</h4><p>setTimeout() 和 setInterval() 与浏览器中的 API 是一致的。它们的实现原理与异步 I/O 类似，只是不需要 I/O 线程池的参与。创建的计时器会被插入到定时器观察者内部的一个红黑树中，每次 Tick 执行时，会从该红黑树中迭代取出定时器对象，检查是否超过定时时间，如果超过，就形成一个事件，它的回调函数将会立即执行</p>
 <p>定时器的问题并不精确，例如通过计时器设定一个任务在10毫秒后执行，但在9毫秒后，有一个任务占用了5毫秒的 CPU 时间片，再次轮到定时器执行时，时间就已经过期4毫秒了</p>
-<p><img src="../images/61-3-14.png" alt="setTimeout() 的行为"></p>
+<p><img src="/images/61-3-14.png" alt="setTimeout() 的行为"></p>
 <h4 id="process-nextTick()">process.nextTick()</h4><p>采用定时器需要动用红黑树，创建定时器对象和迭代等操作。相比执行，process.nextTick() 方法的操作相对较为轻量</p>
 <p>每次调用 process.nextTick() 方法，只会将回调函数放入队列中，在下一轮 Tick 时取出执行。定时器中采用红黑树的操作时间复杂度为 O(lg(n))，nextTick() 的时间复杂度为 O(1)</p>
 <h4 id="setImmediate()">setImmediate()</h4><p>process.nextTick() 中的回调函数执行的优先级高于 setImmediate()，原因在于事件循环对观察者的检查有先后顺序。process.nextTick() 属于 idle 观察者，setImmediate() 属于 check 观察者。在每一轮循环检查中，idle 观察者优先于 I/O 观察者，I/O 观察者优先于 check 观察者</p>

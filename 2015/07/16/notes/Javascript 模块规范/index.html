@@ -17,7 +17,7 @@ module 可通过 require 引入外部 module. 通过 exports 等方式向外部�
 
 module 拥有 id, uri 属性；在 module 中，有 require, exports, module 三个自由变量
 module 可通过 require 引入外部 module. 通过 exports 等方式向外部提供 api">
-<meta property="og:updated_time" content="2015-08-24T07:34:36.000Z">
+<meta property="og:updated_time" content="2015-08-24T08:57:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Javascript 模块规范">
 <meta name="twitter:description" content="CommonJS 规范
@@ -109,7 +109,7 @@ module 可通过 require 引入外部 module. 通过 exports 等方式向外部�
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Javascript/" style="font-size: 16.67px;">Javascript</a> <a href="/tags/css/" style="font-size: 13.33px;">css</a> <a href="/tags/抄袭/" style="font-size: 10px;">抄袭</a> <a href="/tags/读书笔记/" style="font-size: 20px;">读书笔记</a>
+						<a href="/tags/Javascript/" style="font-size: 16.67px;">Javascript</a> <a href="/tags/css/" style="font-size: 13.33px;">css</a> <a href="/tags/性能优化/" style="font-size: 10px;">性能优化</a> <a href="/tags/读书笔记/" style="font-size: 20px;">读书笔记</a>
 					</div>
 				</section>
 				
@@ -120,7 +120,7 @@ module 可通过 require 引入外部 module. 通过 exports 等方式向外部�
 				
 				<section class="switch-part switch-part3">
 				
-					<div id="js-aboutme">在校学生，连滚带爬学习</div>
+					<div id="js-aboutme">在校学生，连滚带爬啃书</div>
 				</section>
 				
 			</div>
@@ -292,7 +292,10 @@ module 可通过 require 引入外部 module. 通过 exports 等方式向外部�
 <h3 id="使用import关键字来加载外部模块">使用import关键字来加载外部模块</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// we can import in script code, not just inside a module</span></span><br><span class="line"><span class="keyword">import</span> &#123;sum, pi&#125; <span class="keyword">from</span> math;</span><br><span class="line">alert(<span class="string">"2π = "</span> + sum(pi, pi));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 引入所有API</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">from</span> math;</span><br><span class="line">alert(<span class="string">"2π = "</span> + sum(pi, pi));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用另一个引用作为别名</span></span><br><span class="line"><span class="comment">// a static module reference</span></span><br><span class="line"><span class="built_in">module</span> M = math;</span><br><span class="line">  </span><br><span class="line"><span class="comment">// reify M as an immutable "module instance object"</span></span><br><span class="line">alert(<span class="string">"2π = "</span> + M.sum(M.pi, M.pi));</span><br><span class="line"></span><br><span class="line"><span class="comment">//局部重命名</span></span><br><span class="line"><span class="keyword">import</span> &#123; draw: drawShape &#125; <span class="keyword">from</span> shape;</span><br><span class="line"><span class="keyword">import</span> &#123; draw: drawGun &#125; <span class="keyword">from</span> cowboy;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 嵌套模块</span></span><br><span class="line"><span class="built_in">module</span> widgets &#123;</span><br><span class="line">    <span class="keyword">export</span> <span class="built_in">module</span> button &#123; ... &#125;</span><br><span class="line">    <span class="keyword">export</span> <span class="built_in">module</span> alert &#123; ... &#125;</span><br><span class="line">    <span class="keyword">export</span> <span class="built_in">module</span> textarea &#123; ... &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line"><span class="keyword">import</span> &#123; messageBox, confirmDialog &#125; <span class="keyword">from</span> widgets.alert;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 从服务器上请求的模块</span></span><br><span class="line">&lt;script type=<span class="string">"harmony"</span>&gt;</span><br><span class="line"><span class="comment">// loading from a URL</span></span><br><span class="line"><span class="built_in">module</span> <span class="built_in">JSON</span> at <span class="string">'http://json.org/modules/json2.js'</span>;</span><br><span class="line">alert(<span class="built_in">JSON</span>.stringify(&#123;<span class="string">'hi'</span>: <span class="string">'world'</span>&#125;));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 动态载入一个模块</span></span><br><span class="line">Loader.load(<span class="string">'http://json.org/modules/json2.js'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">JSON</span>) </span>&#123;</span><br><span class="line">    alert(<span class="built_in">JSON</span>.stringify([<span class="number">0</span>, &#123;a: <span class="literal">true</span>&#125;]));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p>除此之外，还可以远程载入的模块、异步加载模块等，请参考使用 AMD、CommonJS 及 ES Harmony 编写模块化的 JavaScript</p>
-<h6 id="内容摘抄自网络，对作者表示感谢">内容摘抄自网络，对作者表示感谢</h6>
+<h2 id="参考链接">参考链接</h2><p><a href="http://blog.inching.org/2014/02/15/javascript-module/" target="_blank" rel="external">Javascript 模块规范</a></p>
+<p><a href="http://blogread.cn/it/article/2957#original" target="_blank" rel="external">CommonJS 的模块系统</a></p>
+<p><a href="http://www.feeldesignstudio.com/2013/09/javascript-module-pattern-commonjs/" target="_blank" rel="external">Javascript 模块化开发</a></p>
+
       
     </div>
     
