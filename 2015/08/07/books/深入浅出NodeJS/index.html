@@ -15,7 +15,7 @@ CommonJS 规范中存在 require() 方法，接受模块标识，以此引入一
 CommonJS 规范中存在 require() 方法，接受模块标识，以此引入一个模块的 API 到当前的上下文">
 <meta property="og:image" content="http://yoursite.com/images/59-3-13.png">
 <meta property="og:image" content="http://yoursite.com/images/61-3-14.png">
-<meta property="og:updated_time" content="2015-08-24T09:00:12.000Z">
+<meta property="og:updated_time" content="2015-08-24T12:55:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入浅出NodeJS">
 <meta name="twitter:description" content="模块机制CommonJS 规范模块引用var math = require(&apos;math&apos;);
@@ -459,7 +459,8 @@ CommonJS 规范中存在 require() 方法，接受模块标识，以此引入一
 <li>headers：请求头对象</li>
 <li>auth：Basic 认证，这个值将被计算成请求头中的 Authorization 部分</li>
 </ul>
-<h4 id="HTTP_代理">HTTP 代理</h4>
+<h4 id="HTTP_代理">HTTP 代理</h4><p>http 提供的 CLientRequest 对象也是基于 TCP 层实现，在 keepalive 的情况下，一个底层会话连接可以多次用于请求。为了重用 TCP 链接，http 模块包含一个默认的客户端代理对象 http.globalAgent。它对每个服务器端（host+port）创建的连接进行了管理，默认情况下，通过 CLientRequest 对象对同一个服务器发情的 HTTP 请求最多可以创建五个连接。它实质上是一个连接池</p>
+
       
     </div>
     
