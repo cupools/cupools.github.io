@@ -15,7 +15,8 @@ CommonJS 规范中存在 require() 方法，接受模块标识，以此引入一
 CommonJS 规范中存在 require() 方法，接受模块标识，以此引入一个模块的 API 到当前的上下文">
 <meta property="og:image" content="http://yoursite.com/images/59-3-13.png">
 <meta property="og:image" content="http://yoursite.com/images/61-3-14.png">
-<meta property="og:updated_time" content="2015-08-24T12:55:31.000Z">
+<meta property="og:image" content="http://yoursite.com/images/168-7-7.png">
+<meta property="og:updated_time" content="2015-08-30T15:37:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入浅出NodeJS">
 <meta name="twitter:description" content="模块机制CommonJS 规范模块引用var math = require(&apos;math&apos;);
@@ -460,6 +461,208 @@ CommonJS 规范中存在 require() 方法，接受模块标识，以此引入一
 <li>auth：Basic 认证，这个值将被计算成请求头中的 Authorization 部分</li>
 </ul>
 <h4 id="HTTP_代理">HTTP 代理</h4><p>http 提供的 CLientRequest 对象也是基于 TCP 层实现，在 keepalive 的情况下，一个底层会话连接可以多次用于请求。为了重用 TCP 链接，http 模块包含一个默认的客户端代理对象 http.globalAgent。它对每个服务器端（host+port）创建的连接进行了管理，默认情况下，通过 CLientRequest 对象对同一个服务器发情的 HTTP 请求最多可以创建五个连接。它实质上是一个连接池</p>
+<p>服务器通过 ClientRequest 调用网络中其它 HTTP 服务，需要关注代理对象对网络请求的限制。可通过 options 中的 agent 选项配置。默认情况下采用全局代理对象，默认连接数限制为5</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> agent = <span class="keyword">new</span> http.Agent(&#123;</span><br><span class="line">    <span class="comment">// 设置为 false 则脱离连接池管理，请求不受并发限制</span></span><br><span class="line">    maxSockets: <span class="number">10</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> options = &#123;</span><br><span class="line">    hostname: <span class="string">'127.0.0.1'</span>,</span><br><span class="line">    port: <span class="string">'1334'</span>,</span><br><span class="line">    path: <span class="string">'/'</span>,</span><br><span class="line">    method: <span class="string">'GET'</span>,</span><br><span class="line">    agent: agent</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="HTTP_客户端事件">HTTP 客户端事件</h4><ul>
+<li>response：与服务器端的 request 事件对应的客户端在请求发出后得到服务器端响应时触发</li>
+<li>socket：当底层连接池中建立的连接分配给当前请求对象时触发</li>
+<li>connect：当客户端向服务器端发情 CONNECT 请求时，如果服务器端响应 200 状态吗，客户端将会触发事件</li>
+<li>upgrade：客户端向服务器端发送 Upgrade 请求时，如果服务器端响应了 101 Switching Protocols 状态，客户端将会触发该事件</li>
+<li>continue：客户端向服务器端发起 Expect: 100-continue 头信息，以试图发送较大数据量，如果服务器端响应 100 Continue 状态，客户端触发该事件</li>
+</ul>
+<h3 id="构建_WebSocket_服务">构建 WebSocket 服务</h3><p>WebSocket 协议主要分为握手和数据传输两部分。相比 HTTP，WebSocket 更接近于传输层协议，它并没有在 HTTP 的基础上模拟服务器端的推送，而是在 TCP 上定义独立的协议。但 WebSocket 的握手部分是由 HTTP 完成的</p>
+<h4 id="WebSocket_握手">WebSocket 握手</h4><p>客户端请求报文</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">GET /chat HTTP/<span class="number">1.1</span></span><br><span class="line">Host: server.example.com</span><br><span class="line">Upgrade: websocket</span><br><span class="line">Connection: Upgrade</span><br><span class="line">Set-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ</span><br><span class="line">Set-WebSocket-Protocol: chat, superchat</span><br><span class="line">Set-WebSocket-Version: <span class="number">13</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>Upgrade, Connect：表示请求服务器端升级协议为 WebSocket</li>
+<li>Set-WebSocket-Key：随机生成的 Base64 编码的字符串，用于安全校验</li>
+<li>Set-WebSocket-Protocol：指定子协议</li>
+<li>Set-WebSocket-Version：指定版本号</li>
+</ul>
+<p>服务器端响应报文</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">HTTP/<span class="number">1.1</span> <span class="number">101</span> Switching Protocols</span><br><span class="line">Upgrade: websocket</span><br><span class="line">Connection: Upgrade</span><br><span class="line">Sec-WebSocket-Accept: s3pPLMBiTxaQ9kYGzzhZRbK+xOo</span><br><span class="line">sec-WebSocket-Protocol: chat</span><br></pre></td></tr></table></figure>
+<h4 id="WebSocket_数据传输">WebSocket 数据传输</h4><p>在握手顺利完成后，当前连接将不再进行 HTTP 的交互，而是开始 WebSocket 的数据帧协议，实现客户端与服务器端的数据交换</p>
+<p>WebSocket 数据帧的定义，每八位为一列，也即1个字节</p>
+<p><img src="/images/168-7-7.png" alt="WebSocket 数据帧"></p>
+<ul>
+<li>fin：如果这个数据帧是最后一帧，这个 fin 位为1，其余情况为0.当一个数据没有被分为多帧时，它既是第一帧也是最后一帧</li>
+<li>rsv1、 rsv2、 rsv3：各为1位长，3个标识用于扩展，当已协商的扩展时，这些值可能为1，其余情况为0</li>
+<li>opcode：长为4位的操作码，可以用来表示0到15的值，用于解释当前数据帧。0表示附加数据帧，1表示文本数据帧，2表示二进制数据帧，8表示发送一个连接关闭的数据帧，9表示 ping 数据帧，10表示 pong 数据帧，其余值暂时没有定义。ping 和 pong 用于心跳检测</li>
+<li>masked：表示是否进行掩码处理，长度为1.客户端发送给服务器端时为1，服务器端发送给客户端为0</li>
+<li>payload length：一个7、 7+16 或 7+64 位长的数据位，标识数据的长度。如果值在 0~125 间，那么该值就是数据的真实长度；如果值是126，则后面16位的值是数据的真实长度；如果值是127，那么后面64位的值是数据的真实长度</li>
+<li>masking key：当 masked 为1时存在，是一个32位长的数据位，用于解密数据</li>
+<li>payload data：模板数据，位数为8的倍数</li>
+</ul>
+<h3 id="网络服务与安全">网络服务与安全</h3><p>Node 在网络安全上提供了 crypto、 tls、 https 三个模块</p>
+<h4 id="TLS/SSL">TLS/SSL</h4><p>TLS/SSL 是一个公钥/密钥的结构，它是一个非对称的结构。公钥和密钥配对的，在建立安全传输前，客户端和服务器之间需要互换密钥。客户端发送服务器数据时要通过服务器端的公钥加密，服务器端发送数据时要通过客户端的公钥加密</p>
+<p>为了解决中间人攻击问题，引入了数字证书进行认证，即 CA（Certificate Authority 数字证书认证中心）。CA 的作用是为站点颁发证书，且这个证书具有 CA 通过自己的公钥和密钥实现的签名</p>
+<p>TLS 服务与普通的 TCP 服务仅仅只在证书的配置上有差别，其余部分基本相同</p>
+<h4 id="HTTPS">HTTPS</h4><p>HTTPS 服务就是工作在 TLS/SSL 上的 HTTP。同样比 HTTP 服务多了证书的配置，其余部分基本相同</p>
+<h2 id="构建_Web_应用">构建 Web 应用</h2><h4 id="请求方法">请求方法</h4><p>在 RESTful 类 Web 服务中请求方法十分重要，因为它决定资源的操作行为。PUT 表示新建一个资源，POST 表示更新一个资源，GET 表示查看一个资源，DELETE 表示删除一个资源</p>
+<h4 id="路径解析">路径解析</h4><p>常见的根据路径进行业务处理的应用是静态文件服务器，它会根据路径去查找磁盘中的文件，然后响应给客户端；另一种常见的分发场景是根据路径来选择控制器，它预设路径为控制器和行为的组合，无需额外配置路由信息</p>
+<h4 id="查询字符串">查询字符串</h4><p>Node 提供 url 和 querystring 两个模块处理 url 及 url 的查询串。通常情况下，不需要直接处理querystring，因为url模块的支持</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> url = <span class="built_in">require</span>(<span class="string">'url'</span>);</span><br><span class="line"><span class="keyword">var</span> query = url.parse(req.url, <span class="literal">true</span>).query;</span><br><span class="line"><span class="comment">// =&gt; &#123;foo: 'bar', baz: 'val'&#125;</span></span><br></pre></td></tr></table></figure>
+<p>如果查询字符串中的键出现多次，那么它的值会是一个数组</p>
+<h4 id="Cookie">Cookie</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Set-Cookie: name=value; Path=/; Expire=Sun, <span class="number">21</span>-Apr-<span class="number">21</span> <span class="number">00</span>:<span class="number">00</span>:<span class="number">11</span> GMT; Domain=.domain.com</span><br></pre></td></tr></table></figure>
+<ul>
+<li>path：表示这个 Cookie 影响到的路径，当前访问路径不满足该匹配时，浏览器不发送这个 Cookie</li>
+<li>Expires 和 Max-Age 用来告知浏览器这个 Cookie 何时过期，如果不设置该选项，关闭浏览器将丢失 Cookie，否者浏览器会将 Cookie 内容写入磁盘保存，下次打开浏览器依然有效。Expires 的值是一个 UTC 格式的时间字符串，告知浏览器 Cookie 几时过期，Max-Age 告知 Cookie 多久之后过期</li>
+<li>HttpOnly 告知浏览器不允许通过脚本 document.cookie 去改变 Cookie 值</li>
+<li>Secure 为 true 时在 HTTP 中无效，在 HTTPS 中表示创建的 Cookie 只能在 HTTPS 连接中被浏览器传递到服务器端进行会话验证</li>
+</ul>
+<h5 id="Cookie_的性能影响">Cookie 的性能影响</h5><p>Cookie 设置过多将导致报头较大，且大多数 Cookie 不是必须的</p>
+<ul>
+<li><p>减小 Cookie 大小<br>  如果在域名的根节点设置 Cookie，几乎所有的子路径的请求都会带上这些 Cookie。而静态文件的业务定位几乎不关心状态，Cookie 是多余的</p>
+</li>
+<li><p>为静态组件使用不同的域名<br>  为不需要 Cookie 的组件更换域名可以实现减少无效的 Cookie 的传输。换用域名同时可以突破浏览器下载线程数量的限制。但是换用域名会存在 DNS 查询的耗时问题</p>
+</li>
+<li><p>减少 DNS 查询<br>  限制通过多个域名加载资源。当今浏览器会进行 DNS 缓存，削弱了这个副作用的影响</p>
+</li>
+</ul>
+<h4 id="Session">Session</h4><h5 id="通过_Session_实现状态记录的几种方法">通过 Session 实现状态记录的几种方法</h5><ul>
+<li><p>基于 Cookie 实现用户和数据的映射<br>  Session 的数据只保留在服务器，并约定一个键值作为 Session 的口令保存在 Cookie。每次请求到来时，检查 Cookie 中的口令和服务器端的数据，如果过期，则重新生成</p>
+</li>
+<li><p>通过查询字符串实现浏览器端和服务器端数据的对应<br>  原理是检查请求的查询字符串，如果没有该值，则生成新的带值得字符串，做 302 跳转</p>
+</li>
+<li><p>通过 HTTP 请求头的 ETag 实现数据映射</p>
+</li>
+</ul>
+<h5 id="Session_与内存">Session 与内存</h5><p>一方面，Node 存在内存限制，将 Session 的数据存放在内存中在用户增多的情况下存在隐患，将引起垃圾回收的频繁扫描，引起性能问题；另一方面，如果利用多核 CPU 启动多个进程，则用户请求的连接可能随意分配到各个进程中，Node 的进程间无法共享内存，则用户的 Session 可能引起错乱</p>
+<p>针对上述问题，常用的方法是 Session 集中化，将原本可能分散在多个内存中的数据，统一转移到集中的数据存储中，常用的工具有 Redi Memcached 等</p>
+<h5 id="Session_与安全">Session 与安全</h5><p>由于口令存放在客户端，则可能被伪造并窃取服务器端的数据。可以将口令通过私钥加密进行签名，使得伪造的成本较高</p>
+<h4 id="缓存">缓存</h4><p>YSlow 提到的关于缓存的规则</p>
+<ul>
+<li>添加 Expires 或 Cache-Control 到报文头中</li>
+<li>配置 ETags</li>
+<li>让 Ajax 可缓存</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>报文头</th>
+<th>值/示例</th>
+<th>类型</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Expires</td>
+<td>UTC 字符串</td>
+<td>响应</td>
+<td>告诉浏览器在过期时间前可以使用副本</td>
+</tr>
+<tr>
+<td>Cache-Control</td>
+<td>no-chche</td>
+<td>响应</td>
+<td>告诉浏览器忽略资源的缓存副本，强制每次请求直接发送给服务器</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>no-store</td>
+<td>响应</td>
+<td>强制缓存在任何情况下不要保留副本</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>max-age=[秒]</td>
+<td>响应</td>
+<td>执行缓存副本的有效时长，从请求时间开始到过期时间之间的秒数</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>public</td>
+<td>响应</td>
+<td>任何途径的缓存者（本地缓存，代理服务器）可以无条件缓存该资源</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>private</td>
+<td>响应</td>
+<td>只针对单个用户或实体（不同用户，窗口）缓存资源</td>
+</tr>
+<tr>
+<td>Last-Modified</td>
+<td>UTC 字符串</td>
+<td>响应</td>
+<td>告诉浏览器当前资源最后修改时间</td>
+</tr>
+<tr>
+<td>If-Modified-Since</td>
+<td>UTC 字符串</td>
+<td>请求</td>
+<td>如果浏览器第一次请求时响应中 Last-Modified 非空，第二次请求会把该项的值发送给服务器</td>
+</tr>
+<tr>
+<td>ETags</td>
+<td>标识符</td>
+<td>响应</td>
+<td>告知浏览器当前资源在服务器的唯一标识符（生成规则由服务器决定）</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>标识符</td>
+<td>请求</td>
+<td>果浏览器第一次请求时响应中 ETags 非空，第二次请求会把该项的值发送给服务器</td>
+</tr>
+</tbody>
+</table>
+<p>有如下两种更新机制：</p>
+<ul>
+<li>每次发布，路径中跟随 Web 应用的版本号，如：<a href="http://url.com/?v20120917" target="_blank" rel="external">http://url.com/?v20120917</a></li>
+<li>每次发布时，路径中跟随该文件内容的 hash 值，如：<a href="http://url.com/?hash=abcdxxx" target="_blank" rel="external">http://url.com/?hash=abcdxxx</a></li>
+</ul>
+<h4 id="Basic_认证">Basic 认证</h4><p>Basic 认证中，它会将用户和密码部分组合，然后进行 Base64 编码。响应头中的 WWW-Authenticate 字段告知浏览器采用怎样的认证和加密方式。当认证通过，服务器端响应200状态码之后，浏览器会保存用户和密码口令，在后续的请求中都携带上 Authorization 信息</p>
+<h3 id="数据上传">数据上传</h3><h4 id="表单数据">表单数据</h4><p>默认的表单提交，请求头中的 Content-Type 字段值是 application/x-www/form-urlencoded 。由于它的报文体内容与查询字符串相同，因此可以使用 querystring 解析</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> handle = <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(req.headers[<span class="string">'content-type'</span>] === <span class="string">'application/x-www-form-urlencoded'</span>) &#123;</span><br><span class="line">        req.body = querystring.parse(req.rawBody);</span><br><span class="line">    &#125;;</span><br><span class="line">    todo(req, res);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="JSON_文件">JSON 文件</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> handle = <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(mime(req) === <span class="string">'application/json'</span>) &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            req.body = <span class="built_in">JSON</span>.parse(req.rawBody);</span><br><span class="line">        &#125; <span class="keyword">catch</span>(e) &#123;</span><br><span class="line">            res.writeHead(<span class="number">400</span>);</span><br><span class="line">            res.end(<span class="string">'Invalid JSON'</span>);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    todo(req, res);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="XML_文件">XML 文件</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> xml2js = reuqire(<span class="string">'xml2js'</span>);</span><br><span class="line"><span class="keyword">var</span> handle = <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(mime(req) === <span class="string">'application/xml'</span>) &#123;</span><br><span class="line">        xml2js.parseString(req.rawBody, <span class="function"><span class="keyword">function</span>(<span class="params">err, xml</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(err) &#123;</span><br><span class="line">                res.writeHead(<span class="number">400</span>);</span><br><span class="line">                res.end(<span class="string">'Invalid xml'</span>);</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            req.body = xml;</span><br><span class="line">            tody(req, res);</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    todo(req, res);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="附件上传">附件上传</h4><p>指定表单属性 enctype 为 multipart/form-data，则其报文头如下</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Content-Type: multipart/form-data; boundary=AaBo3x</span><br><span class="line">Content-Length: <span class="number">18231</span></span><br></pre></td></tr></table></figure>
+<p>代表本次提交的内容是由多部分构成的，其中 boundary=AaBo3x 指定每部分内容的分界符，AaBo3x 是随机生成的字符串，报文体的内容将通过在它前面添加<code>--</code>分隔，报文结束时在它前后都加上<code>--</code>表示结束。Content-Length 表示报文长度，太长则在 keep-alive 的情况下浏览器保持等待请求，太短则报文被截断</p>
+<p>可通过 formidable 模块处理文件。它基于流式处理解析报文，将接收到的文件写入到系统的临时文件夹中，并返回对应的路径</p>
+<h4 id="数据上传与安全">数据上传与安全</h4><ol>
+<li><p>内存限制</p>
+<ul>
+<li>限制上传内容的大小，一旦超过限制，停止接收数据，并响应 400 状态码。通过 Content-Length 或 Buffer 长度判断</li>
+<li>通过流式解析，将数据流导向磁盘中，Node 只保留文件路径等小数据</li>
+</ul>
+</li>
+<li><p>CSRF<br> 全称 Cross-Site Request Forgery，即跨站请求伪造。用户在伪造网站 domain_b 提交表单到被攻击的站点 domain_a，则浏览器会将 domain_a 的 Cookie 发送到服务器，尽管请求来自 domain_b</p>
+<p> 解决方法可以是页面渲染一个随机值并随表单一起提交，并在后台校验随机值是否一致</p>
+</li>
+</ol>
+<h3 id="路由解析">路由解析</h3><h4 id="MVC">MVC</h4><p>MVC 模型工作模式如下：</p>
+<ul>
+<li>路由解析，根据 URL 寻找对应的控制器和行为</li>
+<li>行为调用相关的模型，进行数据操作</li>
+<li>数据操作结束后，调用视图和相关数据进行页面渲染，输出到客户端</li>
+</ul>
+<h5 id="手工映射">手工映射</h5><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> routers = [];</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> use = <span class="function"><span class="keyword">function</span>(<span class="params">path, action</span>) </span>&#123;</span><br><span class="line">    routes.push([path, action]);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> pathname = url.parse(req.url).pathname;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i&lt;routes.length; i++) &#123;</span><br><span class="line">        <span class="keyword">var</span> route = routes[i];</span><br><span class="line">        <span class="keyword">if</span>(pathname === route[<span class="number">0</span>]) &#123;</span><br><span class="line">            <span class="keyword">var</span> action = route[<span class="number">1</span>];</span><br><span class="line">            action(req, res);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 处理 404 请求</span></span><br><span class="line">    handle404(req, res);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="正则匹配">正则匹配</h5><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">use(<span class="string">'/profile/:username'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// TODO</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h5 id="自然映射">自然映射</h5><p>已约定的形式实现路由，而无需维护路由的映射。将路径划分处理</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">/controller/action/param1/param2/param3</span><br><span class="line"><span class="comment">// =&gt; user/setting/12/1987</span></span><br></pre></td></tr></table></figure>
+<p>自然映射这种路由方式在 PHP 的 MVC 框架 CodeIgniter 应用十分广泛。与手工映射相比，如果 URL 变动，它的文件也需要发生变动，手工映射只需要改变路由映射即可</p>
+<h4 id="RESTful">RESTful</h4><p>全程 Representational State Transfer，即表现层状态转化。符合 REST 规范的设计，我们称为 RESTful 设计。它的设计哲学主要将服务器端提供的内容实体看做一个资源，并表现在 URL 上。通过 URL 设计资源，请求方法定义资源的操作，通过 Accept 决定资源的表现形式</p>
+<h3 id="中间件">中间件</h3><p>引入中间件来简化和隔离基础设施与业务逻辑之间的细节，让开啊这能够关注在业务的开发上，已达到提升开发效率的目的</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 将中间件交给 handle 处理</span></span><br><span class="line"><span class="keyword">var</span> handle = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> next = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> middleware = stack.shift();</span><br><span class="line">        <span class="keyword">if</span>(middleware) &#123;</span><br><span class="line">            middleware(req, res, next);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">// 开始执行</span></span><br><span class="line">    next();</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="异常处理">异常处理</h4><p>为 next 添加 err 参数，并捕获中间件直接抛出的同步异常</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> handle = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> next = <span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(err) &#123;</span><br><span class="line">            <span class="keyword">return</span> handle500(err, req, res, stack);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">var</span> middleware = stack.shift();</span><br><span class="line">        <span class="keyword">if</span>(middleware) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                middleware(req, res, next);</span><br><span class="line">            &#125; <span class="keyword">catch</span>(ex) &#123;</span><br><span class="line">                next(err);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">// 开始执行</span></span><br><span class="line">    next();</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>可以为进行异常处理的中间件提供四个参数，并与普通中间件区分开</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">app.use(<span class="function"><span class="keyword">function</span>(<span class="params">err, req, res, stack</span>) </span>&#123;</span><br><span class="line">    stack = stack.filter(<span class="function"><span class="keyword">function</span>(<span class="params">middleware</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> middleware.length === <span class="number">4</span>;</span><br><span class="line">    &#125;);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">var</span> next = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> middleware = stack.shift();</span><br><span class="line">        <span class="keyword">if</span>(middleware) &#123;</span><br><span class="line">            middleware(err, req, res, next);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    next();</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h5 id="中间件与性能">中间件与性能</h5><ul>
+<li><p><strong>编写高效的中间件</strong><br>  即提升单个处理单元的处理速度，尽早调用 next() 执行后续逻辑</p>
+<ul>
+<li>使用高效的办法，必要时使用 <a href="http://jsperf.com" target="_blank" rel="external">jsperf.com</a> 测试基准性能</li>
+<li>缓存需要重复计算的结果（需要控制缓存用量）</li>
+<li>避免不必要的计算，比如 HTTP 报文体的解析对 GET 方法无用</li>
+</ul>
+</li>
+<li><strong>合理利用路由</strong><br>托管静态文件的中间件，可以通过添加路由路径，在不匹配路径的时候不会涉及该中间件</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> staticFile = <span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> pathname = url.parse(req.url).pathname;</span><br><span class="line">    </span><br><span class="line">    fs.readFile(path.join(ROOT, pathname), <span class="function"><span class="keyword">function</span>(<span class="params">err, file</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(err) &#123;</span><br><span class="line">            <span class="keyword">return</span> next();</span><br><span class="line">        &#125;</span><br><span class="line">        res.writeHead(<span class="number">200</span>);</span><br><span class="line">        res.end(file);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">app.use(<span class="string">'/public'</span>, staticFile);</span><br></pre></td></tr></table></figure>
 
       
     </div>
