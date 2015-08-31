@@ -3,17 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>(&lt;ゝω·)Kira☆~</title>
+  <title>模板引擎 | (&lt;ゝω·)Kira☆~</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="(<ゝω·)Kira☆~">
-<meta property="og:url" content="http://cupools.github.io/index.html">
+  <meta name="description" content="在看《深入浅出NodeJS》的时候发现对模板引擎有比较详细的讲解，看下来还是比较清晰的。于是决定记录一下_(:з」∠)_
+从最简单开始var str = &apos;test: &amp;#123;&amp;#123;obj&amp;#125;&amp;#125; and &amp;#123;&amp;#123;obj&amp;#125;&amp;#125;&apos;;render(str, 123);// =&amp;gt; &quot;test: 123 and 123&quot;function r">
+<meta property="og:type" content="article">
+<meta property="og:title" content="模板引擎">
+<meta property="og:url" content="http://cupools.github.io/2015/08/31/notes/模板引擎/index.html">
 <meta property="og:site_name" content="(<ゝω·)Kira☆~">
-<meta property="og:description">
+<meta property="og:description" content="在看《深入浅出NodeJS》的时候发现对模板引擎有比较详细的讲解，看下来还是比较清晰的。于是决定记录一下_(:з」∠)_
+从最简单开始var str = &apos;test: &amp;#123;&amp;#123;obj&amp;#125;&amp;#125; and &amp;#123;&amp;#123;obj&amp;#125;&amp;#125;&apos;;render(str, 123);// =&amp;gt; &quot;test: 123 and 123&quot;function r">
+<meta property="og:updated_time" content="2015-08-31T11:11:34.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="(<ゝω·)Kira☆~">
-<meta name="twitter:description">
+<meta name="twitter:title" content="模板引擎">
+<meta name="twitter:description" content="在看《深入浅出NodeJS》的时候发现对模板引擎有比较详细的讲解，看下来还是比较清晰的。于是决定记录一下_(:з」∠)_
+从最简单开始var str = &apos;test: &amp;#123;&amp;#123;obj&amp;#125;&amp;#125; and &amp;#123;&amp;#123;obj&amp;#125;&amp;#125;&apos;;render(str, 123);// =&amp;gt; &quot;test: 123 and 123&quot;function r">
   
     <link rel="alternative" href="/atom.xml" title="(&lt;ゝω·)Kira☆~" type="application/atom+xml">
   
@@ -153,9 +157,7 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap">
-  
-    <article id="post-notes/模板引擎" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-notes/模板引擎" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2015/08/31/notes/模板引擎/" class="article-date">
@@ -171,12 +173,23 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/31/notes/模板引擎/">模板引擎</a>
+    <h1 class="article-title" itemprop="name">
+      模板引擎
     </h1>
   
 
       </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习/">学习</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
       
     
     <div class="article-entry" itemprop="articleBody">
@@ -205,20 +218,19 @@
       
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习/">学习</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/08/07/books/深入浅出NodeJS/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">深入浅出NodeJS</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
   
 </article>
 
@@ -227,601 +239,6 @@
 
 
 
-
-  
-    <article id="post-books/深入浅出NodeJS" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/08/07/books/深入浅出NodeJS/" class="article-date">
-  	<time datetime="2015-08-06T16:00:00.000Z" itemprop="datePublished">2015-08-07</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/07/books/深入浅出NodeJS/">深入浅出NodeJS</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="模块机制">模块机制</h2><h3 id="CommonJS_规范">CommonJS 规范</h3><h4 id="模块引用">模块引用</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> math = <span class="built_in">require</span>(<span class="string">'math'</span>);</span><br></pre></td></tr></table></figure>
-<p>CommonJS 规范中存在 require() 方法，接受模块标识，以此引入一个模块的 API 到当前的上下文</p>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/08/07/books/深入浅出NodeJS/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-notes/正则表达式" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/08/01/notes/正则表达式/" class="article-date">
-  	<time datetime="2015-07-31T16:00:00.000Z" itemprop="datePublished">2015-08-01</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/01/notes/正则表达式/">正则表达式</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>还是稍微做个笔记吧，感觉会很有帮助。Javascript 的正则表达式实现与这里存在差异_(:з」∠)_</p>
-</blockquote>
-<h2 id="元字符">元字符</h2><table>
-<thead>
-<tr>
-<th>代码</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>.</td>
-<td>匹配除换行符以外的任意字符</td>
-</tr>
-<tr>
-<td>\w</td>
-<td>匹配字母或数字或下划线或汉字</td>
-</tr>
-<tr>
-<td>\s</td>
-<td>匹配任意空字符</td>
-</tr>
-<tr>
-<td>\d</td>
-<td>匹配数字</td>
-</tr>
-<tr>
-<td>\b</td>
-<td>匹配单词的开始或结束</td>
-</tr>
-<tr>
-<td>^</td>
-<td>匹配字符串的开始</td>
-</tr>
-<tr>
-<td>$</td>
-<td>匹配字符串的结束</td>
-</tr>
-</tbody>
-</table>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/08/01/notes/正则表达式/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-books/jQuery技术内幕" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/08/01/books/jQuery技术内幕/" class="article-date">
-  	<time datetime="2015-07-31T16:00:00.000Z" itemprop="datePublished">2015-08-01</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/01/books/jQuery技术内幕/">jQuery技术内幕</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>丢笔记了有点可怜..重新写好了。书和代码一样重，拿在手上很有分量恩。</p>
-</blockquote>
-<h2 id="总体架构">总体架构</h2><h4 id="总体架构-1">总体架构</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">window, undefined</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 构造 jQuery 对象</span></span><br><span class="line">    <span class="keyword">var</span> jQuery = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> jQuery = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> jQuery = <span class="function"><span class="keyword">function</span>(<span class="params">selector, context</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> jQuery.fn.init(selector, context, rootjQuery);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> jQuery;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)();</span><br><span class="line">    <span class="comment">// 工具方法 Utilities</span></span><br><span class="line">    <span class="comment">// 回调函数列表 Callbacks Object</span></span><br><span class="line">    <span class="comment">// 异步队列 Deferred Object</span></span><br><span class="line">    <span class="comment">// 浏览器功能测试 Support</span></span><br><span class="line">    <span class="comment">// 数据缓存 Data</span></span><br><span class="line">    <span class="comment">// 队列 Queue</span></span><br><span class="line">    <span class="comment">// 属性操作 Attributes</span></span><br><span class="line">    <span class="comment">// 事件系统 Events</span></span><br><span class="line">    <span class="comment">// 选择器 Sizzle</span></span><br><span class="line">    <span class="comment">// DOM 遍历 Traversing</span></span><br><span class="line">    <span class="comment">// DOM 操作 Manipulation</span></span><br><span class="line">    <span class="comment">// 样式操作 CSS（计算样式、内联样式）</span></span><br><span class="line">    <span class="comment">// 异步请求 Ajax</span></span><br><span class="line">    <span class="comment">// 动画 Effects</span></span><br><span class="line">    <span class="comment">// 坐标 Offset、尺寸 Dimensions</span></span><br><span class="line">&#125;)(<span class="built_in">window</span>);</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/08/01/books/jQuery技术内幕/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-notes/垂直居中" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/07/19/notes/垂直居中/" class="article-date">
-  	<time datetime="2015-07-18T16:00:00.000Z" itemprop="datePublished">2015-07-19</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/19/notes/垂直居中/">垂直居中</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>因为没有 IE 调试也是挺麻烦的，先建个笔记放着吧</p>
-</blockquote>
-<h2 id="table-cell">table-cell</h2><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="tag">div</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">display</span>:<span class="value"> table-cell</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">vertical-align</span>:<span class="value"> middle</span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="tag">span</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">display</span>:<span class="value"> inline-block</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">vertical-align</span>:<span class="value"> middle</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/07/19/notes/垂直居中/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-books/基于MVC的Javascript Web富应用开发" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/07/17/books/基于MVC的Javascript Web富应用开发/" class="article-date">
-  	<time datetime="2015-07-16T16:00:00.000Z" itemprop="datePublished">2015-07-17</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/17/books/基于MVC的Javascript Web富应用开发/">基于MVC的Javascript Web富应用开发</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>接到 HR 的面试通知，NodeJS 还没喵完便急匆匆地翻了这本书。等了好久还是没货打折只能跟别人借了</p>
-</blockquote>
-<h2 id="MVC和类">MVC和类</h2><h3 id="什么是_MVC">什么是 MVC</h3><p>MVC 是一种设计模式，将应用划分为3个部分：数据（模型），展示层（视图），用户交互层（控制器）。一个事件发生的过程是这样的</p>
-<ol>
-<li>用户和应用发生交互</li>
-</ol>
-<ul>
-<li>控制器的事件处理器被触发</li>
-<li>控制器从模型中请求数据，并将棋交给视图</li>
-<li>视图将数据呈现给用户</li>
-</ul>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/07/17/books/基于MVC的Javascript Web富应用开发/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-notes/猴子补丁" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/07/16/notes/猴子补丁/" class="article-date">
-  	<time datetime="2015-07-15T16:00:00.000Z" itemprop="datePublished">2015-07-16</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/16/notes/猴子补丁/">猴子补丁</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 为函数 a 打补丁</span></span><br><span class="line"><span class="keyword">var</span> b = a;</span><br><span class="line">a = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    a = b;</span><br><span class="line">    a();</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">a();	<span class="comment">// 1, 2</span></span><br><span class="line">a();	<span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-notes/几个好用的函数" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/07/16/notes/几个好用的函数/" class="article-date">
-  	<time datetime="2015-07-15T16:00:00.000Z" itemprop="datePublished">2015-07-16</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/16/notes/几个好用的函数/">几个好用的函数</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="url_取值">url 取值</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getUrlParam</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'(^|&amp;)'</span> + name + <span class="string">'=([^&amp;]*)(&amp;|$)'</span>);</span><br><span class="line">    <span class="keyword">var</span> r = <span class="built_in">window</span>.location.search.substr(<span class="number">1</span>).match(reg);</span><br><span class="line">    <span class="keyword">if</span> (r !== <span class="literal">null</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">window</span>.unescape(r[<span class="number">2</span>]);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/07/16/notes/几个好用的函数/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-notes/Javascript 模块规范" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/07/16/notes/Javascript 模块规范/" class="article-date">
-  	<time datetime="2015-07-15T16:00:00.000Z" itemprop="datePublished">2015-07-16</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/16/notes/Javascript 模块规范/">Javascript 模块规范</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="CommonJS">CommonJS</h2><p> 规范</p>
-<ol>
-<li><strong>module 拥有 id, uri 属性；在 module 中，有 require, exports, module 三个自由变量</strong></li>
-<li><strong>module 可通过 require 引入外部 module. 通过 exports 等方式向外部提供 api</strong></li>
-</ol>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/07/16/notes/Javascript 模块规范/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-books/Javascript语言精粹" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/07/15/books/Javascript语言精粹/" class="article-date">
-  	<time datetime="2015-07-14T16:00:00.000Z" itemprop="datePublished">2015-07-15</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/15/books/Javascript语言精粹/">Javascript语言精粹</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>在去北京的火车上一口气看完了。书不厚但是内容很厚实。对于上下文，构造方法等理解有很大的帮助。书的后面用了很大的空间写了javascript的糟粕，很奇怪但有效的学习方法～</p>
-</blockquote>
-<ul>
-<li>伪类及函数化模式。前者通过 <code>new</code> 构造对象，后者通过函数构造对象。前者不利于私有属性的处理，后者通过闭包解决这个问题，同时有利于重写超类方法。</li>
-<li><p>javascript 中，数组的实质是对象。数组原型为 <code>Array</code>。通过如下方法判断数组</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 在不同 window 或 frame 失效</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="string">"value"</span> === <span class="string">"object"</span> &amp;&amp; value.constructor === <span class="built_in">Array</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.apply(value) === <span class="string">'[Object Array]'</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/07/15/books/Javascript语言精粹/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
-  
 </div>
       <footer id="footer">
   <div class="outer">
@@ -845,8 +262,8 @@
 		fancybox: true,
 		mathjax: true,
 		animate: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

@@ -99,7 +99,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Javascript/" style="font-size: 16.67px;">Javascript</a> <a href="/tags/css/" style="font-size: 13.33px;">css</a> <a href="/tags/性能优化/" style="font-size: 10px;">性能优化</a> <a href="/tags/读书笔记/" style="font-size: 20px;">读书笔记</a>
+						<a href="/tags/Javascript/" style="font-size: 16.67px;">Javascript</a> <a href="/tags/css/" style="font-size: 13.33px;">css</a> <a href="/tags/学习/" style="font-size: 10px;">学习</a> <a href="/tags/性能优化/" style="font-size: 10px;">性能优化</a> <a href="/tags/读书笔记/" style="font-size: 20px;">读书笔记</a>
 					</div>
 				</section>
 				
@@ -155,10 +155,10 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-books/Javascript语言精粹" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-books/Javascript设计模式" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/07/15/books/Javascript语言精粹/" class="article-date">
+      <a href="/2015/07/15/books/Javascript设计模式/" class="article-date">
   	<time datetime="2015-07-14T16:00:00.000Z" itemprop="datePublished">2015-07-15</time>
 </a>
     </div>
@@ -172,7 +172,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/15/books/Javascript语言精粹/">Javascript语言精粹</a>
+      <a class="article-title" href="/2015/07/15/books/Javascript设计模式/">Javascript设计模式</a>
     </h1>
   
 
@@ -182,13 +182,12 @@
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>在去北京的火车上一口气看完了。书不厚但是内容很厚实。对于上下文，构造方法等理解有很大的帮助。书的后面用了很大的空间写了javascript的糟粕，很奇怪但有效的学习方法～</p>
+<p>在北京待了两天感受到了学校深深的恶意。开着空调看书才舒服了一点又被宿管断了电。从头看设计模式。</p>
 </blockquote>
-<ul>
-<li>伪类及函数化模式。前者通过 <code>new</code> 构造对象，后者通过函数构造对象。前者不利于私有属性的处理，后者通过闭包解决这个问题，同时有利于重写超类方法。</li>
-<li><p>javascript 中，数组的实质是对象。数组原型为 <code>Array</code>。通过如下方法判断数组</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 在不同 window 或 frame 失效</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="string">"value"</span> === <span class="string">"object"</span> &amp;&amp; value.constructor === <span class="built_in">Array</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.apply(value) === <span class="string">'[Object Array]'</span></span><br></pre></td></tr></table></figure>
-</li>
+<h2 id="Constructor（构造器）模式">Constructor（构造器）模式</h2><ul>
+<li>对象创建，通过对象字面量或者 Object.create</li>
+<li>基本构造器，所有属性和方法丢在构造器里。不适合继承，因为有些方法需要在不同实例间共享（应该是不需要在执行构造器的时候再创建一遍的意思吧）</li>
+<li>带原型的构造器</li>
 </ul>
       
     </div>
@@ -204,7 +203,77 @@
 
       
         <p class="article-more-link">
-          <a  href="/2015/07/15/books/Javascript语言精粹/#more">more >></a>
+          <a  href="/2015/07/15/books/Javascript设计模式/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-books/编写高质量代码" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/07/15/books/编写高质量代码/" class="article-date">
+  	<time datetime="2015-07-14T16:00:00.000Z" itemprop="datePublished">2015-07-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/07/15/books/编写高质量代码/">编写高质量代码</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>在北京待了五天，没卫浴没网络没水没得正常吃饭，今天准备出去找房子打游击战。开始编写<s>高质量</s>代码。</p>
+</blockquote>
+<h2 id="语言基础">语言基础</h2><ul>
+<li>防止浮点数溢出，可转换为整数计算再转小数</li>
+<li>调用 <code>Object</code> 对象定义的默认 <code>toString</code> 方法判断对象类型，<code>Object.prototype.toString.apply( value )</code> ，仅适用于基本数据类型和内置对象。检测非内置对象使用 <code>instanceof</code> 和 <code>constructor</code></li>
+<li>NaN，使用 isFinite 和 typeof 检验数字类型</li>
+<li>逗号运算符使用括号强迫进行连续运算，否则会出现先赋值再计算的问题</li>
+<li><code>hasOwnProperty</code> 可被修改（那解决方法咧）</li>
+<li>伪数组不包含数组的方法</li>
+<li><code>continue</code> 影响性能（具体咧）</li>
+<li>关于 <code>new</code>，避免使用和给出的原因感觉很不合理</li>
+</ul>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/07/15/books/编写高质量代码/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
