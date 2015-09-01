@@ -6,18 +6,21 @@
   <title>模板引擎 | (&lt;ゝω·)Kira☆~</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="在看《深入浅出NodeJS》的时候发现对模板引擎有比较详细的讲解，看下来还是比较清晰的。于是决定记录一下_(:з」∠)_
-从最简单开始var str = &apos;test: &amp;#123;&amp;#123;obj&amp;#125;&amp;#125; and &amp;#123;&amp;#123;obj&amp;#125;&amp;#125;&apos;;render(str, 123);// =&amp;gt; &quot;test: 123 and 123&quot;function r">
+
+从最简单开始var str = &apos;test: &amp;#123;&amp;#123;obj&amp;#125;&amp;#125; and &amp;#123;&amp;#123;obj&amp;#125;&amp;#125;&apos;;render(str, 123);// =&amp;gt; &quot;test: 123 and 123&quot;function">
 <meta property="og:type" content="article">
 <meta property="og:title" content="模板引擎">
 <meta property="og:url" content="http://cupools.github.io/2015/08/31/notes/模板引擎/index.html">
 <meta property="og:site_name" content="(<ゝω·)Kira☆~">
 <meta property="og:description" content="在看《深入浅出NodeJS》的时候发现对模板引擎有比较详细的讲解，看下来还是比较清晰的。于是决定记录一下_(:з」∠)_
-从最简单开始var str = &apos;test: &amp;#123;&amp;#123;obj&amp;#125;&amp;#125; and &amp;#123;&amp;#123;obj&amp;#125;&amp;#125;&apos;;render(str, 123);// =&amp;gt; &quot;test: 123 and 123&quot;function r">
-<meta property="og:updated_time" content="2015-08-31T11:16:09.000Z">
+
+从最简单开始var str = &apos;test: &amp;#123;&amp;#123;obj&amp;#125;&amp;#125; and &amp;#123;&amp;#123;obj&amp;#125;&amp;#125;&apos;;render(str, 123);// =&amp;gt; &quot;test: 123 and 123&quot;function">
+<meta property="og:updated_time" content="2015-09-01T13:14:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="模板引擎">
 <meta name="twitter:description" content="在看《深入浅出NodeJS》的时候发现对模板引擎有比较详细的讲解，看下来还是比较清晰的。于是决定记录一下_(:з」∠)_
-从最简单开始var str = &apos;test: &amp;#123;&amp;#123;obj&amp;#125;&amp;#125; and &amp;#123;&amp;#123;obj&amp;#125;&amp;#125;&apos;;render(str, 123);// =&amp;gt; &quot;test: 123 and 123&quot;function r">
+
+从最简单开始var str = &apos;test: &amp;#123;&amp;#123;obj&amp;#125;&amp;#125; and &amp;#123;&amp;#123;obj&amp;#125;&amp;#125;&apos;;render(str, 123);// =&amp;gt; &quot;test: 123 and 123&quot;function">
   
     <link rel="alternative" href="/atom.xml" title="(&lt;ゝω·)Kira☆~" type="application/atom+xml">
   
@@ -194,7 +197,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在看《深入浅出NodeJS》的时候发现对模板引擎有比较详细的讲解，看下来还是比较清晰的。于是决定记录一下_(:з」∠)_</p>
+        <blockquote>
+<p>在看《深入浅出NodeJS》的时候发现对模板引擎有比较详细的讲解，看下来还是比较清晰的。于是决定记录一下_(:з」∠)_</p>
+</blockquote>
 <h3 id="从最简单开始">从最简单开始</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">'test: &#123;&#123;obj&#125;&#125; and &#123;&#123;obj&#125;&#125;'</span>;</span><br><span class="line">render(str, <span class="number">123</span>);</span><br><span class="line"><span class="comment">// =&gt; "test: 123 and 123"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">render</span>(<span class="params">str, obj</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> compiled = compile(str);</span><br><span class="line">    <span class="keyword">return</span> compiled(obj);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">compile</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> reg = <span class="regexp">/\&#123;\&#123;([\w\W]+?)\&#125;\&#125;/g</span>,</span><br><span class="line">        tpl = str.replace(reg, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">'\' + obj + \''</span>;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="comment">// =&gt; "test: ' + obj + ' and ' + obj + '"</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> fn = <span class="string">'var ret = \''</span>  + tpl + <span class="string">'\';return ret;'</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">'obj'</span>, fn);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <p>代码思路比较清晰，compile() 函数将字符串中的变量占位符通过正则表达式替换为字符串拼接的形式，如<code>&#39;hehe&#39; + obj + &#39;hehe&#39;</code>，然后通过<code>new  Function</code>生成函数体；而 render() 函数将调用 compile() 返回的函数并传入 obj 参数，返回最终字符串</p>
