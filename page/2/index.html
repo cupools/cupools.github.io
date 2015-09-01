@@ -155,6 +155,72 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-books/Javascript语言精粹" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/07/15/books/Javascript语言精粹/" class="article-date">
+  	<time datetime="2015-07-14T16:00:00.000Z" itemprop="datePublished">2015-07-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/07/15/books/Javascript语言精粹/">Javascript语言精粹</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>在去北京的火车上一口气看完了。书不厚但是内容很厚实。对于上下文，构造方法等理解有很大的帮助。书的后面用了很大的空间写了javascript的糟粕，很奇怪但有效的学习方法～</p>
+</blockquote>
+<ul>
+<li>伪类及函数化模式。前者通过 <code>new</code> 构造对象，后者通过函数构造对象。前者不利于私有属性的处理，后者通过闭包解决这个问题，同时有利于重写超类方法。</li>
+<li><p>javascript 中，数组的实质是对象。数组原型为 <code>Array</code>。通过如下方法判断数组</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 在不同 window 或 frame 失效</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="string">"value"</span> === <span class="string">"object"</span> &amp;&amp; value.constructor === <span class="built_in">Array</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.apply(value) === <span class="string">'[Object Array]'</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/07/15/books/Javascript语言精粹/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-books/Javascript设计模式" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -290,6 +356,74 @@
 
 
   
+    <article id="post-books/了不起的Node.js" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/07/13/books/了不起的Node.js/" class="article-date">
+  	<time datetime="2015-07-12T16:00:00.000Z" itemprop="datePublished">2015-07-13</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/07/13/books/了不起的Node.js/">了不起的Node.js</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>呀在北京的第四本书是 node。之前草草过了一遍《node高级程序设计》发现没消化下去，又要重新开始了。买了转换口还是没得愉快地上网啊</p>
+</blockquote>
+<h2 id="安装">安装</h2><ul>
+<li>REPL模式（ Read-Evaluate-Print-Loop，输入 -求值 -输出 -循环）,即交互式命令行解析器</li>
+</ul>
+<h2 id="Javascript概述">Javascript概述</h2><ul>
+<li>V8中要获取对象上的自有属性，可以通过 <code>Object.keys(ojb)</code></li>
+<li>建议为函数命名，有利于调试</li>
+<li><code>__proto__</code> 实现继承</li>
+</ul>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/07/13/books/了不起的Node.js/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-study/核心性能" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -352,74 +486,6 @@
 
       
 
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-books/了不起的Node.js" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/07/13/books/了不起的Node.js/" class="article-date">
-  	<time datetime="2015-07-12T16:00:00.000Z" itemprop="datePublished">2015-07-13</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/13/books/了不起的Node.js/">了不起的Node.js</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>呀在北京的第四本书是 node。之前草草过了一遍《node高级程序设计》发现没消化下去，又要重新开始了。买了转换口还是没得愉快地上网啊</p>
-</blockquote>
-<h2 id="安装">安装</h2><ul>
-<li>REPL模式（ Read-Evaluate-Print-Loop，输入 -求值 -输出 -循环）,即交互式命令行解析器</li>
-</ul>
-<h2 id="Javascript概述">Javascript概述</h2><ul>
-<li>V8中要获取对象上的自有属性，可以通过 <code>Object.keys(ojb)</code></li>
-<li>建议为函数命名，有利于调试</li>
-<li><code>__proto__</code> 实现继承</li>
-</ul>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/07/13/books/了不起的Node.js/#more">more >></a>
-        </p>
       
       <div class="clearfix"></div>
     </div>

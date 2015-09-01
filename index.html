@@ -155,6 +155,68 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-notes/XMLHttpRequest 整理" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/09/01/notes/XMLHttpRequest 整理/" class="article-date">
+  	<time datetime="2015-08-31T16:00:00.000Z" itemprop="datePublished">2015-09-01</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/01/notes/XMLHttpRequest 整理/">XMLHttpRequest 整理</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>有空便整理了一下 xhr 的内容，内容基本上来自 W3C。同时对其进行了简单封装，方便以后使用。</p>
+</blockquote>
+<h2 id="简介">简介</h2><p>XMLHttpRequest 对象提供了对 HTTP 协议的完全的访问，包括做出 POST 和 HEAD 请求以及普通的 GET 请求的能力。可以同步或异步地返回 Web 服务器的响应，并且能够以文本或者一个 DOM 文档的形式返回内容</p>
+<p>XMLHttpRequest 得到了所有现代浏览器较好的支持。唯一的浏览器依赖性涉及 XMLHttpRequest 对象的创建。在 IE 5 和 IE 6 中，必须使用特定于 IE 的 ActiveXObject() 构造函数</p>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/09/01/notes/XMLHttpRequest 整理/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-notes/模板引擎" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -720,72 +782,6 @@
       
         <p class="article-more-link">
           <a  href="/2015/07/16/notes/Javascript 模块规范/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-books/Javascript语言精粹" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/07/15/books/Javascript语言精粹/" class="article-date">
-  	<time datetime="2015-07-14T16:00:00.000Z" itemprop="datePublished">2015-07-15</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/15/books/Javascript语言精粹/">Javascript语言精粹</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>在去北京的火车上一口气看完了。书不厚但是内容很厚实。对于上下文，构造方法等理解有很大的帮助。书的后面用了很大的空间写了javascript的糟粕，很奇怪但有效的学习方法～</p>
-</blockquote>
-<ul>
-<li>伪类及函数化模式。前者通过 <code>new</code> 构造对象，后者通过函数构造对象。前者不利于私有属性的处理，后者通过闭包解决这个问题，同时有利于重写超类方法。</li>
-<li><p>javascript 中，数组的实质是对象。数组原型为 <code>Array</code>。通过如下方法判断数组</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 在不同 window 或 frame 失效</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="string">"value"</span> === <span class="string">"object"</span> &amp;&amp; value.constructor === <span class="built_in">Array</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.apply(value) === <span class="string">'[Object Array]'</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/07/15/books/Javascript语言精粹/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>

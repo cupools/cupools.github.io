@@ -16,7 +16,7 @@ CommonJS 规范中存在 require() 方法，接受模块标识，以此引入一
 <meta property="og:image" content="http://cupools.github.io/images/59-3-13.png">
 <meta property="og:image" content="http://cupools.github.io/images/61-3-14.png">
 <meta property="og:image" content="http://cupools.github.io/images/168-7-7.png">
-<meta property="og:updated_time" content="2015-08-31T09:53:54.000Z">
+<meta property="og:updated_time" content="2015-09-01T08:58:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入浅出NodeJS">
 <meta name="twitter:description" content="模块机制CommonJS 规范模块引用var math = require(&apos;math&apos;);
@@ -713,7 +713,18 @@ CommonJS 规范中存在 require() 方法，接受模块标识，以此引入一
 <li>生成待执行的语句</li>
 <li>与数据一起执行，生成最终字符串</li>
 </ul>
-
+<h3 id="Bigpipe">Bigpipe</h3><p>允许将页面分割为多个部分，先向用户输出没有数据的布局（框架），将每个部分逐步输出到前端，再最终渲染填充框架，完成整个页面的渲染</p>
+<p>这是一个需要前后端配合实现的优化技术，有几个重要的点</p>
+<ul>
+<li>页面布局框架（无数据）</li>
+<li>后端持续性的数据输出</li>
+<li>前端渲染</li>
+</ul>
+<h4 id="页面布局">页面布局</h4><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"body"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/template"</span> <span class="attribute">id</span>=<span class="value">"tpl_body"</span>&gt;</span><span class="handlebars"><span class="xml"></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span>&gt;</span><span class="tag">&lt;<span class="title">%=</span> <span class="attribute">articles</span> %&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"></span></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="actionscript"></span><br><span class="line">    <span class="keyword">var</span> bigpipe = <span class="keyword">new</span> Bigpipe();</span><br><span class="line">    bigpipe.ready(<span class="string">'articles'</span>, <span class="function"><span class="keyword">function</span><span class="params">(data)</span> </span>&#123;</span><br><span class="line">        render(data);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="持续数据输出">持续数据输出</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> ep = <span class="keyword">new</span> EventProxy();</span><br><span class="line"></span><br><span class="line">res.writeHead(<span class="number">200</span>, &#123;<span class="string">'Content-Type'</span>: <span class="string">'text/html'</span>&#125;);</span><br><span class="line">res.write(render(compile(layout)));</span><br><span class="line"></span><br><span class="line">ep.all(<span class="string">'users'</span>, <span class="string">'articles'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    res.end();</span><br><span class="line">&#125;);</span><br><span class="line">ep.fail(<span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">    res.end();</span><br><span class="line">&#125;);</span><br><span class="line">ep.getData(<span class="string">'sql1'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err, data</span>) </span>&#123;</span><br><span class="line">    data = err ? &#123;&#125; : data;</span><br><span class="line">    res.write(<span class="string">'&lt;script&gt;bigpipe.set(articles, '</span> + <span class="built_in">JSON</span>.stringify(data) + <span class="string">');&lt;/script&gt;'</span>);</span><br><span class="line">&#125;);</span><br><span class="line">ep.getData(<span class="string">'sql2'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err, data</span>) </span>&#123;</span><br><span class="line">    data = err ? &#123;&#125; : data;</span><br><span class="line">    res.write(<span class="string">'&lt;script&gt;bigpipe.set(users, '</span> + <span class="built_in">JSON</span>.stringify(data) + <span class="string">');&lt;/script&gt;'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="前端渲染">前端渲染</h4><p>bigpipe.ready() 和 bigpipe.set() 是整个前端的渲染机智。前者注册一个事件，后者触发一个事件</p>
+<p>Bigpipe 将页面布局和数据渲染分离，随着数据输出的过程逐步渲染页面。通过 Ajax 也能完成，但 Ajax 背后是 HTTP 调用，消耗更多的网络连接</p>
+<h2 id="玩转进程">玩转进程</h2>
       
     </div>
     
