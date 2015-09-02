@@ -860,12 +860,12 @@ a {
 }
 .article.show {
   visibility: visible;
-  -webkit-animation: cd-bounce-1 0.6s;
-  -moz-animation: cd-bounce-1 0.6s;
-  -webkit-animation: cd-bounce-1 0.6s;
-  -moz-animation: cd-bounce-1 0.6s;
-  -ms-animation: cd-bounce-1 0.6s;
-  animation: cd-bounce-1 0.6s;
+  -webkit-animation: cd-bounce-1 0.6s forwards;
+  -moz-animation: cd-bounce-1 0.6s forwards;
+  -webkit-animation: cd-bounce-1 0.6s forwards;
+  -moz-animation: cd-bounce-1 0.6s forwards;
+  -ms-animation: cd-bounce-1 0.6s forwards;
+  animation: cd-bounce-1 0.6s forwards;
 }
 .article.hidden {
   visibility: hidden;
@@ -883,6 +883,7 @@ a {
     -webkit-transform: scale(1.01);
   }
   100% {
+    opacity: 1;
     -webkit-transform: scale(1);
   }
 }
@@ -896,6 +897,7 @@ a {
     -moz-transform: scale(1.01);
   }
   100% {
+    opacity: 1;
     -moz-transform: scale(1);
   }
 }
@@ -1214,6 +1216,7 @@ a {
     transform: scale(1.01);
   }
   100% {
+    opacity: 1;
     -webkit-transform: scale(1);
     -moz-transform: scale(1);
     -ms-transform: scale(1);
@@ -1248,6 +1251,7 @@ a {
     transform: scale(1.01);
   }
   100% {
+    opacity: 1;
     -webkit-transform: scale(1);
     -moz-transform: scale(1);
     -ms-transform: scale(1);
@@ -1282,6 +1286,7 @@ a {
     transform: scale(1.01);
   }
   100% {
+    opacity: 1;
     -webkit-transform: scale(1);
     -moz-transform: scale(1);
     -ms-transform: scale(1);
@@ -1316,6 +1321,7 @@ a {
     transform: scale(1.01);
   }
   100% {
+    opacity: 1;
     -webkit-transform: scale(1);
     -moz-transform: scale(1);
     -ms-transform: scale(1);

@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>了不起的Node.js | (&lt;ゝω·)Kira☆~</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="呀在北京的第四本书是 node。之前草草过了一遍《node高级程序设计》发现没消化下去，又要重新开始了。买了转换口还是没得愉快地上网啊
+
+安装
+REPL模式（ Read-Evaluate-Print-Loop，输入 -求值 -输出 -循环）,即交互式命令行解析器
+
+Javascript概述
+V8中要获取对象上的自有属性，可以通过 Object.keys(ojb)
+建议为函数命名，有利于调试
+__p">
+<meta property="og:type" content="article">
+<meta property="og:title" content="了不起的Node.js">
+<meta property="og:url" content="http://cupools.github.io/2015/07/28/books/了不起的Node.js/index.html">
+<meta property="og:site_name" content="(<ゝω·)Kira☆~">
+<meta property="og:description" content="呀在北京的第四本书是 node。之前草草过了一遍《node高级程序设计》发现没消化下去，又要重新开始了。买了转换口还是没得愉快地上网啊
+
+安装
+REPL模式（ Read-Evaluate-Print-Loop，输入 -求值 -输出 -循环）,即交互式命令行解析器
+
+Javascript概述
+V8中要获取对象上的自有属性，可以通过 Object.keys(ojb)
+建议为函数命名，有利于调试
+__p">
+<meta property="og:updated_time" content="2015-09-02T11:48:56.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="了不起的Node.js">
+<meta name="twitter:description" content="呀在北京的第四本书是 node。之前草草过了一遍《node高级程序设计》发现没消化下去，又要重新开始了。买了转换口还是没得愉快地上网啊
+
+安装
+REPL模式（ Read-Evaluate-Print-Loop，输入 -求值 -输出 -循环）,即交互式命令行解析器
+
+Javascript概述
+V8中要获取对象上的自有属性，可以通过 Object.keys(ojb)
+建议为函数命名，有利于调试
+__p">
+  
+    <link rel="alternative" href="/atom.xml" title="(&lt;ゝω·)Kira☆~" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">liyh</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">笔记</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/cupools" title="github">github</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Javascript/" style="font-size: 16.67px;">Javascript</a> <a href="/tags/css/" style="font-size: 13.33px;">css</a> <a href="/tags/学习/" style="font-size: 10px;">学习</a> <a href="/tags/安全/" style="font-size: 10px;">安全</a> <a href="/tags/性能优化-转/" style="font-size: 10px;">性能优化(转)</a> <a href="/tags/读书笔记/" style="font-size: 20px;">读书笔记</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">在校学生，连滚带爬啃书</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">liyh</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/avatar.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">liyh</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">笔记</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/cupools" title="github">github</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-books/了不起的Node.js" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/07/28/books/了不起的Node.js/" class="article-date">
+  	<time datetime="2015-07-27T16:00:00.000Z" itemprop="datePublished">2015-07-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      了不起的Node.js
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>呀在北京的第四本书是 node。之前草草过了一遍《node高级程序设计》发现没消化下去，又要重新开始了。买了转换口还是没得愉快地上网啊</p>
+</blockquote>
+<h2 id="安装">安装</h2><ul>
+<li>REPL模式（ Read-Evaluate-Print-Loop，输入 -求值 -输出 -循环）,即交互式命令行解析器</li>
+</ul>
+<h2 id="Javascript概述">Javascript概述</h2><ul>
+<li>V8中要获取对象上的自有属性，可以通过 <code>Object.keys(ojb)</code></li>
+<li>建议为函数命名，有利于调试</li>
+<li><code>__proto__</code> 实现继承</li>
+</ul>
+<a id="more"></a>
+<h2 id="阻塞与非阻塞IO">阻塞与非阻塞IO</h2><ul>
+<li>事件轮询，Node 会先注册事件，随后不停地询问内核这些时间是否已经分发。当事件分发时，对应的回调函数会被触发，然后继续执行下去</li>
+<li>错误追踪，与执行上下文相关</li>
+</ul>
+<h2 id="Node中的Javascript">Node中的Javascript</h2><ul>
+<li>global 对象，任何 global 对象上的属性都可以被全局访问到</li>
+<li>process 对象，所有全局执行上下文中的内容都在 process 对象中</li>
+<li>绝对模块是指 Node 通过在其内部的 node_module 查找到的模块，或者 node 内置的模块；相对模块将 <code>require</code> 指向一个相对工作目录中的文件</li>
+<li><code>EventEmmiter</code> 实现事件的监听和分发</li>
+</ul>
+<h2 id="Node重要的API">Node重要的API</h2><ul>
+<li><p>CLI</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 包含了所有 Node 程序运行时的参数值</span></span><br><span class="line"><span class="comment">// [node, '文件路径', '程序运行参数值']</span></span><br><span class="line">process.argv</span><br><span class="line"></span><br><span class="line"><span class="comment">// 文件在文件系统中的目录</span></span><br><span class="line">__dirname</span><br><span class="line"></span><br><span class="line"><span class="comment">// 工作目录</span></span><br><span class="line">process.cwd()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 改变工作目录</span></span><br><span class="line">process.chdir(<span class="string">'/home'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 访问 shell 环境的变量</span></span><br><span class="line">process.env</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将参数添加进 process.env</span></span><br><span class="line">$ NODE_ENV=<span class="string">"production"</span> node</span><br><span class="line"></span><br><span class="line"><span class="comment">// 退出</span></span><br><span class="line">process.exit(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// NODE 程序通过在 process 对象上，</span></span><br><span class="line"><span class="comment">// 以事件分发的方式发送信号</span></span><br><span class="line">process.on(<span class="string">'SIGKILL'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 信号已收到</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// ANSI 转义码，控制格式、颜色及其他输出选项</span></span><br><span class="line"><span class="comment">// \033 表示转移序列开始</span></span><br><span class="line"><span class="comment">// [ 表示开始颜色设置</span></span><br><span class="line"><span class="comment">// 90 表示前景色为亮灰色</span></span><br><span class="line"><span class="comment">// m 表示颜色设置结束</span></span><br><span class="line"><span class="comment">// 39 表示将颜色设置回去</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'\033[90m'</span> ＋ <span class="string">'hello'</span> + <span class="string">'\033[39m'</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>fs Stream</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> stream = fs.createReadStream(<span class="string">'a.txt'</span>);</span><br><span class="line">stream.on(<span class="string">'data'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 处理部分内容</span></span><br><span class="line">&#125;);</span><br><span class="line">stream.on(<span class="string">'end'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 文件读取完毕</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>fs 监视</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> file = <span class="string">'a.txt'</span>;</span><br><span class="line">fs.watchFile(file, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'- '</span> + file + <span class="string">' changed'</span>);</span><br><span class="line">&#125;);	</span><br><span class="line"><span class="comment">// 通过 watch 监视目录</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>输入输出</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">process.stdout.write(<span class="string">'show me something: \n'</span>);</span><br><span class="line"></span><br><span class="line">process.stdin.setEncoding(<span class="string">'utf8'</span>);</span><br><span class="line">process.stdin.resume();</span><br><span class="line"></span><br><span class="line">process.stdin.on(<span class="string">'data'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">    process.stdout.write(<span class="string">'entry: '</span> + data + <span class="string">'\n'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="TCP">TCP</h2><ul>
+<li><p>创建基本的 TCP 服务器<br>  <code>createServer</code> 回调函数会接收一个对象，传递 <code>net.Stream</code>，通常可读写<br>  <code>listen</code> 将服务器绑定在某个端口上</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> net = <span class="built_in">require</span>(<span class="string">'net'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> server = net.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">conn</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// handle connection</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'\033[90m    new connection\033[39m'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">server.listen(<span class="number">3000</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'\033[96m    server listening on *:3000\033[39m'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+  <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">telnet <span class="number">127.0</span>.<span class="number">0.1</span> <span class="number">3000</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>创建基本的 TCP 客户端</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> net = <span class="built_in">require</span>(<span class="string">'net'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> client = net.connect(<span class="string">'3000'</span>, <span class="string">'127.0.0.1'</span>);</span><br><span class="line">client.on(<span class="string">'connect'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'done'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="HTTP">HTTP</h2><h3 id="头信息">头信息</h3><ul>
+<li>Content-Type：发送内容的类型（text, HTML, XML, JSON, PNG, JPEG）</li>
+<li>Transfer-Encoding：默认值是 chunked，主要原因是 Node 天生的异步机制</li>
+</ul>
+<h3 id="连接">连接</h3><ul>
+<li><p>HTTP 服务器是更高层的 API，提供了控制和 HTTP 协议相关的功能</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 简单 http 服务器</span></span><br><span class="line"><span class="built_in">require</span>(<span class="string">'http'</span>).createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    res.writeHead(<span class="number">200</span>, &#123; <span class="string">'Content-Type'</span>: <span class="string">'text/html'</span>&#125;);</span><br><span class="line">    res.write(<span class="string">'&lt;h1&gt;hello&lt;/h1&gt;'</span>);</span><br><span class="line">    res.end(req.url + req.method);</span><br><span class="line">&#125;).listen(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 简单 HTTP 客户端</span></span><br><span class="line"><span class="built_in">require</span>(<span class="string">'http'</span>).request(&#123;</span><br><span class="line">    host: <span class="string">'127.0.0.1'</span>,</span><br><span class="line">    port: <span class="number">3000</span>,</span><br><span class="line">    url: <span class="string">'/'</span>,</span><br><span class="line">    method: <span class="string">'GET'</span></span><br><span class="line">&#125;, <span class="function"><span class="keyword">function</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> body = <span class="string">''</span>;</span><br><span class="line"></span><br><span class="line">    res.on(<span class="string">'data'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">chunk</span>) </span>&#123;</span><br><span class="line">        body += chunk;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    res.on(<span class="string">'end'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(body);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;).end();</span><br></pre></td></tr></table></figure>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 客户端请求数据</span></span><br><span class="line"><span class="keyword">var</span> qs = <span class="built_in">require</span>(<span class="string">'querystring'</span>);</span><br><span class="line"><span class="built_in">require</span>(<span class="string">'http'</span>).request(&#123;</span><br><span class="line">    host: <span class="string">'127.0.0.1'</span>,</span><br><span class="line">    port: <span class="number">3000</span>,</span><br><span class="line">    url: <span class="string">'/'</span>,</span><br><span class="line">    method: <span class="string">'POST'</span>	<span class="comment">// 此处为 GET 时, Error: socket hang up</span></span><br><span class="line">&#125;, <span class="function"><span class="keyword">function</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> body = <span class="string">''</span>;</span><br><span class="line">    res.on(<span class="string">'data'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">chunk</span>) </span>&#123;</span><br><span class="line">        body += chunk;</span><br><span class="line">    &#125;);</span><br><span class="line">    </span><br><span class="line">    res.on(<span class="string">'end'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(body);</span><br><span class="line">    &#125;);</span><br><span class="line">    res.setEncoding(<span class="string">'utf8'</span>);</span><br><span class="line">&#125;).end( qs.stringify(&#123;name: <span class="string">"lance"</span>&#125;) );</span><br></pre></td></tr></table></figure>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 表单数据</span></span><br><span class="line"><span class="built_in">require</span>(<span class="string">'http'</span>).createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> body = <span class="string">''</span>;</span><br><span class="line">    req.on(<span class="string">'data'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">chunk</span>) </span>&#123;</span><br><span class="line">        body += chunk;</span><br><span class="line">    &#125;);</span><br><span class="line">    </span><br><span class="line">    req.on(<span class="string">'end'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        res.writeHead(<span class="number">200</span>, &#123; <span class="string">'Content-type'</span>: <span class="string">'text/html'</span> &#125;);</span><br><span class="line">        res.end(req.headers[<span class="string">'content-type'</span>] + <span class="string">'&lt;br&gt;'</span> + body);</span><br><span class="line">    &#125;);	</span><br><span class="line">&#125;).listen(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="Web开发">Web开发</h2><h3 id="Connect">Connect</h3><ul>
+<li><p>Connect 是一个基于 HTTP 服务器的工具集，它提供了一种新的组织代码的方式来与请求、响应对象进行交互，称为中间件（ middleware ）。简单来说，中间件由函数组成，除了处理 <code>req</code> 和 <code>res</code> 对象之外，还接收一个 <code>next</code> 函数作为流控制</p>
+</li>
+<li><p>static 中间件<br>Connect 允许将中间件挂载到 URL 上。static 允许将任意一个 URL 匹配到文件系统中任意一个目录</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 挂载</span></span><br><span class="line">server.use(<span class="string">'/my-iamges'</span>, conn.static(<span class="string">'/path/to/	images'</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置 maxAge</span></span><br><span class="line">server.use(<span class="string">'/js'</span>, conn.static(<span class="string">'/path/to/js'</span>, &#123;maxAge: <span class="number">1000</span>&#125;));</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>query 中间件  </p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">server.use(connect.query);</span><br><span class="line">server.use(<span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//req.query.page = 5;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>logger 中间件<br>  提供四种日志格式，default、dev、short、tiny</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">server.use(connect.logger(<span class="string">'dev'</span>));</span><br></pre></td></tr></table></figure>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> connect = <span class="built_in">require</span>(<span class="string">'connect'</span>);</span><br><span class="line">connect.createServer(</span><br><span class="line">    connect.logger(<span class="string">'dev'</span>),</span><br><span class="line">    <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">        res.writeHead(<span class="number">200</span>);</span><br><span class="line">        res.end(<span class="string">'hello'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">).listen(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>body parse 中间件<br>  body parse 会自动检测 Content-Type 的值，也可以用于文件上传</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">server.use(connect.bodyParser());</span><br><span class="line">server.use(<span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// req.body.myinput</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>cookie<br>浏览器发送 cookie 数据时，会将其写到 Cookie 头信息中。其数据格式和 URL 中的查询字符串类似。</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">server.use(connect.cookieParser());</span><br><span class="line"></span><br><span class="line">server.use(<span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// req.cookies.sercret1 = 'value1';</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>session</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> connect = <span class="built_in">require</span>(<span class="string">'connect'</span>);</span><br><span class="line">connect.createServer(</span><br><span class="line">    connect.logger(<span class="string">'dev'</span>),</span><br><span class="line">    connect.bodyParser(),</span><br><span class="line">    connect.cookieParser(),</span><br><span class="line">    connect.session(&#123; secret: <span class="string">'my secret app'</span>&#125;),</span><br><span class="line">    <span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(req.session.login_in) &#123;</span><br><span class="line">            res.end(<span class="string">'hello'</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            next();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, </span><br><span class="line">    <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">        req.session.login_in = <span class="literal">true</span>;</span><br><span class="line">        res.end(<span class="string">'login'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">).listen(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="Express">Express</h2><p><a href="http://www.expressjs.com.cn" target="_blank" rel="external">Express 官网</a></p>
+<h2 id="WebSocket">WebSocket</h2><p>包括浏览器实现的 WebSocket API，和服务器端实现的 WebSocket 协议。前者被 W3C 标准化，后者被 IETF 标准化为 RFC 6455</p>
+<h3 id="客户端实现">客户端实现</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> ws = <span class="keyword">new</span> WebSocket(<span class="string">'wsL//localhost:3000'</span>);</span><br><span class="line">wx.onopen = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    ws.send(<span class="string">'hello from client'</span>);</span><br><span class="line">&#125;;</span><br><span class="line">wx.onmessage = <span class="function"><span class="keyword">function</span>(<span class="params">ev</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'data: '</span> + ev);</span><br><span class="line">&#125;</span><br><span class="line">es.onclose = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'closed'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="服务器端实现">服务器端实现</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>),</span><br><span class="line">    wsio = <span class="built_in">require</span>(<span class="string">'websocket.io'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> app = server.createServer();</span><br><span class="line"><span class="keyword">var</span> ws = wsio.attach(app);</span><br><span class="line"></span><br><span class="line">app.use(express.static(<span class="string">'public'</span>));</span><br><span class="line"></span><br><span class="line">wx.on(<span class="string">'connection'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">socket</span>) </span>&#123;</span><br><span class="line">    socket.on(<span class="string">'connection'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'data from client: '</span> + data);</span><br><span class="line">        socket.send(<span class="string">'hello from server'</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="关于_WebSocket_的问题">关于 WebSocket 的问题</h3><ul>
+<li>关闭不意味着断开连接</li>
+<li>JSON 编码和解码</li>
+<li>重连</li>
+<li>广播</li>
+<li>浏览器支持</li>
+</ul>
+<p>通过 socket.io 解决</p>
+<h2 id="Socket-IO">Socket.IO</h2><h3 id="客户端实现-1">客户端实现</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> socket = io.connect();</span><br><span class="line">socket.on(<span class="string">'my event'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(obj.my);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="服务器端实现-1">服务器端实现</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">io.listen(app);</span><br><span class="line">io.sockets.on(<span class="string">'connection'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">socket</span>) </span>&#123;</span><br><span class="line">    socket.emit(<span class="string">'my event'</span>, &#123; my: <span class="string">'object'</span>&#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="测试">测试</h2><h3 id="简单测试">简单测试</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> assert = <span class="built_in">require</span>(<span class="string">'assert'</span>);</span><br><span class="line">assert.ok(<span class="number">1</span> === <span class="number">1</span>);	<span class="comment">// =&gt; undefined</span></span><br><span class="line">assert.ok(<span class="number">1</span> === <span class="number">2</span>); <span class="comment">// =&gt; AssertionError: false == true</span></span><br></pre></td></tr></table></figure>
+<h3 id="expect-js">expect.js</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> expect = <span class="built_in">require</span>(<span class="string">'expect'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 断言值是否为真</span></span><br><span class="line">expect(<span class="number">1</span>).to.be.ok();</span><br><span class="line">expect(<span class="number">0</span>).not.to.be.ok();</span><br><span class="line"></span><br><span class="line"><span class="comment">// be/equal, 类似 ===</span></span><br><span class="line">expect(<span class="number">1</span>).to.be(<span class="number">1</span>);</span><br><span class="line">expect(<span class="number">1</span>).to.be.equal(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// eql, 断言非严格相等，支持对象</span></span><br><span class="line">expect(<span class="number">1</span>).to.eql(<span class="string">'1'</span>);</span><br><span class="line">···</span><br></pre></td></tr></table></figure>
+<h3 id="Mocha">Mocha</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">it(<span class="string">'should completed two request'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">done</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> total = <span class="number">2</span>;</span><br><span class="line">    request.get(<span class="string">'example.com/a'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">res</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(res.status !== <span class="number">200</span>) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'error'</span>);</span><br><span class="line">        total -- || done();</span><br><span class="line">    &#125;);</span><br><span class="line">    </span><br><span class="line">    request.get(<span class="string">'example.com/b'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">res</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(res.status !== <span class="number">200</span>) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'error'</span>);</span><br><span class="line">        total -- || done();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="BDD风格">BDD风格</h3><p>行为驱动开发中，定义系统的行为是主要工作，而对系统行为的描述则变成了测试标准。上面的测试代码都属于BDD风格</p>
+<h3 id="TDD风格">TDD风格</h3><p>测试驱动开发，与 BDD 类似，但组织方式是使用测试集（suite）和测试（test）。每个测试集都有 <code>setup</code> 和 <code>teardown</code> 函数，这些方法会在测试集中的测试执行前执行，它们的作用是为了避免代码重复以及最大限度使得测试之间相互独立</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">suit(<span class="string">'net'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    suit(<span class="string">'Stream'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> client;</span><br><span class="line">        </span><br><span class="line">        suitSetup(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            client.on(<span class="string">'connect'</span>, done);</span><br><span class="line">        &#125;);</span><br><span class="line">        </span><br><span class="line">        test(<span class="string">'connect event'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            client.on(<span class="string">'connect'</span>, done);	</span><br><span class="line">        &#125;);</span><br><span class="line">        </span><br><span class="line">        test(<span class="string">'receiving data'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            client.write(<span class="string">''</span>);</span><br><span class="line">            client.once(<span class="string">'data'</span>, done);</span><br><span class="line">        &#125;);</span><br><span class="line">        </span><br><span class="line">        suiteTeardown(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            client.end();</span><br><span class="line">        &#125;);	</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="export风格">export风格</h3><p>export 风格使用 node 模块系统来输出测试，每一个 export 的键都表示测试集，嵌套的测试集可以用子对象来表示</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">exports.Array = &#123;</span><br><span class="line">    <span class="string">'#indexOf'</span>: &#123;</span><br><span class="line">        <span class="string">'should return -1 when the value is not present'</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;,</span><br><span class="line">        <span class="string">'should return the correct index if present'</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="小记：内容十分简单，与之前看过的《NodeJS高级程序设计》差了很多，但应该适合初学者；介绍了基本web应用。中间穿插了个_Java_SSH_作业导致这本书拖了比较长的时间。看完阮一峰的_nodejs_笔记后回来看这边，发现很多重要的对象和概念书上都没提到。">小记：内容十分简单，与之前看过的《NodeJS高级程序设计》差了很多，但应该适合初学者；介绍了基本web应用。中间穿插了个 Java SSH 作业导致这本书拖了比较长的时间。看完阮一峰的 nodejs 笔记后回来看这边，发现很多重要的对象和概念书上都没提到。</h6>
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/08/01/books/基于MVC的Javascript Web富应用开发/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          基于MVC的Javascript Web富应用开发
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/07/19/notes/垂直居中/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">垂直居中</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 liyh
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-67000695-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

@@ -99,7 +99,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Javascript/" style="font-size: 16.67px;">Javascript</a> <a href="/tags/css/" style="font-size: 13.33px;">css</a> <a href="/tags/学习/" style="font-size: 10px;">学习</a> <a href="/tags/性能优化/" style="font-size: 10px;">性能优化</a> <a href="/tags/读书笔记/" style="font-size: 20px;">读书笔记</a>
+						<a href="/tags/Javascript/" style="font-size: 16.67px;">Javascript</a> <a href="/tags/css/" style="font-size: 13.33px;">css</a> <a href="/tags/学习/" style="font-size: 10px;">学习</a> <a href="/tags/安全/" style="font-size: 10px;">安全</a> <a href="/tags/性能优化-转/" style="font-size: 10px;">性能优化(转)</a> <a href="/tags/读书笔记/" style="font-size: 20px;">读书笔记</a>
 					</div>
 				</section>
 				
@@ -155,11 +155,11 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-books/Javascript语言精粹" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-notes/猴子补丁" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/07/15/books/Javascript语言精粹/" class="article-date">
-  	<time datetime="2015-07-14T16:00:00.000Z" itemprop="datePublished">2015-07-15</time>
+      <a href="/2015/07/16/notes/猴子补丁/" class="article-date">
+  	<time datetime="2015-07-15T16:00:00.000Z" itemprop="datePublished">2015-07-16</time>
 </a>
     </div>
   
@@ -172,7 +172,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/15/books/Javascript语言精粹/">Javascript语言精粹</a>
+      <a class="article-title" href="/2015/07/16/notes/猴子补丁/">猴子补丁</a>
     </h1>
   
 
@@ -181,15 +181,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>在去北京的火车上一口气看完了。书不厚但是内容很厚实。对于上下文，构造方法等理解有很大的帮助。书的后面用了很大的空间写了javascript的糟粕，很奇怪但有效的学习方法～</p>
-</blockquote>
-<ul>
-<li>伪类及函数化模式。前者通过 <code>new</code> 构造对象，后者通过函数构造对象。前者不利于私有属性的处理，后者通过闭包解决这个问题，同时有利于重写超类方法。</li>
-<li><p>javascript 中，数组的实质是对象。数组原型为 <code>Array</code>。通过如下方法判断数组</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 在不同 window 或 frame 失效</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="string">"value"</span> === <span class="string">"object"</span> &amp;&amp; value.constructor === <span class="built_in">Array</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.apply(value) === <span class="string">'[Object Array]'</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
+        <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 为函数 a 打补丁</span></span><br><span class="line"><span class="keyword">var</span> b = a;</span><br><span class="line">a = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    a = b;</span><br><span class="line">    a();</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">a();	<span class="comment">// 1, 2</span></span><br><span class="line">a();	<span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -197,15 +189,11 @@
       
       
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
 	</div>
 
       
 
-      
-        <p class="article-more-link">
-          <a  href="/2015/07/15/books/Javascript语言精粹/#more">more >></a>
-        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -221,145 +209,10 @@
 
 
   
-    <article id="post-books/Javascript设计模式" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-study/核心性能(转)" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/07/15/books/Javascript设计模式/" class="article-date">
-  	<time datetime="2015-07-14T16:00:00.000Z" itemprop="datePublished">2015-07-15</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/15/books/Javascript设计模式/">Javascript设计模式</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>在北京待了两天感受到了学校深深的恶意。开着空调看书才舒服了一点又被宿管断了电。从头看设计模式。</p>
-</blockquote>
-<h2 id="Constructor（构造器）模式">Constructor（构造器）模式</h2><ul>
-<li>对象创建，通过对象字面量或者 Object.create</li>
-<li>基本构造器，所有属性和方法丢在构造器里。不适合继承，因为有些方法需要在不同实例间共享（应该是不需要在执行构造器的时候再创建一遍的意思吧）</li>
-<li>带原型的构造器</li>
-</ul>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/07/15/books/Javascript设计模式/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-books/编写高质量代码" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/07/15/books/编写高质量代码/" class="article-date">
-  	<time datetime="2015-07-14T16:00:00.000Z" itemprop="datePublished">2015-07-15</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/15/books/编写高质量代码/">编写高质量代码</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>在北京待了五天，没卫浴没网络没水没得正常吃饭，今天准备出去找房子打游击战。开始编写<s>高质量</s>代码。</p>
-</blockquote>
-<h2 id="语言基础">语言基础</h2><ul>
-<li>防止浮点数溢出，可转换为整数计算再转小数</li>
-<li>调用 <code>Object</code> 对象定义的默认 <code>toString</code> 方法判断对象类型，<code>Object.prototype.toString.apply( value )</code> ，仅适用于基本数据类型和内置对象。检测非内置对象使用 <code>instanceof</code> 和 <code>constructor</code></li>
-<li>NaN，使用 isFinite 和 typeof 检验数字类型</li>
-<li>逗号运算符使用括号强迫进行连续运算，否则会出现先赋值再计算的问题</li>
-<li><code>hasOwnProperty</code> 可被修改（那解决方法咧）</li>
-<li>伪数组不包含数组的方法</li>
-<li><code>continue</code> 影响性能（具体咧）</li>
-<li>关于 <code>new</code>，避免使用和给出的原因感觉很不合理</li>
-</ul>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/07/15/books/编写高质量代码/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-books/了不起的Node.js" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/07/13/books/了不起的Node.js/" class="article-date">
+      <a href="/2015/07/13/study/核心性能(转)/" class="article-date">
   	<time datetime="2015-07-12T16:00:00.000Z" itemprop="datePublished">2015-07-13</time>
 </a>
     </div>
@@ -373,75 +226,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/13/books/了不起的Node.js/">了不起的Node.js</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>呀在北京的第四本书是 node。之前草草过了一遍《node高级程序设计》发现没消化下去，又要重新开始了。买了转换口还是没得愉快地上网啊</p>
-</blockquote>
-<h2 id="安装">安装</h2><ul>
-<li>REPL模式（ Read-Evaluate-Print-Loop，输入 -求值 -输出 -循环）,即交互式命令行解析器</li>
-</ul>
-<h2 id="Javascript概述">Javascript概述</h2><ul>
-<li>V8中要获取对象上的自有属性，可以通过 <code>Object.keys(ojb)</code></li>
-<li>建议为函数命名，有利于调试</li>
-<li><code>__proto__</code> 实现继承</li>
-</ul>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/07/13/books/了不起的Node.js/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-study/核心性能" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/07/13/study/核心性能/" class="article-date">
-  	<time datetime="2015-07-12T16:00:00.000Z" itemprop="datePublished">2015-07-13</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/13/study/核心性能/">核心性能</a>
+      <a class="article-title" href="/2015/07/13/study/核心性能(转)/">核心性能</a>
     </h1>
   
 
@@ -456,24 +241,6 @@
 <li>服务器处理时间：接收方（服务器）处理请求所需时间</li>
 <li>数据传输时间：从请求方（浏览器等）到接收方（服务器）以及从接收方（服务器）到请求方的时间</li>
 </ul>
-<h2 id="前端性能定义：">前端性能定义：</h2><ul>
-<li>白屏时间：用户浏览器输入网址后至浏览器出现至少1px图片为止</li>
-<li>首屏时间：用户浏览器首屏内所有的元素呈现所花费时间</li>
-<li>用户可操作时间(dom ready) ：网站某些功能可以使用的时间</li>
-<li>页面总下载时间(onload):网站中所有资源加载完成并且可用时间</li>
-</ul>
-<h2 id="影响核心性能因素：">影响核心性能因素：</h2><ul>
-<li>DNS时间：与DNS设置的TTL时间以及DNS服务器有关</li>
-<li>建立连接时间：与用户、服务器的网速、带宽有关</li>
-<li>服务器起处理时间：与程序复杂度、服务器性能相关</li>
-<li>数据传输时间：资源大小、用户、服务器的网速、带宽有关</li>
-<li>白屏时间：与后端性能指标、前端headtime以及页面结构设计</li>
-<li>首屏时间：与白屏时间以及页面首屏程序设计有关</li>
-<li>用户可操作时间：与页面结构设计相关</li>
-<li>页面总下载时间: 与页面资源多少相关</li>
-</ul>
-<h2 id="参考网站">参考网站</h2><p><a href="http://www.alloyteam.com/2015/06/xing-neng-you-hua-he-xin-ding-yi-jie-shao-pian-1/" target="_blank" rel="external">性能优化</a></p>
-
       
     </div>
     
@@ -481,11 +248,15 @@
       
       
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/性能优化/">性能优化</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/性能优化-转/">性能优化(转)</a></li></ul>
 	</div>
 
       
 
+      
+        <p class="article-more-link">
+          <a  href="/2015/07/13/study/核心性能(转)/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -564,11 +335,11 @@
 
 
   
-    <article id="post-notes/几个好用的样式" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-books/编写高质量代码" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/07/09/notes/几个好用的样式/" class="article-date">
-  	<time datetime="2015-07-08T16:00:00.000Z" itemprop="datePublished">2015-07-09</time>
+      <a href="/2015/07/02/books/编写高质量代码/" class="article-date">
+  	<time datetime="2015-07-01T16:00:00.000Z" itemprop="datePublished">2015-07-02</time>
 </a>
     </div>
   
@@ -581,7 +352,266 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/09/notes/几个好用的样式/">几个好用的样式</a>
+      <a class="article-title" href="/2015/07/02/books/编写高质量代码/">编写高质量代码</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>在北京待了五天，没卫浴没网络没水没得正常吃饭，今天准备出去找房子打游击战。开始编写<s>高质量</s>代码。</p>
+</blockquote>
+<h2 id="语言基础">语言基础</h2><ul>
+<li>防止浮点数溢出，可转换为整数计算再转小数</li>
+<li>调用 <code>Object</code> 对象定义的默认 <code>toString</code> 方法判断对象类型，<code>Object.prototype.toString.apply( value )</code> ，仅适用于基本数据类型和内置对象。检测非内置对象使用 <code>instanceof</code> 和 <code>constructor</code></li>
+<li>NaN，使用 isFinite 和 typeof 检验数字类型</li>
+<li>逗号运算符使用括号强迫进行连续运算，否则会出现先赋值再计算的问题</li>
+<li><code>hasOwnProperty</code> 可被修改（那解决方法咧）</li>
+<li>伪数组不包含数组的方法</li>
+<li><code>continue</code> 影响性能（具体咧）</li>
+<li>关于 <code>new</code>，避免使用和给出的原因感觉很不合理</li>
+</ul>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/07/02/books/编写高质量代码/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-books/Javascript设计模式" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/06/28/books/Javascript设计模式/" class="article-date">
+  	<time datetime="2015-06-27T16:00:00.000Z" itemprop="datePublished">2015-06-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/06/28/books/Javascript设计模式/">Javascript设计模式</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>在北京待了两天感受到了学校深深的恶意。开着空调看书才舒服了一点又被宿管断了电。从头看设计模式。</p>
+</blockquote>
+<h2 id="Constructor（构造器）模式">Constructor（构造器）模式</h2><ul>
+<li>对象创建，通过对象字面量或者 Object.create</li>
+<li>基本构造器，所有属性和方法丢在构造器里。不适合继承，因为有些方法需要在不同实例间共享（应该是不需要在执行构造器的时候再创建一遍的意思吧）</li>
+<li>带原型的构造器</li>
+</ul>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/06/28/books/Javascript设计模式/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-books/Javascript语言精粹" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/06/27/books/Javascript语言精粹/" class="article-date">
+  	<time datetime="2015-06-26T16:00:00.000Z" itemprop="datePublished">2015-06-27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/06/27/books/Javascript语言精粹/">Javascript语言精粹</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>在去北京的火车上一口气看完了。书不厚但是内容很厚实。对于上下文，构造方法等理解有很大的帮助。书的后面用了很大的空间写了javascript的糟粕，很奇怪但有效的学习方法～</p>
+</blockquote>
+<ul>
+<li>伪类及函数化模式。前者通过 <code>new</code> 构造对象，后者通过函数构造对象。前者不利于私有属性的处理，后者通过闭包解决这个问题，同时有利于重写超类方法。</li>
+<li><p>javascript 中，数组的实质是对象。数组原型为 <code>Array</code>。通过如下方法判断数组</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 在不同 window 或 frame 失效</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="string">"value"</span> === <span class="string">"object"</span> &amp;&amp; value.constructor === <span class="built_in">Array</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.apply(value) === <span class="string">'[Object Array]'</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/06/27/books/Javascript语言精粹/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-notes/几个好用的函数" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/04/19/notes/几个好用的函数/" class="article-date">
+  	<time datetime="2015-04-18T16:00:00.000Z" itemprop="datePublished">2015-04-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/04/19/notes/几个好用的函数/">几个好用的函数</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="url_取值">url 取值</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getUrlParam</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'(^|&amp;)'</span> + name + <span class="string">'=([^&amp;]*)(&amp;|$)'</span>);</span><br><span class="line">    <span class="keyword">var</span> r = <span class="built_in">window</span>.location.search.substr(<span class="number">1</span>).match(reg);</span><br><span class="line">    <span class="keyword">if</span> (r !== <span class="literal">null</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">window</span>.unescape(r[<span class="number">2</span>]);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/04/19/notes/几个好用的函数/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-notes/几个好用的样式" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/04/10/notes/几个好用的样式/" class="article-date">
+  	<time datetime="2015-04-09T16:00:00.000Z" itemprop="datePublished">2015-04-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/04/10/notes/几个好用的样式/">几个好用的样式</a>
     </h1>
   
 
@@ -605,7 +635,7 @@
 
       
         <p class="article-more-link">
-          <a  href="/2015/07/09/notes/几个好用的样式/#more">more >></a>
+          <a  href="/2015/04/10/notes/几个好用的样式/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -625,8 +655,8 @@
     <article id="post-books/响应式web设计实践" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/07/07/books/响应式web设计实践/" class="article-date">
-  	<time datetime="2015-07-06T16:00:00.000Z" itemprop="datePublished">2015-07-07</time>
+      <a href="/2015/02/23/books/响应式web设计实践/" class="article-date">
+  	<time datetime="2015-02-22T16:00:00.000Z" itemprop="datePublished">2015-02-23</time>
 </a>
     </div>
   
@@ -639,7 +669,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/07/books/响应式web设计实践/">响应式web设计实践</a>
+      <a class="article-title" href="/2015/02/23/books/响应式web设计实践/">响应式web设计实践</a>
     </h1>
   
 
@@ -648,7 +678,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="响应式web设计实践">响应式web设计实践</h1><h6 id="看完了龙傲天可以心情好好的看书写在看完序章的时候。。">看完了龙傲天可以心情好好的看书<br>写在看完序章的时候。。</h6><h2 id="第2章_流动布局">第2章 流动布局</h2><p>先说了有四种布局方式，然后直接提出用em和%代替px，包括繁琐的计算得到长度的数值。<br>在em后加注释（16px/24px）看起来很有吸引力，可是真正写到代码要开个计算器我不干~</p>
+        <blockquote>
+<p>看完了龙傲天可以心情好好的看书<br>写在看完序章的时候。。</p>
+</blockquote>
+<h2 id="第2章_流动布局">第2章 流动布局</h2><p>先说了有四种布局方式，然后直接提出用em和%代替px，包括繁琐的计算得到长度的数值。<br>在em后加注释（16px/24px）看起来很有吸引力，可是真正写到代码要开个计算器我不干~</p>
 <p>在设计宽度和高度，甚至padding也使用了em和百分比，放大页面确实会变得更加友好~<br>更偏重于内容（文字）的展示的感觉</p>
       
     </div>
@@ -664,7 +697,7 @@
 
       
         <p class="article-more-link">
-          <a  href="/2015/07/07/books/响应式web设计实践/#more">more >></a>
+          <a  href="/2015/02/23/books/响应式web设计实践/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -684,8 +717,8 @@
     <article id="post-books/css禅意花园" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/07/07/books/css禅意花园/" class="article-date">
-  	<time datetime="2015-07-06T16:00:00.000Z" itemprop="datePublished">2015-07-07</time>
+      <a href="/2014/11/19/books/css禅意花园/" class="article-date">
+  	<time datetime="2014-11-18T16:00:00.000Z" itemprop="datePublished">2014-11-19</time>
 </a>
     </div>
   
@@ -698,7 +731,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/07/books/css禅意花园/">CSS禅意花园</a>
+      <a class="article-title" href="/2014/11/19/books/css禅意花园/">CSS禅意花园</a>
     </h1>
   
 
@@ -725,94 +758,7 @@
 
       
         <p class="article-more-link">
-          <a  href="/2015/07/07/books/css禅意花园/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-books/精通css" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/07/06/books/精通css/" class="article-date">
-  	<time datetime="2015-07-05T16:00:00.000Z" itemprop="datePublished">2015-07-06</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/06/books/精通css/">精通CSS</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>摒弃表现型命名方式</p>
-</blockquote>
-<h2 id="p27">p27</h2><p>关于css选择器，简单将其特殊性划分为四个等级abcd</p>
-<table>
-<thead>
-<tr>
-<th>等级</th>
-<th>类型</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>a</td>
-<td>行内元素</td>
-</tr>
-<tr>
-<td>b</td>
-<td>id选择器</td>
-</tr>
-<tr>
-<td>c</td>
-<td>类、伪类和属性选择器</td>
-</tr>
-<tr>
-<td>d</td>
-<td>类型选择器和伪元素选择器</td>
-</tr>
-</tbody>
-</table>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/07/06/books/精通css/#more">more >></a>
+          <a  href="/2014/11/19/books/css禅意花园/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -831,7 +777,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 </div>
