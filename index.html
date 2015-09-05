@@ -155,11 +155,11 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-notes/XMLHttpRequest 整理" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-notes/几种跨域方法" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/09/01/notes/XMLHttpRequest 整理/" class="article-date">
-  	<time datetime="2015-08-31T16:00:00.000Z" itemprop="datePublished">2015-09-01</time>
+      <a href="/2015/09/03/notes/几种跨域方法/" class="article-date">
+  	<time datetime="2015-09-02T16:00:00.000Z" itemprop="datePublished">2015-09-03</time>
 </a>
     </div>
   
@@ -172,7 +172,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/09/01/notes/XMLHttpRequest 整理/">XMLHttpRequest 整理</a>
+      <a class="article-title" href="/2015/09/03/notes/几种跨域方法/">几种跨域方法</a>
     </h1>
   
 
@@ -181,11 +181,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>有空便整理了一下 xhr 的内容，内容基本上来自 W3C。同时对其进行了简单封装，方便以后使用。</p>
-</blockquote>
-<h2 id="简介">简介</h2><p>XMLHttpRequest 对象提供了对 HTTP 协议的完全的访问，包括做出 POST 和 HEAD 请求以及普通的 GET 请求的能力。可以同步或异步地返回 Web 服务器的响应，并且能够以文本或者一个 DOM 文档的形式返回内容</p>
-<p>XMLHttpRequest 得到了所有现代浏览器较好的支持。唯一的浏览器依赖性涉及 XMLHttpRequest 对象的创建。在 IE 5 和 IE 6 中，必须使用特定于 IE 的 ActiveXObject() 构造函数</p>
+        <h2 id="准备">准备</h2><p>在 host 中添加如下映射</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">127.0.0.1&#9;www.a.com&#10;127.0.0.1&#9;www.b.com</span><br></pre></td></tr></table></figure>
+<p>http 服务器</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">require</span>(<span class="string">'http'</span>).createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> body = <span class="string">''</span>;</span><br><span class="line"></span><br><span class="line">    req.on(<span class="string">'data'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">chunk</span>) </span>&#123;</span><br><span class="line">        body += chunk;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    req.on(<span class="string">'end'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        res.writeHead(<span class="number">200</span>, &#123;</span><br><span class="line">            <span class="string">'Content-type'</span>: <span class="string">'text/html'</span></span><br><span class="line">        &#125;);</span><br><span class="line">        res.end(<span class="string">'receive: '</span> + (body || <span class="literal">null</span>));</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;).listen(<span class="number">80</span>);</span><br></pre></td></tr></table></figure>
+<p>监听 80 端口的时候报错了，关闭了 Apache 还是一样的问题，便尝试<code>sudo</code>执行发现可以了_(:з」∠)_</p>
+<p>那么现在可以愉快地在两个不同域名间玩耍了</p>
+<h2 id="JSONP">JSONP</h2>
       
     </div>
     
@@ -198,10 +200,6 @@
 
       
 
-      
-        <p class="article-more-link">
-          <a  href="/2015/09/01/notes/XMLHttpRequest 整理/#more">more >></a>
-        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -279,6 +277,68 @@
 
 
   
+    <article id="post-notes/XMLHttpRequest 整理" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/09/01/notes/XMLHttpRequest 整理/" class="article-date">
+  	<time datetime="2015-08-31T16:00:00.000Z" itemprop="datePublished">2015-09-01</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/01/notes/XMLHttpRequest 整理/">XMLHttpRequest 整理</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>有空便整理了一下 xhr 的内容，内容基本上来自 W3C。同时对其进行了简单封装，方便以后使用。</p>
+</blockquote>
+<h2 id="简介">简介</h2><p>XMLHttpRequest 对象提供了对 HTTP 协议的完全的访问，包括做出 POST 和 HEAD 请求以及普通的 GET 请求的能力。可以同步或异步地返回 Web 服务器的响应，并且能够以文本或者一个 DOM 文档的形式返回内容</p>
+<p>XMLHttpRequest 得到了所有现代浏览器较好的支持。唯一的浏览器依赖性涉及 XMLHttpRequest 对象的创建。在 IE 5 和 IE 6 中，必须使用特定于 IE 的 ActiveXObject() 构造函数</p>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/09/01/notes/XMLHttpRequest 整理/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-notes/模板引擎" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -340,65 +400,6 @@
 
 
   
-    <article id="post-books/深入浅出NodeJS" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/08/10/books/深入浅出NodeJS/" class="article-date">
-  	<time datetime="2015-08-09T16:00:00.000Z" itemprop="datePublished">2015-08-10</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/10/books/深入浅出NodeJS/">深入浅出NodeJS</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="模块机制">模块机制</h2><h3 id="CommonJS_规范">CommonJS 规范</h3><h4 id="模块引用">模块引用</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> math = <span class="built_in">require</span>(<span class="string">'math'</span>);</span><br></pre></td></tr></table></figure>
-<p>CommonJS 规范中存在 require() 方法，接受模块标识，以此引入一个模块的 API 到当前的上下文</p>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/08/10/books/深入浅出NodeJS/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
     <article id="post-books/jQuery技术内幕" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -444,6 +445,65 @@
       
         <p class="article-more-link">
           <a  href="/2015/08/10/books/jQuery技术内幕/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-books/深入浅出NodeJS" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/08/10/books/深入浅出NodeJS/" class="article-date">
+  	<time datetime="2015-08-09T16:00:00.000Z" itemprop="datePublished">2015-08-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/10/books/深入浅出NodeJS/">深入浅出NodeJS</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="模块机制">模块机制</h2><h3 id="CommonJS_规范">CommonJS 规范</h3><h4 id="模块引用">模块引用</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> math = <span class="built_in">require</span>(<span class="string">'math'</span>);</span><br></pre></td></tr></table></figure>
+<p>CommonJS 规范中存在 require() 方法，接受模块标识，以此引入一个模块的 API 到当前的上下文</p>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/08/10/books/深入浅出NodeJS/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -740,68 +800,6 @@
       
         <p class="article-more-link">
           <a  href="/2015/07/19/notes/垂直居中/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-notes/Javascript 模块规范" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/07/17/notes/Javascript 模块规范/" class="article-date">
-  	<time datetime="2015-07-16T16:00:00.000Z" itemprop="datePublished">2015-07-17</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/17/notes/Javascript 模块规范/">Javascript 模块规范</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="CommonJS">CommonJS</h2><p> 规范</p>
-<ol>
-<li><strong>module 拥有 id, uri 属性；在 module 中，有 require, exports, module 三个自由变量</strong></li>
-<li><strong>module 可通过 require 引入外部 module. 通过 exports 等方式向外部提供 api</strong></li>
-</ol>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/07/17/notes/Javascript 模块规范/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
