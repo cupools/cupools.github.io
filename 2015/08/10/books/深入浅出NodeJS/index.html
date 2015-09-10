@@ -5,21 +5,27 @@
   
   <title>深入浅出NodeJS | (&lt;ゝω·)Kira☆~</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="模块机制CommonJS 规范模块引用var math = require(&apos;math&apos;);
+  <meta name="description" content="很厉害的一本书，从其中几个模块的实现和解决思路中学到了很多东西；http 协议方面的东西也在这本书上面恶补了一番，很充实。终于吃完了，吃的很饱撒花哗啦啦
+
+模块机制CommonJS 规范模块引用var math = require(&apos;math&apos;);
 CommonJS 规范中存在 require() 方法，接受模块标识，以此引入一个模块的 API 到当前的上下文">
 <meta property="og:type" content="article">
 <meta property="og:title" content="深入浅出NodeJS">
 <meta property="og:url" content="http://cupools.github.io/2015/08/10/books/深入浅出NodeJS/index.html">
 <meta property="og:site_name" content="(<ゝω·)Kira☆~">
-<meta property="og:description" content="模块机制CommonJS 规范模块引用var math = require(&apos;math&apos;);
+<meta property="og:description" content="很厉害的一本书，从其中几个模块的实现和解决思路中学到了很多东西；http 协议方面的东西也在这本书上面恶补了一番，很充实。终于吃完了，吃的很饱撒花哗啦啦
+
+模块机制CommonJS 规范模块引用var math = require(&apos;math&apos;);
 CommonJS 规范中存在 require() 方法，接受模块标识，以此引入一个模块的 API 到当前的上下文">
 <meta property="og:image" content="http://cupools.github.io/images/59-3-13.png">
 <meta property="og:image" content="http://cupools.github.io/images/61-3-14.png">
 <meta property="og:image" content="http://cupools.github.io/images/168-7-7.png">
-<meta property="og:updated_time" content="2015-09-04T01:22:54.000Z">
+<meta property="og:updated_time" content="2015-09-09T08:49:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入浅出NodeJS">
-<meta name="twitter:description" content="模块机制CommonJS 规范模块引用var math = require(&apos;math&apos;);
+<meta name="twitter:description" content="很厉害的一本书，从其中几个模块的实现和解决思路中学到了很多东西；http 协议方面的东西也在这本书上面恶补了一番，很充实。终于吃完了，吃的很饱撒花哗啦啦
+
+模块机制CommonJS 规范模块引用var math = require(&apos;math&apos;);
 CommonJS 规范中存在 require() 方法，接受模块标识，以此引入一个模块的 API 到当前的上下文">
   
     <link rel="alternative" href="/atom.xml" title="(&lt;ゝω·)Kira☆~" type="application/atom+xml">
@@ -37,7 +43,8 @@ CommonJS 规范中存在 require() 方法，接受模块标识，以此引入一
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
 			
-			<img lazy-src="/img/avatar.jpg" class="js-avatar">
+			<!-- <img lazy-src="/img/avatar.jpg" class="js-avatar"> -->
+			<img src="/img/avatar.jpg" class="js-avatar show" style="width: 100%;height: 100%;opacity: 1;">
 			
 		</a>
 
@@ -99,6 +106,8 @@ CommonJS 规范中存在 require() 方法，接受模块标识，以此引入一
 							
 								<a class="github" target="_blank" href="https://github.com/cupools" title="github">github</a>
 					        
+								<a class="mail" target="_blank" href="mailto:cupools@gmail.com" title="mail">mail</a>
+					        
 						</div>
 					</nav>
 				</section>
@@ -106,7 +115,7 @@ CommonJS 规范中存在 require() 方法，接受模块标识，以此引入一
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Javascript/" style="font-size: 16.67px;">Javascript</a> <a href="/tags/css/" style="font-size: 13.33px;">css</a> <a href="/tags/学习/" style="font-size: 10px;">学习</a> <a href="/tags/安全/" style="font-size: 10px;">安全</a> <a href="/tags/性能优化/" style="font-size: 10px;">性能优化</a> <a href="/tags/读书笔记/" style="font-size: 20px;">读书笔记</a>
+						<a href="/tags/Javascript/" style="font-size: 17.5px;">Javascript</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/学习/" style="font-size: 12.5px;">学习</a> <a href="/tags/安全/" style="font-size: 10px;">安全</a> <a href="/tags/性能优化/" style="font-size: 10px;">性能优化</a> <a href="/tags/读书笔记/" style="font-size: 20px;">读书笔记</a>
 					</div>
 				</section>
 				
@@ -134,7 +143,7 @@ CommonJS 规范中存在 require() 方法，接受模块标识，以此引入一
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img lazy-src="/img/avatar.jpg" class="js-avatar">
+				<img src="/img/avatar.jpg" class="js-avatar show" style="width: 100%;height: 100%;opacity: 1;">
 			</div>
 			<hgroup>
 			  <h1 class="header-author">liyh</h1>
@@ -154,6 +163,8 @@ CommonJS 规范中存在 require() 方法，接受模块标识，以此引入一
 				<div class="social">
 					
 						<a class="github" target="_blank" href="https://github.com/cupools" title="github">github</a>
+			        
+						<a class="mail" target="_blank" href="mailto:cupools@gmail.com" title="mail">mail</a>
 			        
 				</div>
 			</nav>
@@ -197,7 +208,10 @@ CommonJS 规范中存在 require() 方法，接受模块标识，以此引入一
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="模块机制">模块机制</h2><h3 id="CommonJS_规范">CommonJS 规范</h3><h4 id="模块引用">模块引用</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> math = <span class="built_in">require</span>(<span class="string">'math'</span>);</span><br></pre></td></tr></table></figure>
+        <blockquote>
+<p>很厉害的一本书，从其中几个模块的实现和解决思路中学到了很多东西；http 协议方面的东西也在这本书上面恶补了一番，很充实。终于吃完了，吃的很饱撒花哗啦啦</p>
+</blockquote>
+<h2 id="模块机制">模块机制</h2><h3 id="CommonJS_规范">CommonJS 规范</h3><h4 id="模块引用">模块引用</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> math = <span class="built_in">require</span>(<span class="string">'math'</span>);</span><br></pre></td></tr></table></figure>
 <p>CommonJS 规范中存在 require() 方法，接受模块标识，以此引入一个模块的 API 到当前的上下文</p>
 <a id="more"></a>
 <h4 id="模块定义">模块定义</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// math.js</span></span><br><span class="line">exports.add = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> sum = <span class="number">0</span>, i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">arguments</span>[i]) &#123;</span><br><span class="line">        sum += <span class="built_in">arguments</span>[i++];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -225,7 +239,7 @@ CommonJS 规范中存在 require() 方法，接受模块标识，以此引入一
 </ul>
 <h4 id="安装依赖包">安装依赖包</h4><ul>
 <li><p>全局模式安装，是将一个包安装为全局可用的可执行命令。它根据包描述文件中的 bin 字段配置，将实际脚本链接到 Node 可执行文件相同的可执行路径下</p>
-<p>  全局安装的模块包都背安装进一个统一的目录下，通过如下方式推算出来</p>
+<p>  全局安装的模块包都被安装进一个统一的目录下，通过如下方式推算出来</p>
   <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">path.resolve(process.execPath, <span class="string">'..'</span>, <span class="string">'..'</span>, <span class="string">'lib'</span>, <span class="string">'node_module'</span>);</span><br></pre></td></tr></table></figure>
 <p>  即 Node 可执行文件的位置是<code>/usr/local/bin/node</code>，则模块目录为 <code>/usr/local/lib/node_module</code></p>
 </li>
@@ -245,12 +259,11 @@ CommonJS 规范中存在 require() 方法，接受模块标识，以此引入一
 <p><img src="/images/59-3-13.png" alt="异步 I/O 流程"></p>
 <p>事件循环、观察者、请求对象、I/O 线程池这四者共同构成了 Node 异步 I/O 模型的基本要素</p>
 <p>Windows 下主要通过 IOCP 来向系统内核发送 I/O 调用和从内核获取已完成的 I/O 操作，配以事件循环，以此完成异步 I/O 的过程。在 Linux 下通过 epoll 实现这个过程，FreeBSD 下通过 kqueue 实现，Solaris 下通过 Event ports 实现。不同的是线程池在 Windows 下由内核（IOCP）直接提供，*nix 系列下由 libuv 自行实现</p>
-<h4 id="小结">小结</h4><p>在 Node 中，除了 Javascript 是单线程歪，Node 自身是多线程，只是 I/O 线程使用的 CPU 较少。另一个观点是，除了用户代码无法并行执行外，所有的 I/O 则是并行起来的</p>
+<h4 id="小结">小结</h4><p>在 Node 中，除了 Javascript 是单线程外，Node 自身是多线程，只是 I/O 线程使用的 CPU 较少。另一个观点是，除了用户代码无法并行执行外，所有的 I/O 则是并行起来的</p>
 <h3 id="非_I/O_的异步_API">非 I/O 的异步 API</h3><h4 id="定时器">定时器</h4><p>setTimeout() 和 setInterval() 与浏览器中的 API 是一致的。它们的实现原理与异步 I/O 类似，只是不需要 I/O 线程池的参与。创建的计时器会被插入到定时器观察者内部的一个红黑树中，每次 Tick 执行时，会从该红黑树中迭代取出定时器对象，检查是否超过定时时间，如果超过，就形成一个事件，它的回调函数将会立即执行</p>
 <p>定时器的问题并不精确，例如通过计时器设定一个任务在10毫秒后执行，但在9毫秒后，有一个任务占用了5毫秒的 CPU 时间片，再次轮到定时器执行时，时间就已经过期4毫秒了</p>
 <p><img src="/images/61-3-14.png" alt="setTimeout() 的行为"></p>
-<h4 id="process-nextTick()">process.nextTick()</h4><p>采用定时器需要动用红黑树，创建定时器对象和迭代等操作。相比执行，process.nextTick() 方法的操作相对较为轻量</p>
-<p>每次调用 process.nextTick() 方法，只会将回调函数放入队列中，在下一轮 Tick 时取出执行。定时器中采用红黑树的操作时间复杂度为 O(lg(n))，nextTick() 的时间复杂度为 O(1)</p>
+<h4 id="process-nextTick()">process.nextTick()</h4><p>采用定时器需要动用红黑树，创建定时器对象和迭代等操作。相比执行，process.nextTick() 方法的操作相对较为轻量。每次调用 process.nextTick() 方法，只会将回调函数放入队列中，在下一轮 Tick 时取出执行。定时器中采用红黑树的操作时间复杂度为 O(lg(n))，nextTick() 的时间复杂度为 O(1)</p>
 <h4 id="setImmediate()">setImmediate()</h4><p>process.nextTick() 中的回调函数执行的优先级高于 setImmediate()，原因在于事件循环对观察者的检查有先后顺序。process.nextTick() 属于 idle 观察者，setImmediate() 属于 check 观察者。在每一轮循环检查中，idle 观察者优先于 I/O 观察者，I/O 观察者优先于 check 观察者</p>
 <h3 id="事件驱动与高性能服务器">事件驱动与高性能服务器</h3><p>几种经典的服务器模型</p>
 <ul>
@@ -280,13 +293,13 @@ CommonJS 规范中存在 require() 方法，接受模块标识，以此引入一
 <p>通过继承 events 模块可实现事件机制</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> events = <span class="built_in">require</span>(<span class="string">'events'</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Stream</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    events.EventEmitter.call(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line">util.inherits(Stream, events.EventEmitter);</span><br></pre></td></tr></table></figure>
 <h4 id="多异步之间的协作方案">多异步之间的协作方案</h4><p>由于多个异步场景中回调函数的执行并不能保证顺序，且回调函数之间相互没有任何交集，因此需要借助一个第三方函数和第三方变量来处理异步写作的结果。通常，我们把这个用于检测次数的变量叫做哨兵变量</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">after</span>(<span class="params">times, callback</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> count = <span class="number">0</span>, results = &#123;&#125;;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">key, value</span>) </span>&#123;</span><br><span class="line">        results[key] = value;</span><br><span class="line">        count++;</span><br><span class="line">        <span class="keyword">if</span>(count === times) &#123;</span><br><span class="line">            callback(results);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> emitter = <span class="keyword">new</span> events.Emitter();</span><br><span class="line">vr done = after(times, render);</span><br><span class="line"></span><br><span class="line">emitter.on(<span class="string">'done'</span>, done);</span><br><span class="line"></span><br><span class="line">fs.readFile(path, <span class="string">'utf8'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err, template</span>) </span>&#123;</span><br><span class="line">    emitter.emit(<span class="string">'done'</span>, <span class="string">'template'</span>, template);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">db.query(sql, <span class="function"><span class="keyword">function</span>(<span class="params">err, data</span>) </span>&#123;</span><br><span class="line">    emitter.emit(<span class="string">'done'</span>, <span class="string">'data'</span>, data);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">l10n.get(<span class="function"><span class="keyword">function</span>(<span class="params">err, resources</span>) </span>&#123;</span><br><span class="line">    emitter.emit(<span class="string">'done'</span>, <span class="string">'resources'</span>, resources);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">after</span>(<span class="params">times, callback</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> count = <span class="number">0</span>, results = &#123;&#125;;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">key, value</span>) </span>&#123;</span><br><span class="line">        results[key] = value;</span><br><span class="line">        count++;</span><br><span class="line">        <span class="keyword">if</span>(count === times) &#123;</span><br><span class="line">            callback(results);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> emitter = <span class="keyword">new</span> events.Emitter();</span><br><span class="line"><span class="keyword">var</span> done = after(times, render);</span><br><span class="line"></span><br><span class="line">emitter.on(<span class="string">'done'</span>, done);</span><br><span class="line"></span><br><span class="line">fs.readFile(path, <span class="string">'utf8'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err, template</span>) </span>&#123;</span><br><span class="line">    emitter.emit(<span class="string">'done'</span>, <span class="string">'template'</span>, template);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">db.query(sql, <span class="function"><span class="keyword">function</span>(<span class="params">err, data</span>) </span>&#123;</span><br><span class="line">    emitter.emit(<span class="string">'done'</span>, <span class="string">'data'</span>, data);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">l10n.get(<span class="function"><span class="keyword">function</span>(<span class="params">err, resources</span>) </span>&#123;</span><br><span class="line">    emitter.emit(<span class="string">'done'</span>, <span class="string">'resources'</span>, resources);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p>通过 EventProxy 解决异步协作</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> proxy = <span class="keyword">new</span> EventProxy();</span><br><span class="line">proxy.all(<span class="string">'template'</span>, <span class="string">'data'</span>, <span class="string">'resources'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">template, data, resources</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// TODO</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">fs.readFile(path, <span class="string">'utf8'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err, template</span>) </span>&#123;</span><br><span class="line">    proxy.emit(<span class="string">'template'</span>, template);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">db.query(sql, <span class="function"><span class="keyword">function</span>(<span class="params">err, data</span>) </span>&#123;</span><br><span class="line">    proxy.emit(<span class="string">'data'</span>, data);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">l10n.get(<span class="function"><span class="keyword">function</span>(<span class="params">resources</span>) </span>&#123;</span><br><span class="line">    proxy.emit(<span class="string">'resources'</span>, resources)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <h3 id="Promise_/_Deferred_模式">Promise / Deferred 模式</h3><h4 id="Promise/A">Promise/A</h4><p>Promise/A 对单个异步操作的抽象定义如下</p>
 <ul>
 <li>Promise 只会出于三种状态中的一种：未完成态、完成态或失败态</li>
-<li>Promise 的状态只会出现从未完成态向完成态或失败态转化，不能你装。完成态和失败态不能相互转化</li>
+<li>Promise 的状态只会出现从未完成态向完成态或失败态转化，不能逆转。完成态和失败态不能相互转化</li>
 <li>Promise 的状态一旦转化，将不能被改变</li>
 </ul>
 <p>Promise/A 提议在 API 的定义中，一个 Promise 对象只要具备 then() 方法即可，有如下要求</p>
@@ -307,21 +320,21 @@ CommonJS 规范中存在 require() 方法，接受模块标识，以此引入一
 <p>与事件发布/订阅模式相比，Promise/Deferred 模式的 API 接口和抽象模型都十分简洁。它将业务中不可变的部分封装在了 Deferred 中，将可变的部分交给了 Promise。对于不同场景需要封装对应的 Deferred 部分</p>
 <p>多异步协作可通过哨兵变量和 result 数组实现</p>
 <h4 id="流程控制库">流程控制库</h4><ul>
-<li><p>尾触发与 Next<br>需要手工调用才能持续执行后续调用的方法属于尾触发，常见的关键词是 next。目前应用最多的diff是 Connect 的中间件，在处理网络请求时，可以像面向切面编程一样进行过滤，验证，日志等功能，而不与具体业务逻辑产生关联，以致产生耦合</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> app = connect();</span><br><span class="line">app.use(connect.staticCache());</span><br><span class="line">app.use(connect.static(__dirname + <span class="string">'/public'</span>));</span><br><span class="line">app.use(connect.query());</span><br><span class="line">app.use(connect.bodyParse());</span><br><span class="line">aoo.listen(<span class="number">3001</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//中间件</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li><p>尾触发与 Next<br>需要手工调用才能持续执行后续调用的方法属于尾触发，常见的关键词是 next。目前应用最多的 diff 是 Connect 的中间件，在处理网络请求时，可以像面向切面编程一样进行过滤，验证，日志等功能，而不与具体业务逻辑产生关联，以致产生耦合</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> app = connect();</span><br><span class="line">app.use(connect.staticCache());</span><br><span class="line">app.use(connect.static(__dirname + <span class="string">'/public'</span>));</span><br><span class="line">app.use(connect.query());</span><br><span class="line">app.use(connect.bodyParse());</span><br><span class="line">app.listen(<span class="number">3001</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//中间件</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>async</p>
   <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">async</span>.series([</span><br><span class="line">    <span class="function"><span class="keyword">function</span>(<span class="params">callback</span>) </span>&#123;</span><br><span class="line">        fs.readFile(<span class="string">'file1.txt'</span>, <span class="string">'utf-8'</span>, callback);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="function"><span class="keyword">function</span>(<span class="params">callback</span>) </span>&#123;</span><br><span class="line">        fs.readFile(<span class="string">'file2.txt'</span>, <span class="string">'utf-8'</span>, callback);</span><br><span class="line">    &#125;</span><br><span class="line">], <span class="function"><span class="keyword">function</span>(<span class="params">err, results</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// result =&gt; [file1.txt, file2.txt]s</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Step</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 串行依次执行</span></span><br><span class="line">Step(</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">readFile1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        fs.readFile(<span class="string">'file1.txt'</span>, <span class="string">'utf-8'</span>, <span class="keyword">this</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">readFile2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        fs.readFile(<span class="string">'file2.txt'</span>, <span class="string">'utf-8'</span>, <span class="keyword">this</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">donw</span>(<span class="params">err, content</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(content);</span><br><span class="line">    &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 串行依次执行</span></span><br><span class="line">Step(</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">readFile1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        fs.readFile(<span class="string">'file1.txt'</span>, <span class="string">'utf-8'</span>, <span class="keyword">this</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">readFile2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        fs.readFile(<span class="string">'file2.txt'</span>, <span class="string">'utf-8'</span>, <span class="keyword">this</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">done</span>(<span class="params">err, content</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(content);</span><br><span class="line">    &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>wind</p>
-  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> Wind = <span class="built_in">require</span>(<span class="string">'wind'</span>);</span><br><span class="line"><span class="keyword">var</span> Task = Wind.Async.Task;</span><br><span class="line"><span class="keyword">var</span> readFile = <span class="function"><span class="keyword">function</span>(<span class="params">file, encoding</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> Task.create(<span class="function"><span class="keyword">function</span>(<span class="params">t</span>) </span>&#123;</span><br><span class="line">        fs.readFile(file, encoding, <span class="function"><span class="keyword">function</span>(<span class="params">err, file</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(t.err) &#123;</span><br><span class="line">                t.complete(<span class="string">'failure'</span>, err);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                t.complete(<span class="string">'success'</span>, file)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> series = <span class="built_in">eval</span>(Wind.compile(<span class="string">'async'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> file1 = $<span class="keyword">await</span>(readFileAsync(<span class="string">'file1.txt'</span>, <span class="string">'utf-8'</span>));</span><br><span class="line">    <span class="built_in">console</span>.log(file1);</span><br><span class="line">    <span class="keyword">var</span> file2 = $<span class="keyword">await</span>(readFileAsync(<span class="string">'file2.txt'</span>, <span class="string">'utf-8'</span>));</span><br><span class="line">    <span class="built_in">console</span>.log(file2);</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> file1 = $<span class="keyword">await</span>(readFileAsync(<span class="string">'file3.txt'</span>, <span class="string">'utf-8'</span>));</span><br><span class="line">    &#125; <span class="keyword">catch</span>(err) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(err)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> Wind = <span class="built_in">require</span>(<span class="string">'wind'</span>);</span><br><span class="line"><span class="keyword">var</span> Task = Wind.Async.Task;</span><br><span class="line"><span class="keyword">var</span> readFile = <span class="function"><span class="keyword">function</span>(<span class="params">file, encoding</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> Task.create(<span class="function"><span class="keyword">function</span>(<span class="params">t</span>) </span>&#123;</span><br><span class="line">        fs.readFile(file, encoding, <span class="function"><span class="keyword">function</span>(<span class="params">err, file</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(t.err) &#123;</span><br><span class="line">                t.complete(<span class="string">'failure'</span>, err);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                t.complete(<span class="string">'success'</span>, file)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> series = <span class="built_in">eval</span>(Wind.compile(<span class="string">'async'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> file1 = $<span class="keyword">await</span>(readFileAsync(<span class="string">'file1.txt'</span>, <span class="string">'utf-8'</span>));</span><br><span class="line">    <span class="built_in">console</span>.log(file1);</span><br><span class="line">    <span class="keyword">var</span> file2 = $<span class="keyword">await</span>(readFileAsync(<span class="string">'file2.txt'</span>, <span class="string">'utf-8'</span>));</span><br><span class="line">    <span class="built_in">console</span>.log(file2);</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">var</span> file1 = $<span class="keyword">await</span>(readFileAsync(<span class="string">'file3.txt'</span>, <span class="string">'utf-8'</span>));</span><br><span class="line">    &#125; <span class="keyword">catch</span>(err) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(err)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h4 id="异步并发控制">异步并发控制</h4><ul>
-<li><p>bagapipe 的解决方案</p>
+<li><p>bagpipe 的解决方案</p>
 <ul>
 <li>通过一个队列来控制并发量</li>
 <li>如果当前活跃的异步调用量小于限量值，从队列中取出执行</li>
@@ -339,7 +352,7 @@ CommonJS 规范中存在 require() 方法，接受模块标识，以此引入一
 </li>
 </ul>
 <h2 id="内存控制">内存控制</h2><h3 id="V8的垃圾回收机制与内存限制">V8的垃圾回收机制与内存限制</h3><p>在 V8 中，所有的 Javascript 对象都是用过堆来进行分配的。如果已申请的堆空闲内存不够分配新的对象，将继续申请堆内存，直到堆的大小超过 V8 的限制。V8 限制堆的大小，原因在于垃圾回收中会引起 Javascript 线程暂停执行，而糟糕情况下造成的时间花销将影响应用性能和响应能力</p>
-<p>V8 中，将内存分为新生代和老生代。新生代中得对象为存活时间较短的对象，老生代中的对象为存活时间较长或者常驻内存的对象</p>
+<p>V8 中，将内存分为新生代和老生代。新生代中的对象为存活时间较短的对象，老生代中的对象为存活时间较长或者常驻内存的对象</p>
 <p>分代的基础上，新生代中的对象主要通过 Scavenge 算法进行垃圾回收。在 Scavenge 的具体实现中，主要采用了 Cheney 算法。简单表述，在垃圾回收的过程中，就是通过将存活对象在两个 semispace 空间中进行复制，属于典型的牺牲空间换取时间的算法</p>
 <p>在一定条件下，需将存活周期长的对象移动到老生代中，也就是完成对象晋升。判断条件为对象是否经历过 Scavenge 回收和 To 空间的内存占用比超过限制</p>
 <p>老生代空间中得对象接受新的回收算法处理，主要采用 Mark-Sweep 和 Mark-Compact 相结合的方式。Mark-Sweep 是标记清楚的意思，分为标记和清理清除两个阶段；Mark-Compact 解决 Mark-Sweep 的内存碎片问题，将存活的对象往一端移动，完成后直接清理掉边界外的内存</p>
@@ -349,7 +362,7 @@ CommonJS 规范中存在 require() 方法，接受模块标识，以此引入一
 <h4 id="闭包">闭包</h4><p>实现外部作用域访问内部作用域中的变量的方法叫做闭包。一旦有变量引用内部作用域的变量，原始的作用域不会得到释放</p>
 <h3 id="内存指标">内存指标</h3><h4 id="查看进程的内存占用">查看进程的内存占用</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">process.memoryUsage()</span><br><span class="line"><span class="comment">// =&gt; &#123;rss: 13852672, heapTotal: 6131200, heapUsed: 2757120&#125;</span></span><br></pre></td></tr></table></figure>
 <p>rss 是 resident set size 的缩写，即进程的常驻内存部分。进程的内存总共有几部分，一部分是 rss，其余部分在交换区（swap）或者文件系统（filesystem）中</p>
-<p>除了 rss 歪，heapTotal 和 heapUsed 对应的是 V8 的堆内存信息，heapTotal 是堆中总共申请的内存量，heapUsed 表示目前堆中使用中的内存量。三个值的单位都是字节</p>
+<p>除了 rss 外，heapTotal 和 heapUsed 对应的是 V8 的堆内存信息，heapTotal 是堆中总共申请的内存量，heapUsed 表示目前堆中使用中的内存量。三个值的单位都是字节</p>
 <h4 id="查看系统内存占用">查看系统内存占用</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">os.totalmem()</span><br><span class="line"><span class="comment">// =&gt; 8589934592</span></span><br><span class="line">os.freemem()</span><br><span class="line"><span class="comment">// =&gt; 1025601536</span></span><br></pre></td></tr></table></figure>
 <h4 id="堆外内存">堆外内存</h4><p>process.memoryUsage() 的结果可知，堆中的内存用量总是小于进程的常驻内存用量，意味着 Node 中的内存使用并非都是通过 V8 进行分配的，我们将那些不是通过 V8 分配的内存称为堆外内存</p>
 <p>Buffer 对象不同于其他对象，它不经过 V8 的内存分配机制，所以不会有堆内存的大小限制</p>
@@ -398,7 +411,7 @@ CommonJS 规范中存在 require() 方法，接受模块标识，以此引入一
 <p>事实上，调用 setEncoding() 时，可读流对象在内部设置了一个 decoder 对象。每次都通过该 decoder 对象进行 Buffer 到字符串的解码，然后传递给调用者。decoder 对象来自于 string_decoder 模块 StringDecoder 的实例对象，能根据编码类型处理可读流的字节长度问题。但它目前只能处理 UTF-8、 Base64 和 UCS-2/UTF-16LE 这三种编码</p>
 <p>可通过 iconv-lite 一类的模块，将可读流获取的 Buffer 对象拼接后做转换，解决转码问题</p>
 <h3 id="Buffer_与性能">Buffer 与性能</h3><p>字符串一旦在网络中传输，都需要转换为 Buffer，以进行二进制数据传输。通过预先转换静态内容为 Buffer 对象，可以有效地减少 CPU 的重复使用，节省服务器资源</p>
-<p>Buffer 的使用除了与字符串的转换有性能耗损外，在文件读取时，还有一个 highWaterMark 设置对性能的影响至关重要。lighWaterMark 限制每次读取的长度，对 Buffer 内存的分配和使用有一定影响，设置过小可能导致系统调用次数过多。</p>
+<p>Buffer 的使用除了与字符串的转换有性能耗损外，在文件读取时，还有一个 highWaterMark 设置对性能的影响至关重要。highWaterMark 限制每次读取的长度，对 Buffer 内存的分配和使用有一定影响，设置过小可能导致系统调用次数过多。</p>
 <p>文件流读取基于 Buffer 分配，Buffer 则基于 SlowBuffer 分配</p>
 <h2 id="网络编程">网络编程</h2><p>Node 提供了 net、 dgram、 http、 https 这4个模块，分别用于处理 TCP、 UDP、 HTTP、 HTTPS</p>
 <h3 id="构建_TCP_服务">构建 TCP 服务</h3><p>TCP 全名为传输控制协议，在 OSI 模型（由七层组成，分别为物理层、数据链路层、网络层、传输层、会话层、表示层、应用层）中属于传输层协议。许多应用层协议基于 TCP 构建，典型的是 HTTP、 SMTP、 IMAP 等协议</p>
@@ -423,7 +436,7 @@ CommonJS 规范中存在 require() 方法，接受模块标识，以此引入一
 <li>timeout：当一定时间后连接不再活跃时触发，通知用户当前该连接已经被闲置</li>
 </ul>
 <p>TCP 针对网络中的小数据包有一定的优化策略：Nagle 算法。要求缓冲区的文件达到一定数量或者一定时间后才将其发出，所以数据包会被 Nagle 算法合并，以此优化网络，但数据可能被延迟发送。Node 中 TCP 默认使用 Nagle 算法，可以使用<code>socket.setNoDelay(true)</code>取消。尽管如此，并不意味着每次 write() 都会触发一次 data 事件，另一端可能将会接收到多个小数据包合并，然后只触发一次 data 事件</p>
-<h3 id="构建_UDP_服务">构建 UDP 服务</h3><p>UDP 又称用户数据包协议，与 TCP 一样属于网络传输层。与 TCP 最大不同是 UDP 不是面向连接的。TCP 中连接一旦简历，所有的绘画都会基于连接完成，客户端如果要与另一个 TCP 服务通信，需要另外创建一个套接字来完成连接。但在 UDP 中，一个套接字可以与多个 UDP 服务通信，它提供面向事务的简单不可靠信息传输服务，在网络差的情况下丢包严重，但由于它无需连接，资源消耗低，处理快速且灵活，所以常用于偶尔丢包也不会产生重大影响的场景，如音频、视频等。DNS 服务是基于 UDP 实现的</p>
+<h3 id="构建_UDP_服务">构建 UDP 服务</h3><p>UDP 又称用户数据包协议，与 TCP 一样属于网络传输层。与 TCP 最大不同是 UDP 不是面向连接的。TCP 中连接一旦建立，所有的会话都会基于连接完成，客户端如果要与另一个 TCP 服务通信，需要另外创建一个套接字来完成连接。但在 UDP 中，一个套接字可以与多个 UDP 服务通信，它提供面向事务的简单不可靠信息传输服务，在网络差的情况下丢包严重，但由于它无需连接，资源消耗低，处理快速且灵活，所以常用于偶尔丢包也不会产生重大影响的场景，如音频、视频等。DNS 服务是基于 UDP 实现的</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> dgram = <span class="built_in">require</span>(<span class="string">'dgram'</span>);</span><br><span class="line"><span class="keyword">var</span> server = dgram.createSocket(<span class="string">'udp4'</span>);</span><br><span class="line"></span><br><span class="line">server.on(<span class="string">'message'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">msg, rinfo</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'server got: '</span> + msg + <span class="string">'from '</span> + rinfo.address);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">server.on(<span class="string">'listening'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> address = server.address();</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'server listening '</span> + address.address);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 该套接字将接受所有网卡上41234端口上的消息</span></span><br><span class="line"><span class="comment">// 绑定完成后将触发 listening 事件</span></span><br><span class="line">server.bind(<span class="number">41234</span>);</span><br></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> dgram = <span class="built_in">require</span>(<span class="string">'dgram'</span>);</span><br><span class="line"><span class="keyword">var</span> message = <span class="keyword">new</span> Buffer(<span class="string">'msg from client'</span>);</span><br><span class="line"><span class="keyword">var</span> client = dgram.createSocket(<span class="string">'udp4'</span>);</span><br><span class="line">client.send(message, <span class="number">0</span>, message.length, <span class="number">41234</span>, <span class="string">'localhost'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err, bytes</span>) </span>&#123;</span><br><span class="line">    client.close();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <h4 id="UDP_套接字事件">UDP 套接字事件</h4><p>UDP 套接字只是一个 EventEmitter 的实例，而非 Stream 的实例</p>
@@ -453,14 +466,14 @@ CommonJS 规范中存在 require() 方法，接受模块标识，以此引入一
 <li>host：服务器的域名或 IP 地址，默认为 localhost</li>
 <li>hostname：服务器名称</li>
 <li>port：服务器端口，默认为 80</li>
-<li>localAddress：简历网络连接的本地网卡</li>
+<li>localAddress：建立网络连接的本地网卡</li>
 <li>socketPath：Domain 套接字路径</li>
 <li>method：HTTP 请求方法，默认为 GET</li>
 <li>path：请求路径，默认为 /</li>
 <li>headers：请求头对象</li>
 <li>auth：Basic 认证，这个值将被计算成请求头中的 Authorization 部分</li>
 </ul>
-<h4 id="HTTP_代理">HTTP 代理</h4><p>http 提供的 CLientRequest 对象也是基于 TCP 层实现，在 keepalive 的情况下，一个底层会话连接可以多次用于请求。为了重用 TCP 链接，http 模块包含一个默认的客户端代理对象 http.globalAgent。它对每个服务器端（host+port）创建的连接进行了管理，默认情况下，通过 CLientRequest 对象对同一个服务器发情的 HTTP 请求最多可以创建五个连接。它实质上是一个连接池</p>
+<h4 id="HTTP_代理">HTTP 代理</h4><p>http 提供的 CLientRequest 对象也是基于 TCP 层实现，在 keepalive 的情况下，一个底层会话连接可以多次用于请求。为了重用 TCP 链接，http 模块包含一个默认的客户端代理对象 http.globalAgent。它对每个服务器端（host+port）创建的连接进行了管理，默认情况下，通过 ClientRequest 对象对同一个服务器发情的 HTTP 请求最多可以创建五个连接。它实质上是一个连接池</p>
 <p>服务器通过 ClientRequest 调用网络中其它 HTTP 服务，需要关注代理对象对网络请求的限制。可通过 options 中的 agent 选项配置。默认情况下采用全局代理对象，默认连接数限制为5</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> agent = <span class="keyword">new</span> http.Agent(&#123;</span><br><span class="line">    <span class="comment">// 设置为 false 则脱离连接池管理，请求不受并发限制</span></span><br><span class="line">    maxSockets: <span class="number">10</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> options = &#123;</span><br><span class="line">    hostname: <span class="string">'127.0.0.1'</span>,</span><br><span class="line">    port: <span class="string">'1334'</span>,</span><br><span class="line">    path: <span class="string">'/'</span>,</span><br><span class="line">    method: <span class="string">'GET'</span>,</span><br><span class="line">    agent: agent</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <h4 id="HTTP_客户端事件">HTTP 客户端事件</h4><ul>
@@ -614,7 +627,7 @@ CommonJS 规范中存在 require() 方法，接受模块标识，以此引入一
 <li>每次发布时，路径中跟随该文件内容的 hash 值，如：<a href="http://url.com/?hash=abcdxxx" target="_blank" rel="external">http://url.com/?hash=abcdxxx</a></li>
 </ul>
 <h4 id="Basic_认证">Basic 认证</h4><p>Basic 认证中，它会将用户和密码部分组合，然后进行 Base64 编码。响应头中的 WWW-Authenticate 字段告知浏览器采用怎样的认证和加密方式。当认证通过，服务器端响应200状态码之后，浏览器会保存用户和密码口令，在后续的请求中都携带上 Authorization 信息</p>
-<h3 id="数据上传">数据上传</h3><h4 id="表单数据">表单数据</h4><p>默认的表单提交，请求头中的 Content-Type 字段值是 application/x-www/form-urlencoded 。由于它的报文体内容与查询字符串相同，因此可以使用 querystring 解析</p>
+<h3 id="数据上传">数据上传</h3><h4 id="表单数据">表单数据</h4><p>默认的表单提交，请求头中的 Content-Type 字段值是 application/x-www-form-urlencoded 。由于它的报文体内容与查询字符串相同，因此可以使用 querystring 解析</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> handle = <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(req.headers[<span class="string">'content-type'</span>] === <span class="string">'application/x-www-form-urlencoded'</span>) &#123;</span><br><span class="line">        req.body = querystring.parse(req.rawBody);</span><br><span class="line">    &#125;;</span><br><span class="line">    todo(req, res);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="JSON_文件">JSON 文件</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> handle = <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(mime(req) === <span class="string">'application/json'</span>) &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            req.body = <span class="built_in">JSON</span>.parse(req.rawBody);</span><br><span class="line">        &#125; <span class="keyword">catch</span>(e) &#123;</span><br><span class="line">            res.writeHead(<span class="number">400</span>);</span><br><span class="line">            res.end(<span class="string">'Invalid JSON'</span>);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    todo(req, res);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="XML_文件">XML 文件</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> xml2js = reuqire(<span class="string">'xml2js'</span>);</span><br><span class="line"><span class="keyword">var</span> handle = <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(mime(req) === <span class="string">'application/xml'</span>) &#123;</span><br><span class="line">        xml2js.parseString(req.rawBody, <span class="function"><span class="keyword">function</span>(<span class="params">err, xml</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(err) &#123;</span><br><span class="line">                res.writeHead(<span class="number">400</span>);</span><br><span class="line">                res.end(<span class="string">'Invalid xml'</span>);</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            req.body = xml;</span><br><span class="line">            tody(req, res);</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    todo(req, res);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -798,9 +811,10 @@ CommonJS 规范中存在 require() 方法，接受模块标识，以此引入一
 <li>exit：子进程退出时触发该事件。子进程如果正常退出，则第一个参数为退出码，否则为 null。如果子进程是通过 kill() 方法杀死，则得到第二个参数，表示杀死进程时的信号</li>
 <li>close：在子进程的标准输入输出流终止时触发该事件，参数与 exit 相同</li>
 <li>disconnect：在父进程或子进程中调用 disconnect() 方法时触发，调用该方法将关闭监听 IPC 通道</li>
-<li>kill：允许父进程向子进程发送系统信号杀掉子进程，或者子进程自杀</li>
+<li><p>kill：允许父进程向子进程发送系统信号杀掉子进程，或者子进程自杀</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">child.kill([signal]);</span><br><span class="line"></span><br><span class="line">process.kill(pid, [signal]);</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">child.kill([signal]);</span><br><span class="line"></span><br><span class="line">process.kill(pid, [signal]);</span><br></pre></td></tr></table></figure>
 <p>关于 kill 信号，常用有如下几个</p>
 <table>
 <thead>
@@ -909,7 +923,64 @@ CommonJS 规范中存在 require() 方法，接受模块标识，以此引入一
 <p>同时，对于异步方法的模拟，需要小心是否将异步方法模拟为同步。通过 process.nextTick() 辅助即可</p>
 <h4 id="私有方法的测试">私有方法的测试</h4><p>除了 exports 导出的属性和方法，其他私有方法难以测试。可通过 rewire 实现对私有方法的测试</p>
 <h4 id="工程化与自动化">工程化与自动化</h4><p>通过 Makefile 完成自动化编译，通过 travis-ci 解决持续集成</p>
-<h3 id="性能测试">性能测试</h3>
+<h3 id="性能测试">性能测试</h3><p>基准测试要统计在多少时间内执行了多少次某个方法。为了增强可比性，一般会以次数作为参照物，然后比较时间，以此判别性能的差距</p>
+<h3 id="压力测试">压力测试</h3><figure class="highlight"><table><tr><td class="code"><pre><span class="line">$ ab -c 10 -t 3 http://127.0.0.1/&#10;This is ApacheBench, Version 2.3 &#60;$Revision: 1663405 $&#62;&#10;Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/&#10;Licensed to The Apache Software Foundation, http://www.apache.org/&#10;&#10;Benchmarking 127.0.0.1 (be patient)&#10;Completed 5000 requests&#10;Completed 10000 requests&#10;Completed 15000 requests&#10;Finished 15301 requests&#10;&#10;&#10;Server Software:        &#10;Server Hostname:        127.0.0.1&#10;Server Port:            80&#10;&#10;Document Path:          /&#10;Document Length:        16 bytes&#10;&#10;Concurrency Level:      10&#10;Time taken for tests:   3.000 seconds&#10;Complete requests:      15301&#10;Failed requests:        0&#10;Total transferred:      1882023 bytes&#10;HTML transferred:       244816 bytes&#10;Requests per second:    5100.31 [#/sec] (mean)&#10;Time per request:       1.961 [ms] (mean)&#10;Time per request:       0.196 [ms] (mean, across all concurrent requests)&#10;Transfer rate:          612.64 [Kbytes/sec] received&#10;&#10;Connection Times (ms)&#10;              min  mean[+/-sd] median   max&#10;Connect:        0    0   1.1      0     136&#10;Processing:     1    2   3.5      2     137&#10;Waiting:        1    2   3.5      2     137&#10;Total:          1    2   3.6      2     137&#10;&#10;Percentage of the requests served within a certain time (ms)&#10;  50%      2&#10;  66%      2&#10;  75%      2&#10;  80%      2&#10;  90%      2&#10;  95%      2&#10;  98%      4&#10;  99%      5&#10; 100%    137 (longest request)</span><br></pre></td></tr></table></figure>
+<h4 id="基准测试驱动开发">基准测试驱动开发</h4><ol>
+<li>写基准测试</li>
+<li>写/改代码</li>
+<li>收集数据</li>
+<li>找出问题</li>
+<li>回到第 2 步</li>
+</ol>
+<h4 id="测试数据与业务数据的转换">测试数据与业务数据的转换</h4><p>根据实际业务评估业务量，计算公式为</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">QPS = PV / diration</span><br></pre></td></tr></table></figure>
+<h2 id="产品化">产品化</h2><h3 id="项目工程化">项目工程化</h3><h4 id="构建工具">构建工具</h4><ul>
+<li>Makefile：*nix 系统下经典的构建工具。依托强大的 bash 编程，通常用来管理一些编译相关的工作</li>
+<li>Grunt：依托丰富的插件，自身提供通用接口用于插件的接入，具体的任务由插件完成</li>
+</ul>
+<h4 id="编码规范">编码规范</h4><p>通过文档式的约定和代码提交时的强制检查实现</p>
+<h4 id="代码审查">代码审查</h4><p>主要在请求合并的过程中完成，需要审查功能是否正确完成、编码风格是否符合规范、单元测试是否同步添加</p>
+<h4 id="部署流程">部署流程</h4><p>部署操作中，可能会用到 nohup 和 &amp; 以不挂断的方式让进程持续执行</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">nohup node app.js &amp;</span><br></pre></td></tr></table></figure>
+<p>停止和重启进程则比启动进程复杂一点，可通过 bash 脚本实现。主进程在启动时将进程 ID 写入一个 pid 文件，以此通过脚本管理进程</p>
+<h4 id="性能">性能</h4><ul>
+<li>动静分离<br>  将动态请求和静态请求分离后，服务器可以专注动态服务方面，CDN 托管静态文件能够有更精确和高效的缓存机制，而且不同域名能消除不必要的 Cookie 传输和浏览器对下载线程数的限制</li>
+<li>启用缓存</li>
+<li>多进程架构</li>
+<li>读写分离</li>
+</ul>
+<h4 id="日志">日志</h4><ul>
+<li><p>访问日志<br>  一般用来记录每个客户端所对应的访问。在 Web 应用中，主要记录 HTTP 请求中的关键数据</p>
+</li>
+<li><p>异常日志<br>  通常用来记录那些意外产生的异常错误。通过日志的记录，能够较快地定位问题所在。console 对象上具有一个 Console 属性，是 console 对象的构造函数。借助这个构造函数，可以实现自己的日志对象。代码如下：</p>
+  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> info = fs.createWriteStream(logdir + <span class="string">'/info.log'</span>, &#123;flags: <span class="string">'a'</span>, mode: <span class="string">'0666'</span>&#125;);</span><br><span class="line"><span class="keyword">var</span> error = fs.createWriteStream(logdir + <span class="string">'/error.log'</span>, &#123;flags: <span class="string">'a'</span>, mode: <span class="string">'0666'</span>&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> logger =  <span class="keyword">new</span> <span class="built_in">console</span>.Console(info, error);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line">logger.log(<span class="string">'hello'</span>);</span><br><span class="line">logger.errer(<span class="string">'fault'</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>异常处理<br>  开发者应该当将 API 内部发生的异常座位第一个实参传递给回调函数。对于回调函数中产生的异常，则交给全局的 uncaughtException 事件去捕获即可</p>
+<p>  在逐层次的异步 API 调用中，建议将异常交给最上层的调用者捕获记录，底层调用或中间层调用中出现的异常只要正常传递给上方德调用方即可</p>
+</li>
+<li><p>日志与数据库<br>  日志文件与数据库写入在性能上处于两个级别，数据库在写入过程中药经历一系列处理，比如锁表、日志等操作；写日志文件则是将数据直接写到磁盘上。如果有大量访问，可能存在写入操作大量排队的问题，数据库的消费速度严重低于生产速度，进而导致内存泄露</p>
+</li>
+</ul>
+<h3 id="监控报警">监控报警</h3><ul>
+<li>日志监控</li>
+<li>响应时间</li>
+<li>进程监控</li>
+<li>磁盘监控</li>
+<li>内存监控</li>
+<li>CPU 占用监控</li>
+<li>CPU load 监控</li>
+<li>I/O 监控</li>
+<li>网络监控</li>
+<li>应用状态监控</li>
+<li>DNS 监控</li>
+</ul>
+<h3 id="稳定性">稳定性</h3><ul>
+<li>多机器</li>
+<li>多机房</li>
+<li>容灾备份</li>
+</ul>
+<h3 id="异构共存">异构共存</h3><p>在应用 Node 的过程中，不存在为了用它而推翻已有设计的情况。Node  能够通过协议与已有的系统很好地异构共存</p>
+
       
     </div>
     

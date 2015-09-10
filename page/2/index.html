@@ -30,7 +30,8 @@
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
 			
-			<img lazy-src="/img/avatar.jpg" class="js-avatar">
+			<!-- <img lazy-src="/img/avatar.jpg" class="js-avatar"> -->
+			<img src="/img/avatar.jpg" class="js-avatar show" style="width: 100%;height: 100%;opacity: 1;">
 			
 		</a>
 
@@ -92,6 +93,8 @@
 							
 								<a class="github" target="_blank" href="https://github.com/cupools" title="github">github</a>
 					        
+								<a class="mail" target="_blank" href="mailto:cupools@gmail.com" title="mail">mail</a>
+					        
 						</div>
 					</nav>
 				</section>
@@ -99,7 +102,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Javascript/" style="font-size: 16.67px;">Javascript</a> <a href="/tags/css/" style="font-size: 13.33px;">css</a> <a href="/tags/学习/" style="font-size: 10px;">学习</a> <a href="/tags/安全/" style="font-size: 10px;">安全</a> <a href="/tags/性能优化/" style="font-size: 10px;">性能优化</a> <a href="/tags/读书笔记/" style="font-size: 20px;">读书笔记</a>
+						<a href="/tags/Javascript/" style="font-size: 17.5px;">Javascript</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/学习/" style="font-size: 12.5px;">学习</a> <a href="/tags/安全/" style="font-size: 10px;">安全</a> <a href="/tags/性能优化/" style="font-size: 10px;">性能优化</a> <a href="/tags/读书笔记/" style="font-size: 20px;">读书笔记</a>
 					</div>
 				</section>
 				
@@ -127,7 +130,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img lazy-src="/img/avatar.jpg" class="js-avatar">
+				<img src="/img/avatar.jpg" class="js-avatar show" style="width: 100%;height: 100%;opacity: 1;">
 			</div>
 			<hgroup>
 			  <h1 class="header-author">liyh</h1>
@@ -148,12 +151,137 @@
 					
 						<a class="github" target="_blank" href="https://github.com/cupools" title="github">github</a>
 			        
+						<a class="mail" target="_blank" href="mailto:cupools@gmail.com" title="mail">mail</a>
+			        
 				</div>
 			</nav>
 		</header>				
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-notes/垂直居中" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/07/19/notes/垂直居中/" class="article-date">
+  	<time datetime="2015-07-18T16:00:00.000Z" itemprop="datePublished">2015-07-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/07/19/notes/垂直居中/">垂直居中</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>因为没有 IE 调试也是挺麻烦的，先建个笔记放着吧</p>
+</blockquote>
+<h2 id="table-cell">table-cell</h2><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="tag">div</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">display</span>:<span class="value"> table-cell</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">vertical-align</span>:<span class="value"> middle</span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="tag">span</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">display</span>:<span class="value"> inline-block</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">vertical-align</span>:<span class="value"> middle</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/07/19/notes/垂直居中/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-notes/Javascript 模块规范" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/07/17/notes/Javascript 模块规范/" class="article-date">
+  	<time datetime="2015-07-16T16:00:00.000Z" itemprop="datePublished">2015-07-17</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/07/17/notes/Javascript 模块规范/">Javascript 模块规范</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="CommonJS">CommonJS</h2><p> 规范</p>
+<ol>
+<li><strong>module 拥有 id, uri 属性；在 module 中，有 require, exports, module 三个自由变量</strong></li>
+<li><strong>module 可通过 require 引入外部 module. 通过 exports 等方式向外部提供 api</strong></li>
+</ol>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/07/17/notes/Javascript 模块规范/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-notes/猴子补丁" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -636,129 +764,6 @@
       
         <p class="article-more-link">
           <a  href="/2015/04/10/notes/几个好用的样式/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-books/响应式web设计实践" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/02/23/books/响应式web设计实践/" class="article-date">
-  	<time datetime="2015-02-22T16:00:00.000Z" itemprop="datePublished">2015-02-23</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/02/23/books/响应式web设计实践/">响应式web设计实践</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>看完了龙傲天可以心情好好的看书<br>写在看完序章的时候。。</p>
-</blockquote>
-<h2 id="第2章_流动布局">第2章 流动布局</h2><p>先说了有四种布局方式，然后直接提出用em和%代替px，包括繁琐的计算得到长度的数值。<br>在em后加注释（16px/24px）看起来很有吸引力，可是真正写到代码要开个计算器我不干~</p>
-<p>在设计宽度和高度，甚至padding也使用了em和百分比，放大页面确实会变得更加友好~<br>更偏重于内容（文字）的展示的感觉</p>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/02/23/books/响应式web设计实践/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-books/css禅意花园" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2014/11/19/books/css禅意花园/" class="article-date">
-  	<time datetime="2014-11-18T16:00:00.000Z" itemprop="datePublished">2014-11-19</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/11/19/books/css禅意花园/">CSS禅意花园</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>哦记得要读书笔记了</p>
-</blockquote>
-<h2 id="p11">p11</h2><p>选择html标签取决于标签本身的语义，而不是其默认显示的样式，第二次看到了好像很有道理的样子</p>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2014/11/19/books/css禅意花园/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
