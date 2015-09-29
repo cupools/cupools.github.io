@@ -17,7 +17,7 @@ position: fixed场景移动端的在线客服，聊天室风格，输入框置�
 后天就要回广州啦，北京再见_(:з」∠)_
 
 position: fixed场景移动端的在线客服，聊天室风格，输入框置底，参考手Q，需求方坚持这种聊天风格不肯妥协，考虑 UC 浏览器和 app 内置浏览器，忽略 wp">
-<meta property="og:updated_time" content="2015-09-10T07:20:04.000Z">
+<meta property="og:updated_time" content="2015-09-29T16:27:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="移动端踩过的坑">
 <meta name="twitter:description" content="想着自己是不是要写点什么，马上想到了上半年移动端遇到的坑坑洼洼。有这样的小剧场：汪，红米这里有问题；汪汪汪，魅族怎么显示不出来呢；汪汪… (o`･ω･)ﾉ(ﾉД`)
@@ -112,7 +112,7 @@ position: fixed场景移动端的在线客服，聊天室风格，输入框置�
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Javascript/" style="font-size: 17.5px;">Javascript</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/学习/" style="font-size: 12.5px;">学习</a> <a href="/tags/安全/" style="font-size: 10px;">安全</a> <a href="/tags/性能优化/" style="font-size: 10px;">性能优化</a> <a href="/tags/碎屑/" style="font-size: 10px;">碎屑</a> <a href="/tags/读书笔记/" style="font-size: 20px;">读书笔记</a>
+						<a href="/tags/Javascript/" style="font-size: 17.5px;">Javascript</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/学习/" style="font-size: 12.5px;">学习</a> <a href="/tags/安全/" style="font-size: 10px;">安全</a> <a href="/tags/碎屑/" style="font-size: 10px;">碎屑</a> <a href="/tags/读书笔记/" style="font-size: 20px;">读书笔记</a> <a href="/tags/配置/" style="font-size: 10px;">配置</a>
 					</div>
 				</section>
 				
@@ -229,7 +229,8 @@ position: fixed场景移动端的在线客服，聊天室风格，输入框置�
 <h3 id="解决思路-1">解决思路</h3><p>抛弃伪元素使用标签实现。在 android 2.x 下发现<code>transform:rotate</code>仍然无效，在父元素添加<code>transform: rotate(0)</code>即可</p>
 <h2 id="小屏幕兼容">小屏幕兼容</h2><h3 id="问题描述-2">问题描述</h3><p>有些暴力的设计师会在单屏的页面或者 dialog 里面塞很多很多东西，可能是表单或者动画元素，导致 iphone 4s 之类的 3.5 寸屏幕压力山大</p>
 <h3 id="解决思路-2">解决思路</h3><p>添加适当的断点，使用<code>transform: scale</code>或者<code>zoom</code>对容器做缩放比重新设置宽高要方便的多多。前者可通过改变<code>transform-origin</code>修改缩放的支点，后者不支持字体缩放的样子，没具体使用过。如果是 dialog 之类进入页面不会立即显示出来的元素，也可以通过 js 计算得到最适合的缩放比例</p>
-<p>可以尝试通过百分比或者 rem 解决类似问题，目前没有做尝试。举个例子，手机 UC 浏览器下载官网，一个页面会有多个动画元素，有时候是多个居中，有时候是垂直多个不重叠。多个元素需要定位到准确的位置，然后加上动画并保持动画的连贯，此时如果用百分比为单位会有比较繁琐的计算</p>
+<p>可以尝试通过百分比或者 rem 解决类似问题。举个例子，手机 UC 浏览器下载官网，一个页面会有多个动画元素，有时候是多个居中，有时候是垂直多个不重叠。多个元素需要定位到准确的位置，然后加上动画并保持动画的连贯，此时如果用百分比为单位会有比较繁琐的计算</p>
+<p><strong>rem 是十分有效的解决方法！！</strong></p>
 <h2 id="小米手机绝对定位元素消失">小米手机绝对定位元素消失</h2><h3 id="问题描述-3">问题描述</h3><p>小米手机自带浏览器上使用绝对定位的元素没有显示出来，调高 z-index 无果</p>
 <h3 id="解决思路-3">解决思路</h3><p>添加一个设置<code>opacity: 1</code>的动画即可</p>
 <h2 id="UC_浏览器图片降色问题">UC 浏览器图片降色问题</h2><h3 id="场景-1">场景</h3><p>忘了哪一天开始，android 上的 UC 浏览器发现了这个问题，吓坏我和我的小伙伴了。找了内核的同学沟通，是 android 上的 UC 浏览器为了更好地控制内存，对体积比较大的图片做了优化处理，结果跑偏了。问题已反馈，UC 10.x 好像还有这个问题，现在不知道解决了没有</p>
