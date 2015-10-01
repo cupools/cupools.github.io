@@ -21,7 +21,7 @@ windows 安装去 官网 下载 .exe 安装一直 next 就行了
 osx 安装
 首先安装 Homebrew，osx 的套件管理器，命令行安装即可
  ruby -e &quot;$(curl -fsSL https://raw.githubu">
-<meta property="og:updated_time" content="2015-09-29T16:23:39.000Z">
+<meta property="og:updated_time" content="2015-10-01T12:21:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="安装 GraphicsMagick 这个大坑">
 <meta name="twitter:description" content="这段时间在搞 img-sprite 这个东西，然后需要缩小图片，然后发现 Jimp 的表现不理想，于是只能妥协使用 gm，然后一下子就掉坑里了弄了整个下午😢
@@ -118,7 +118,7 @@ osx 安装
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Javascript/" style="font-size: 17.5px;">Javascript</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/学习/" style="font-size: 12.5px;">学习</a> <a href="/tags/安全/" style="font-size: 10px;">安全</a> <a href="/tags/碎屑/" style="font-size: 10px;">碎屑</a> <a href="/tags/读书笔记/" style="font-size: 20px;">读书笔记</a> <a href="/tags/配置/" style="font-size: 10px;">配置</a>
+						<a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/css/" style="font-size: 16.67px;">css</a> <a href="/tags/学习/" style="font-size: 13.33px;">学习</a> <a href="/tags/安全/" style="font-size: 10px;">安全</a> <a href="/tags/碎屑/" style="font-size: 10px;">碎屑</a> <a href="/tags/读书笔记/" style="font-size: 20px;">读书笔记</a> <a href="/tags/配置/" style="font-size: 10px;">配置</a>
 					</div>
 				</section>
 				
@@ -245,12 +245,11 @@ osx 安装
 <li><p>放弃之前的做法，尝试通过 brew 安装。安装过程顺利，但最后出现类似如下报错，确定是权限问题。按照 <a href="http://stackoverflow.com/questions/11237048/homebrew-symlink-error" target="_blank" rel="external">这里</a> 的提示解决了问题。解决方法是，brew rm 之前安装的包，然后修改 /usr/local/ 可写权限，再重新下载即可</p>
 <p> 报错</p>
  <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ brew install graphicsmagick</span><br><span class="line">....</span><br><span class="line"></span><br><span class="line">$ brew link graphicsmagick</span><br><span class="line">Linking /usr/<span class="built_in">local</span>/Cellar/graphicsmagick/<span class="number">1.3</span>.<span class="number">21</span>... </span><br><span class="line">Error: Could not symlink include/GraphicsMagick/Magick++/Blob.h</span><br><span class="line">/usr/<span class="built_in">local</span>/include/GraphicsMagick/Magick++ is not writable.</span><br><span class="line"></span><br><span class="line"><span class="comment"># 类似</span></span><br><span class="line">Could not symlink xxx</span><br><span class="line">xxx is not writable</span><br></pre></td></tr></table></figure>
+<p> 解决</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ brew rm graphicsmagick</span><br><span class="line">$ brew rm libpng</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">$ sudo chmod -R g+w /usr/<span class="built_in">local</span></span><br><span class="line"></span><br><span class="line">$ brew install graphicsmagick</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<pre><code>解决
-
-<span class="comment"><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ brew rm graphicsmagick</span><br><span class="line">$ brew rm libpng</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">$ sudo chmod -R g+w /usr/<span class="built_in">local</span></span><br><span class="line"></span><br><span class="line">$ brew install graphicsmagick</span><br></pre></td></tr></table></figure></span>
-</code></pre><h2 id="参考链接">参考链接</h2><p><a href="http://linfan.info/blog/2012/02/25/homebrew-installation-and-usage/" target="_blank" rel="external">Homebrew 的安装与使用</a></p>
+<h2 id="参考链接">参考链接</h2><p><a href="http://linfan.info/blog/2012/02/25/homebrew-installation-and-usage/" target="_blank" rel="external">Homebrew 的安装与使用</a></p>
 <p><a href="http://vbird.dic.ksu.edu.tw/linux_basic/0210filepermission.php" target="_blank" rel="external">鸟哥的私房菜 - 文件权限</a></p>
 
       
@@ -260,6 +259,15 @@ osx 安装
   
     
 <nav id="article-nav">
+  
+    <a href="/2015/09/30/notes/img-sprite 设想/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          img-sprite 设想
+        
+      </div>
+    </a>
   
   
     <a href="/2015/09/13/notes/算是个总结吧/" id="article-nav-older" class="article-nav-link-wrap">
