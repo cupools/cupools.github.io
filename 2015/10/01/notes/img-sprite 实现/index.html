@@ -27,7 +27,7 @@
 兼容 Reti">
 <meta property="og:image" content="http://cupools.github.io/images/img-sprite/00.png">
 <meta property="og:image" content="http://cupools.github.io/images/img-sprite/01.png">
-<meta property="og:updated_time" content="2015-10-01T12:17:20.000Z">
+<meta property="og:updated_time" content="2015-10-11T14:09:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="img-sprite 实现">
 <meta name="twitter:description" content="喵了很久没有发现 Grunt 上有比较舒服的合并精灵图工具，于是有了自己写一个的想法，于是有了 img-sprite
@@ -228,86 +228,106 @@
 <li>能够根据标识产出多个精灵图</li>
 <li>不依赖 Less 等 CSS 预处理器</li>
 <li>兼容 Retina</li>
-<li>Base64 内联图片（todo）</li>
+<li>Base64 内联图片</li>
 <li>使用要简单，简单，简单</li>
 </ol>
 <a id="more"></a>
-<h2 id="使用">使用</h2><h3 id="处理一个_css_文件">处理一个 css 文件</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> sprite = <span class="built_in">require</span>(<span class="string">'img-sprite'</span>);</span><br><span class="line"></span><br><span class="line">sprite(&#123;</span><br><span class="line">    src: [<span class="string">'test/css/one.css'</span>],</span><br><span class="line">    dest: <span class="string">'test/css/dest.css'</span>,</span><br><span class="line">    output: <span class="string">'test/images'</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="使用">使用</h2><h3 id="安装">安装</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install img-sprite --save</span><br></pre></td></tr></table></figure>
+<h3 id="处理一个_css_文件">处理一个 css 文件</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> sprite = <span class="built_in">require</span>(<span class="string">'img-sprite'</span>);</span><br><span class="line"></span><br><span class="line">sprite(&#123;</span><br><span class="line">    src: <span class="string">'test/css/one.css'</span>,</span><br><span class="line">    dest: <span class="string">'test/css/dest.css'</span>,</span><br><span class="line">    output: <span class="string">'test/images'</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p><img src="/images/img-sprite/00.png" alt="css 文件"></p>
 <p><img src="/images/img-sprite/01.png" alt="精灵图"></p>
-<h3 id="处理多个_css_文件">处理多个 css 文件</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> sprite = <span class="built_in">require</span>(<span class="string">'img-sprite'</span>);</span><br><span class="line"></span><br><span class="line">sprite(&#123;</span><br><span class="line">    src: [<span class="string">'test/css/one.css'</span>, <span class="string">'test/css/two.css'</span>],</span><br><span class="line">    dest: <span class="string">'test/css'</span>,</span><br><span class="line">    output: <span class="string">'test/images'</span>,</span><br><span class="line">    retina: <span class="literal">false</span>,</span><br><span class="line">    prefix: <span class="string">'sp-'</span>,</span><br><span class="line">    imgPath: <span class="string">'/public/images/'</span></span><br><span class="line">    algorithm: <span class="string">'top-down'</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h3 id="命令行使用">命令行使用</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ bin/sprite -h</span><br><span class="line">Options:</span><br><span class="line">  <span class="operator">-s</span>, --src     css file input path                          [string] [required]</span><br><span class="line">  <span class="operator">-d</span>, --dest    css file output path                         [string] [required]</span><br><span class="line">  -o, --output  images output path                                      [string]</span><br><span class="line">  -r, --retina  retina or not, default to <span class="literal">true</span>         				   [boolean]</span><br><span class="line">  --padding     padding between images, default to <span class="number">10</span>                   [string]</span><br><span class="line">  --prefix      add before images filename, default to <span class="string">"sprite-"</span>        [string]</span><br><span class="line">  --imgPath     images path, default to <span class="string">"../images/"</span>                    [string]</span><br><span class="line">  --algorithm   list algorithm, default to <span class="string">"binary-tree"</span>                [string]</span><br></pre></td></tr></table></figure>
-<h2 id="参数">参数</h2><table>
-<thead>
-<tr>
-<th>参数</th>
-<th>说明</th>
-<th>默认</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>src</td>
-<td>css 文件路径，必须 {Array}</td>
-<td>无</td>
-</tr>
-<tr>
-<td>dest</td>
-<td>css 产出路径，当仅处理一个 css 文件时可指定文件名 {String}</td>
-<td>当前目录</td>
-</tr>
-<tr>
-<td>output</td>
-<td>精灵图产出路径 {String}</td>
-<td>当前目录</td>
-</tr>
-<tr>
-<td>retina</td>
-<td>是否产出 @2x 图片 {Boolean}</td>
-<td>true</td>
-</tr>
-<tr>
-<td>padding</td>
-<td>精灵图中图片间距 {Number}</td>
-<td>10</td>
-</tr>
-<tr>
-<td>prefix</td>
-<td>精灵图前缀；当产出 css 文件与指定 css 的目录一致时，为 css 文件添加该前缀 {String}</td>
-<td>‘sprite-‘</td>
-</tr>
-<tr>
-<td>imgPath</td>
-<td>css 文件中的图片路径 {String}</td>
-<td>‘../images/‘</td>
-</tr>
-<tr>
-<td>algorithm</td>
-<td>图片排序算法 [top-down, left-right, diagonal, alt-diagonal, binary-tree]</td>
-<td>‘binary-tree’</td>
-</tr>
-<tr>
-<td>media</td>
-<td>媒体查询条件</td>
-<td>only screen and (-webkit-min-device-pixel-ratio: 1.5)</td>
-</tr>
-</tbody>
-</table>
+<h3 id="处理多个_css_文件">处理多个 css 文件</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> sprite = <span class="built_in">require</span>(<span class="string">'img-sprite'</span>);</span><br><span class="line"></span><br><span class="line">sprite(&#123;</span><br><span class="line">    src: [<span class="string">'test/css/one.css'</span>, <span class="string">'test/css/two.css'</span>],</span><br><span class="line">    dest: <span class="string">'test/css'</span>,</span><br><span class="line">    output: <span class="string">'test/images'</span>,</span><br><span class="line">    retina: <span class="literal">false</span>,</span><br><span class="line">    prefix: <span class="string">'sp-'</span>,</span><br><span class="line">    imgPath: <span class="string">'/public/images/'</span>,</span><br><span class="line">    algorithm: <span class="string">'top-down'</span>,</span><br><span class="line">    sizeLimit: <span class="number">10</span>*<span class="number">1024</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="命令行使用">命令行使用</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ bin/sprite -h</span><br><span class="line">Options:</span><br><span class="line">  <span class="operator">-s</span>, --src     css file input path                          [string] [required]</span><br><span class="line">  <span class="operator">-d</span>, --dest    css file output path                         [string] [required]</span><br><span class="line">  -o, --output  images output path                                      [string]</span><br><span class="line">  -r, --retina  retina or not, default to <span class="literal">true</span>         				   [boolean]</span><br><span class="line">  --padding     padding between images, default to <span class="number">10</span>                   [string]</span><br><span class="line">  --prefix      add before images filename, default to <span class="string">"sprite-"</span>        [string]</span><br><span class="line">  --imgPath     images path, default to <span class="string">"../images/"</span>                    [string]</span><br><span class="line">  --algorithm   list algorithm, default to <span class="string">"binary-tree"</span>                [string]</span><br><span class="line">  --sizeLimit   size <span class="built_in">limit</span> <span class="keyword">for</span> inline images, default to <span class="number">5000</span>           [string]</span><br></pre></td></tr></table></figure>
+<h2 id="参数">参数</h2><h3 id="src">src</h3><ul>
+<li>类型：Array</li>
+<li>说明：css 文件路径，必须</li>
+<li>默认：无</li>
+</ul>
+<h3 id="dest">dest</h3><ul>
+<li>类型：String</li>
+<li>说明：css 产出路径，当仅处理一个 css 文件时可指定文件名</li>
+<li>默认：当前目录</li>
+</ul>
+<h3 id="output">output</h3><ul>
+<li>类型：String</li>
+<li>说明：精灵图产出路径</li>
+<li>默认：当前目录</li>
+</ul>
+<h3 id="retina">retina</h3><ul>
+<li>类型：Boolean</li>
+<li>说明：是否产出 @2x 图片</li>
+<li>默认：true</li>
+</ul>
+<h3 id="padding">padding</h3><ul>
+<li>类型：Number</li>
+<li>说明：精灵图中图片间距</li>
+<li>默认：10</li>
+</ul>
+<h3 id="prefix">prefix</h3><ul>
+<li>类型：String</li>
+<li>说明：精灵图前缀；当产出 css 文件与指定 css 的目录一致时，为 css 文件添加该前缀</li>
+<li>默认：’sprite-‘</li>
+</ul>
+<h3 id="imgPath">imgPath</h3><ul>
+<li>类型：String</li>
+<li>说明：css 文件中的图片路径</li>
+<li>默认：’../images/‘</li>
+</ul>
+<h3 id="algorithm">algorithm</h3><ul>
+<li>类型：String</li>
+<li>说明：图片排序算法</li>
+<li>可选：top-down, left-right, diagonal, alt-diagonal, binary-tree</li>
+<li>默认：’binary-tree’</li>
+</ul>
+<h3 id="media">media</h3><ul>
+<li>类型：String</li>
+<li>说明：媒体查询条件</li>
+<li>默认：only screen and (-webkit-min-device-pixel-ratio: 1.5)</li>
+</ul>
+<h3 id="sizeLimit">sizeLimit</h3><ul>
+<li>类型：Number</li>
+<li>说明：内联图片大小限制</li>
+<li>默认：5000</li>
+</ul>
 <h2 id="实现">实现</h2><p>img-sprite 基于 <a href="https://github.com/Ensighten/spritesmith" target="_blank" rel="external">spritesmith</a> 和 <a href="https://github.com/reworkcss/css" target="_blank" rel="external">css</a> 实现。spritesmith 解决了图片合并、坐标计算这几个关键的问题，css 解决了图片路径替换、样式补充的问题。然后我做得东西就比较简单了。根据几个需求点简单列举一下</p>
-<h4 id="1-_像_FIS_一般，直接从_css_文件中通过标记提取图片路径处理并产出精灵图和新的_css_文件">1. 像 FIS 一般，直接从 css 文件中通过标记提取图片路径处理并产出精灵图和新的 css 文件</h4><p>通过 css-parse 构建出 css 文件对应的 AST（抽象语法树），递归遍历 AST 根据标识得到需要被合并的图片的路径，之后交给 spritemith 处理产出精灵图，再根据 spritemith 返回的 map 将精灵图的路径、图片大小、图片位置调整 AST，产出新的 css 文件即可</p>
+<h4 id="1-_像_FIS_一般，直接从_css_文件中通过标记提取图片路径处理并产出精灵图和新的_css_文件">1. 像 FIS 一般，直接从 css 文件中通过标记提取图片路径处理并产出精灵图和新的 css 文件</h4><p>通过 css-parse 构建出 css 文件对应的 AST（抽象语法树），递归遍历 AST 根据标识得到需要被合并的图片的路径，之后交给 spritemith 处理产出精灵图，再根据 spritemith 返回的 map 将精灵图的路径、图片大小、图片位置调整到 AST，产出新的 css 文件即可</p>
 <h4 id="2-_能够根据标识产出多个精灵图">2. 能够根据标识产出多个精灵图</h4><p>通过 <code>icon.png?__xxx</code> 标记图片，通过 <code>xxx</code> 决定图片应该被合并到哪一个精灵图</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 提取 url，分组1为url，分组2为精灵图标记，分组3为精灵图名称</span></span><br><span class="line"><span class="keyword">var</span> urlReg = <span class="regexp">/(?:url\(['"]?([\w\W]+?)(?:\?(__)?([\w\W]+?))?['"]?\))/</span>,</span><br></pre></td></tr></table></figure>
-<h4 id="3-_不依赖_Less_等_CSS_预处理器">3. 不依赖 Less 等 CSS 预处理器</h4><p>跟平时一样写代码，在完成之后一次构建处理即可</p>
+<h4 id="3-_不依赖_Less_等_CSS_预处理器">3. 不依赖 Less 等 CSS 预处理器</h4><p>跟平时一样写代码，在完成之后一次构建处理即可。当然平时用预处理器更方便了</p>
 <h4 id="4-_兼容_Retina">4. 兼容 Retina</h4><p>之前尝试过其他自动雪碧图工具，比较不舒服的一个地方是对 Retina 的兼容。img-sprite 对 Retina 的处理是产出两套精灵图，并在 css 文件底部插入 media。默认以 @2x 的切图合并精灵图，然后依赖 <a href="http://www.graphicsmagick.org/" target="_blank" rel="external">GM</a> 缩小图片产出 @1x 的精灵图。</p>
-<h4 id="5-_Base64_内联图片（todo）">5. Base64 内联图片（todo）</h4><p>还没做这一块，目前的设想是通过 <code>icon.png?__inline</code> 标记</p>
-<h4 id="6-_使用要简单，简单，简单">6. 使用要简单，简单，简单</h4><p>配置比较简单，需要目标 css 路径（src），产出 css 路径（dest），精灵图产出路径（output）三个参数。如果 src 是数组，那么 dest 指定路径并产出多个 css 文件；如果 src 是一个文件，那么 dest 可以指定产出 css 的路径和文件名。依赖 GM 应该是最麻烦的地方吧，还好 windows 下的安装不麻烦</p>
+<h4 id="5-_Base64_内联图片">5. Base64 内联图片</h4><p>通过 <code>icon.png?__inline</code> 标记即可</p>
+<h4 id="6-_使用要简单，简单，简单">6. 使用要简单，简单，简单</h4><p>配置比较简单，需要目标 css 路径（src），产出 css 路径（dest），精灵图产出路径（output）三个参数。如果 src 有多个文件，那么 dest 指定路径并产出多个 css 文件；如果 src 只有一个文件，那么 dest 可以指定产出 css 的路径和文件名。依赖 GM 应该是最麻烦的地方吧，还好 windows 下的安装不麻烦。可以配合 CSS 预处理器更方便地写样式</p>
 <h2 id="其他问题">其他问题</h2><ol>
 <li><p>没有 GM 以外的选择吗<br> 尝试了 node Jimp，缩小图片效果不理想。暂时不支持在 img-sprite 中配置其他的位图引擎</p>
 </li>
 <li><p>对其他样式的影响<br> 调整 AST 的过程中会将做这样的处理，删除 background 有关的样式并插入新的值。保留背景颜色，不支持同时定义多个背景图片</p>
- <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> colorReg = <span class="regexp">/#\w&#123;3,6&#125;|rgba?\(.+?\)/</span>,</span><br><span class="line">    resetBgReg = <span class="regexp">/background-[size|image|position]/</span>,</span><br><span class="line">...</span><br><span class="line"><span class="comment">// 设置 background 样式</span></span><br><span class="line">spriteSet[i].node.value = color + <span class="string">'url('</span> + options.imgPath + basename + <span class="string">') '</span> + offsetX + <span class="string">' '</span> + offsetY;</span><br><span class="line">...</span><br><span class="line"><span class="comment">// 插入 background-size</span></span><br><span class="line">spriteSet[i].parent.push(&#123;</span><br><span class="line">    type: <span class="string">'declaration'</span>,</span><br><span class="line">    property: <span class="string">'background-size'</span>,</span><br><span class="line">    value: ceil(properties.width / pow) + <span class="string">'px '</span> + ceil(properties.height / pow) + <span class="string">'px'</span></span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+<pre><code class="javascript"><span class="keyword">var</span> colorReg = <span class="regexp">/#\w{3,6}|rgba?\(.+?\)/</span>,
+    resetBgReg = <span class="regexp">/background-[size|image|position]/</span>,
+...
+<span class="comment">// 设置 background 样式</span>
+spriteSet[i].node.value = color + <span class="string">'url('</span> + options.imgPath + basename + <span class="string">') '</span> + offsetX + <span class="string">' '</span> + offsetY;
+...
+<span class="comment">// 插入 background-size</span>
+spriteSet[i].parent.push({
+    type: <span class="string">'declaration'</span>,
+    property: <span class="string">'background-size'</span>,
+    value: ceil(properties.width / pow) + <span class="string">'px '</span> + ceil(properties.height / pow) + <span class="string">'px'</span>
+    });
+</code></pre>
 </li>
 </ol>
+<h2 id="更新日志">更新日志</h2><ul>
+<li>0.2.0：<ul>
+<li>支持通过<code>?__inline</code>内联图片</li>
+<li>使用 <a href="https://github.com/jprichardson/node-fs-extra" target="_blank" rel="external">fs-extra</a> 操作文件，支持创建多层目录</li>
+<li>添加对不存在的图片路径的过滤</li>
+<li>允许重写 log 方法</li>
+<li>尝试添加单元测试用例</li>
+</ul>
+</li>
+<li>0.1.2：修复非 retina 情况下图片命名 @2x 的情况</li>
+<li>0.1.0：基本功能</li>
+</ul>
 
       
     </div>
