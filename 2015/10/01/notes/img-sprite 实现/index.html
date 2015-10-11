@@ -27,7 +27,7 @@
 兼容 Reti">
 <meta property="og:image" content="http://cupools.github.io/images/img-sprite/00.png">
 <meta property="og:image" content="http://cupools.github.io/images/img-sprite/01.png">
-<meta property="og:updated_time" content="2015-10-11T14:09:10.000Z">
+<meta property="og:updated_time" content="2015-10-11T14:18:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="img-sprite 实现">
 <meta name="twitter:description" content="喵了很久没有发现 Grunt 上有比较舒服的合并精灵图工具，于是有了自己写一个的想法，于是有了 img-sprite
@@ -301,19 +301,7 @@
 <li><p>没有 GM 以外的选择吗<br> 尝试了 node Jimp，缩小图片效果不理想。暂时不支持在 img-sprite 中配置其他的位图引擎</p>
 </li>
 <li><p>对其他样式的影响<br> 调整 AST 的过程中会将做这样的处理，删除 background 有关的样式并插入新的值。保留背景颜色，不支持同时定义多个背景图片</p>
-<pre><code class="javascript"><span class="keyword">var</span> colorReg = <span class="regexp">/#\w{3,6}|rgba?\(.+?\)/</span>,
-    resetBgReg = <span class="regexp">/background-[size|image|position]/</span>,
-...
-<span class="comment">// 设置 background 样式</span>
-spriteSet[i].node.value = color + <span class="string">'url('</span> + options.imgPath + basename + <span class="string">') '</span> + offsetX + <span class="string">' '</span> + offsetY;
-...
-<span class="comment">// 插入 background-size</span>
-spriteSet[i].parent.push({
-    type: <span class="string">'declaration'</span>,
-    property: <span class="string">'background-size'</span>,
-    value: ceil(properties.width / pow) + <span class="string">'px '</span> + ceil(properties.height / pow) + <span class="string">'px'</span>
-    });
-</code></pre>
+ <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> colorReg = <span class="regexp">/#\w&#123;3,6&#125;|rgba?\(.+?\)/</span>,</span><br><span class="line">    resetBgReg = <span class="regexp">/background-[size|image|position]/</span>,</span><br><span class="line">...</span><br><span class="line"><span class="comment">// 设置 background 样式</span></span><br><span class="line">spriteSet[i].node.value = color + <span class="string">'url('</span> + options.imgPath + basename + <span class="string">') '</span> + offsetX + <span class="string">' '</span> + offsetY;</span><br><span class="line">...</span><br><span class="line"><span class="comment">// 插入 background-size</span></span><br><span class="line">spriteSet[i].parent.push(&#123;</span><br><span class="line">    type: <span class="string">'declaration'</span>,</span><br><span class="line">    property: <span class="string">'background-size'</span>,</span><br><span class="line">    value: ceil(properties.width / pow) + <span class="string">'px '</span> + ceil(properties.height / pow) + <span class="string">'px'</span></span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <h2 id="更新日志">更新日志</h2><ul>
