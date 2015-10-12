@@ -5,39 +5,30 @@
   
   <title>img-sprite 实现 | (&lt;ゝω·)Kira☆~</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="喵了很久没有发现 Grunt 上有比较舒服的合并精灵图工具，于是有了自己写一个的想法，于是有了 img-sprite
+  <meta name="description" content="喵了很久没有发现 Grunt 上有比较舒服的合并精灵图工具，于是有了自己写一个的想法，于是有了 img-sprite，于是有了 grunt-img-sprite
 
 需求针对之前页面重构的方式，我对于一个精灵图处理工具的设想是这样的：
 
-像 FIS 一般，通过在 css 文件中背景图片添加标识，直接产出精灵图和新的 css 文件（不要问我为什么不用 FIS…）
-能够根据标识产出多个精灵图
-不依赖 Less 等 CSS 预处理器
-兼容 Reti">
+像 FIS 一般，通过在 css 文件中背景图片添加标识合并精灵图。跟平时一样写 css，仅在打包阶段产出精灵图和新的 css 文件（不要问我为什么不用 FIS…）">
 <meta property="og:type" content="article">
 <meta property="og:title" content="img-sprite 实现">
 <meta property="og:url" content="http://cupools.github.io/2015/10/01/notes/img-sprite 实现/index.html">
 <meta property="og:site_name" content="(<ゝω·)Kira☆~">
-<meta property="og:description" content="喵了很久没有发现 Grunt 上有比较舒服的合并精灵图工具，于是有了自己写一个的想法，于是有了 img-sprite
+<meta property="og:description" content="喵了很久没有发现 Grunt 上有比较舒服的合并精灵图工具，于是有了自己写一个的想法，于是有了 img-sprite，于是有了 grunt-img-sprite
 
 需求针对之前页面重构的方式，我对于一个精灵图处理工具的设想是这样的：
 
-像 FIS 一般，通过在 css 文件中背景图片添加标识，直接产出精灵图和新的 css 文件（不要问我为什么不用 FIS…）
-能够根据标识产出多个精灵图
-不依赖 Less 等 CSS 预处理器
-兼容 Reti">
+像 FIS 一般，通过在 css 文件中背景图片添加标识合并精灵图。跟平时一样写 css，仅在打包阶段产出精灵图和新的 css 文件（不要问我为什么不用 FIS…）">
 <meta property="og:image" content="http://cupools.github.io/images/img-sprite/00.png">
 <meta property="og:image" content="http://cupools.github.io/images/img-sprite/01.png">
-<meta property="og:updated_time" content="2015-10-11T14:18:53.000Z">
+<meta property="og:updated_time" content="2015-10-12T15:44:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="img-sprite 实现">
-<meta name="twitter:description" content="喵了很久没有发现 Grunt 上有比较舒服的合并精灵图工具，于是有了自己写一个的想法，于是有了 img-sprite
+<meta name="twitter:description" content="喵了很久没有发现 Grunt 上有比较舒服的合并精灵图工具，于是有了自己写一个的想法，于是有了 img-sprite，于是有了 grunt-img-sprite
 
 需求针对之前页面重构的方式，我对于一个精灵图处理工具的设想是这样的：
 
-像 FIS 一般，通过在 css 文件中背景图片添加标识，直接产出精灵图和新的 css 文件（不要问我为什么不用 FIS…）
-能够根据标识产出多个精灵图
-不依赖 Less 等 CSS 预处理器
-兼容 Reti">
+像 FIS 一般，通过在 css 文件中背景图片添加标识合并精灵图。跟平时一样写 css，仅在打包阶段产出精灵图和新的 css 文件（不要问我为什么不用 FIS…）">
   
     <link rel="alternative" href="/atom.xml" title="(&lt;ゝω·)Kira☆~" type="application/atom+xml">
   
@@ -220,14 +211,14 @@
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>喵了很久没有发现 Grunt 上有比较舒服的合并精灵图工具，于是有了自己写一个的想法，于是有了 <a href="https://github.com/cupools/img-sprite" target="_blank" rel="external">img-sprite</a></p>
+<p>喵了很久没有发现 Grunt 上有比较舒服的合并精灵图工具，于是有了自己写一个的想法，于是有了 <a href="https://github.com/cupools/img-sprite" target="_blank" rel="external">img-sprite</a>，于是有了 <a href="https://github.com/cupools/grunt-img-sprite" target="_blank" rel="external">grunt-img-sprite</a></p>
 </blockquote>
 <h2 id="需求">需求</h2><p>针对之前页面重构的方式，我对于一个精灵图处理工具的设想是这样的：</p>
 <ol>
-<li>像 FIS 一般，通过在 css 文件中背景图片添加标识，直接产出精灵图和新的 css 文件（不要问我为什么不用 FIS…）</li>
+<li>像 FIS 一般，通过在 css 文件中背景图片添加标识合并精灵图。<strong>跟平时一样写 css，仅在打包阶段产出精灵图和新的 css 文件</strong>（不要问我为什么不用 FIS…）</li>
 <li>能够根据标识产出多个精灵图</li>
 <li>不依赖 Less 等 CSS 预处理器</li>
-<li>兼容 Retina</li>
+<li>兼容 Retina，并自动插入媒体查询代码</li>
 <li>Base64 内联图片</li>
 <li>使用要简单，简单，简单</li>
 </ol>
@@ -298,7 +289,7 @@
 <h4 id="5-_Base64_内联图片">5. Base64 内联图片</h4><p>通过 <code>icon.png?__inline</code> 标记即可</p>
 <h4 id="6-_使用要简单，简单，简单">6. 使用要简单，简单，简单</h4><p>配置比较简单，需要目标 css 路径（src），产出 css 路径（dest），精灵图产出路径（output）三个参数。如果 src 有多个文件，那么 dest 指定路径并产出多个 css 文件；如果 src 只有一个文件，那么 dest 可以指定产出 css 的路径和文件名。依赖 GM 应该是最麻烦的地方吧，还好 windows 下的安装不麻烦。可以配合 CSS 预处理器更方便地写样式</p>
 <h2 id="其他问题">其他问题</h2><ol>
-<li><p>没有 GM 以外的选择吗<br> 尝试了 node Jimp，缩小图片效果不理想。暂时不支持在 img-sprite 中配置其他的位图引擎</p>
+<li><p>没有 GM 以外的选择吗<br> 尝试了 node Jimp，缩小图片效果不理想。暂时不支持在 img-sprite 中配置其他的位图引擎。折腾 GM 可以戳<a href="http://cupools.github.io/2015/09/29/notes/%E5%AE%89%E8%A3%85%20GraphicsMagick%E8%BF%99%E4%B8%AA%E5%A4%A7%E5%9D%91/">这里</a></p>
 </li>
 <li><p>对其他样式的影响<br> 调整 AST 的过程中会将做这样的处理，删除 background 有关的样式并插入新的值。保留背景颜色，不支持同时定义多个背景图片</p>
  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> colorReg = <span class="regexp">/#\w&#123;3,6&#125;|rgba?\(.+?\)/</span>,</span><br><span class="line">    resetBgReg = <span class="regexp">/background-[size|image|position]/</span>,</span><br><span class="line">...</span><br><span class="line"><span class="comment">// 设置 background 样式</span></span><br><span class="line">spriteSet[i].node.value = color + <span class="string">'url('</span> + options.imgPath + basename + <span class="string">') '</span> + offsetX + <span class="string">' '</span> + offsetY;</span><br><span class="line">...</span><br><span class="line"><span class="comment">// 插入 background-size</span></span><br><span class="line">spriteSet[i].parent.push(&#123;</span><br><span class="line">    type: <span class="string">'declaration'</span>,</span><br><span class="line">    property: <span class="string">'background-size'</span>,</span><br><span class="line">    value: ceil(properties.width / pow) + <span class="string">'px '</span> + ceil(properties.height / pow) + <span class="string">'px'</span></span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>

@@ -187,14 +187,14 @@
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>喵了很久没有发现 Grunt 上有比较舒服的合并精灵图工具，于是有了自己写一个的想法，于是有了 <a href="https://github.com/cupools/img-sprite">img-sprite</a></p>
+<p>喵了很久没有发现 Grunt 上有比较舒服的合并精灵图工具，于是有了自己写一个的想法，于是有了 <a href="https://github.com/cupools/img-sprite">img-sprite</a>，于是有了 <a href="https://github.com/cupools/grunt-img-sprite">grunt-img-sprite</a></p>
 </blockquote>
 <h2 id="需求">需求</h2><p>针对之前页面重构的方式，我对于一个精灵图处理工具的设想是这样的：</p>
 <ol>
-<li>像 FIS 一般，通过在 css 文件中背景图片添加标识，直接产出精灵图和新的 css 文件（不要问我为什么不用 FIS…）</li>
+<li>像 FIS 一般，通过在 css 文件中背景图片添加标识合并精灵图。<strong>跟平时一样写 css，仅在打包阶段产出精灵图和新的 css 文件</strong>（不要问我为什么不用 FIS…）</li>
 <li>能够根据标识产出多个精灵图</li>
 <li>不依赖 Less 等 CSS 预处理器</li>
-<li>兼容 Retina</li>
+<li>兼容 Retina，并自动插入媒体查询代码</li>
 <li>Base64 内联图片</li>
 <li>使用要简单，简单，简单</li>
 </ol>
