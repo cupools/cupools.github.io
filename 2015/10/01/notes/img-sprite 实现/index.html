@@ -21,7 +21,7 @@
 像 FIS 一般，通过在 css 文件中背景图片添加标识合并精灵图。跟平时一样写 css，仅在打包阶段产出精灵图和新的 css 文件（不要问我为什么不用 FIS…）">
 <meta property="og:image" content="http://cupools.github.io/images/img-sprite/00.png">
 <meta property="og:image" content="http://cupools.github.io/images/img-sprite/01.png">
-<meta property="og:updated_time" content="2015-10-12T15:44:30.000Z">
+<meta property="og:updated_time" content="2015-10-13T04:05:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="img-sprite 实现">
 <meta name="twitter:description" content="喵了很久没有发现 Grunt 上有比较舒服的合并精灵图工具，于是有了自己写一个的想法，于是有了 img-sprite，于是有了 grunt-img-sprite
@@ -224,7 +224,7 @@
 </ol>
 <a id="more"></a>
 <h2 id="使用">使用</h2><h3 id="安装">安装</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install img-sprite --save</span><br></pre></td></tr></table></figure>
-<h3 id="处理一个_css_文件">处理一个 css 文件</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> sprite = <span class="built_in">require</span>(<span class="string">'img-sprite'</span>);</span><br><span class="line"></span><br><span class="line">sprite(&#123;</span><br><span class="line">    src: <span class="string">'test/css/one.css'</span>,</span><br><span class="line">    dest: <span class="string">'test/css/dest.css'</span>,</span><br><span class="line">    output: <span class="string">'test/images'</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="处理一个_css_文件">处理一个 css 文件</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> sprite = <span class="built_in">require</span>(<span class="string">'img-sprite'</span>);</span><br><span class="line"></span><br><span class="line">sprite(&#123;</span><br><span class="line">    src: <span class="string">'test/css/main.css'</span>,</span><br><span class="line">    dest: <span class="string">'test/css/dest.css'</span>,</span><br><span class="line">    output: <span class="string">'test/images'</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p><img src="/images/img-sprite/00.png" alt="css 文件"></p>
 <p><img src="/images/img-sprite/01.png" alt="精灵图"></p>
 <h3 id="处理多个_css_文件">处理多个 css 文件</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> sprite = <span class="built_in">require</span>(<span class="string">'img-sprite'</span>);</span><br><span class="line"></span><br><span class="line">sprite(&#123;</span><br><span class="line">    src: [<span class="string">'test/css/one.css'</span>, <span class="string">'test/css/two.css'</span>],</span><br><span class="line">    dest: <span class="string">'test/css'</span>,</span><br><span class="line">    output: <span class="string">'test/images'</span>,</span><br><span class="line">    retina: <span class="literal">false</span>,</span><br><span class="line">    prefix: <span class="string">'sp-'</span>,</span><br><span class="line">    imgPath: <span class="string">'/public/images/'</span>,</span><br><span class="line">    algorithm: <span class="string">'top-down'</span>,</span><br><span class="line">    sizeLimit: <span class="number">10</span>*<span class="number">1024</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
@@ -293,6 +293,15 @@
 </li>
 <li><p>对其他样式的影响<br> 调整 AST 的过程中会将做这样的处理，删除 background 有关的样式并插入新的值。保留背景颜色，不支持同时定义多个背景图片</p>
  <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> colorReg = <span class="regexp">/#\w&#123;3,6&#125;|rgba?\(.+?\)/</span>,</span><br><span class="line">    resetBgReg = <span class="regexp">/background-[size|image|position]/</span>,</span><br><span class="line">...</span><br><span class="line"><span class="comment">// 设置 background 样式</span></span><br><span class="line">spriteSet[i].node.value = color + <span class="string">'url('</span> + options.imgPath + basename + <span class="string">') '</span> + offsetX + <span class="string">' '</span> + offsetY;</span><br><span class="line">...</span><br><span class="line"><span class="comment">// 插入 background-size</span></span><br><span class="line">spriteSet[i].parent.push(&#123;</span><br><span class="line">    type: <span class="string">'declaration'</span>,</span><br><span class="line">    property: <span class="string">'background-size'</span>,</span><br><span class="line">    value: ceil(properties.width / pow) + <span class="string">'px '</span> + ceil(properties.height / pow) + <span class="string">'px'</span></span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>缺点  </p>
+<ul>
+<li>目前仅支持处理 .png</li>
+<li>写样式的时候建议元素的宽高和背景图的宽高一致，其他情况下精灵图不方便处理。有什么好的建议请务必提 <a href="https://github.com/cupools/img-sprite/issues" target="_blank" rel="external">issue</a></li>
+<li>不支持背景图 repeat</li>
+<li>暂不支持多个背景图</li>
+<li>目前仅支持处理 .css</li>
+</ul>
 </li>
 </ol>
 <h2 id="更新日志">更新日志</h2><ul>
