@@ -102,7 +102,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/css/" style="font-size: 16.67px;">css</a> <a href="/tags/学习/" style="font-size: 13.33px;">学习</a> <a href="/tags/安全/" style="font-size: 10px;">安全</a> <a href="/tags/碎屑/" style="font-size: 10px;">碎屑</a> <a href="/tags/读书笔记/" style="font-size: 20px;">读书笔记</a> <a href="/tags/配置/" style="font-size: 10px;">配置</a>
+						<a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/Wordpress/" style="font-size: 10px;">Wordpress</a> <a href="/tags/css/" style="font-size: 16.67px;">css</a> <a href="/tags/学习/" style="font-size: 13.33px;">学习</a> <a href="/tags/安全/" style="font-size: 10px;">安全</a> <a href="/tags/碎屑/" style="font-size: 10px;">碎屑</a> <a href="/tags/读书笔记/" style="font-size: 20px;">读书笔记</a> <a href="/tags/配置/" style="font-size: 10px;">配置</a>
 					</div>
 				</section>
 				
@@ -159,6 +159,70 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-notes/NextGEN Gallery 无法建表" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/10/27/notes/NextGEN Gallery 无法建表/" class="article-date">
+  	<time datetime="2015-10-26T16:00:00.000Z" itemprop="datePublished">2015-10-27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/27/notes/NextGEN Gallery 无法建表/">NextGEN Gallery 无法建表</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>Wordpress 主题开发直接看着官方文档啃下来也是挺辛苦的，拖了三个月北京毕设半个月病假终于在跨过 NGG 的坑之后搞定了，撒花撒花</p>
+</blockquote>
+<h2 id="废话">废话</h2><p><a href="http://www.nextgen-gallery.com/">NextGEN Gallery</a> is the most popular gallery plugin ever for WordPress. Enjoy fully responsive design, a dozen gallery styles, a stunning full screen lightbox, commenting and social sharing for images, ecommerce, proofing, and more.</p>
+<p>简单来说就是一个图片管理工具，功能很强大，但也有点不和谐。我遇到的是直接在数据库删除了 <code>ngg_</code> 三个表之后，无论如何重装插件，都没法重新建表的问题。在 <a href="https://wordpress.org/support/plugin/nextgen-gallery">这里</a> 喵了一个早上没发现满意的答案，Cais (官方维护？) 在这类问题下大部分回答是清理浏览器缓存，重新启用或重装插件，还有恢复站点备份（我摔）</p>
+<p>Wordpress 版本 4.3.1-zh_CN<br>Nextgen Next 版本 2.1.15</p>
+<p><strong>下面是正文</strong></p>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Wordpress/">Wordpress</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/10/27/notes/NextGEN Gallery 无法建表/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-notes/img-sprite 实现" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -715,68 +779,6 @@
       
         <p class="article-more-link">
           <a  href="/2015/08/31/notes/模板引擎/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-books/深入浅出NodeJS" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/08/10/books/深入浅出NodeJS/" class="article-date">
-  	<time datetime="2015-08-09T16:00:00.000Z" itemprop="datePublished">2015-08-10</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/10/books/深入浅出NodeJS/">深入浅出NodeJS</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>很厉害的一本书，从其中几个模块的实现和解决思路中学到了很多东西；http 协议方面的东西也在这本书上面恶补了一番，很充实。终于吃完了，吃的很饱撒花哗啦啦</p>
-</blockquote>
-<h2 id="模块机制">模块机制</h2><h3 id="CommonJS_规范">CommonJS 规范</h3><h4 id="模块引用">模块引用</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> math = <span class="built_in">require</span>(<span class="string">'math'</span>);</span><br></pre></td></tr></table></figure>
-<p>CommonJS 规范中存在 require() 方法，接受模块标识，以此引入一个模块的 API 到当前的上下文</p>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/08/10/books/深入浅出NodeJS/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
