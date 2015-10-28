@@ -19,7 +19,7 @@
 语言基础
 防止浮点数溢出，可转换为整数计算再转小数
 调用 Object 对象定义的默认 toString 方法判断对象类型，Object.prototype.toString.apply( value ) ，仅适用于基本数据类型和内置对象。检测非内置对象使用 instanceof 和 construc">
-<meta property="og:updated_time" content="2015-09-02T11:49:20.000Z">
+<meta property="og:updated_time" content="2015-10-28T08:54:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="编写高质量代码">
 <meta name="twitter:description" content="在北京待了五天，没卫浴没网络没水没得正常吃饭，今天准备出去找房子打游击战。开始编写高质量代码。
@@ -216,9 +216,9 @@
 <li>调用 <code>Object</code> 对象定义的默认 <code>toString</code> 方法判断对象类型，<code>Object.prototype.toString.apply( value )</code> ，仅适用于基本数据类型和内置对象。检测非内置对象使用 <code>instanceof</code> 和 <code>constructor</code></li>
 <li>NaN，使用 isFinite 和 typeof 检验数字类型</li>
 <li>逗号运算符使用括号强迫进行连续运算，否则会出现先赋值再计算的问题</li>
-<li><code>hasOwnProperty</code> 可被修改（那解决方法咧）</li>
+<li><code>hasOwnProperty</code> 可被修改<s>（那解决方法咧）</s>（通过 iframe 获得原始对象）</li>
 <li>伪数组不包含数组的方法</li>
-<li><code>continue</code> 影响性能（具体咧）</li>
+<li><code>continue</code> 影响性能<s>（具体咧）</s>（<a href="http://jsperf.com/continuepsda" target="_blank" rel="external">jsperf</a> 测试发现几乎无差距）</li>
 <li>关于 <code>new</code>，避免使用和给出的原因感觉很不合理</li>
 </ul>
 <a id="more"></a>
