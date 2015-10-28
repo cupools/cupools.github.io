@@ -102,7 +102,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/Wordpress/" style="font-size: 10px;">Wordpress</a> <a href="/tags/css/" style="font-size: 16.67px;">css</a> <a href="/tags/学习/" style="font-size: 13.33px;">学习</a> <a href="/tags/安全/" style="font-size: 10px;">安全</a> <a href="/tags/碎屑/" style="font-size: 10px;">碎屑</a> <a href="/tags/读书笔记/" style="font-size: 20px;">读书笔记</a> <a href="/tags/配置/" style="font-size: 10px;">配置</a>
+						<a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/Wordpress/" style="font-size: 10px;">Wordpress</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/学习/" style="font-size: 12.5px;">学习</a> <a href="/tags/安全/" style="font-size: 10px;">安全</a> <a href="/tags/碎屑/" style="font-size: 10px;">碎屑</a> <a href="/tags/读书笔记/" style="font-size: 17.5px;">读书笔记</a> <a href="/tags/配置/" style="font-size: 10px;">配置</a>
 					</div>
 				</section>
 				
@@ -159,6 +159,76 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-books/编写高质量代码" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/07/02/books/编写高质量代码/" class="article-date">
+  	<time datetime="2015-07-01T16:00:00.000Z" itemprop="datePublished">2015-07-02</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/07/02/books/编写高质量代码/">编写高质量代码</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>在北京待了五天，没卫浴没网络没水没得正常吃饭，今天准备出去找房子打游击战。开始编写<s>高质量</s>代码。</p>
+</blockquote>
+<h2 id="语言基础">语言基础</h2><ul>
+<li>防止浮点数溢出，可转换为整数计算再转小数</li>
+<li>调用 <code>Object</code> 对象定义的默认 <code>toString</code> 方法判断对象类型，<code>Object.prototype.toString.apply( value )</code> ，仅适用于基本数据类型和内置对象。检测非内置对象使用 <code>instanceof</code> 和 <code>constructor</code></li>
+<li>NaN，使用 isFinite 和 typeof 检验数字类型</li>
+<li>逗号运算符使用括号强迫进行连续运算，否则会出现先赋值再计算的问题</li>
+<li><code>hasOwnProperty</code> 可被修改（那解决方法咧）</li>
+<li>伪数组不包含数组的方法</li>
+<li><code>continue</code> 影响性能（具体咧）</li>
+<li>关于 <code>new</code>，避免使用和给出的原因感觉很不合理</li>
+</ul>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/07/02/books/编写高质量代码/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-books/Javascript设计模式" class="article article-type-post" itemscope itemprop="blogPost">
   

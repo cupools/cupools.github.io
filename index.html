@@ -102,7 +102,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/Wordpress/" style="font-size: 10px;">Wordpress</a> <a href="/tags/css/" style="font-size: 16.67px;">css</a> <a href="/tags/学习/" style="font-size: 13.33px;">学习</a> <a href="/tags/安全/" style="font-size: 10px;">安全</a> <a href="/tags/碎屑/" style="font-size: 10px;">碎屑</a> <a href="/tags/读书笔记/" style="font-size: 20px;">读书笔记</a> <a href="/tags/配置/" style="font-size: 10px;">配置</a>
+						<a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/Wordpress/" style="font-size: 10px;">Wordpress</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/学习/" style="font-size: 12.5px;">学习</a> <a href="/tags/安全/" style="font-size: 10px;">安全</a> <a href="/tags/碎屑/" style="font-size: 10px;">碎屑</a> <a href="/tags/读书笔记/" style="font-size: 17.5px;">读书笔记</a> <a href="/tags/配置/" style="font-size: 10px;">配置</a>
 					</div>
 				</section>
 				
@@ -159,6 +159,65 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-notes/读 observer.js" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/10/28/notes/读 observer.js/" class="article-date">
+  	<time datetime="2015-10-27T16:00:00.000Z" itemprop="datePublished">2015-10-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/28/notes/读 observer.js/">读 observer.js</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>只有158行代码的 <a href="https://github.com/kmdjs/observejs">observer.js</a> 确实很吸引人，奔着如何观察复杂对象和数组的变化的目的啃了一遍源码，确实有收获</p>
+<p>直接贴加了注释的源码~~</p>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/10/28/notes/读 observer.js/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-notes/NextGEN Gallery 无法建表" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -718,67 +777,6 @@
       
         <p class="article-more-link">
           <a  href="/2015/09/01/notes/关于 CSRF/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-notes/模板引擎" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/08/31/notes/模板引擎/" class="article-date">
-  	<time datetime="2015-08-30T16:00:00.000Z" itemprop="datePublished">2015-08-31</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/31/notes/模板引擎/">模板引擎</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>在看《深入浅出NodeJS》的时候发现对模板引擎有比较详细的讲解，看下来还是比较清晰的。于是决定记录一下_(:з」∠)_</p>
-</blockquote>
-<h3 id="从最简单开始">从最简单开始</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">'test: &#123;&#123;obj&#125;&#125; and &#123;&#123;obj&#125;&#125;'</span>;</span><br><span class="line">render(str, <span class="number">123</span>);</span><br><span class="line"><span class="comment">// =&gt; "test: 123 and 123"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">render</span>(<span class="params">str, obj</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> compiled = compile(str);</span><br><span class="line">    <span class="keyword">return</span> compiled(obj);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">compile</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> reg = <span class="regexp">/\&#123;\&#123;([\w\W]+?)\&#125;\&#125;/g</span>,</span><br><span class="line">        tpl = str.replace(reg, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">'\' + obj + \''</span>;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="comment">// =&gt; "test: ' + obj + ' and ' + obj + '"</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> fn = <span class="string">'var ret = \''</span>  + tpl + <span class="string">'\';return ret;'</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">'obj'</span>, fn);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习/">学习</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/08/31/notes/模板引擎/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>

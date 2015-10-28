@@ -102,7 +102,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/Wordpress/" style="font-size: 10px;">Wordpress</a> <a href="/tags/css/" style="font-size: 16.67px;">css</a> <a href="/tags/学习/" style="font-size: 13.33px;">学习</a> <a href="/tags/安全/" style="font-size: 10px;">安全</a> <a href="/tags/碎屑/" style="font-size: 10px;">碎屑</a> <a href="/tags/读书笔记/" style="font-size: 20px;">读书笔记</a> <a href="/tags/配置/" style="font-size: 10px;">配置</a>
+						<a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/Wordpress/" style="font-size: 10px;">Wordpress</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/学习/" style="font-size: 12.5px;">学习</a> <a href="/tags/安全/" style="font-size: 10px;">安全</a> <a href="/tags/碎屑/" style="font-size: 10px;">碎屑</a> <a href="/tags/读书笔记/" style="font-size: 17.5px;">读书笔记</a> <a href="/tags/配置/" style="font-size: 10px;">配置</a>
 					</div>
 				</section>
 				
@@ -160,11 +160,11 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-books/jQuery技术内幕" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-notes/模板引擎" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/08/10/books/jQuery技术内幕/" class="article-date">
-  	<time datetime="2015-08-09T16:00:00.000Z" itemprop="datePublished">2015-08-10</time>
+      <a href="/2015/08/31/notes/模板引擎/" class="article-date">
+  	<time datetime="2015-08-30T16:00:00.000Z" itemprop="datePublished">2015-08-31</time>
 </a>
     </div>
   
@@ -177,7 +177,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/10/books/jQuery技术内幕/">jQuery技术内幕</a>
+      <a class="article-title" href="/2015/08/31/notes/模板引擎/">模板引擎</a>
     </h1>
   
 
@@ -187,9 +187,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>丢笔记了有点可怜..重新写好了。书和代码一样重，拿在手上很有分量恩。</p>
+<p>在看《深入浅出NodeJS》的时候发现对模板引擎有比较详细的讲解，看下来还是比较清晰的。于是决定记录一下_(:з」∠)_</p>
 </blockquote>
-<h2 id="总体架构">总体架构</h2><h4 id="总体架构-1">总体架构</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">window, undefined</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 构造 jQuery 对象</span></span><br><span class="line">    <span class="keyword">var</span> jQuery = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> jQuery = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> jQuery = <span class="function"><span class="keyword">function</span>(<span class="params">selector, context</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> jQuery.fn.init(selector, context, rootjQuery);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> jQuery;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)();</span><br><span class="line">    <span class="comment">// 工具方法 Utilities</span></span><br><span class="line">    <span class="comment">// 回调函数列表 Callbacks Object</span></span><br><span class="line">    <span class="comment">// 异步队列 Deferred Object</span></span><br><span class="line">    <span class="comment">// 浏览器功能测试 Support</span></span><br><span class="line">    <span class="comment">// 数据缓存 Data</span></span><br><span class="line">    <span class="comment">// 队列 Queue</span></span><br><span class="line">    <span class="comment">// 属性操作 Attributes</span></span><br><span class="line">    <span class="comment">// 事件系统 Events</span></span><br><span class="line">    <span class="comment">// 选择器 Sizzle</span></span><br><span class="line">    <span class="comment">// DOM 遍历 Traversing</span></span><br><span class="line">    <span class="comment">// DOM 操作 Manipulation</span></span><br><span class="line">    <span class="comment">// 样式操作 CSS（计算样式、内联样式）</span></span><br><span class="line">    <span class="comment">// 异步请求 Ajax</span></span><br><span class="line">    <span class="comment">// 动画 Effects</span></span><br><span class="line">    <span class="comment">// 坐标 Offset、尺寸 Dimensions</span></span><br><span class="line">&#125;)(<span class="built_in">window</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="从最简单开始">从最简单开始</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">'test: &#123;&#123;obj&#125;&#125; and &#123;&#123;obj&#125;&#125;'</span>;</span><br><span class="line">render(str, <span class="number">123</span>);</span><br><span class="line"><span class="comment">// =&gt; "test: 123 and 123"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">render</span>(<span class="params">str, obj</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> compiled = compile(str);</span><br><span class="line">    <span class="keyword">return</span> compiled(obj);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">compile</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> reg = <span class="regexp">/\&#123;\&#123;([\w\W]+?)\&#125;\&#125;/g</span>,</span><br><span class="line">        tpl = str.replace(reg, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">'\' + obj + \''</span>;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="comment">// =&gt; "test: ' + obj + ' and ' + obj + '"</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> fn = <span class="string">'var ret = \''</span>  + tpl + <span class="string">'\';return ret;'</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">'obj'</span>, fn);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -197,14 +197,14 @@
       
       
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习/">学习</a></li></ul>
 	</div>
 
       
 
       
         <p class="article-more-link">
-          <a  href="/2015/08/10/books/jQuery技术内幕/#more">more >></a>
+          <a  href="/2015/08/31/notes/模板引擎/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -267,6 +267,136 @@
       
         <p class="article-more-link">
           <a  href="/2015/08/10/books/深入浅出NodeJS/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-books/jQuery技术内幕" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/08/10/books/jQuery技术内幕/" class="article-date">
+  	<time datetime="2015-08-09T16:00:00.000Z" itemprop="datePublished">2015-08-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/10/books/jQuery技术内幕/">jQuery技术内幕</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>丢笔记了有点可怜..重新写好了。书和代码一样重，拿在手上很有分量恩。</p>
+</blockquote>
+<h2 id="总体架构">总体架构</h2><h4 id="总体架构-1">总体架构</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">window, undefined</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 构造 jQuery 对象</span></span><br><span class="line">    <span class="keyword">var</span> jQuery = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> jQuery = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> jQuery = <span class="function"><span class="keyword">function</span>(<span class="params">selector, context</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> jQuery.fn.init(selector, context, rootjQuery);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> jQuery;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)();</span><br><span class="line">    <span class="comment">// 工具方法 Utilities</span></span><br><span class="line">    <span class="comment">// 回调函数列表 Callbacks Object</span></span><br><span class="line">    <span class="comment">// 异步队列 Deferred Object</span></span><br><span class="line">    <span class="comment">// 浏览器功能测试 Support</span></span><br><span class="line">    <span class="comment">// 数据缓存 Data</span></span><br><span class="line">    <span class="comment">// 队列 Queue</span></span><br><span class="line">    <span class="comment">// 属性操作 Attributes</span></span><br><span class="line">    <span class="comment">// 事件系统 Events</span></span><br><span class="line">    <span class="comment">// 选择器 Sizzle</span></span><br><span class="line">    <span class="comment">// DOM 遍历 Traversing</span></span><br><span class="line">    <span class="comment">// DOM 操作 Manipulation</span></span><br><span class="line">    <span class="comment">// 样式操作 CSS（计算样式、内联样式）</span></span><br><span class="line">    <span class="comment">// 异步请求 Ajax</span></span><br><span class="line">    <span class="comment">// 动画 Effects</span></span><br><span class="line">    <span class="comment">// 坐标 Offset、尺寸 Dimensions</span></span><br><span class="line">&#125;)(<span class="built_in">window</span>);</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/08/10/books/jQuery技术内幕/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-books/基于MVC的Javascript Web富应用开发" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/08/01/books/基于MVC的Javascript Web富应用开发/" class="article-date">
+  	<time datetime="2015-07-31T16:00:00.000Z" itemprop="datePublished">2015-08-01</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/01/books/基于MVC的Javascript Web富应用开发/">基于MVC的Javascript Web富应用开发</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>接到 HR 的面试通知，NodeJS 还没喵完便急匆匆地翻了这本书。等了好久还是没货打折只能跟别人借了</p>
+</blockquote>
+<h2 id="MVC和类">MVC和类</h2><h3 id="什么是_MVC">什么是 MVC</h3><p>MVC 是一种设计模式，将应用划分为3个部分：数据（模型），展示层（视图），用户交互层（控制器）。一个事件发生的过程是这样的</p>
+<ol>
+<li>用户和应用发生交互</li>
+</ol>
+<ul>
+<li>控制器的事件处理器被触发</li>
+<li>控制器从模型中请求数据，并将棋交给视图</li>
+<li>视图将数据呈现给用户</li>
+</ul>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/08/01/books/基于MVC的Javascript Web富应用开发/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -365,75 +495,6 @@
       
         <p class="article-more-link">
           <a  href="/2015/08/01/notes/正则表达式/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-books/基于MVC的Javascript Web富应用开发" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/08/01/books/基于MVC的Javascript Web富应用开发/" class="article-date">
-  	<time datetime="2015-07-31T16:00:00.000Z" itemprop="datePublished">2015-08-01</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/01/books/基于MVC的Javascript Web富应用开发/">基于MVC的Javascript Web富应用开发</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>接到 HR 的面试通知，NodeJS 还没喵完便急匆匆地翻了这本书。等了好久还是没货打折只能跟别人借了</p>
-</blockquote>
-<h2 id="MVC和类">MVC和类</h2><h3 id="什么是_MVC">什么是 MVC</h3><p>MVC 是一种设计模式，将应用划分为3个部分：数据（模型），展示层（视图），用户交互层（控制器）。一个事件发生的过程是这样的</p>
-<ol>
-<li>用户和应用发生交互</li>
-</ol>
-<ul>
-<li>控制器的事件处理器被触发</li>
-<li>控制器从模型中请求数据，并将棋交给视图</li>
-<li>视图将数据呈现给用户</li>
-</ul>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/08/01/books/基于MVC的Javascript Web富应用开发/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -742,76 +803,6 @@
       
         <p class="article-more-link">
           <a  href="/2015/07/09/notes/关于apply和call/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-books/编写高质量代码" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/07/02/books/编写高质量代码/" class="article-date">
-  	<time datetime="2015-07-01T16:00:00.000Z" itemprop="datePublished">2015-07-02</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/02/books/编写高质量代码/">编写高质量代码</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>在北京待了五天，没卫浴没网络没水没得正常吃饭，今天准备出去找房子打游击战。开始编写<s>高质量</s>代码。</p>
-</blockquote>
-<h2 id="语言基础">语言基础</h2><ul>
-<li>防止浮点数溢出，可转换为整数计算再转小数</li>
-<li>调用 <code>Object</code> 对象定义的默认 <code>toString</code> 方法判断对象类型，<code>Object.prototype.toString.apply( value )</code> ，仅适用于基本数据类型和内置对象。检测非内置对象使用 <code>instanceof</code> 和 <code>constructor</code></li>
-<li>NaN，使用 isFinite 和 typeof 检验数字类型</li>
-<li>逗号运算符使用括号强迫进行连续运算，否则会出现先赋值再计算的问题</li>
-<li><code>hasOwnProperty</code> 可被修改（那解决方法咧）</li>
-<li>伪数组不包含数组的方法</li>
-<li><code>continue</code> 影响性能（具体咧）</li>
-<li>关于 <code>new</code>，避免使用和给出的原因感觉很不合理</li>
-</ul>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/07/02/books/编写高质量代码/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
