@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>读 observerjs | (&lt;ゝω·)Kira☆~</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="只有158行代码的 observerjs 确实很吸引人，奔着如何观察复杂对象和数组的变化的目的啃了一遍源码，确实有收获
+直接贴加了注释的源码~~">
+<meta property="og:type" content="article">
+<meta property="og:title" content="读 observerjs">
+<meta property="og:url" content="http://cupools.github.io/cigcelex80000tlo2jal81rfm/index.html">
+<meta property="og:site_name" content="(<ゝω·)Kira☆~">
+<meta property="og:description" content="只有158行代码的 observerjs 确实很吸引人，奔着如何观察复杂对象和数组的变化的目的啃了一遍源码，确实有收获
+直接贴加了注释的源码~~">
+<meta property="og:updated_time" content="2015-10-29T15:46:11.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="读 observerjs">
+<meta name="twitter:description" content="只有158行代码的 observerjs 确实很吸引人，奔着如何观察复杂对象和数组的变化的目的啃了一遍源码，确实有收获
+直接贴加了注释的源码~~">
+  
+    <link rel="alternative" href="/atom.xml" title="(&lt;ゝω·)Kira☆~" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<!-- <img lazy-src="/img/avatar.jpg" class="js-avatar"> -->
+			<img src="/img/avatar.jpg" class="js-avatar show" style="width: 100%;height: 100%;opacity: 1;">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">liyh</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">笔记</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/cupools" title="github">github</a>
+					        
+								<a class="mail" target="_blank" href="mailto:cupools@gmail.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/Wordpress/" style="font-size: 10px;">Wordpress</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/学习/" style="font-size: 12.5px;">学习</a> <a href="/tags/安全/" style="font-size: 10px;">安全</a> <a href="/tags/碎屑/" style="font-size: 10px;">碎屑</a> <a href="/tags/读书笔记/" style="font-size: 17.5px;">读书笔记</a> <a href="/tags/配置/" style="font-size: 10px;">配置</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">在校学生，连滚带爬啃书</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">liyh</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="/img/avatar.jpg" class="js-avatar show" style="width: 100%;height: 100%;opacity: 1;">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">liyh</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">笔记</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/cupools" title="github">github</a>
+			        
+						<a class="mail" target="_blank" href="mailto:cupools@gmail.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-notes/读 observerjs" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/cigcelex80000tlo2jal81rfm/" class="article-date">
+  	<time datetime="2015-10-27T16:00:00.000Z" itemprop="datePublished">2015-10-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      读 observerjs
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>只有158行代码的 <a href="https://github.com/kmdjs/observejs" target="_blank" rel="external">observerjs</a> 确实很吸引人，奔着如何观察复杂对象和数组的变化的目的啃了一遍源码，确实有收获</p>
+<p>直接贴加了注释的源码~~</p>
+<a id="more"></a>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* observejs --- By dnt http://kmdjs.github.io/</span><br><span class="line"> * Github: https://github.com/kmdjs/observejs</span><br><span class="line"> * MIT Licensed.</span><br><span class="line"> */</span></span><br><span class="line">;</span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">win</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> observe = <span class="function"><span class="keyword">function</span>(<span class="params">target, arr, callback</span>) </span>&#123;</span><br><span class="line">        <span class="comment">/**</span><br><span class="line">         * 构造函数</span><br><span class="line">         * @param target 观察的对象</span><br><span class="line">         * @param arr 观察的属性</span><br><span class="line">         * @param callback 属性变化时触发的回调函数</span><br><span class="line">         */</span></span><br><span class="line">        <span class="keyword">var</span> _observe = <span class="function"><span class="keyword">function</span>(<span class="params">target, arr, callback</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (!target.$observer) &#123;</span><br><span class="line">                target.$observer = <span class="keyword">this</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">var</span> $observer = target.$observer;</span><br><span class="line">            <span class="keyword">var</span> eventPropArr = [];	<span class="comment">// 保存 target 中需要观察的属性</span></span><br><span class="line">            <span class="keyword">if</span> (observe.isArray(target)) &#123;</span><br><span class="line">                <span class="keyword">if</span> (target.length === <span class="number">0</span>) &#123;</span><br><span class="line">                    target.$observeProps = &#123;&#125;;	<span class="comment">// 用于储存 target 的路径和各个属性的值</span></span><br><span class="line">                    target.$observeProps.$observerPath = <span class="string">"#"</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">// 在数组的原型方法上注入钩子</span></span><br><span class="line">                $observer.mock(target);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 遍历 target 的属性，可以把数组元素作为属性对待</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">var</span> prop <span class="keyword">in</span> target) &#123;</span><br><span class="line">                <span class="keyword">if</span> (target.hasOwnProperty(prop)) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (callback) &#123;</span><br><span class="line">                        <span class="comment">// arr 为数组</span></span><br><span class="line">                        <span class="keyword">if</span> (observe.isArray(arr) &amp;&amp; observe.isInArray(arr, prop)) &#123;</span><br><span class="line">                            eventPropArr.push(prop);</span><br><span class="line">                            $observer.watch(target, prop);</span><br><span class="line"></span><br><span class="line">                        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (observe.isString(arr) &amp;&amp; prop == arr) &#123;</span><br><span class="line">                            <span class="comment">// arr 为字符串</span></span><br><span class="line">                            eventPropArr.push(prop);</span><br><span class="line">                            $observer.watch(target, prop);</span><br><span class="line">                        &#125;</span><br><span class="line"></span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        <span class="comment">// 缺少 callback 参数（实际为 arr）</span></span><br><span class="line">                        eventPropArr.push(prop);</span><br><span class="line">                        $observer.watch(target, prop);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            $observer.target = target;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 保存 target 变化时触发的处理函数的堆栈</span></span><br><span class="line">            <span class="keyword">if</span> (!$observer.propertyChangedHandler) &#123;</span><br><span class="line">                $observer.propertyChangedHandler = [];</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 参数修正</span></span><br><span class="line">            <span class="keyword">var</span> propChanged = callback ? callback : arr;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 把当前回调函数和观察的属性压入 target 的回调队列</span></span><br><span class="line">            $observer.propertyChangedHandler.push(&#123;</span><br><span class="line">                all: !callback,</span><br><span class="line">                propChanged: propChanged,</span><br><span class="line">                eventPropArr: eventPropArr</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        _observe.prototype = &#123;</span><br><span class="line">            <span class="comment">/**</span><br><span class="line">             * target 变化时触发，通过在数组原型方法注入钩子和 definePorprty 实现</span><br><span class="line">             */</span></span><br><span class="line">            <span class="string">"onPropertyChanged"</span>: <span class="function"><span class="keyword">function</span>(<span class="params">prop, value, oldValue, target, path</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">if</span> (value !== oldValue &amp;&amp; <span class="keyword">this</span>.propertyChangedHandler) &#123;</span><br><span class="line">                    <span class="keyword">var</span> rootName = observe._getRootName(prop, path);	<span class="comment">// 得到根路径名，允许在回调函数中提供属性名（path）参数</span></span><br><span class="line"></span><br><span class="line">                    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, len = <span class="keyword">this</span>.propertyChangedHandler.length; i &lt; len; i++) &#123;</span><br><span class="line">                        <span class="keyword">var</span> handler = <span class="keyword">this</span>.propertyChangedHandler[i];</span><br><span class="line">                        <span class="keyword">if</span> (handler.all || observe.isInArray(handler.eventPropArr, rootName) || rootName.indexOf(<span class="string">"Array-"</span>) === <span class="number">0</span>) &#123;</span><br><span class="line">                            <span class="comment">// 这里触发回调函数</span></span><br><span class="line">                            handler.propChanged.call(<span class="keyword">this</span>.target, prop, value, oldValue, path);</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">// 如果通过数组的原型方法触发，则重新观察数组，这里的 prop 为 "Array-slice" 等</span></span><br><span class="line">                <span class="keyword">if</span> (prop.indexOf(<span class="string">"Array-"</span>) !== <span class="number">0</span> &amp;&amp; <span class="keyword">typeof</span> value === <span class="string">"object"</span>) &#123;</span><br><span class="line">                    <span class="keyword">this</span>.watch(target, prop, target.$observeProps.$observerPath);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="comment">/**</span><br><span class="line">             * Array 的原型方法注入钩子，在调用时触发 onPropertyChanged</span><br><span class="line">             */</span></span><br><span class="line">            <span class="string">"mock"</span>: <span class="function"><span class="keyword">function</span>(<span class="params">target</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">var</span> self = <span class="keyword">this</span>;</span><br><span class="line">                observe.methods.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</span><br><span class="line">                    target[item] = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                        <span class="keyword">var</span> old = <span class="built_in">Array</span>.prototype.slice.call(<span class="keyword">this</span>, <span class="number">0</span>);</span><br><span class="line">                        <span class="keyword">var</span> result = <span class="built_in">Array</span>.prototype[item].apply(<span class="keyword">this</span>, <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>));</span><br><span class="line">                        <span class="keyword">if</span> (<span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"\\b"</span> + item + <span class="string">"\\b"</span>).test(observe.triggerStr)) &#123;</span><br><span class="line">                            <span class="keyword">for</span> (<span class="keyword">var</span> cprop <span class="keyword">in</span> <span class="keyword">this</span>) &#123;</span><br><span class="line">                                <span class="keyword">if</span> (<span class="keyword">this</span>.hasOwnProperty(cprop) &amp;&amp; !observe.isFunction(<span class="keyword">this</span>[cprop])) &#123;</span><br><span class="line">                                    self.watch(<span class="keyword">this</span>, cprop, <span class="keyword">this</span>.$observeProps.$observerPath);</span><br><span class="line">                                &#125;</span><br><span class="line">                            &#125;</span><br><span class="line">                            <span class="comment">// todo</span></span><br><span class="line">                            <span class="comment">// 这里作者应该是打算做优化，避免短时间内触发多次回调函数</span></span><br><span class="line">                            self.onPropertyChanged(<span class="string">"Array-"</span> + item, <span class="keyword">this</span>, old, <span class="keyword">this</span>, <span class="keyword">this</span>.$observeProps.$observerPath);</span><br><span class="line">                        &#125;</span><br><span class="line">                        <span class="keyword">return</span> result;</span><br><span class="line">                    &#125;;</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="comment">/**</span><br><span class="line">             * 观察对象</span><br><span class="line">             */</span></span><br><span class="line">            <span class="string">"watch"</span>: <span class="function"><span class="keyword">function</span>(<span class="params">target, prop, path</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">if</span> (prop === <span class="string">"$observeProps"</span> || prop === <span class="string">"$observer"</span>) <span class="keyword">return</span>;</span><br><span class="line">                <span class="keyword">if</span> (observe.isFunction(target[prop])) <span class="keyword">return</span>;</span><br><span class="line">                <span class="keyword">if</span> (!target.$observeProps) target.$observeProps = &#123;&#125;;</span><br><span class="line">                <span class="keyword">if</span> (path !== <span class="literal">undefined</span>) &#123;</span><br><span class="line">                    target.$observeProps.$observerPath = path;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    target.$observeProps.$observerPath = <span class="string">"#"</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">var</span> self = <span class="keyword">this</span>;</span><br><span class="line">                <span class="keyword">var</span> currentValue = target.$observeProps[prop] = target[prop];</span><br><span class="line"></span><br><span class="line">                <span class="comment">// get, set 操作的是 target.$observeProps[prop]</span></span><br><span class="line">                <span class="built_in">Object</span>.defineProperty(target, prop, &#123;</span><br><span class="line">                    get: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                        <span class="keyword">return</span> <span class="keyword">this</span>.$observeProps[prop];</span><br><span class="line">                    &#125;,</span><br><span class="line">                    set: <span class="function"><span class="keyword">function</span>(<span class="params">value</span>) </span>&#123;</span><br><span class="line">                        <span class="keyword">var</span> old = <span class="keyword">this</span>.$observeProps[prop];</span><br><span class="line">                        <span class="keyword">this</span>.$observeProps[prop] = value;</span><br><span class="line">                        <span class="comment">// 值改变时触发回调</span></span><br><span class="line">                        self.onPropertyChanged(prop, value, old, <span class="keyword">this</span>, target.$observeProps.$observerPath);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">                <span class="keyword">if</span> (<span class="keyword">typeof</span> currentValue == <span class="string">"object"</span>) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (observe.isArray(currentValue)) &#123;</span><br><span class="line">                        <span class="comment">// 如果值是数组，则注入钩子，处理同构造函数一致</span></span><br><span class="line">                        <span class="keyword">this</span>.mock(currentValue);</span><br><span class="line"></span><br><span class="line">                        <span class="keyword">if</span> (currentValue.length === <span class="number">0</span>) &#123;</span><br><span class="line">                            <span class="keyword">if</span> (!currentValue.$observeProps) currentValue.$observeProps = &#123;&#125;;</span><br><span class="line">                            <span class="keyword">if</span> (path !== <span class="literal">undefined</span>) &#123;</span><br><span class="line">                                currentValue.$observeProps.$observerPath = path;</span><br><span class="line">                            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                                currentValue.$observeProps.$observerPath = <span class="string">"#"</span>;</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    <span class="keyword">for</span> (<span class="keyword">var</span> cprop <span class="keyword">in</span> currentValue) &#123;</span><br><span class="line">                        <span class="keyword">if</span> (currentValue.hasOwnProperty(cprop)) &#123;</span><br><span class="line">                            <span class="keyword">this</span>.watch(currentValue, cprop, target.$observeProps.$observerPath + <span class="string">"-"</span> + prop);</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> _observe(target, arr, callback)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 数组的原型方法</span></span><br><span class="line">    observe.methods = [<span class="string">"concat"</span>, <span class="string">"every"</span>, <span class="string">"filter"</span>, <span class="string">"forEach"</span>, <span class="string">"indexOf"</span>, <span class="string">"join"</span>, <span class="string">"lastIndexOf"</span>, <span class="string">"map"</span>, <span class="string">"pop"</span>, <span class="string">"push"</span>, <span class="string">"reduce"</span>, <span class="string">"reduceRight"</span>, <span class="string">"reverse"</span>, <span class="string">"shift"</span>, <span class="string">"slice"</span>, <span class="string">"some"</span>, <span class="string">"sort"</span>, <span class="string">"splice"</span>, <span class="string">"unshift"</span>, <span class="string">"toLocaleString"</span>, <span class="string">"toString"</span>, <span class="string">"size"</span>]</span><br><span class="line">    <span class="comment">// 会造成数组改变的原型方法</span></span><br><span class="line">    observe.triggerStr = [<span class="string">"concat"</span>, <span class="string">"pop"</span>, <span class="string">"push"</span>, <span class="string">"reverse"</span>, <span class="string">"shift"</span>, <span class="string">"sort"</span>, <span class="string">"splice"</span>, <span class="string">"unshift"</span>, <span class="string">"size"</span>].join(<span class="string">","</span>)</span><br><span class="line"></span><br><span class="line">    observe.isArray = <span class="function"><span class="keyword">function</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.call(obj) === <span class="string">'[object Array]'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    observe.isString = <span class="function"><span class="keyword">function</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">typeof</span> obj === <span class="string">"string"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    observe.isInArray = <span class="function"><span class="keyword">function</span>(<span class="params">arr, item</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = arr.length; --i &gt; -<span class="number">1</span>;) &#123;</span><br><span class="line">            <span class="keyword">if</span> (item === arr[i]) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    observe.isFunction = <span class="function"><span class="keyword">function</span>(<span class="params">obj</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.call(obj) == <span class="string">'[object Function]'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    observe.twoWay = <span class="function"><span class="keyword">function</span>(<span class="params">objA, aProp, objB, bProp</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> objA[aProp] === <span class="string">"object"</span> &amp;&amp; <span class="keyword">typeof</span> objB[bProp] === <span class="string">"object"</span>) &#123;</span><br><span class="line">            observe(objA, aProp, <span class="function"><span class="keyword">function</span>(<span class="params">name, value</span>) </span>&#123;</span><br><span class="line">                objB[bProp] = <span class="keyword">this</span>[aProp];</span><br><span class="line">            &#125;)</span><br><span class="line">            observe(objB, bProp, <span class="function"><span class="keyword">function</span>(<span class="params">name, value</span>) </span>&#123;</span><br><span class="line">                objA[aProp] = <span class="keyword">this</span>[bProp];</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            observe(objA, aProp, <span class="function"><span class="keyword">function</span>(<span class="params">name, value</span>) </span>&#123;</span><br><span class="line">                objB[bProp] = value;</span><br><span class="line">            &#125;)</span><br><span class="line">            observe(objB, bProp, <span class="function"><span class="keyword">function</span>(<span class="params">name, value</span>) </span>&#123;</span><br><span class="line">                objA[aProp] = value;</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    observe._getRootName = <span class="function"><span class="keyword">function</span>(<span class="params">prop, path</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (path === <span class="string">"#"</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> prop;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> path.split(<span class="string">"-"</span>)[<span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    observe.add = <span class="function"><span class="keyword">function</span>(<span class="params">obj, prop, value</span>) </span>&#123;</span><br><span class="line">        obj[prop] = value;</span><br><span class="line">        <span class="keyword">var</span> $observer = obj.$observer;</span><br><span class="line">        $observer.watch(obj, prop);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">Array</span>.prototype.size = <span class="function"><span class="keyword">function</span>(<span class="params">length</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.length = length;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">module</span> != <span class="string">'undefined'</span> &amp;&amp; <span class="built_in">module</span>.exports &amp;&amp; <span class="keyword">this</span>.module !== <span class="built_in">module</span>) &#123;</span><br><span class="line">        <span class="built_in">module</span>.exports = observe</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> define === <span class="string">'function'</span> &amp;&amp; define.amd) &#123;</span><br><span class="line">        define(observe)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        win.observe = observe</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">&#125;)(<span class="built_in">Function</span>(<span class="string">'return this'</span>)());</span><br></pre></td></tr></table></figure>
+<h3 id="读后感">读后感</h3><ul>
+<li><code>get</code>、 <code>set</code> 方法观察对象，值保存在 <code>.$observer</code> 内避免重复 set</li>
+<li>hook 所有会改变数组的原型方法，如果重新引用一个数组则需要重新 watch</li>
+<li>值改变后会马上触发回调函数，如果同时触发多个则会造成性能问题，可以通过加入队列和触发轮询优化</li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/cig92aghp0000kcqc2yi6qh8r/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">NextGEN Gallery 无法建表</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 liyh
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-67000695-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
