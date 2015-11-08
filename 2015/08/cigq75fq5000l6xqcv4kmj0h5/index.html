@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>模板引擎 | (&lt;ゝω·)Kira☆~</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="在看《深入浅出NodeJS》的时候发现对模板引擎有比较详细的讲解，看下来还是比较清晰的。于是决定记录一下_(:з」∠)_
+
+从最简单开始var str = &apos;test: &amp;#123;&amp;#123;obj&amp;#125;&amp;#125; and &amp;#123;&amp;#123;obj&amp;#125;&amp;#125;&apos;;render(str, 123);// =&amp;gt; &quot;test: 123 and 123&quot;function">
+<meta property="og:type" content="article">
+<meta property="og:title" content="模板引擎">
+<meta property="og:url" content="http://cupools.github.io/2015/08/cigq75fq5000l6xqcv4kmj0h5/index.html">
+<meta property="og:site_name" content="(<ゝω·)Kira☆~">
+<meta property="og:description" content="在看《深入浅出NodeJS》的时候发现对模板引擎有比较详细的讲解，看下来还是比较清晰的。于是决定记录一下_(:з」∠)_
+
+从最简单开始var str = &apos;test: &amp;#123;&amp;#123;obj&amp;#125;&amp;#125; and &amp;#123;&amp;#123;obj&amp;#125;&amp;#125;&apos;;render(str, 123);// =&amp;gt; &quot;test: 123 and 123&quot;function">
+<meta property="og:updated_time" content="2015-09-01T13:14:54.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="模板引擎">
+<meta name="twitter:description" content="在看《深入浅出NodeJS》的时候发现对模板引擎有比较详细的讲解，看下来还是比较清晰的。于是决定记录一下_(:з」∠)_
+
+从最简单开始var str = &apos;test: &amp;#123;&amp;#123;obj&amp;#125;&amp;#125; and &amp;#123;&amp;#123;obj&amp;#125;&amp;#125;&apos;;render(str, 123);// =&amp;gt; &quot;test: 123 and 123&quot;function">
+  
+    <link rel="alternative" href="/atom.xml" title="(&lt;ゝω·)Kira☆~" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<!-- <img lazy-src="/img/avatar.jpg" class="js-avatar"> -->
+			<img src="/img/avatar.jpg" class="js-avatar show" style="width: 100%;height: 100%;opacity: 1;">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">liyh</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">笔记</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/cupools" title="github">github</a>
+					        
+								<a class="mail" target="_blank" href="mailto:cupools@gmail.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/Wordpress/" style="font-size: 10px;">Wordpress</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/学习/" style="font-size: 12.5px;">学习</a> <a href="/tags/安全/" style="font-size: 10px;">安全</a> <a href="/tags/碎屑/" style="font-size: 10px;">碎屑</a> <a href="/tags/读书笔记/" style="font-size: 17.5px;">读书笔记</a> <a href="/tags/配置/" style="font-size: 10px;">配置</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">在校学生，连滚带爬啃书</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">liyh</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="/img/avatar.jpg" class="js-avatar show" style="width: 100%;height: 100%;opacity: 1;">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">liyh</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">笔记</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/cupools" title="github">github</a>
+			        
+						<a class="mail" target="_blank" href="mailto:cupools@gmail.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-notes/模板引擎" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/08/cigq75fq5000l6xqcv4kmj0h5/" class="article-date">
+  	<time datetime="2015-08-30T16:00:00.000Z" itemprop="datePublished">2015-08-31</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      模板引擎
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习/">学习</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>在看《深入浅出NodeJS》的时候发现对模板引擎有比较详细的讲解，看下来还是比较清晰的。于是决定记录一下_(:з」∠)_</p>
+</blockquote>
+<h3 id="从最简单开始">从最简单开始</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">'test: &#123;&#123;obj&#125;&#125; and &#123;&#123;obj&#125;&#125;'</span>;</span><br><span class="line">render(str, <span class="number">123</span>);</span><br><span class="line"><span class="comment">// =&gt; "test: 123 and 123"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">render</span>(<span class="params">str, obj</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> compiled = compile(str);</span><br><span class="line">    <span class="keyword">return</span> compiled(obj);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">compile</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> reg = <span class="regexp">/\&#123;\&#123;([\w\W]+?)\&#125;\&#125;/g</span>,</span><br><span class="line">        tpl = str.replace(reg, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">'\' + obj + \''</span>;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="comment">// =&gt; "test: ' + obj + ' and ' + obj + '"</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> fn = <span class="string">'var ret = \''</span>  + tpl + <span class="string">'\';return ret;'</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">'obj'</span>, fn);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>代码思路比较清晰，compile() 函数将字符串中的变量占位符通过正则表达式替换为字符串拼接的形式，如<code>&#39;hehe&#39; + obj + &#39;hehe&#39;</code>，然后通过<code>new  Function</code>生成函数体；而 render() 函数将调用 compile() 返回的函数并传入 obj 参数，返回最终字符串</p>
+<h3 id="变得厉害一点">变得厉害一点</h3><p>上面的函数仅仅允许每次传入一个或多个基本类型进行替换。现在做简单的调整，通过传入对象实现</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">'test: &#123;&#123;obj.cat&#125;&#125; and &#123;&#123;obj.dog&#125;&#125;'</span>;</span><br><span class="line">render(str, &#123;cat: <span class="string">'tom'</span>, dog: <span class="string">'doge'</span>&#125;);</span><br><span class="line"><span class="comment">// =&gt; "test: tom and doge"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">render</span>(<span class="params">str, obj</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> compiled = compile(str);</span><br><span class="line">    <span class="keyword">return</span> compiled(obj);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">compile</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> reg = <span class="regexp">/\&#123;\&#123;([\w\W]+?)\&#125;\&#125;/g</span>,</span><br><span class="line">        tpl = str.replace(reg, <span class="function"><span class="keyword">function</span>(<span class="params">match, data</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">'\' + '</span> + data + <span class="string">' + \''</span>;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="comment">// =&gt; "test: ' + obj.cat + ' and ' + obj.dog + '"</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">var</span> fn = <span class="string">'var ret = \''</span>  + tpl + <span class="string">'\';return ret;'</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">'obj'</span>, fn);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="使用_with_调整">使用 with 调整</h3><p>with 允许修改当前作用域，尽管在语言精粹一书中被点名批评，但在这里能够发挥作用</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">'test: &#123;&#123;cat&#125;&#125; and &#123;&#123;dog&#125;&#125;'</span>;</span><br><span class="line">render(str, &#123;cat: <span class="string">'tom'</span>, dog: <span class="string">'doge'</span>&#125;);</span><br><span class="line"><span class="comment">// =&gt; "test: tom and doge"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">render</span>(<span class="params">str, obj</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> compiled = compile(str);</span><br><span class="line">    <span class="keyword">return</span> compiled(obj);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">compile</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> reg = <span class="regexp">/\&#123;\&#123;([\w\W]+?)\&#125;\&#125;/g</span>,</span><br><span class="line">        tpl = str.replace(reg, <span class="function"><span class="keyword">function</span>(<span class="params">match, data</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">'\' + '</span> + data + <span class="string">' + \''</span>;</span><br><span class="line">        &#125;);</span><br><span class="line">    </span><br><span class="line">    tpl = <span class="string">'ret = \''</span> + tpl + <span class="string">'\';'</span>;</span><br><span class="line">    <span class="comment">// =&gt; "ret = 'test: ' + cat + ' and ' + dog + ''"</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> fn = <span class="string">'var ret = \'\'; with(obj) &#123;'</span> + tpl + <span class="string">'&#125; return ret;'</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">'obj'</span>, fn);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在，模板字符串中不再需要带上<code>obj.</code>了</p>
+<h3 id="添加模板逻辑">添加模板逻辑</h3><p>现在尝试为模板引擎添加业务逻辑。首先要区分逻辑代码和输出数据的代码，原因在于逻辑代码不会被包含在最终输出的字符串中。为此，使用 # 标记逻辑代码</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">'test: &#123;&#123;cat&#125;&#125; and &#123;&#123;# for(var i=0;i&lt;3;i++) &#123; &#125;&#125; &#123;&#123;dog&#125;&#125;123 &#123;&#123;# &#125; &#125;&#125;'</span>;</span><br><span class="line">render(str, &#123;cat: <span class="string">'tom'</span>, dog: <span class="string">'doge'</span>&#125;);</span><br><span class="line"><span class="comment">// =&gt; "test: tom and doge123 doge123 doge123"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">render</span>(<span class="params">str, obj</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> compiled = compile(str);</span><br><span class="line">    <span class="keyword">return</span> compiled(obj);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">compile</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> reg = <span class="regexp">/\&#123;\&#123;(?!#)([\w\W]+?)\&#125;\&#125;/g</span>,</span><br><span class="line">        logic = <span class="regexp">/\&#123;\&#123;#([\w\W]+?)\&#125;\&#125;/g</span>,</span><br><span class="line">        tpl = str.replace(reg, <span class="function"><span class="keyword">function</span>(<span class="params">match, data</span>) </span>&#123;</span><br><span class="line">            <span class="comment">// 输出数据</span></span><br><span class="line">            <span class="keyword">return</span> <span class="string">'\' + '</span> + data + <span class="string">' + \''</span>;</span><br><span class="line">        &#125;).replace(logic, <span class="function"><span class="keyword">function</span>(<span class="params">match, data</span>) </span>&#123;</span><br><span class="line">            <span class="comment">// 可执行代码</span></span><br><span class="line">            <span class="keyword">return</span> <span class="string">'\';'</span> + data + <span class="string">' ret+=\''</span>;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    tpl = <span class="string">'ret = \''</span> + tpl + <span class="string">'\';'</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> fn = <span class="string">'var ret = \'\'; with(obj) &#123;'</span> + tpl + <span class="string">'&#125; return ret;'</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">'obj'</span>, fn);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>代码挤在一行不好看，拆分看一下</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">// 逻辑部分</span><br><span class="line">&#123;&#123;# for(var i=0; i&lt;3; i++) &#123; &#125;&#125;</span><br><span class="line">    &#123;&#123;doge&#125;&#125;123</span><br><span class="line">&#123;&#123;# &#125; &#125;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 希望编译成这样的代码</span></span><br><span class="line"><span class="keyword">var</span> ret = <span class="string">''</span>;</span><br><span class="line"><span class="keyword">with</span>(obj) &#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;<span class="number">3</span>; i++) &#123;</span><br><span class="line">        ret += dog + <span class="number">123</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>根据希望编译出来的代码去处理字符串，这样看起来就比较清楚了</p>
+<h3 id="考虑模板安全">考虑模板安全</h3><p>避免 XSS 攻击，为模板提供转义函数</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="built_in">escape</span> = <span class="function"><span class="keyword">function</span>(<span class="params">html</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">String</span>(html)</span><br><span class="line">        .replace(<span class="regexp">/&amp;(?!\w+;)/g</span>, <span class="string">'&amp;amp;'</span>)</span><br><span class="line">        .replace(<span class="regexp">/&lt;/g</span>, <span class="string">'&amp;lt;'</span>)</span><br><span class="line">        .replace(<span class="regexp">/&gt;/g</span>, <span class="string">'&amp;gt;'</span>)</span><br><span class="line">        .replace(<span class="regexp">/"/g</span>, <span class="string">'&amp;quot;'</span>)</span><br><span class="line">        .replace(<span class="regexp">/'/g</span>, <span class="string">'&amp;#039;'</span>); <span class="comment">// IE 下不支持 &amp;apos; 转义</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在 chrome 下做了简单测试，将 &lt;&gt; 转义能有效防止插入标签，避免了 onerror 之类的脚本注入；转义 “‘ 避免注入 input 等标签；替换 &#xxx; 避免了其他编码的字符插入。更具体的内容之后会继续尝试</p>
+<h3 id="继续进行完善">继续进行完善</h3><p>一般会将模板写在 script 标签或者 textarea 内，因此存在换行符需要提前处理。根据书上的例子调整得到以下代码</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="built_in">escape</span> = <span class="function"><span class="keyword">function</span>(<span class="params">html</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">String</span>(html)</span><br><span class="line">        .replace(<span class="regexp">/&amp;(?!\w+;)/g</span>, <span class="string">'&amp;amp;'</span>)</span><br><span class="line">        .replace(<span class="regexp">/&lt;/g</span>, <span class="string">'&amp;lt;'</span>)</span><br><span class="line">        .replace(<span class="regexp">/&gt;/g</span>, <span class="string">'&amp;gt;'</span>)</span><br><span class="line">        .replace(<span class="regexp">/"/g</span>, <span class="string">'&amp;quot;'</span>)</span><br><span class="line">        .replace(<span class="regexp">/'/g</span>, <span class="string">'&amp;#039;'</span>); <span class="comment">// IE 下不支持 &amp;apos; 转义</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> compile = <span class="function"><span class="keyword">function</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> tpl = str.replace(<span class="regexp">/\n/g</span>, <span class="string">'\\n'</span>)</span><br><span class="line">        .replace(<span class="regexp">/\&#123;\&#123;(?!#)([\w\W]+?)\&#125;\&#125;/g</span>, <span class="function"><span class="keyword">function</span>(<span class="params">match, data</span>) </span>&#123;</span><br><span class="line">            <span class="comment">// 转义</span></span><br><span class="line">            <span class="keyword">return</span> <span class="string">'\' + escape('</span> + data + <span class="string">') + \''</span>;</span><br><span class="line">        &#125;).replace(<span class="regexp">/\&#123;\&#123;#([\w\W]+?)\&#125;\&#125;/g</span>, <span class="function"><span class="keyword">function</span>(<span class="params">match, data</span>) </span>&#123;</span><br><span class="line">            <span class="comment">// 可执行代码</span></span><br><span class="line">            <span class="keyword">return</span> <span class="string">'\';\n'</span> + data + <span class="string">'\n tpl+=\''</span>;</span><br><span class="line">        &#125;).replace(<span class="regexp">/\'\n/g</span>, <span class="string">'\''</span>)</span><br><span class="line">        .replace(<span class="regexp">/\n\'/gm</span>, <span class="string">'\''</span>);</span><br><span class="line">        </span><br><span class="line">        tpl = <span class="string">'tpl = \''</span> + tpl + <span class="string">'\';'</span>;</span><br><span class="line">        <span class="comment">// 转换空行</span></span><br><span class="line">        tpl = tpl.replace(<span class="regexp">/''/g</span>, <span class="string">'\'\\n\''</span>);</span><br><span class="line">        tpl = <span class="string">'var tpl = \'\';\n with (obj || &#123;&#125;) &#123;\n'</span>  + tpl + <span class="string">'\n&#125;\n return tpl;'</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">'obj'</span>, <span class="string">'escape'</span>, tpl);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> render = <span class="function"><span class="keyword">function</span>(<span class="params">str, obj</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> compiled = compile(str);</span><br><span class="line">    <span class="keyword">return</span> compiled(obj, <span class="built_in">escape</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">'test: &#123;&#123;cat&#125;&#125; and &#123;&#123;# for(var i=0;i&lt;3;i++) &#123; &#125;&#125; &#123;&#123;dog&#125;&#125;123 &#123;&#123;# &#125; &#125;&#125;'</span>;</span><br><span class="line">render(str, &#123;cat: <span class="string">'tom'</span>, dog: <span class="string">'doge'</span>&#125;);</span><br><span class="line"><span class="comment">// =&gt; "test: tom and doge123 doge123 doge123"</span></span><br></pre></td></tr></table></figure>
+<p>除此之外，可扩展外部文件模板加载、模板嵌套等功能，这里就不继续写了~</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/09/cigq75fqk000z6xqcqujjoa8b/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          关于 CSRF
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/08/cigq75frh001p6xqcn7khfxh2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">jQuery技术内幕</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 liyh
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-67000695-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
