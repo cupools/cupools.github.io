@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>img-sprite 实现 | 一环的笔记</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="喵了很久没有发现 Grunt 上有比较舒服的合并精灵图工具，于是有了自己写一个的想法，于是有了 img-sprite，于是有了 grunt-img-sprite
+
+需求针对之前页面重构的方式，我对于一个精灵图处理工具的设想是这样的：
+
+像 FIS 一般，通过在 css 文件中背景图片添加标识合并精灵图。跟平时一样写样式，仅在打包阶段产出精灵图和新的 css 文件。不关心是否使用 LESS 等
+能够">
+<meta property="og:type" content="article">
+<meta property="og:title" content="img-sprite 实现">
+<meta property="og:url" content="http://cupools.github.io/2015/100122/index.html">
+<meta property="og:site_name" content="一环的笔记">
+<meta property="og:description" content="喵了很久没有发现 Grunt 上有比较舒服的合并精灵图工具，于是有了自己写一个的想法，于是有了 img-sprite，于是有了 grunt-img-sprite
+
+需求针对之前页面重构的方式，我对于一个精灵图处理工具的设想是这样的：
+
+像 FIS 一般，通过在 css 文件中背景图片添加标识合并精灵图。跟平时一样写样式，仅在打包阶段产出精灵图和新的 css 文件。不关心是否使用 LESS 等
+能够">
+<meta property="og:image" content="http://cupools.github.io/images/img-sprite/00.png">
+<meta property="og:image" content="http://cupools.github.io/images/img-sprite/01.png">
+<meta property="og:updated_time" content="2015-11-11T02:55:49.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="img-sprite 实现">
+<meta name="twitter:description" content="喵了很久没有发现 Grunt 上有比较舒服的合并精灵图工具，于是有了自己写一个的想法，于是有了 img-sprite，于是有了 grunt-img-sprite
+
+需求针对之前页面重构的方式，我对于一个精灵图处理工具的设想是这样的：
+
+像 FIS 一般，通过在 css 文件中背景图片添加标识合并精灵图。跟平时一样写样式，仅在打包阶段产出精灵图和新的 css 文件。不关心是否使用 LESS 等
+能够">
+  
+    <link rel="alternative" href="/atom.xml" title="一环的笔记" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<!-- <img lazy-src="/img/avatar.jpg" class="js-avatar"> -->
+			<img src="/img/avatar.jpg" class="js-avatar show" style="width: 100%;height: 100%;opacity: 1;">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">liyh</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">笔记</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/cupools" title="github">github</a>
+					        
+								<a class="mail" target="_blank" href="mailto:cupools@gmail.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/Wordpress/" style="font-size: 10px;">Wordpress</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/学习/" style="font-size: 12.5px;">学习</a> <a href="/tags/安全/" style="font-size: 10px;">安全</a> <a href="/tags/碎屑/" style="font-size: 10px;">碎屑</a> <a href="/tags/读书笔记/" style="font-size: 17.5px;">读书笔记</a> <a href="/tags/配置/" style="font-size: 10px;">配置</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">在校学生，连滚带爬啃书</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">liyh</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="/img/avatar.jpg" class="js-avatar show" style="width: 100%;height: 100%;opacity: 1;">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">liyh</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">笔记</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/cupools" title="github">github</a>
+			        
+						<a class="mail" target="_blank" href="mailto:cupools@gmail.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-notes/img-sprite 实现" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/100122/" class="article-date">
+  	<time datetime="2015-09-30T16:00:00.000Z" itemprop="datePublished">2015-10-01</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      img-sprite 实现
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>喵了很久没有发现 Grunt 上有比较舒服的合并精灵图工具，于是有了自己写一个的想法，于是有了 <a href="https://github.com/cupools/img-sprite" target="_blank" rel="external">img-sprite</a>，于是有了 <a href="https://github.com/cupools/grunt-img-sprite" target="_blank" rel="external">grunt-img-sprite</a></p>
+</blockquote>
+<h2 id="需求">需求</h2><p>针对之前页面重构的方式，我对于一个精灵图处理工具的设想是这样的：</p>
+<ol>
+<li>像 FIS 一般，通过在 css 文件中背景图片添加标识合并精灵图。<strong>跟平时一样写样式，仅在打包阶段产出精灵图和新的 css 文件</strong>。不关心是否使用 LESS 等</li>
+<li>能够根据标识产出多个精灵图</li>
+<li>不依赖 Less 等 CSS 预处理器</li>
+<li>兼容 Retina，并自动插入媒体查询代码</li>
+<li>Base64 内联图片，通过 <code>?__inline</code> 标识</li>
+<li>使用要简单，简单，简单，<strong>不依赖于 GM 等图像处理库</strong></li>
+<li>设计稿每次导出 @2x 的图片即可，由工具产出 @1x 的图片</li>
+</ol>
+<a id="more"></a>
+<h2 id="使用">使用</h2><h3 id="安装">安装</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install img-sprite --save</span><br></pre></td></tr></table></figure>
+<h3 id="处理一个_css_文件">处理一个 css 文件</h3><h4 id="main-js">main.js</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> sprite = <span class="built_in">require</span>(<span class="string">'img-sprite'</span>);</span><br><span class="line"></span><br><span class="line">sprite(&#123;</span><br><span class="line">    src: <span class="string">'test/css/main.css'</span>,</span><br><span class="line">    dest: <span class="string">'test/css/dest.css'</span>,</span><br><span class="line">    output: <span class="string">'test/images'</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="main-css">main.css</h4><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="class">.icon0</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">128px</span></span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">128px</span></span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">background</span>:<span class="value"> <span class="function">url</span>(../images/<span class="number">0</span>.png?__tom) no-repeat</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">background-size</span>:<span class="value"> <span class="number">128px</span> <span class="number">128px</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="class">.icon1</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">128px</span></span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">128px</span></span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">color</span>:<span class="value"> <span class="hexcolor">#ccc</span></span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">background</span>:<span class="value"> <span class="function">url</span>(../images/<span class="number">1</span>.png?__tom) no-repeat</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">background-size</span>:<span class="value"> <span class="number">128px</span> <span class="number">128px</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="class">.icon2</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">50px</span></span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">50px</span></span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">color</span>:<span class="value"> <span class="hexcolor">#ccc</span></span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">background</span>:<span class="value"> <span class="function">url</span>(../images/<span class="number">2</span>.png?__inline) no-repeat</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">background-size</span>:<span class="value"> <span class="number">50px</span> <span class="number">50px</span></span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
+<p><img src="/images/img-sprite/00.png" alt="css 文件"></p>
+<p><img src="/images/img-sprite/01.png" alt="精灵图"></p>
+<h3 id="处理多个_css_文件">处理多个 css 文件</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> sprite = <span class="built_in">require</span>(<span class="string">'img-sprite'</span>);</span><br><span class="line"></span><br><span class="line">sprite(&#123;</span><br><span class="line">    src: [<span class="string">'test/css/one.css'</span>, <span class="string">'test/css/two.css'</span>],</span><br><span class="line">    dest: <span class="string">'test/css'</span>,</span><br><span class="line">    output: <span class="string">'test/images'</span>,</span><br><span class="line">    retina: <span class="literal">false</span>,</span><br><span class="line">    prefix: <span class="string">'sp-'</span>,</span><br><span class="line">    imgPath: <span class="string">'/public/images/'</span>,</span><br><span class="line">    algorithm: <span class="string">'top-down'</span>,</span><br><span class="line">    sizeLimit: <span class="number">10</span>*<span class="number">1024</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="命令行使用">命令行使用</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ bin/sprite -h</span><br><span class="line">Options:</span><br><span class="line">  <span class="operator">-s</span>, --src     css file input path                          [string] [required]</span><br><span class="line">  <span class="operator">-d</span>, --dest    css file output path                         [string] [required]</span><br><span class="line">  -o, --output  images output path                                      [string]</span><br><span class="line">  -r, --retina  retina or not, default to <span class="literal">true</span>         				   [boolean]</span><br><span class="line">  --padding     padding between images, default to <span class="number">10</span>                   [string]</span><br><span class="line">  --prefix      add before images filename, default to <span class="string">"sprite-"</span>        [string]</span><br><span class="line">  --imgPath     images path, default to <span class="string">"../images/"</span>                    [string]</span><br><span class="line">  --algorithm   list algorithm, default to <span class="string">"binary-tree"</span>                [string]</span><br><span class="line">  --sizeLimit   size <span class="built_in">limit</span> <span class="keyword">for</span> inline images, default to <span class="number">5000</span>           [string]</span><br></pre></td></tr></table></figure>
+<h2 id="参数">参数</h2><h3 id="src">src</h3><ul>
+<li>类型：Array</li>
+<li>说明：css 文件路径，必须</li>
+<li>默认：无</li>
+</ul>
+<h3 id="dest">dest</h3><ul>
+<li>类型：String</li>
+<li>说明：css 产出路径，当仅处理一个 css 文件时可指定文件名</li>
+<li>默认：当前目录</li>
+</ul>
+<h3 id="output">output</h3><ul>
+<li>类型：String</li>
+<li>说明：精灵图产出路径</li>
+<li>默认：当前目录</li>
+</ul>
+<h3 id="retina">retina</h3><ul>
+<li>类型：Boolean</li>
+<li>说明：是否产出 @2x 图片</li>
+<li>默认：true</li>
+</ul>
+<h3 id="padding">padding</h3><ul>
+<li>类型：Number</li>
+<li>说明：精灵图中图片间距</li>
+<li>默认：10</li>
+</ul>
+<h3 id="prefix">prefix</h3><ul>
+<li>类型：String</li>
+<li>说明：精灵图前缀；当产出 css 文件与指定 css 的目录一致时，为 css 文件添加该前缀</li>
+<li>默认：’sprite-‘</li>
+</ul>
+<h3 id="imgPath">imgPath</h3><ul>
+<li>类型：String</li>
+<li>说明：css 文件中的图片路径</li>
+<li>默认：’../images/‘</li>
+</ul>
+<h3 id="algorithm">algorithm</h3><ul>
+<li>类型：String</li>
+<li>说明：图片排序算法</li>
+<li>可选：top-down, left-right, diagonal, alt-diagonal, binary-tree</li>
+<li>默认：’binary-tree’</li>
+</ul>
+<h3 id="media">media</h3><ul>
+<li>类型：String</li>
+<li>说明：媒体查询条件</li>
+<li>默认：only screen and (-webkit-min-device-pixel-ratio: 1.5)</li>
+</ul>
+<h3 id="sizeLimit">sizeLimit</h3><ul>
+<li>类型：Number</li>
+<li>说明：内联图片大小限制</li>
+<li>默认：5000</li>
+</ul>
+<h2 id="实现">实现</h2><p>img-sprite 基于 <a href="https://github.com/Ensighten/spritesmith" target="_blank" rel="external">spritesmith</a> 和 <a href="https://github.com/reworkcss/css" target="_blank" rel="external">css</a> 实现。spritesmith 解决了图片合并、坐标计算这几个关键的问题，css 解决了图片路径替换、样式补充的问题。然后我做得东西就比较简单了。根据几个需求点简单列举一下</p>
+<h4 id="1-_像_FIS_一般，直接从_css_文件中通过标记提取图片路径处理并产出精灵图和新的_css_文件">1. 像 FIS 一般，直接从 css 文件中通过标记提取图片路径处理并产出精灵图和新的 css 文件</h4><p>通过 css-parse 构建出 css 文件对应的 AST（抽象语法树），递归遍历 AST 根据标识得到需要被合并的图片的路径，之后交给 spritemith 处理产出精灵图，再根据 spritemith 返回的 map 将精灵图的路径、图片大小、图片位置调整到 AST，产出新的 css 文件即可</p>
+<h4 id="2-_能够根据标识产出多个精灵图">2. 能够根据标识产出多个精灵图</h4><p>通过 <code>icon.png?__xxx</code> 标记图片，通过 <code>xxx</code> 决定图片应该被合并到哪一个精灵图</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 提取 url，分组1为url，分组2为精灵图标记，分组3为精灵图名称</span></span><br><span class="line"><span class="keyword">var</span> urlReg = <span class="regexp">/(?:url\(['"]?([\w\W]+?)(?:\?(__)?([\w\W]+?))?['"]?\))/</span>,</span><br></pre></td></tr></table></figure>
+<h4 id="3-_不依赖_Less_等_CSS_预处理器">3. 不依赖 Less 等 CSS 预处理器</h4><p>跟平时一样写代码，在完成之后一次构建处理即可。当然平时用预处理器更方便了</p>
+<h4 id="4-_兼容_Retina">4. 兼容 Retina</h4><p>之前尝试过其他自动雪碧图工具，比较不舒服的一个地方是对 Retina 的兼容。img-sprite 对 Retina 的处理是产出两套精灵图，并在 css 文件底部插入 media。默认以 @2x 的切图合并精灵图，然后依赖 <a href="http://www.graphicsmagick.org/" target="_blank" rel="external">GM</a> 缩小图片产出 @1x 的精灵图。</p>
+<h4 id="5-_Base64_内联图片">5. Base64 内联图片</h4><p>通过 <code>icon.png?__inline</code> 标记即可</p>
+<h4 id="6-_使用要简单，简单，简单">6. 使用要简单，简单，简单</h4><p>从 <code>v0.3.0</code> 开始使用 <a href="https://github.com/zhangyuanwei/node-images" target="_blank" rel="external">images</a>，不需要安装 GM 等图形处理库。配置比较简单，需要目标 css 路径（src），产出 css 路径（dest），精灵图产出路径（output）三个参数。如果 src 有多个文件，那么 dest 指定路径并产出多个 css 文件；如果 src 只有一个文件，那么 dest 可以指定产出 css 的路径和文件名。可以配合 CSS 预处理器更方便地写样式</p>
+<h4 id="7-_设计稿每次导出_@2x_的图片即可，由工具产出_@1x_的图片">7. 设计稿每次导出 @2x 的图片即可，由工具产出 @1x 的图片</h4><p>移动端设计稿导出原始大小图片即可，img-sprite 基于 @2x 的精灵图再产出 @1x 的精灵图，并在 css 文件底部自动插入 media</p>
+<h2 id="其他问题">其他问题</h2><ol>
+<li><p>不依赖 GM 等图形处理库<br> img-sprite 从 <code>v0.3.0</code> 开始使用 <a href="https://github.com/zhangyuanwei/node-images" target="_blank" rel="external">images</a> 替代了 spritesmith 默认的位图引擎，解决了 windows 平台下产出精灵图可能出现噪点的情况，缩短了产出图片的耗时。同时不再依赖 GM，再也不需要折腾啦！产出图片的质量也比较出色，感谢作者~</p>
+<p> 此外尝试了 node Jimp，缩小图片效果不理想；尝试了 <a href="http://phantomjs.org/" target="_blank" rel="external">phantomjs</a> 作为位图引擎，但发现在 window 和 osx 下速度大幅慢于其他引擎，故不采用。暂时不支持在 img-sprite 中配置其他的位图引擎</p>
+</li>
+<li><p>对其他样式的影响<br> 调整 AST 的过程中会将做这样的处理，删除 background 有关的样式并插入新的值。保留背景颜色，不支持同时定义多个背景图片</p>
+ <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> colorReg = <span class="regexp">/#\w&#123;3,6&#125;|rgba?\(.+?\)/</span>,</span><br><span class="line">    resetBgReg = <span class="regexp">/background-[size|image|position]/</span>,</span><br><span class="line">...</span><br><span class="line"><span class="comment">// 设置 background 样式</span></span><br><span class="line">spriteSet[i].node.value = color + <span class="string">'url('</span> + options.imgPath + basename + <span class="string">') '</span> + offsetX + <span class="string">' '</span> + offsetY;</span><br><span class="line">...</span><br><span class="line"><span class="comment">// 插入 background-size</span></span><br><span class="line">spriteSet[i].parent.push(&#123;</span><br><span class="line">    type: <span class="string">'declaration'</span>,</span><br><span class="line">    property: <span class="string">'background-size'</span>,</span><br><span class="line">    value: ceil(properties.width / pow) + <span class="string">'px '</span> + ceil(properties.height / pow) + <span class="string">'px'</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li>缺点  <ul>
+<li>目前仅支持处理 .png</li>
+<li>写样式的时候建议元素的宽高和背景图的宽高一致，其他情况下精灵图不方便处理</li>
+<li>不支持背景图 repeat</li>
+<li>暂不支持多个背景图</li>
+<li>仅支持处理 .css。实际上推荐使用 LES 等写样式，在产出 css 文件后交给 img-sprite 做进一步精灵图合并处理即可</li>
+</ul>
+</li>
+</ol>
+<h2 id="更新日志">更新日志</h2><ul>
+<li>0.3.2：<ul>
+<li>修复 <code>background-image</code> 抛出异常的情况</li>
+<li>修复 <code>?__inline</code> 被插入到 media 中的情况</li>
+<li>完善日志</li>
+</ul>
+</li>
+<li>0.3.0：<ul>
+<li>使用 <a href="https://github.com/zhangyuanwei/node-images" target="_blank" rel="external">images</a> 替代了 spritesmith 默认的位图引擎，解决了 windows 平台下产出精灵图可能出现噪点的情况，同时不再依赖 GM</li>
+</ul>
+</li>
+<li>0.2.0：<ul>
+<li>支持通过<code>?__inline</code>内联图片</li>
+<li>使用 <a href="https://github.com/jprichardson/node-fs-extra" target="_blank" rel="external">fs-extra</a> 操作文件，支持创建多层目录</li>
+<li>添加对不存在的图片路径的过滤</li>
+<li>允许重写 log 方法</li>
+<li>尝试添加单元测试用例</li>
+</ul>
+</li>
+<li>0.1.2：修复非 retina 情况下图片命名 @2x 的情况</li>
+<li>0.1.0：基本功能</li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/102722/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          NextGEN Gallery 无法建表
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/093014/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">img-sprite 设想</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 liyh
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-67000695-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

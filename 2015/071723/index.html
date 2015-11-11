@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Javascript 模块规范 | 一环的笔记</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="CommonJS 规范
+
+module 拥有 id, uri 属性；在 module 中，有 require, exports, module 三个自由变量
+module 可通过 require 引入外部 module. 通过 exports 等方式向外部提供 api">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Javascript 模块规范">
+<meta property="og:url" content="http://cupools.github.io/2015/071723/index.html">
+<meta property="og:site_name" content="一环的笔记">
+<meta property="og:description" content="CommonJS 规范
+
+module 拥有 id, uri 属性；在 module 中，有 require, exports, module 三个自由变量
+module 可通过 require 引入外部 module. 通过 exports 等方式向外部提供 api">
+<meta property="og:updated_time" content="2015-11-11T02:55:49.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Javascript 模块规范">
+<meta name="twitter:description" content="CommonJS 规范
+
+module 拥有 id, uri 属性；在 module 中，有 require, exports, module 三个自由变量
+module 可通过 require 引入外部 module. 通过 exports 等方式向外部提供 api">
+  
+    <link rel="alternative" href="/atom.xml" title="一环的笔记" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<!-- <img lazy-src="/img/avatar.jpg" class="js-avatar"> -->
+			<img src="/img/avatar.jpg" class="js-avatar show" style="width: 100%;height: 100%;opacity: 1;">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">liyh</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">笔记</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/cupools" title="github">github</a>
+					        
+								<a class="mail" target="_blank" href="mailto:cupools@gmail.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/Wordpress/" style="font-size: 10px;">Wordpress</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/学习/" style="font-size: 12.5px;">学习</a> <a href="/tags/安全/" style="font-size: 10px;">安全</a> <a href="/tags/碎屑/" style="font-size: 10px;">碎屑</a> <a href="/tags/读书笔记/" style="font-size: 17.5px;">读书笔记</a> <a href="/tags/配置/" style="font-size: 10px;">配置</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">在校学生，连滚带爬啃书</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">liyh</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="/img/avatar.jpg" class="js-avatar show" style="width: 100%;height: 100%;opacity: 1;">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">liyh</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">笔记</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/cupools" title="github">github</a>
+			        
+						<a class="mail" target="_blank" href="mailto:cupools@gmail.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-notes/Javascript 模块规范" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/071723/" class="article-date">
+  	<time datetime="2015-07-16T16:00:00.000Z" itemprop="datePublished">2015-07-17</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Javascript 模块规范
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="CommonJS">CommonJS</h2><p> 规范</p>
+<ol>
+<li><strong>module 拥有 id, uri 属性；在 module 中，有 require, exports, module 三个自由变量</strong></li>
+<li><strong>module 可通过 require 引入外部 module. 通过 exports 等方式向外部提供 api</strong></li>
+</ol>
+<a id="more"></a>
+<h3 id="示例">示例</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// module a</span></span><br><span class="line">exports.add = <span class="function"><span class="keyword">function</span>(<span class="params">n, m</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> n + m;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// module b</span></span><br><span class="line"><span class="keyword">var</span> add = <span class="built_in">require</span>(<span class="string">'a'</span>).add;</span><br><span class="line">exports.increment = <span class="function"><span class="keyword">function</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> add(n, <span class="number">1</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// module main:</span></span><br><span class="line"><span class="keyword">var</span> inc = <span class="built_in">require</span>(<span class="string">'b'</span>).increment;</span><br><span class="line">inc(<span class="number">1</span>);</span><br><span class="line"><span class="built_in">module</span>.id = <span class="string">'main'</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="模块传送">模块传送</h3><p>Modules/1.1.1 规范里，只定义了模块的基本特性，并没有定义模块的存在形态。比如上面例子中的 module a, 可以是文件系统中的 a.js, 也可以是数据库中的某个字段，或者仅是封装在闭包里的一段代码。在服务器端，最常见的场景是一个模块一个文件</p>
+<p>在服务器端，文件读取操作是同步的，模块的通讯不会很复杂，而浏览器端的则不适用。为了让模块能在不同的环境下都适用，CommonJS 需要定义 Module/Transport 规范。Module/Transport（模块传送），可以同步也可以异步</p>
+<h3 id="同步方案示例">同步方案示例</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">src</span>=<span class="value">"require.js"</span>&gt;</span><span class="handlebars"><span class="xml"></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">src</span>=<span class="value">"mod-a.js"</span>&gt;</span><span class="handlebars"><span class="xml"></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">src</span>=<span class="value">"mod-b.js"</span>&gt;</span><span class="handlebars"><span class="xml"></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">src</span>=<span class="value">"mod-main.js"</span>&gt;</span><span class="undefined"></span></span></span></span></span></span></span></span><br></pre></td></tr></table></figure>
+<p>首先引入 require.js, 实现模块定义和模块加载等方法，比如 declareModule 方法。<br>然后在服务器端，部署时，将模块自动转换为：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// mod-a.js:</span></span><br><span class="line">declareModule(<span class="function"><span class="keyword">function</span>(<span class="params">require, exports, module</span>) </span>&#123;</span><br><span class="line">  exports.add = <span class="function"><span class="keyword">function</span>(<span class="params">n, m</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> n + m;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// mod-b.js:</span></span><br><span class="line">declareModule(<span class="function"><span class="keyword">function</span>(<span class="params">require, exports, module</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> add = <span class="built_in">require</span>(<span class="string">'a'</span>).add;</span><br><span class="line">  exports.increment = <span class="function"><span class="keyword">function</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> add(n, <span class="number">1</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>将上面的代码文档化，就能定义出一个模块同步传送规范。</p>
+<h2 id="AMD">AMD</h2><p>CommonJS 的 Module/Transport 规范里，目前认可度最高的提议是 Modules/AsynchronousDefinition（简称 AMD）。AMD 定义了用于异步加载的一种模块定义方式</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">define(id?, dependencies?, factory)</span><br></pre></td></tr></table></figure>
+<p>同步方案中，依赖关系由页面中引入的静态 script 来保障。异步方案中，依赖关系管理就不那么简单了。对于模块a, 对应文件 a.js, 其加载执行过程可分解为：</p>
+<ul>
+<li>脚本的下载过程：浏览器将 a.js 从服务器下载到本地。</li>
+<li>脚本的解析(parse)和执行(execute)过程：浏览器解析脚本，并执行 define 函数。</li>
+<li>模块的 attach 过程：执行模块的 factory 函数。</li>
+</ul>
+<p><strong>AMD 规定 dependencies 中的模块，可以作为 factory 的参数，这就隐性要求在执行 factory 前，所有 dependencies 的 factory 都必须已执行，这种方式可称之为 execution 模式</strong></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// a.js:</span></span><br><span class="line">define(&#123;</span><br><span class="line">  add: <span class="function"><span class="keyword">function</span>(<span class="params">n, m</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> n + m;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// b.js:</span></span><br><span class="line">define([<span class="string">'a'</span>], <span class="function"><span class="keyword">function</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    increment: <span class="function"><span class="keyword">function</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> a.add(n, <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>b.js 的写法可以有很多种，下面是另一种很常见的写法：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">define([<span class="string">'require'</span>, <span class="string">'exports'</span>, <span class="string">'a'</span>], <span class="function"><span class="keyword">function</span>(<span class="params">require, exports</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> add = <span class="built_in">require</span>(<span class="string">'a'</span>).add;</span><br><span class="line">  exports.increment = <span class="function"><span class="keyword">function</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> add(n, <span class="number">1</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>但下面这种写法是不允许的：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">define([<span class="string">'require'</span>, <span class="string">'exports'</span>], <span class="function"><span class="keyword">function</span>(<span class="params">require, exports</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> add = <span class="built_in">require</span>(<span class="string">'a'</span>).add;</span><br><span class="line">  exports.increment = <span class="function"><span class="keyword">function</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> add(n, <span class="number">1</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>当 dependencies 参数存在时，模块 b 依赖的模块，必须全部显式指定。在上面的例子中，模块 b 明显还依赖模块 a, 但在 dependencies 中没有，因此不符合 AMD 规范。</p>
+<p>但很多时候，开始书写模块代码时，我们并不能很明确的知道需要依赖哪些模块。每次调用某个依赖模块时，需要跳转到模块顶部，手动添加下 dependencies。这对开发者来说，不太友好。因此 AMD 允许以下写法：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">define(<span class="function"><span class="keyword">function</span>(<span class="params">require, exports</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> add = <span class="built_in">require</span>(<span class="string">'a'</span>).add;</span><br><span class="line">  exports.increment = <span class="function"><span class="keyword">function</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> add(n, <span class="number">1</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><strong>当 define 只有 factory 参数时，dependencies 无需开发者提前指定，define 会调用 factory.toString 方法，通过正则匹配，自动找出需要依赖的模块</strong></p>
+<p>除了define外，AMD还保留一个关键字require。require 作为规范保留的全局标识符，可以实现为 module loader，也可以不实现</p>
+<p>理解了 AMD, RequireJS 的 api 也就很容易上手了，RequireJS 是遵循 AMD 规范的。实际上，RequireJS 的作者 James Burke, 为 AMD 规范贡献了很多 idea</p>
+<h2 id="Wrappings">Wrappings</h2><p>AMD 规范已经很不错，RequireJS 也很流行，jQuery 近期也加入了对 AMD 规范的支持。然而，CommonJS 社区近期有件不大不小的事，有人提出了另一种异步加载模块的定义方式：Modules/Wrappings</p>
+<h3 id="规范">规范</h3><ul>
+<li>定义模块用module变量，它有一个方法declare</li>
+<li>declare接受一个函数类型的参数，如称为factory</li>
+<li>factory有三个参数分别为require、exports、module</li>
+<li>factory使用返回值和exports导出API</li>
+<li>factory如果是对象类型，则将该对象作为模块输出</li>
+</ul>
+<h3 id="示例-1">示例</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">module</span>.declare(factory)</span><br><span class="line"><span class="comment">// module.declare(id?, dependencies?, factory)</span></span><br></pre></td></tr></table></figure>
+<p>注意：wiki 的当前版本是 module.declare(factory). 但在这篇讨论里 AMD vs Wrappings 里，已经有了更完善的方案。</p>
+<p>从表面上看，AMD 和 Wrappings 唯一的不同是 define 还是 module.declare 的命名差异。如果仅是这点差异的话，实在不值得新增加一个提议。<strong>Wrappings 和 AMD 最大的不同，在于 Wrappings 方案里，factory 的参数更简单，和 dependencies 无对应关系。</strong>也就是说，可以如下写代码：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">module</span>.declare([<span class="string">'a'</span>], <span class="function"><span class="keyword">function</span>(<span class="params">require, exports</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> add = <span class="built_in">require</span>(<span class="string">'a'</span>).add;</span><br><span class="line">  exports.increment = <span class="function"><span class="keyword">function</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> add(n, <span class="number">1</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>这个看似非常小的差异，可以让下面的代码合理存在并达到预期目的：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">module</span>.declare(<span class="function"><span class="keyword">function</span>(<span class="params">require, exports</span>) </span>&#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">var</span> a;</span><br><span class="line">  <span class="keyword">if</span>(someCondition) &#123;</span><br><span class="line">    a = <span class="built_in">require</span>(<span class="string">'a1'</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    a = <span class="built_in">require</span>(<span class="string">'a2'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  ...</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><strong>AMD 里的 download/parse/execute/attach，在 Wrappings 里，attach 过程可以延后，可以等到第一次 require 时，才调用 factory. 这种模式称之为 availability 模式</strong></p>
+<p>availability 模式存在的问题是，需要声明变量引用模块后才能使用，否则会报错</p>
+<h2 id="RequireJS">RequireJS</h2><p>终于说到 RequireJS 了。RequireJS 很优秀，用户群也不少。从目前的特性和功能来看，感觉有以下不如意：</p>
+<ul>
+<li>文件太大，用 google closure compiler 压缩后，12.2k. 这是在页头必须引入的脚本，还是希望越小越好</li>
+<li>功能太多。这本是优点，比如能够在各种环境下跑。但对于真实的 web 应用来说，还是希望用情专一，尽量无无用代码</li>
+<li>给 require 方法赋予了双重含义。一重含义是 CommonJS/Modules/1.1.1 规范里定义的 require, 另一重是 RequireJS 里用来加载模块和调用回调。这导致 require 的 dependencies 参数的格式，和 define 中的 dependencies 参数的格式不一致</li>
+<li>目前不支持 availability 模式</li>
+<li>require.js 代码里，有 only for jQuery 的代码</li>
+</ul>
+<h2 id="CMD">CMD</h2><p>AMD 是 RequireJS 在推广过程中对模块定义的规范化产出。CMD 是 SeaJS 在推广过程中对模块定义的规范化产出。类似的还有 CommonJS Modules/2.0 规范，是 BravoJS 在推广过程中对模块定义的规范化产出。这些规范的目的都是为了 JavaScript 的模块化开发，特别是在浏览器端的。目前这些规范的实现都能达成浏览器端模块化开发的目的</p>
+<h3 id="与_AMD_的区别">与 AMD 的区别</h3><ul>
+<li>对于依赖的模块，AMD 是提前执行，CMD 是延迟执行。不过 RequireJS 从 2.0 开始，也改成可以延迟执行（根据写法不同，处理方式不同）。<strong>CMD 推崇 as lazy as possible</strong></li>
+<li><strong>CMD 推崇依赖就近，AMD 推崇依赖前置。</strong>看下面的代码说明。虽然 AMD 也支持 CMD 的写法，同时还支持将 require 作为依赖项传递，但 RequireJS 的作者默认是最喜欢上面的写法，也是官方文档里默认的模块定义写法。CMD 推崇依赖就近需要遍历所有的require关键字，找出后面的依赖。具体做法是将function toString后，用正则匹配出require关键字后面的依赖。显然，这是一种牺牲性能来换取更多开发便利的方法</li>
+<li>AMD 的 API 默认是一个当多个用，CMD 的 API 严格区分，推崇职责单一。比如 AMD 里，require 分全局 require 和局部 require，都叫 require。CMD 里，没有全局 require，而是根据模块系统的完备性，提供 seajs.use 来实现模块系统的加载启动。CMD 里，每个 API 都简单纯粹</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// CMD</span></span><br><span class="line">define(<span class="function"><span class="keyword">function</span>(<span class="params">require, exports, module</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="built_in">require</span>(<span class="string">'./a'</span>);</span><br><span class="line">    a.doSomething();</span><br><span class="line">    <span class="comment">// 此处略去 100 行</span></span><br><span class="line">    <span class="keyword">var</span> b = <span class="built_in">require</span>(<span class="string">'./b'</span>); <span class="comment">// 依赖可以就近书写</span></span><br><span class="line">    b.doSomething();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// AMD 默认推荐的是</span></span><br><span class="line">define([<span class="string">'./a'</span>, <span class="string">'./b'</span>], <span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123; <span class="comment">// 依赖必须一开始就写好</span></span><br><span class="line">    a.doSomething()</span><br><span class="line">    b.doSomething()</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="SeaJS">SeaJS</h2><ol>
+<li>SeaJS未实现全部的 Modules 1.1.1。如require函数的main，paths属性在SeaJS中没有。但SeaJS给require添加了async、resolve、load、constructor</li>
+<li>SeaJS没有使用 Modules/Wrappings 中的module.declare定义模块，而是使用define函数（看起来象AMD中的define，实则不然）</li>
+</ol>
+<h3 id="与_RequireJS_的异同">与 RequireJS 的异同</h3><h4 id="相同之处：">相同之处：</h4><p>RequireJS 和 Sea.js 都是模块加载器，倡导模块化开发理念，核心价值是让 JavaScript 的模块化开发变得简单自然。</p>
+<h4 id="不同之处：">不同之处：</h4><ul>
+<li>定位有差异。RequireJS 想成为浏览器端的模块加载器，同时也想成为 Rhino / Node 等环境的模块加载器。Sea.js 则专注于 Web 浏览器端，同时通过 Node 扩展的方式可以很方便跑在 Node 环境中。</li>
+<li>遵循的规范不同。RequireJS 遵循 AMD（异步模块定义）规范，Sea.js 遵循 CMD （通用模块定义）规范。规范的不同，导致了两者 API 不同。Sea.js 更贴近 CommonJS Modules/1.1 和 Node Modules 规范。</li>
+<li>推广理念有差异。RequireJS 在尝试让第三方类库修改自身来支持 RequireJS，目前只有少数社区采纳。Sea.js 不强推，采用自主封装的方式来“海纳百川”，目前已有较成熟的封装策略。</li>
+<li>对开发调试的支持有差异。Sea.js 非常关注代码的开发调试，有 nocache、debug 等用于调试的插件。RequireJS 无这方面的明显支持。</li>
+<li>插件机制不同。RequireJS 采取的是在源码中预留接口的形式，插件类型比较单一。Sea.js 采取的是通用事件机制，插件类型更丰富。</li>
+</ul>
+<p>总之，如果说 RequireJS 是 Prototype 类库的话，则 Sea.js 致力于成为 jQuery 类库。</p>
+<h2 id="UMD">UMD</h2><p>AMD以浏览器为第一（browser-first）的原则发展，选择异步加载模块。它的模块支持对象（objects）、函数（functions）、构造器（constructors）、字符串（strings）、JSON等各种类型的模块。因此在浏览器中它非常灵活。</p>
+<p>CommonJS module以服务器端为第一（server-first）的原则发展，选择同步加载模块。它的模块是无需包装的（unwrapped modules）且贴近于ES.next/Harmony的模块格式。但它仅支持对象类型（objects）模块。</p>
+<p>这迫使一些人又想出另一个更通用格式 UMD(Universal Module Definition)。希望提供一个前后端跨平台的解决方案</p>
+<p>UMD 定义那些既能在客户端又能在服务器端工作的模块，这样的模块同时也能和目前可用的主流脚本加载器一同工作。</p>
+<h3 id="实现">实现</h3><p>UMD的实现很简单，先判断是否支持Node.js模块格式（exports是否存在），存在则使用Node.js模块格式。</p>
+<p>再判断是否支持AMD（define是否存在），存在则使用AMD方式加载模块。前两个都不存在，则将模块公开到全局（window或global）。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// eventUtil.js</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params">root, factory</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> exports === <span class="string">'object'</span>) &#123;</span><br><span class="line">        <span class="built_in">module</span>.exports = factory();</span><br><span class="line"></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> define === <span class="string">'function'</span> &amp;&amp; define.amd) &#123;</span><br><span class="line">        define(factory);</span><br><span class="line"></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        root.eventUtil = factory();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)(<span class="keyword">this</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// module</span></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        addEvent: <span class="function"><span class="keyword">function</span>(<span class="params">el, type, handle</span>) </span>&#123;</span><br><span class="line">            <span class="comment">//...</span></span><br><span class="line">        &#125;,</span><br><span class="line">        removeEvent: <span class="function"><span class="keyword">function</span>(<span class="params">el, type, handle</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params">root, factory</span>) </span>&#123;</span><br><span class="line"><span class="pi">    'use strict'</span>;</span><br><span class="line">    <span class="keyword">if</span>(type exports === <span class="string">'object'</span>) &#123;</span><br><span class="line">        <span class="comment">// CommonJS</span></span><br><span class="line">        factory(exports);</span><br><span class="line"></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span>(<span class="keyword">typeof</span> define === <span class="string">'function'</span> &amp;&amp; define.amd) &#123;</span><br><span class="line">        <span class="comment">// AMD. Register as an anonymous module.</span></span><br><span class="line">        define([<span class="string">'exports'</span>], factory);</span><br><span class="line"></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// Browser globals</span></span><br><span class="line">        <span class="keyword">var</span> Foo = &#123;&#125;;</span><br><span class="line">        root.Foo = Foo;</span><br><span class="line">        factory(Foo);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)((<span class="keyword">typeof</span> <span class="built_in">window</span> === <span class="string">'object'</span> &amp;&amp; <span class="built_in">window</span>) || <span class="keyword">this</span>, <span class="function"><span class="keyword">function</span> (<span class="params">Foo</span>) </span>&#123;</span><br><span class="line"><span class="pi">    'use strict'</span>;</span><br><span class="line"></span><br><span class="line">    Foo.a = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'a'</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Foo.b = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'b'</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="ES_Harmony/Modules">ES Harmony/Modules</h2><p>ECMAScript的下一个版本Harmony已经考虑到了模块化的需求，目前还在努力指定中。</p>
+<p>在 ES.next 中，用import和export导入和导出模块：</p>
+<p>import声明把某个模块的导出绑定为本地变量，并可以重命名来避免命名冲突。<br>export声明声明了某个模块的本地绑定是外部可见的，这样其它模块就能够读取它们但却无法进行修改。有趣的是，模块可以导出子模块，却无法导出已经在别处定义过的模块。你同样可以给导出重命名来让它们不同于本地的名字。<br>定义模块</p>
+<h3 id="使用module关键字来定义一个模块">使用module关键字来定义一个模块</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">module</span> math &#123;</span><br><span class="line">    <span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> x + y;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">export</span> <span class="keyword">var</span> pi = <span class="number">3.141593</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="使用import关键字来加载外部模块">使用import关键字来加载外部模块</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// we can import in script code, not just inside a module</span></span><br><span class="line"><span class="keyword">import</span> &#123;sum, pi&#125; <span class="keyword">from</span> math;</span><br><span class="line">alert(<span class="string">"2π = "</span> + sum(pi, pi));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 引入所有API</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">from</span> math;</span><br><span class="line">alert(<span class="string">"2π = "</span> + sum(pi, pi));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用另一个引用作为别名</span></span><br><span class="line"><span class="comment">// a static module reference</span></span><br><span class="line"><span class="built_in">module</span> M = math;</span><br><span class="line">  </span><br><span class="line"><span class="comment">// reify M as an immutable "module instance object"</span></span><br><span class="line">alert(<span class="string">"2π = "</span> + M.sum(M.pi, M.pi));</span><br><span class="line"></span><br><span class="line"><span class="comment">//局部重命名</span></span><br><span class="line"><span class="keyword">import</span> &#123; draw: drawShape &#125; <span class="keyword">from</span> shape;</span><br><span class="line"><span class="keyword">import</span> &#123; draw: drawGun &#125; <span class="keyword">from</span> cowboy;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 嵌套模块</span></span><br><span class="line"><span class="built_in">module</span> widgets &#123;</span><br><span class="line">    <span class="keyword">export</span> <span class="built_in">module</span> button &#123; ... &#125;</span><br><span class="line">    <span class="keyword">export</span> <span class="built_in">module</span> alert &#123; ... &#125;</span><br><span class="line">    <span class="keyword">export</span> <span class="built_in">module</span> textarea &#123; ... &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line"><span class="keyword">import</span> &#123; messageBox, confirmDialog &#125; <span class="keyword">from</span> widgets.alert;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 从服务器上请求的模块</span></span><br><span class="line">&lt;script type=<span class="string">"harmony"</span>&gt;</span><br><span class="line"><span class="comment">// loading from a URL</span></span><br><span class="line"><span class="built_in">module</span> <span class="built_in">JSON</span> at <span class="string">'http://json.org/modules/json2.js'</span>;</span><br><span class="line">alert(<span class="built_in">JSON</span>.stringify(&#123;<span class="string">'hi'</span>: <span class="string">'world'</span>&#125;));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 动态载入一个模块</span></span><br><span class="line">Loader.load(<span class="string">'http://json.org/modules/json2.js'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">JSON</span>) </span>&#123;</span><br><span class="line">    alert(<span class="built_in">JSON</span>.stringify([<span class="number">0</span>, &#123;a: <span class="literal">true</span>&#125;]));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>除此之外，还可以远程载入的模块、异步加载模块等，请参考使用 AMD、CommonJS 及 ES Harmony 编写模块化的 JavaScript</p>
+<h2 id="参考链接">参考链接</h2><p><a href="http://blog.inching.org/2014/02/15/javascript-module/" target="_blank" rel="external">Javascript 模块规范</a></p>
+<p><a href="http://blogread.cn/it/article/2957#original" target="_blank" rel="external">CommonJS 的模块系统</a></p>
+<p><a href="http://www.feeldesignstudio.com/2013/09/javascript-module-pattern-commonjs/" target="_blank" rel="external">Javascript 模块化开发</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/071914/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          垂直居中
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/071619/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">猴子补丁</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 liyh
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-67000695-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
