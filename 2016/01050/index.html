@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>星座测试的一些杂货 | 一环的笔记</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="从接触 WebGL，到入门 three.js，到各种修修改改，到活动上线，前后耗费了14个工作日。而后耗时3天又上了一个版本，整个十二月也就过去了。如果以后项目中没有用到这货估计也不会再接触了吧，安心搞自己乱七八糟的东西比较开心，写点东西纪念一下咯。
+科普的东西WebGL 是什么WebGL 是一种3D绘图标准，允许把 JavaScript 和 OpenGL ES 2.0 结合在一起，为 Canva">
+<meta property="og:type" content="article">
+<meta property="og:title" content="星座测试的一些杂货">
+<meta property="og:url" content="http://cupools.github.io/2016/01050/index.html">
+<meta property="og:site_name" content="一环的笔记">
+<meta property="og:description" content="从接触 WebGL，到入门 three.js，到各种修修改改，到活动上线，前后耗费了14个工作日。而后耗时3天又上了一个版本，整个十二月也就过去了。如果以后项目中没有用到这货估计也不会再接触了吧，安心搞自己乱七八糟的东西比较开心，写点东西纪念一下咯。
+科普的东西WebGL 是什么WebGL 是一种3D绘图标准，允许把 JavaScript 和 OpenGL ES 2.0 结合在一起，为 Canva">
+<meta property="og:image" content="http://cupools.github.io/images/constellation/coordinates.png">
+<meta property="og:image" content="http://cupools.github.io/images/constellation/view.png">
+<meta property="og:image" content="http://cupools.github.io/images/constellation/shader-bad.png">
+<meta property="og:updated_time" content="2016-01-06T06:52:35.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="星座测试的一些杂货">
+<meta name="twitter:description" content="从接触 WebGL，到入门 three.js，到各种修修改改，到活动上线，前后耗费了14个工作日。而后耗时3天又上了一个版本，整个十二月也就过去了。如果以后项目中没有用到这货估计也不会再接触了吧，安心搞自己乱七八糟的东西比较开心，写点东西纪念一下咯。
+科普的东西WebGL 是什么WebGL 是一种3D绘图标准，允许把 JavaScript 和 OpenGL ES 2.0 结合在一起，为 Canva">
+  
+    <link rel="alternative" href="/atom.xml" title="一环的笔记" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<!-- <img lazy-src="/img/avatar.jpg" class="js-avatar"> -->
+			<img src="/img/avatar.jpg" class="js-avatar show" style="width: 100%;height: 100%;opacity: 1;">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">liyh</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">笔记</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/cupools" title="github">github</a>
+					        
+								<a class="mail" target="_blank" href="mailto:cupools@gmail.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/Wordpress/" style="font-size: 10px;">Wordpress</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/three-js/" style="font-size: 12.5px;">three.js</a> <a href="/tags/学习/" style="font-size: 12.5px;">学习</a> <a href="/tags/安全/" style="font-size: 10px;">安全</a> <a href="/tags/碎屑/" style="font-size: 10px;">碎屑</a> <a href="/tags/读书笔记/" style="font-size: 17.5px;">读书笔记</a> <a href="/tags/配置/" style="font-size: 10px;">配置</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">在校学生，连滚带爬啃书</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">liyh</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="/img/avatar.jpg" class="js-avatar show" style="width: 100%;height: 100%;opacity: 1;">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">liyh</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">笔记</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/cupools" title="github">github</a>
+			        
+						<a class="mail" target="_blank" href="mailto:cupools@gmail.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-notes/星座测试的杂货" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01050/" class="article-date">
+  	<time datetime="2016-01-05T02:18:00.000Z" itemprop="datePublished">2016-01-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      星座测试的一些杂货
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/three-js/">three.js</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>从接触 WebGL，到入门 three.js，到各种修修改改，到活动上线，前后耗费了14个工作日。而后耗时3天又上了一个版本，整个十二月也就过去了。如果以后项目中没有用到这货估计也不会再接触了吧，安心搞自己乱七八糟的东西比较开心，写点东西纪念一下咯。</p>
+<h2 id="科普的东西">科普的东西</h2><h3 id="WebGL_是什么">WebGL 是什么</h3><p>WebGL 是一种3D绘图标准，允许把 JavaScript 和 OpenGL ES 2.0 结合在一起，为 Canvas 提供硬件3D加速渲染。一句话概括，通过 WebGL，可以在页端展示3D场景</p>
+<a id="more"></a>
+<h3 id="three-js_是什么">three.js 是什么</h3><p>three.js 是一个基于 Javascript 能够简化 WebGL 开发的库。通过 three.js 可以极大地提高开发效率，同时降低了开发门槛，就算不熟悉图形学也可以通过 three.js 愉快地玩耍了</p>
+<h2 id="如何愉快地玩耍">如何愉快地玩耍</h2><p>暂时忘记 WebGL 那些复杂的概念，基于 three.js，直接抛个简单的示例 <a href="http://jsbin.com/yuselimate/1/edit?js,output" target="_blank" rel="external">jsbin</a></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 创建场景</span></span><br><span class="line">scene = <span class="keyword">new</span> THREE.Scene();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建相机</span></span><br><span class="line">camera = <span class="keyword">new</span> THREE.PerspectiveCamera(<span class="number">75</span>, <span class="built_in">window</span>.innerWidth / <span class="built_in">window</span>.innerHeight, <span class="number">1</span>, <span class="number">10000</span>);</span><br><span class="line">camera.position.z = <span class="number">1000</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建模型</span></span><br><span class="line">geometry = <span class="keyword">new</span> THREE.BoxGeometry(<span class="number">200</span>, <span class="number">200</span>, <span class="number">200</span>);</span><br><span class="line">material = <span class="keyword">new</span> THREE.MeshLambertMaterial(&#123;</span><br><span class="line">    color: <span class="number">0x66ccff</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">mesh = <span class="keyword">new</span> THREE.Mesh(geometry, material);</span><br><span class="line">scene.add(mesh);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建灯光</span></span><br><span class="line">light = <span class="keyword">new</span> THREE.DirectionalLight(<span class="number">0xffffff</span>, <span class="number">0.8</span>);</span><br><span class="line">light.position.set(<span class="number">0</span>, <span class="number">0</span>, <span class="number">300</span>);</span><br><span class="line">scene.add(light);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建渲染器</span></span><br><span class="line">renderer = <span class="keyword">new</span> THREE.WebGLRenderer(&#123;</span><br><span class="line">    antialias: <span class="literal">true</span></span><br><span class="line">&#125;);</span><br><span class="line">renderer.setSize(<span class="built_in">window</span>.innerWidth, <span class="built_in">window</span>.innerHeight);</span><br><span class="line">renderer.setClearColor(<span class="number">0x333333</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.body.appendChild(renderer.domElement);</span><br></pre></td></tr></table></figure>
+<p>代码不多，可以看到的东西是创建了一个立方体，添加了光照，还有阴影。简单粗暴的文档如下，直接看文档方便一些</p>
+<ul>
+<li><a href="http://threejs.org/docs/#Reference/Scenes/Scene" target="_blank" rel="external">场景</a></li>
+<li><a href="http://threejs.org/docs/#Reference/Cameras/PerspectiveCamera" target="_blank" rel="external">相机</a></li>
+<li><a href="http://threejs.org/docs/#Reference/Lights/DirectionalLight" target="_blank" rel="external">灯光</a></li>
+<li><a href="http://threejs.org/docs/#Reference/Renderers/WebGLRenderer" target="_blank" rel="external">渲染器</a></li>
+</ul>
+<p>然后单独说一下模型，代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">geometry = <span class="keyword">new</span> THREE.BoxGeometry(<span class="number">200</span>, <span class="number">200</span>, <span class="number">200</span>);</span><br><span class="line">material = <span class="keyword">new</span> THREE.MeshLambertMaterial(&#123;</span><br><span class="line">    color: <span class="number">0x66ccff</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">mesh = <span class="keyword">new</span> THREE.Mesh(geometry, material);</span><br><span class="line">scene.add(mesh);</span><br></pre></td></tr></table></figure>
+<p><code>geometry</code> 即几何结构，包含了能够描述物体的三维模型的所有数据，具体到所有顶点坐标。这里使用的是 <a href="http://threejs.org/docs/#Reference/Extras.Geometries/BoxGeometry" target="_blank" rel="external">BoxGeometry</a>，并提供了长宽高三个参数，three.js 会将其转换为顶点信息并提供给着色器，可在 <code>geometry.vertices</code> 看到</p>
+<p><code>material</code> 即材料，描述了物体的外表，具体到颜色、贴图、对光线的反射效果等。这里使用的是 <a href="http://threejs.org/docs/#Reference/Materials/MeshLambertMaterial" target="_blank" rel="external">MeshLambertMaterial</a>，即兰伯特材质，表面能对光线产生均匀散射，继承自 <a href="http://threejs.org/docs/#Reference/Materials/Material" target="_blank" rel="external">Material</a>，并提供了 <code>color</code> 参数。其他还可以提供纹理、透明度、叠加效果等参数，这里不具体巴拉</p>
+<p><code>mesh</code> 即网格模型，糅合了几何机构和材料在一起。将模型添加到已经创建的场景 <code>scene</code> 里面，摆好相机位置，渲染器 <code>renderer</code> 渲染场景，则可以在画布中看到添加的物体了。可以修改网格模型的坐标 <code>position</code>、旋转 <code>rotation</code> 等参数</p>
+<p>以上，其他有什么想法可以直接到<a href="http://threejs.org/examples/#webgl_camera" target="_blank" rel="external">官网</a>找示例看源码如何实现。官方文档有部分对象没有提到，谷歌就是了。</p>
+<h2 id="坐标系">坐标系</h2><p>一张图片就够了吧，右手坐标系</p>
+<p><img src="/images/constellation/coordinates.png" alt="coordinates"></p>
+<h2 id="踩过的坑">踩过的坑</h2><h3 id="1-_移动端画面模糊，锯齿严重">1. 移动端画面模糊，锯齿严重</h3><p><img src="/images/constellation/view.png" alt="view"></p>
+<p>移动端画面模糊，锯齿严重。跟着示例源码加了这样一句，发现没用。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">renderer.setPixelRatio(<span class="built_in">window</span>.devicePixelRatio);</span><br></pre></td></tr></table></figure>
+<p>继续查资料发现是 <code>viewport</code> 的问题。做这样的修改可以保证 Android 和 iOS 下显示清晰</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">meta</span> <span class="attribute">name</span>=<span class="value">"viewport"</span> <span class="attribute">content</span>=<span class="value">"initial-scale=0.5,maximum-scale=0.5,minimum-scale=0.5,user-scalable=no"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<p>然后在锤子手机上又发现 viewport 出了问题，于是又做了这种奇怪的修改，保证了锤子手机能正确渲染。具体关于 viewport 之后再整理一下</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">meta</span> <span class="attribute">name</span>=<span class="value">"viewport"</span> <span class="attribute">content</span>=<span class="value">"initial-scale=1,maximum-scale=0.5,minimum-scale=0.5,user-scalable=no"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-_着色器控制">2. 着色器控制</h3><p><img src="/images/constellation/shader-bad.png" alt="view-bad"></p>
+<p>发现闪烁的贴图周期性出现左图的情况，然后定位到自己写的着色器，有这部分代码</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">attribute float size;</span><br><span class="line">attribute float idx; <span class="comment">// 星星下标</span></span><br><span class="line">uniform float timeline; <span class="comment">// 时间轴，实现闪烁效果</span></span><br><span class="line">...</span><br><span class="line"><span class="keyword">void</span> main() &#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">if</span>(length(mvPosition.xyz) &lt; <span class="number">400.0</span>) &#123;</span><br><span class="line">        enlarge = (sin(timeline - idx) * <span class="number">40.0</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        enlarge = (sin(timeline - idx) * <span class="number">10.0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">    gl_Position = projectionMatrix * mvPosition;</span><br><span class="line">    gl_PointSize = <span class="number">1500.0</span> / length(mvPosition.xyz) * size + enlarge;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在计算中，<code>enlarge</code> 可能是负值，导致最终计算的 <code>gl_PointSize</code> 也可能是负值，然后导致了以上问题。加个判断修正就可以啦</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(enlarge &lt; <span class="number">0.1</span>) &#123;</span><br><span class="line">    enlarge = <span class="number">.0</span> - enlarge + <span class="number">1.0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-_兼容问题">3. 兼容问题</h3><p>第一次尝试 WebGL，用身边有限的测试机子跑了一遍感觉兼容性出乎意料的好，为了兼容到旧的 Android 手机，这里使用 three.js r71 版本。可是在项目临近上线前发现兼容问题远比预想的严重。从线上返回的数据看，有接近三分之一的用户手机或浏览器因为不支持 WebGL 或者对其兼容有问题，而访问到降级页面。如果有打算将 WebGL 运用到项目里的话，需要在一开始关注如何平稳退化</p>
+<h2 id="压缩构建_three-js">压缩构建 three.js</h2><p>想在移动端上面使用 three.js 的话，重新构建打包剔除不必要的代码是必须的。在 github 上的源码也提供了重新构建的方法，各个平台都考虑到了的样子，然后使用 node 构建的话主要参数如下：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// /utils/build/build.js</span></span><br><span class="line">···</span><br><span class="line"><span class="keyword">var</span> parser = <span class="keyword">new</span> argparse.ArgumentParser();</span><br><span class="line">parser.addArgument( [<span class="string">'--include'</span>], &#123; action: <span class="string">'append'</span>, required: <span class="literal">true</span> &#125; );</span><br><span class="line">parser.addArgument( [<span class="string">'--externs'</span>], &#123; action: <span class="string">'append'</span>, defaultValue: [<span class="string">'./externs/common.js'</span>] &#125; );</span><br><span class="line">parser.addArgument( [<span class="string">'--amd'</span>], &#123; action: <span class="string">'storeTrue'</span>, defaultValue: <span class="literal">false</span> &#125; );</span><br><span class="line">parser.addArgument( [<span class="string">'--minify'</span>], &#123; action: <span class="string">'storeTrue'</span>, defaultValue: <span class="literal">false</span> &#125; );</span><br><span class="line">parser.addArgument( [<span class="string">'--output'</span>], &#123; defaultValue: <span class="string">'../../build/three.js'</span> &#125; );</span><br><span class="line">parser.addArgument( [<span class="string">'--sourcemaps'</span>], &#123; action: <span class="string">'storeTrue'</span>, defaultValue: <span class="literal">true</span> &#125; );</span><br><span class="line">···</span><br></pre></td></tr></table></figure>
+<p>可以根据需要调整 <code>utils/build/includes</code> 中的文件列表，减少打包的文件，然后重新构建就可以了。<code>common</code> 中，可以剔除的文件大概有没用到的 <code>light</code>，<code>loaders</code>，还有 <code>shaders</code> 的部分文件，其他经常会报错，然后 <code>extras</code> 就直接保留使用到的功能就行了，根据项目实际需要吧</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">node build.js --include common --include extras --amd --minify</span><br></pre></td></tr></table></figure>
+<h2 id="几何函数">几何函数</h2><p>简单的速度曲线变化用几何函数去处理路线就可以了，当然处理的结果有时会比较生硬，可以去 <a href="http://www.createjs.com/demos/tweenjs/tween_sparktable" target="_blank" rel="external">tween.js</a> 扒一些东西下来。这里列几个简单的几何函数</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">EasingFunctions = &#123;</span><br><span class="line">  linear: <span class="function"><span class="keyword">function</span> (<span class="params">t</span>) </span>&#123; <span class="keyword">return</span> t &#125;,</span><br><span class="line">  easeInQuad: <span class="function"><span class="keyword">function</span> (<span class="params">t</span>) </span>&#123; <span class="keyword">return</span> t*t &#125;,</span><br><span class="line">  easeOutQuad: <span class="function"><span class="keyword">function</span> (<span class="params">t</span>) </span>&#123; <span class="keyword">return</span> t*(<span class="number">2</span>-t) &#125;,</span><br><span class="line">  easeInOutQuad: <span class="function"><span class="keyword">function</span> (<span class="params">t</span>) </span>&#123; <span class="keyword">return</span> t&lt;<span class="number">.5</span> ? <span class="number">2</span>*t*t : -<span class="number">1</span>+(<span class="number">4</span>-<span class="number">2</span>*t)*t &#125;,</span><br><span class="line">  easeInCubic: <span class="function"><span class="keyword">function</span> (<span class="params">t</span>) </span>&#123; <span class="keyword">return</span> t*t*t &#125;,</span><br><span class="line">  easeOutCubic: <span class="function"><span class="keyword">function</span> (<span class="params">t</span>) </span>&#123; <span class="keyword">return</span> (--t)*t*t+<span class="number">1</span> &#125;,</span><br><span class="line">  easeInOutCubic: <span class="function"><span class="keyword">function</span> (<span class="params">t</span>) </span>&#123; <span class="keyword">return</span> t&lt;<span class="number">.5</span> ? <span class="number">4</span>*t*t*t : (t-<span class="number">1</span>)*(<span class="number">2</span>*t-<span class="number">2</span>)*(<span class="number">2</span>*t-<span class="number">2</span>)+<span class="number">1</span> &#125;,</span><br><span class="line">  easeInQuart: <span class="function"><span class="keyword">function</span> (<span class="params">t</span>) </span>&#123; <span class="keyword">return</span> t*t*t*t &#125;,</span><br><span class="line">  easeOutQuart: <span class="function"><span class="keyword">function</span> (<span class="params">t</span>) </span>&#123; <span class="keyword">return</span> <span class="number">1</span>-(--t)*t*t*t &#125;,</span><br><span class="line">  easeInOutQuart: <span class="function"><span class="keyword">function</span> (<span class="params">t</span>) </span>&#123; <span class="keyword">return</span> t&lt;<span class="number">.5</span> ? <span class="number">8</span>*t*t*t*t : <span class="number">1</span>-<span class="number">8</span>*(--t)*t*t*t &#125;,</span><br><span class="line">  easeInQuint: <span class="function"><span class="keyword">function</span> (<span class="params">t</span>) </span>&#123; <span class="keyword">return</span> t*t*t*t*t &#125;,</span><br><span class="line">  easeOutQuint: <span class="function"><span class="keyword">function</span> (<span class="params">t</span>) </span>&#123; <span class="keyword">return</span> <span class="number">1</span>+(--t)*t*t*t*t &#125;,</span><br><span class="line">  easeInOutQuint: <span class="function"><span class="keyword">function</span> (<span class="params">t</span>) </span>&#123; <span class="keyword">return</span> t&lt;<span class="number">.5</span> ? <span class="number">16</span>*t*t*t*t*t : <span class="number">1</span>+<span class="number">16</span>*(--t)*t*t*t*t &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="参考资料">参考资料</h2><p>学习过程中帮助很大的一些网站，大大的感谢~</p>
+<p><a href="http://webglfundamentals.org/" target="_blank" rel="external">http://webglfundamentals.org/</a><br><a href="http://www.cnblogs.com/yiyezhai/category/446753.html" target="_blank" rel="external">http://www.cnblogs.com/yiyezhai/category/446753.html</a><br><a href="http://wiki.jikexueyuan.com/project/webgl/" target="_blank" rel="external">http://wiki.jikexueyuan.com/project/webgl/</a><br><a href="https://oncemore2020.github.io/blog/homogeneous/" target="_blank" rel="external">https://oncemore2020.github.io/blog/homogeneous/</a><br><a href="http://csgrandeur.github.io/WebGL_Learn_Code/Application/WebGL_Tutorial/index.html" target="_blank" rel="external">http://csgrandeur.github.io/</a><br><a href="http://threejs.org/" target="_blank" rel="external">http://threejs.org/</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/01020/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">准备干 three.js</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 liyh
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-67000695-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
