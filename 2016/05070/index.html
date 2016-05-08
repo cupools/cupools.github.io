@@ -17,7 +17,7 @@ Sass is the most mature, stable, and pow">
 Sass is the most mature, stable, and pow">
 <meta property="og:image" content="http://cupools.github.io/images/sass-16-05-08/cmp6_keyframes_tumb.png">
 <meta property="og:image" content="http://cupools.github.io/images/sass-16-05-08/bezier.gif">
-<meta property="og:updated_time" content="2016-05-08T14:36:18.000Z">
+<meta property="og:updated_time" content="2016-05-08T14:41:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="用 Sass 写 css3 动画">
 <meta name="twitter:description" content="之前也在用 Sass 和 Stylus，不过局限在嵌套、变量之类的简单使用，对其他特性敬而远之，觉得在写样式的过程中过多去考虑这一块会降低页面重构效率。直到最近项目中出现了大量 css 动画，一想到要重复调整关键帧和统一多个元素的入场动画太麻烦啦，于是决定试试 mixin，然后发现效率提高了不止一丢丢这么厉害。
@@ -227,7 +227,7 @@ Sass is the most mature, stable, and pow">
 <p>这里想巴拉下 <code>keyframe_ani</code> 中的 $weight 参数，map 类型，表示每一帧在整个动画过程所占时间长短的<strong>权重</strong>，缺省的帧匹配为 null, 默认为 <code>(null: 1)</code>。这里的权重即是这一关键帧在整个 $duration 中所占的时间比，方便调整 $duration 而不对动画造成其他影响。下面 $weight 的两种写法的结果是一致的。</p>
 <figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="variable">$weight</span><span class="value">: (</span><br><span class="line">    <span class="number">1</span>: <span class="number">3</span>,</span><br><span class="line">    <span class="number">4</span>: <span class="number">3</span>,</span><br><span class="line">    null: <span class="number">1</span></span><br><span class="line">)</span><br><span class="line"><span class="variable">$weight</span>: (</span><br><span class="line">    <span class="number">1</span>: <span class="number">6</span>,</span><br><span class="line">    <span class="number">4</span>: <span class="number">6</span>,</span><br><span class="line">    null: <span class="number">2</span></span><br><span class="line">)</span></span><br></pre></td></tr></table></figure>
 <p>demo 见 <a href="http://codepen.io/youtbe/pen/MyLmpJ" target="_blank" rel="external">codepen</a>.</p>
-<h3 id="曲线运动">曲线运动</h3><p>有一屏设计师说要让纸被风吹走，要飞着转几圈，要飞的优雅。这时候如果直接手写关键帧出来的效果应该是不满意的，曲线运动的动画会变的生硬；让我加一块 canvas 我也不干，纯粹强迫症？于是琢磨着也用 Sass 实现，然后就走了这样的歪路。</p>
+<h2 id="曲线运动">曲线运动</h2><p>有一屏设计师说要让纸被风吹走，要飞着转几圈，要飞的优雅。这时候如果直接手写关键帧出来的效果应该是不满意的，曲线运动的动画会变的生硬；让我加一块 canvas 我也不干，纯粹强迫症？于是琢磨着也用 Sass 实现，然后就走了这样的歪路。</p>
 <p><img src="/images/sass-16-05-08/bezier.gif" alt="animation"></p>
 <p>整体的思路，我直接拿了之前星座项目用过的贝塞尔曲线相关的实现，通过关键点生成路径点集，然后粗暴地通过 node 直接生成 sass-variable.scss 文件，里面声明了四个变量，每个变量包含了每个纸片动画过程中50个关键帧的偏移量，然后再通过变量生成 keyframes, 就搞定啦。</p>
 <p>代码如下，也很简单就是了</p>
