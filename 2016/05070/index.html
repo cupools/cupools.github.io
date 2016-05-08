@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>用 Sass 写 css3 动画 | 一环的笔记</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="之前也在用 Sass 和 Stylus，不过局限在嵌套、变量之类的简单使用，对其他特性敬而远之，觉得在写样式的过程中过多去考虑这一块会降低页面重构效率。直到最近项目中出现了大量 css 动画，一想到要重复调整关键帧和统一多个元素的入场动画太麻烦啦，于是决定试试 mixin，然后发现效率提高了不止一丢丢这么厉害。
+介绍
+Sass is the most mature, stable, and pow">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用 Sass 写 css3 动画">
+<meta property="og:url" content="http://cupools.github.io/2016/05070/index.html">
+<meta property="og:site_name" content="一环的笔记">
+<meta property="og:description" content="之前也在用 Sass 和 Stylus，不过局限在嵌套、变量之类的简单使用，对其他特性敬而远之，觉得在写样式的过程中过多去考虑这一块会降低页面重构效率。直到最近项目中出现了大量 css 动画，一想到要重复调整关键帧和统一多个元素的入场动画太麻烦啦，于是决定试试 mixin，然后发现效率提高了不止一丢丢这么厉害。
+介绍
+Sass is the most mature, stable, and pow">
+<meta property="og:image" content="http://cupools.github.io/images/sass-16-05-08/cmp6_keyframes.png">
+<meta property="og:image" content="http://cupools.github.io/images/sass-16-05-08/bezier.gif">
+<meta property="og:updated_time" content="2016-05-08T09:41:38.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="用 Sass 写 css3 动画">
+<meta name="twitter:description" content="之前也在用 Sass 和 Stylus，不过局限在嵌套、变量之类的简单使用，对其他特性敬而远之，觉得在写样式的过程中过多去考虑这一块会降低页面重构效率。直到最近项目中出现了大量 css 动画，一想到要重复调整关键帧和统一多个元素的入场动画太麻烦啦，于是决定试试 mixin，然后发现效率提高了不止一丢丢这么厉害。
+介绍
+Sass is the most mature, stable, and pow">
+  
+    <link rel="alternative" href="/atom.xml" title="一环的笔记" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/img/avatar.jpg" class="js-avatar" style="width: 100%;height: 100%;opacity: 1;">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">liyh</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">笔记</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/cupools" title="github">github</a>
+					        
+								<a class="mail" target="_blank" href="mailto:cupools@gmail.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/Wordpress/" style="font-size: 10px;">Wordpress</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/sass/" style="font-size: 10px;">sass</a> <a href="/tags/three-js/" style="font-size: 12.5px;">three.js</a> <a href="/tags/学习/" style="font-size: 12.5px;">学习</a> <a href="/tags/安全/" style="font-size: 10px;">安全</a> <a href="/tags/碎屑/" style="font-size: 10px;">碎屑</a> <a href="/tags/读书笔记/" style="font-size: 17.5px;">读书笔记</a> <a href="/tags/配置/" style="font-size: 10px;">配置</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">在校学生，连滚带爬啃书</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">liyh</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="/img/avatar.jpg" class="js-avatar show" style="width: 100%;height: 100%;opacity: 1;">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">liyh</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">笔记</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/cupools" title="github">github</a>
+			        
+						<a class="mail" target="_blank" href="mailto:cupools@gmail.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-notes/用 Sass 写 css3 动画" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05070/" class="article-date">
+  	<time datetime="2016-05-07T08:00:00.000Z" itemprop="datePublished">2016-05-07</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      用 Sass 写 css3 动画
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sass/">sass</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>之前也在用 Sass 和 Stylus，不过局限在嵌套、变量之类的简单使用，对其他特性敬而远之，觉得在写样式的过程中过多去考虑这一块会降低页面重构效率。直到最近项目中出现了大量 css 动画，一想到要重复调整关键帧和统一多个元素的入场动画太麻烦啦，于是决定试试 mixin，然后发现效率提高了不止一丢丢这么厉害。</p>
+<h2 id="介绍">介绍</h2><blockquote>
+<p>Sass is the most mature, stable, and powerful professional grade CSS extension language in the world.</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="渐现入场">渐现入场</h2><p>滑屏的 H5, 每一屏会有文字渐现入场，然后这种类型的动画我习惯用 transition 并改变 opacity 或 transform 去实现类似的效果，然后写了这样的混合器。</p>
+<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="at_rule">@<span class="keyword">mixin</span><span class="preprocessor"> fadeIn</span>(<span class="variable">$class</span>, <span class="variable">$duration</span>:<span class="number">0.8s</span>, <span class="variable">$delay</span>:<span class="preprocessor"> .5s</span>, <span class="variable">$tag</span>:<span class="preprocessor"> play</span>) &#123;</span></span><br><span class="line">    .#&#123;<span class="variable">$class</span>&#125; &#123;</span><br><span class="line">        <span class="attribute">opacity</span><span class="value">: <span class="number">0</span>;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &amp;.#&#123;<span class="variable">$tag</span>&#125; .#&#123;<span class="variable">$class</span>&#125; &#123;</span><br><span class="line">        <span class="attribute">transition</span><span class="value">: opacity <span class="variable">$duration</span> <span class="variable">$delay</span>;</span></span><br><span class="line">        <span class="attribute">opacity</span><span class="value">: <span class="number">1</span>;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用的时候，这样子</p>
+<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="class">.slogan</span> &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"><span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> fadeIn</span>(</span><br><span class="line">    <span class="variable">$class</span>: <span class="string">'slogan'</span>,</span><br><span class="line">    <span class="variable">$delay</span>:<span class="preprocessor"> 1s</span>,</span><br><span class="line">    <span class="variable">$duration</span>:<span class="preprocessor"> .8s</span></span><br><span class="line">);</span></span><br></pre></td></tr></table></figure>
+<p>最后输出这样子</p>
+<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="class">.slogan</span> &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"><span class="class">.slogan</span> &#123;</span><br><span class="line">    <span class="attribute">opacity</span><span class="value">: <span class="number">0</span>;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="class">.play</span> <span class="class">.slogan</span> &#123;</span><br><span class="line">    <span class="attribute">transition</span><span class="value">: opacity .<span class="number">8s</span> <span class="number">1s</span>;</span></span><br><span class="line">    <span class="attribute">opacity</span><span class="value">: <span class="number">1</span>;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>就这样把动画的部分和样式分离开了，至于为什么不把 transition 写在元素初始的样式里，这里考虑到的是翻屏之后不会出现动画回滚的状态，也就是排除了 opacity from 1 to 0 的渐变过程。</p>
+<h2 id="组帧动画">组帧动画</h2><p>由于项目基于 FIS 开发，这里精灵图的处理也就没那么灵活了，因为没法产出多套精灵图片，也就无法实现图片的懒加载。对于精灵图的处理，暂时使用了这样的原始方式。</p>
+<p>首先，通过 <a href="http://sjli.github.io/spritemaker_extjs/example.html" target="_blank" rel="external">CssSprite在线生成器</a> 生成垂直排列的精灵图，每一帧有固定的宽高，如下截取部分</p>
+<p><img src="/images/sass-16-05-08/cmp6_keyframes.png" alt="keyframes"></p>
+<p>然后这里又写了个 mixin, 注释写成这样不要在意…写完回头看一下虽然逻辑不复杂但是很好用窝</p>
+<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="comment">// keyframes_ani</span></span><br><span class="line"><span class="comment">// ------------------------------------</span></span><br><span class="line"><span class="comment">// @param    $animation_name    动画名称</span></span><br><span class="line"><span class="comment">// @param    $background        精灵图片</span></span><br><span class="line"><span class="comment">// @param    $height            容器高度</span></span><br><span class="line"><span class="comment">// @param    $count             帧数</span></span><br><span class="line"><span class="comment">// @param    $duration          动画时长，默认为 2s</span></span><br><span class="line"><span class="comment">// @param    $delay             动画延时，默认为 0s</span></span><br><span class="line"><span class="comment">// @param    $weight            每一帧在整个动画过程所占时间长短的权重，map 中必须包含 null 为缺省权重，默认为 1</span></span><br><span class="line"><span class="comment">// @param    $times             播放次数，默认为 forwards</span></span><br><span class="line"><span class="comment">// ------------------------------------</span></span><br><span class="line"><span class="at_rule">@<span class="keyword">mixin</span><span class="preprocessor"> keyframes_ani</span>(<span class="variable">$animation_name</span>, <span class="variable">$background</span>, <span class="variable">$height</span>, <span class="variable">$count</span>, <span class="variable">$duration</span>:<span class="preprocessor"> 2s</span>, <span class="variable">$delay</span>:<span class="preprocessor"> 0s</span>, <span class="variable">$weight</span>: (null:<span class="preprocessor"> 1</span>), <span class="variable">$times</span>:<span class="preprocessor"> forwards</span>) &#123;</span></span><br><span class="line">    <span class="attribute">background</span><span class="value">: <span class="variable">$background</span> no-repeat;</span></span><br><span class="line">    <span class="attribute">animation</span><span class="value">: <span class="variable">$animation_name</span> <span class="variable">$duration</span> <span class="variable">$delay</span> <span class="function">steps</span>(<span class="number">1</span>) <span class="variable">$times</span>;</span></span><br><span class="line"></span><br><span class="line">    <span class="variable">$vals</span><span class="value">: ();</span></span><br><span class="line">    <span class="variable">$sum</span><span class="value">: <span class="number">0</span>;</span></span><br><span class="line"></span><br><span class="line">    <span class="at_rule">@<span class="keyword">for</span> <span class="variable">$i</span><span class="preprocessor"> from</span><span class="preprocessor"> 0</span><span class="preprocessor"> to</span> <span class="variable">$count</span> &#123;</span></span><br><span class="line">        <span class="variable">$key</span><span class="value">: <span class="variable">$i</span> + <span class="number">1</span>;</span></span><br><span class="line">        <span class="variable">$vals</span><span class="value">: <span class="function">append</span>(<span class="variable">$vals</span>, <span class="variable">$sum</span>);</span></span><br><span class="line">        </span><br><span class="line">        <span class="at_rule">@<span class="keyword">if</span> (<span class="function">map-has-key</span>(<span class="variable">$weight</span>, <span class="variable">$key</span>)) &#123;</span></span><br><span class="line">            <span class="variable">$sum</span><span class="value">: <span class="variable">$sum</span> + <span class="function">map-get</span>(<span class="variable">$weight</span>, <span class="variable">$key</span>);</span></span><br><span class="line">        &#125; <span class="at_rule">@<span class="keyword">else</span> &#123;</span></span><br><span class="line">            <span class="variable">$sum</span><span class="value">: <span class="variable">$sum</span> + <span class="function">map-get</span>(<span class="variable">$weight</span>, null);</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="variable">$avg</span><span class="value">: <span class="function">floor</span>(<span class="number">100</span> / <span class="variable">$sum</span>);</span></span><br><span class="line">    </span><br><span class="line">    <span class="at_rule">@keyframes #&#123;</span><span class="variable">$animation_name</span>&#125; &#123;</span><br><span class="line">        <span class="at_rule">@<span class="keyword">for</span> <span class="variable">$i</span><span class="preprocessor"> from</span><span class="preprocessor"> 0</span><span class="preprocessor"> to</span> <span class="variable">$count</span> &#123;</span></span><br><span class="line">            #&#123;<span class="function">nth</span>(<span class="variable">$vals</span>, <span class="variable">$i</span> + 1) * <span class="variable">$avg</span> * 1%&#125; &#123;</span><br><span class="line">                <span class="attribute">background-position</span><span class="value">: <span class="number">0</span> (<span class="variable">$i</span> * <span class="variable">$height</span> * -<span class="number">1</span>);</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        100% &#123;</span><br><span class="line">            <span class="attribute">background-position</span><span class="value">: <span class="number">0</span> ((<span class="variable">$count</span> - <span class="number">1</span>) * <span class="variable">$height</span> * -<span class="number">1</span>);</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后样式引用 mixin, 并提供必要参数</p>
+<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="class">.people</span> &#123;</span><br><span class="line">    <span class="attribute">border</span><span class="value">: <span class="number">1px</span> solid <span class="hexcolor">#000</span>;</span></span><br><span class="line">    <span class="attribute">width</span><span class="value">: <span class="number">113px</span>;</span></span><br><span class="line">    <span class="attribute">height</span><span class="value">: <span class="number">113px</span>;</span></span><br><span class="line">    <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> keyframes_ani</span>(</span><br><span class="line">        <span class="variable">$animation_name</span>:<span class="preprocessor"> people-ani</span>,</span><br><span class="line">        <span class="variable">$background</span>:<span class="preprocessor"> url</span>(http://image.uc.cn/s/uae/g/<span class="number">01</span>/subscribepreheat2016/images/cmp6_keyframes.png),</span><br><span class="line">        <span class="variable">$height</span>:<span class="preprocessor"> 118px</span>,</span><br><span class="line">        <span class="variable">$weight</span>: (</span><br><span class="line">           <span class="preprocessor"> 2</span>:<span class="preprocessor"> 11</span>,</span><br><span class="line">           <span class="preprocessor"> 11</span>:<span class="preprocessor"> 19</span>,</span><br><span class="line">           <span class="preprocessor"> 23</span>:<span class="preprocessor"> 5</span>,</span><br><span class="line">           <span class="preprocessor"> null</span>:<span class="preprocessor"> 3</span></span><br><span class="line">        ),</span><br><span class="line">        <span class="variable">$count</span>:<span class="preprocessor"> 24</span>,</span><br><span class="line">        <span class="variable">$duration</span>:<span class="preprocessor"> 5s</span></span><br><span class="line">    );</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后就搞定啦，最终输出代码如下</p>
+<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="class">.people</span> &#123;</span><br><span class="line">  <span class="attribute">border</span><span class="value">: <span class="number">1px</span> solid <span class="hexcolor">#000</span>;</span></span><br><span class="line">  <span class="attribute">width</span><span class="value">: <span class="number">113px</span>;</span></span><br><span class="line">  <span class="attribute">height</span><span class="value">: <span class="number">113px</span>;</span></span><br><span class="line">  <span class="attribute">background</span><span class="value">: <span class="function">url</span>(http://image.uc.cn/s/uae/g/<span class="number">01</span>/subscribepreheat2016/images/cmp6_keyframes.png) no-repeat;</span></span><br><span class="line">  <span class="attribute">animation</span><span class="value">: people-ani <span class="number">5s</span> <span class="number">0s</span> <span class="function">steps</span>(<span class="number">1</span>) forwards;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="at_rule">@keyframes<span class="preprocessor"> people-ani</span> &#123;</span></span><br><span class="line">  0% &#123;</span><br><span class="line">    <span class="attribute">background-position</span><span class="value">: <span class="number">0</span> <span class="number">0px</span>;</span></span><br><span class="line">  &#125;</span><br><span class="line">  3% &#123;</span><br><span class="line">    <span class="attribute">background-position</span><span class="value">: <span class="number">0</span> -<span class="number">118px</span>;</span></span><br><span class="line">  &#125;</span><br><span class="line">  14% &#123;</span><br><span class="line">    <span class="attribute">background-position</span><span class="value">: <span class="number">0</span> -<span class="number">236px</span>;</span></span><br><span class="line">  &#125;</span><br><span class="line">  17% &#123;</span><br><span class="line">    <span class="attribute">background-position</span><span class="value">: <span class="number">0</span> -<span class="number">354px</span>;</span></span><br><span class="line">  &#125;</span><br><span class="line">  20% &#123;</span><br><span class="line">    <span class="attribute">background-position</span><span class="value">: <span class="number">0</span> -<span class="number">472px</span>;</span></span><br><span class="line">  &#125;</span><br><span class="line">  23% &#123;</span><br><span class="line">    <span class="attribute">background-position</span><span class="value">: <span class="number">0</span> -<span class="number">590px</span>;</span></span><br><span class="line">  &#125;</span><br><span class="line">  26% &#123;</span><br><span class="line">    <span class="attribute">background-position</span><span class="value">: <span class="number">0</span> -<span class="number">708px</span>;</span></span><br><span class="line">  &#125;</span><br><span class="line">  29% &#123;</span><br><span class="line">    <span class="attribute">background-position</span><span class="value">: <span class="number">0</span> -<span class="number">826px</span>;</span></span><br><span class="line">  &#125;</span><br><span class="line">  32% &#123;</span><br><span class="line">    <span class="attribute">background-position</span><span class="value">: <span class="number">0</span> -<span class="number">944px</span>;</span></span><br><span class="line">  &#125;</span><br><span class="line">  35% &#123;</span><br><span class="line">    <span class="attribute">background-position</span><span class="value">: <span class="number">0</span> -<span class="number">1062px</span>;</span></span><br><span class="line">  &#125;</span><br><span class="line">  38% &#123;</span><br><span class="line">    <span class="attribute">background-position</span><span class="value">: <span class="number">0</span> -<span class="number">1180px</span>;</span></span><br><span class="line">  &#125;</span><br><span class="line">  57% &#123;</span><br><span class="line">    <span class="attribute">background-position</span><span class="value">: <span class="number">0</span> -<span class="number">1298px</span>;</span></span><br><span class="line">  &#125;</span><br><span class="line">  60% &#123;</span><br><span class="line">    <span class="attribute">background-position</span><span class="value">: <span class="number">0</span> -<span class="number">1416px</span>;</span></span><br><span class="line">  &#125;</span><br><span class="line">  63% &#123;</span><br><span class="line">    <span class="attribute">background-position</span><span class="value">: <span class="number">0</span> -<span class="number">1534px</span>;</span></span><br><span class="line">  &#125;</span><br><span class="line">  66% &#123;</span><br><span class="line">    <span class="attribute">background-position</span><span class="value">: <span class="number">0</span> -<span class="number">1652px</span>;</span></span><br><span class="line">  &#125;</span><br><span class="line">  69% &#123;</span><br><span class="line">    <span class="attribute">background-position</span><span class="value">: <span class="number">0</span> -<span class="number">1770px</span>;</span></span><br><span class="line">  &#125;</span><br><span class="line">  72% &#123;</span><br><span class="line">    <span class="attribute">background-position</span><span class="value">: <span class="number">0</span> -<span class="number">1888px</span>;</span></span><br><span class="line">  &#125;</span><br><span class="line">  75% &#123;</span><br><span class="line">    <span class="attribute">background-position</span><span class="value">: <span class="number">0</span> -<span class="number">2006px</span>;</span></span><br><span class="line">  &#125;</span><br><span class="line">  78% &#123;</span><br><span class="line">    <span class="attribute">background-position</span><span class="value">: <span class="number">0</span> -<span class="number">2124px</span>;</span></span><br><span class="line">  &#125;</span><br><span class="line">  81% &#123;</span><br><span class="line">    <span class="attribute">background-position</span><span class="value">: <span class="number">0</span> -<span class="number">2242px</span>;</span></span><br><span class="line">  &#125;</span><br><span class="line">  84% &#123;</span><br><span class="line">    <span class="attribute">background-position</span><span class="value">: <span class="number">0</span> -<span class="number">2360px</span>;</span></span><br><span class="line">  &#125;</span><br><span class="line">  87% &#123;</span><br><span class="line">    <span class="attribute">background-position</span><span class="value">: <span class="number">0</span> -<span class="number">2478px</span>;</span></span><br><span class="line">  &#125;</span><br><span class="line">  90% &#123;</span><br><span class="line">    <span class="attribute">background-position</span><span class="value">: <span class="number">0</span> -<span class="number">2596px</span>;</span></span><br><span class="line">  &#125;</span><br><span class="line">  95% &#123;</span><br><span class="line">    <span class="attribute">background-position</span><span class="value">: <span class="number">0</span> -<span class="number">2714px</span>;</span></span><br><span class="line">  &#125;</span><br><span class="line">  100% &#123;</span><br><span class="line">    <span class="attribute">background-position</span><span class="value">: <span class="number">0</span> -<span class="number">2714px</span>;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里想巴拉下 <code>keyframe_ani</code> 中的 $weight 参数，map 类型，表示每一帧在整个动画过程所占时间长短的<strong>权重</strong>，缺省的帧匹配为 null, 默认为 <code>(null: 1)</code>。这里的权重即是这一关键帧在整个 $duration 中所占的时间比，方便调整 $duration 而不对动画造成其他影响。下面 $weight 的两种写法的结果是一致的。</p>
+<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="variable">$weight</span><span class="value">: (</span><br><span class="line">    <span class="number">1</span>: <span class="number">3</span>,</span><br><span class="line">    <span class="number">4</span>: <span class="number">3</span>,</span><br><span class="line">    null: <span class="number">1</span></span><br><span class="line">)</span><br><span class="line"><span class="variable">$weight</span>: (</span><br><span class="line">    <span class="number">1</span>: <span class="number">6</span>,</span><br><span class="line">    <span class="number">4</span>: <span class="number">6</span>,</span><br><span class="line">    null: <span class="number">2</span></span><br><span class="line">)</span></span><br></pre></td></tr></table></figure>
+<p>demo 见 <a href="http://codepen.io/youtbe/pen/MyLmpJ" target="_blank" rel="external">codepen</a>.</p>
+<h3 id="曲线运动">曲线运动</h3><p>有一屏设计师说要让纸被风吹走，要飞着转几圈，要飞的优雅。这时候如果直接手写关键帧出来的效果应该是不满意的，曲线运动的动画会变的生硬；让我加一块 canvas 我也不干，纯粹强迫症？于是琢磨着也用 Sass 实现，然后就走了这样的歪路。</p>
+<p><img src="/images/sass-16-05-08/bezier.gif" alt="animation"></p>
+<p>整体的思路，我直接拿了之前星座项目用过的贝塞尔曲线相关的实现，通过关键点生成路径点集，然后粗暴地通过 node 直接生成 sass-variable.scss 文件，里面声明了四个变量，每个变量包含了每个纸片动画过程中50个关键帧的偏移量，然后再通过变量生成 keyframes, 就搞定啦。</p>
+<p>代码如下，也很简单就是了</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// buildSassVar.js</span></span><br><span class="line"><span class="pi">'use strict'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> pointCount = <span class="number">50</span>;</span><br><span class="line"><span class="keyword">const</span> points = [</span><br><span class="line">    [&#123;x: <span class="number">0</span>, y: <span class="number">0</span>&#125;,&#123;x: -<span class="number">40</span>, y: -<span class="number">60</span>&#125;, &#123;x: -<span class="number">20</span>, y: <span class="number">250</span>&#125;, &#123;x: -<span class="number">500</span>, y: <span class="number">400</span>&#125;],</span><br><span class="line">    [&#123;x: <span class="number">0</span>, y: <span class="number">0</span>&#125;,&#123;x: -<span class="number">40</span>, y: <span class="number">140</span>&#125;, &#123;x: <span class="number">120</span>, y: <span class="number">300</span>&#125;, &#123;x: -<span class="number">160</span>, y: <span class="number">800</span>&#125;],</span><br><span class="line">    [&#123;x: <span class="number">0</span>, y: <span class="number">0</span>&#125;,&#123;x: -<span class="number">100</span>, y: <span class="number">90</span>&#125;, &#123;x: -<span class="number">240</span>, y: <span class="number">180</span>&#125;, &#123;x: -<span class="number">500</span>, y: <span class="number">340</span>&#125;],</span><br><span class="line">    [&#123;x: <span class="number">0</span>, y: <span class="number">0</span>&#125;,&#123;x: <span class="number">10</span>, y: <span class="number">120</span>&#125;, &#123;x: <span class="number">200</span>, y: <span class="number">220</span>&#125;, &#123;x:<span class="number">150</span>, y: <span class="number">400</span>&#125;, &#123;x:-<span class="number">300</span>, y:<span class="number">600</span>&#125;],</span><br><span class="line">    [&#123;x: <span class="number">0</span>, y: <span class="number">0</span>&#125;,&#123;x: <span class="number">50</span>, y: <span class="number">10</span>&#125;, &#123;x: <span class="number">50</span>, y: <span class="number">100</span>&#125;, &#123;x: -<span class="number">50</span>, y: <span class="number">400</span>&#125;, &#123;x: -<span class="number">200</span>, y:<span class="number">600</span>&#125;, &#123;x: -<span class="number">400</span>, y:<span class="number">800</span>&#125;]</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">build();</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">build</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> content = <span class="string">''</span>;</span><br><span class="line"></span><br><span class="line">    points.map((point, index) =&gt; &#123;</span><br><span class="line">        <span class="keyword">let</span> str = <span class="string">''</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 创建点集</span></span><br><span class="line">        CreateBezierPoints(point, pointCount).map((pos, idx) =&gt; &#123;</span><br><span class="line">            str += <span class="string">`<span class="subst">$&#123;idx&#125;</span>:(<span class="subst">$&#123;pos.x.toFixed(2)&#125;</span>, <span class="subst">$&#123;pos.y.toFixed(2)&#125;</span>),`</span>;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        content += <span class="string">`$paper<span class="subst">$&#123;index&#125;</span>: (<span class="subst">$&#123;str&#125;</span>);\n`</span>;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 写入文件</span></span><br><span class="line">    <span class="built_in">require</span>(<span class="string">'fs'</span>).writeFileSync(<span class="string">'./components/css/sass-variable.scss'</span>, content, &#123;</span><br><span class="line">        encoding: <span class="string">'utf8'</span></span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">CreateBezierPoints</span>(<span class="params">anchorpoints, pointsAmount</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> points = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; pointsAmount; i++) &#123;</span><br><span class="line">        <span class="keyword">var</span> point = MultiPointBezier(anchorpoints, i / pointsAmount);</span><br><span class="line">        points.push(point);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> points;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">MultiPointBezier</span>(<span class="params">points, t</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> len = points.length;</span><br><span class="line">    <span class="keyword">var</span> x = <span class="number">0</span>, y = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">var</span> erxiangshi = <span class="function"><span class="keyword">function</span> (<span class="params">start, end</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> cs = <span class="number">1</span>, bcs = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (end &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            cs *= start;</span><br><span class="line">            bcs *= end;</span><br><span class="line">            start--;</span><br><span class="line">            end--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> (cs / bcs);</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">        <span class="keyword">var</span> point = points[i];</span><br><span class="line">        x += point.x * <span class="built_in">Math</span>.pow((<span class="number">1</span> - t), (len - <span class="number">1</span> - i)) * <span class="built_in">Math</span>.pow(t, i) * (erxiangshi(len - <span class="number">1</span>, i));</span><br><span class="line">        y += point.y * <span class="built_in">Math</span>.pow((<span class="number">1</span> - t), (len - <span class="number">1</span> - i)) * <span class="built_in">Math</span>.pow(t, i) * (erxiangshi(len - <span class="number">1</span>, i));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> &#123; x: x, y: y &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="comment">// sass-variable.scss</span></span><br><span class="line"><span class="variable">$paper0</span><span class="value">: (<span class="number">0</span>:(<span class="number">0.00</span>, <span class="number">0.00</span>),<span class="number">1</span>:(-<span class="number">2.33</span>, -<span class="number">3.16</span>),<span class="number">2</span>:(-<span class="number">4.55</span>, -<span class="number">5.46</span>),<span class="number">3</span>:(-<span class="number">6.67</span>, -<span class="number">6.92</span>),<span class="number">4</span>:(-<span class="number">8.73</span>, -<span class="number">7.57</span>),<span class="number">5</span>:(-<span class="number">10.76</span>, -<span class="number">7.43</span>),<span class="number">6</span>:(-<span class="number">12.78</span>, -<span class="number">6.53</span>),<span class="number">7</span>:(-<span class="number">14.81</span>, -<span class="number">4.90</span>),<span class="number">8</span>:(-<span class="number">16.89</span>, -<span class="number">2.55</span>),<span class="number">9</span>:(-<span class="number">19.03</span>, <span class="number">0.47</span>),<span class="number">10</span>:(-<span class="number">21.28</span>, <span class="number">4.16</span>),<span class="number">11</span>:(-<span class="number">23.65</span>, <span class="number">8.48</span>),<span class="number">12</span>:(-<span class="number">26.17</span>, <span class="number">13.41</span>),<span class="number">13</span>:(-<span class="number">28.87</span>, <span class="number">18.92</span>),<span class="number">14</span>:(-<span class="number">31.78</span>, <span class="number">24.99</span>),<span class="number">15</span>:(-<span class="number">34.92</span>, <span class="number">31.59</span>),<span class="number">16</span>:(-<span class="number">38.32</span>, <span class="number">38.70</span>),<span class="number">17</span>:(-<span class="number">42.00</span>, <span class="number">46.28</span>),<span class="number">18</span>:(-<span class="number">46.00</span>, <span class="number">54.33</span>),<span class="number">19</span>:(-<span class="number">50.34</span>, <span class="number">62.80</span>),<span class="number">20</span>:(-<span class="number">55.04</span>, <span class="number">71.68</span>),<span class="number">21</span>:(-<span class="number">60.14</span>, <span class="number">80.94</span>),<span class="number">22</span>:(-<span class="number">65.66</span>, <span class="number">90.55</span>),<span class="number">23</span>:(-<span class="number">71.62</span>, <span class="number">100.49</span>),<span class="number">24</span>:(-<span class="number">78.06</span>, <span class="number">110.73</span>),<span class="number">25</span>:(-<span class="number">85.00</span>, <span class="number">121.25</span>),<span class="number">26</span>:(-<span class="number">92.47</span>, <span class="number">132.02</span>),<span class="number">27</span>:(-<span class="number">100.49</span>, <span class="number">143.02</span>),<span class="number">28</span>:(-<span class="number">109.10</span>, <span class="number">154.22</span>),<span class="number">29</span>:(-<span class="number">118.31</span>, <span class="number">165.59</span>),<span class="number">30</span>:(-<span class="number">128.16</span>, <span class="number">177.12</span>),<span class="number">31</span>:(-<span class="number">138.67</span>, <span class="number">188.77</span>),<span class="number">32</span>:(-<span class="number">149.87</span>, <span class="number">200.52</span>),<span class="number">33</span>:(-<span class="number">161.79</span>, <span class="number">212.34</span>),<span class="number">34</span>:(-<span class="number">174.45</span>, <span class="number">224.22</span>),<span class="number">35</span>:(-<span class="number">187.88</span>, <span class="number">236.11</span>),<span class="number">36</span>:(-<span class="number">202.11</span>, <span class="number">248.00</span>),<span class="number">37</span>:(-<span class="number">217.16</span>, <span class="number">259.87</span>),<span class="number">38</span>:(-<span class="number">233.06</span>, <span class="number">271.68</span>),<span class="number">39</span>:(-<span class="number">249.84</span>, <span class="number">283.41</span>),<span class="number">40</span>:(-<span class="number">267.52</span>, <span class="number">295.04</span>),<span class="number">41</span>:(-<span class="number">286.13</span>, <span class="number">306.54</span>),<span class="number">42</span>:(-<span class="number">305.71</span>, <span class="number">317.88</span>),<span class="number">43</span>:(-<span class="number">326.26</span>, <span class="number">329.05</span>),<span class="number">44</span>:(-<span class="number">347.83</span>, <span class="number">340.00</span>),<span class="number">45</span>:(-<span class="number">370.44</span>, <span class="number">350.73</span>),<span class="number">46</span>:(-<span class="number">394.11</span>, <span class="number">361.20</span>),<span class="number">47</span>:(-<span class="number">418.88</span>, <span class="number">371.39</span>),<span class="number">48</span>:(-<span class="number">444.76</span>, <span class="number">381.27</span>),<span class="number">49</span>:(-<span class="number">471.80</span>, <span class="number">390.81</span>),);</span></span><br><span class="line"><span class="variable">$paper1</span><span class="value">: (<span class="number">0</span>:(<span class="number">0.00</span>, <span class="number">0.00</span>),<span class="number">1</span>:(-<span class="number">2.17</span>, <span class="number">8.43</span>),<span class="number">2</span>:(-<span class="number">3.88</span>, <span class="number">16.92</span>),<span class="number">3</span>:(-<span class="number">5.18</span>, <span class="number">25.49</span>),<span class="number">4</span>:(-<span class="number">6.09</span>, <span class="number">34.15</span>),<span class="number">5</span>:(-<span class="number">6.64</span>, <span class="number">42.92</span>),<span class="number">6</span>:(-<span class="number">6.87</span>, <span class="number">51.82</span>),<span class="number">7</span>:(-<span class="number">6.80</span>, <span class="number">60.85</span>),<span class="number">8</span>:(-<span class="number">6.46</span>, <span class="number">70.05</span>),<span class="number">9</span>:(-<span class="number">5.89</span>, <span class="number">79.41</span>),<span class="number">10</span>:(-<span class="number">5.12</span>, <span class="number">88.96</span>),<span class="number">11</span>:(-<span class="number">4.17</span>, <span class="number">98.71</span>),<span class="number">12</span>:(-<span class="number">3.09</span>, <span class="number">108.68</span>),<span class="number">13</span>:(-<span class="number">1.89</span>, <span class="number">118.88</span>),<span class="number">14</span>:(-<span class="number">0.61</span>, <span class="number">129.33</span>),<span class="number">15</span>:(<span class="number">0.72</span>, <span class="number">140.04</span>),<span class="number">16</span>:(<span class="number">2.07</span>, <span class="number">151.03</span>),<span class="number">17</span>:(<span class="number">3.41</span>, <span class="number">162.31</span>),<span class="number">18</span>:(<span class="number">4.70</span>, <span class="number">173.91</span>),<span class="number">19</span>:(<span class="number">5.92</span>, <span class="number">185.82</span>),<span class="number">20</span>:(<span class="number">7.04</span>, <span class="number">198.08</span>),<span class="number">21</span>:(<span class="number">8.02</span>, <span class="number">210.69</span>),<span class="number">22</span>:(<span class="number">8.84</span>, <span class="number">223.67</span>),<span class="number">23</span>:(<span class="number">9.46</span>, <span class="number">237.04</span>),<span class="number">24</span>:(<span class="number">9.86</span>, <span class="number">250.81</span>),<span class="number">25</span>:(<span class="number">10.00</span>, <span class="number">265.00</span>),<span class="number">26</span>:(<span class="number">9.85</span>, <span class="number">279.62</span>),<span class="number">27</span>:(<span class="number">9.38</span>, <span class="number">294.68</span>),<span class="number">28</span>:(<span class="number">8.57</span>, <span class="number">310.21</span>),<span class="number">29</span>:(<span class="number">7.37</span>, <span class="number">326.22</span>),<span class="number">30</span>:(<span class="number">5.76</span>, <span class="number">342.72</span>),<span class="number">31</span>:(<span class="number">3.71</span>, <span class="number">359.73</span>),<span class="number">32</span>:(<span class="number">1.19</span>, <span class="number">377.26</span>),<span class="number">33</span>:(-<span class="number">1.84</span>, <span class="number">395.33</span>),<span class="number">34</span>:(-<span class="number">5.40</span>, <span class="number">413.96</span>),<span class="number">35</span>:(-<span class="number">9.52</span>, <span class="number">433.16</span>),<span class="number">36</span>:(-<span class="number">14.24</span>, <span class="number">452.94</span>),<span class="number">37</span>:(-<span class="number">19.58</span>, <span class="number">473.33</span>),<span class="number">38</span>:(-<span class="number">25.58</span>, <span class="number">494.33</span>),<span class="number">39</span>:(-<span class="number">32.27</span>, <span class="number">515.96</span>),<span class="number">40</span>:(-<span class="number">39.68</span>, <span class="number">538.24</span>),<span class="number">41</span>:(-<span class="number">47.84</span>, <span class="number">561.18</span>),<span class="number">42</span>:(-<span class="number">56.77</span>, <span class="number">584.80</span>),<span class="number">43</span>:(-<span class="number">66.52</span>, <span class="number">609.11</span>),<span class="number">44</span>:(-<span class="number">77.10</span>, <span class="number">634.14</span>),<span class="number">45</span>:(-<span class="number">88.56</span>, <span class="number">659.88</span>),<span class="number">46</span>:(-<span class="number">100.92</span>, <span class="number">686.36</span>),<span class="number">47</span>:(-<span class="number">114.21</span>, <span class="number">713.60</span>),<span class="number">48</span>:(-<span class="number">128.47</span>, <span class="number">741.61</span>),<span class="number">49</span>:(-<span class="number">143.72</span>, <span class="number">770.41</span>),);</span></span><br><span class="line"><span class="variable">$paper2</span><span class="value">: (<span class="number">0</span>:(<span class="number">0.00</span>, <span class="number">0.00</span>),<span class="number">1</span>:(-<span class="number">6.05</span>, <span class="number">5.40</span>),<span class="number">2</span>:(-<span class="number">12.20</span>, <span class="number">10.80</span>),<span class="number">3</span>:(-<span class="number">18.45</span>, <span class="number">16.22</span>),<span class="number">4</span>:(-<span class="number">24.81</span>, <span class="number">21.64</span>),<span class="number">5</span>:(-<span class="number">31.28</span>, <span class="number">27.07</span>),<span class="number">6</span>:(-<span class="number">37.87</span>, <span class="number">32.52</span>),<span class="number">7</span>:(-<span class="number">44.57</span>, <span class="number">37.99</span>),<span class="number">8</span>:(-<span class="number">51.40</span>, <span class="number">43.49</span>),<span class="number">9</span>:(-<span class="number">58.35</span>, <span class="number">49.01</span>),<span class="number">10</span>:(-<span class="number">65.44</span>, <span class="number">54.56</span>),<span class="number">11</span>:(-<span class="number">72.66</span>, <span class="number">60.15</span>),<span class="number">12</span>:(-<span class="number">80.02</span>, <span class="number">65.77</span>),<span class="number">13</span>:(-<span class="number">87.52</span>, <span class="number">71.43</span>),<span class="number">14</span>:(-<span class="number">95.16</span>, <span class="number">77.14</span>),<span class="number">15</span>:(-<span class="number">102.96</span>, <span class="number">82.89</span>),<span class="number">16</span>:(-<span class="number">110.91</span>, <span class="number">88.69</span>),<span class="number">17</span>:(-<span class="number">119.02</span>, <span class="number">94.55</span>),<span class="number">18</span>:(-<span class="number">127.28</span>, <span class="number">100.47</span>),<span class="number">19</span>:(-<span class="number">135.72</span>, <span class="number">106.44</span>),<span class="number">20</span>:(-<span class="number">144.32</span>, <span class="number">112.48</span>),<span class="number">21</span>:(-<span class="number">153.10</span>, <span class="number">118.59</span>),<span class="number">22</span>:(-<span class="number">162.05</span>, <span class="number">124.76</span>),<span class="number">23</span>:(-<span class="number">171.18</span>, <span class="number">131.01</span>),<span class="number">24</span>:(-<span class="number">180.50</span>, <span class="number">137.34</span>),<span class="number">25</span>:(-<span class="number">190.00</span>, <span class="number">143.75</span>),<span class="number">26</span>:(-<span class="number">199.70</span>, <span class="number">150.24</span>),<span class="number">27</span>:(-<span class="number">209.59</span>, <span class="number">156.82</span>),<span class="number">28</span>:(-<span class="number">219.68</span>, <span class="number">163.49</span>),<span class="number">29</span>:(-<span class="number">229.98</span>, <span class="number">170.26</span>),<span class="number">30</span>:(-<span class="number">240.48</span>, <span class="number">177.12</span>),<span class="number">31</span>:(-<span class="number">251.19</span>, <span class="number">184.08</span>),<span class="number">32</span>:(-<span class="number">262.12</span>, <span class="number">191.15</span>),<span class="number">33</span>:(-<span class="number">273.27</span>, <span class="number">198.32</span>),<span class="number">34</span>:(-<span class="number">284.64</span>, <span class="number">205.61</span>),<span class="number">35</span>:(-<span class="number">296.24</span>, <span class="number">213.01</span>),<span class="number">36</span>:(-<span class="number">308.07</span>, <span class="number">220.53</span>),<span class="number">37</span>:(-<span class="number">320.13</span>, <span class="number">228.17</span>),<span class="number">38</span>:(-<span class="number">332.43</span>, <span class="number">235.93</span>),<span class="number">39</span>:(-<span class="number">344.97</span>, <span class="number">243.82</span>),<span class="number">40</span>:(-<span class="number">357.76</span>, <span class="number">251.84</span>),<span class="number">41</span>:(-<span class="number">370.80</span>, <span class="number">260.00</span>),<span class="number">42</span>:(-<span class="number">384.09</span>, <span class="number">268.29</span>),<span class="number">43</span>:(-<span class="number">397.64</span>, <span class="number">276.72</span>),<span class="number">44</span>:(-<span class="number">411.45</span>, <span class="number">285.30</span>),<span class="number">45</span>:(-<span class="number">425.52</span>, <span class="number">294.03</span>),<span class="number">46</span>:(-<span class="number">439.86</span>, <span class="number">302.91</span>),<span class="number">47</span>:(-<span class="number">454.48</span>, <span class="number">311.94</span>),<span class="number">48</span>:(-<span class="number">469.37</span>, <span class="number">321.13</span>),<span class="number">49</span>:(-<span class="number">484.54</span>, <span class="number">330.48</span>),);</span></span><br><span class="line"><span class="variable">$paper3</span><span class="value">: (<span class="number">0</span>:(<span class="number">0.00</span>, <span class="number">0.00</span>),<span class="number">1</span>:(<span class="number">1.22</span>, <span class="number">9.56</span>),<span class="number">2</span>:(<span class="number">3.22</span>, <span class="number">19.03</span>),<span class="number">3</span>:(<span class="number">5.93</span>, <span class="number">28.45</span>),<span class="number">4</span>:(<span class="number">9.26</span>, <span class="number">37.83</span>),<span class="number">5</span>:(<span class="number">13.15</span>, <span class="number">47.18</span>),<span class="number">6</span>:(<span class="number">17.50</span>, <span class="number">56.53</span>),<span class="number">7</span>:(<span class="number">22.26</span>, <span class="number">65.88</span>),<span class="number">8</span>:(<span class="number">27.34</span>, <span class="number">75.26</span>),<span class="number">9</span>:(<span class="number">32.67</span>, <span class="number">84.68</span>),<span class="number">10</span>:(<span class="number">38.18</span>, <span class="number">94.14</span>),<span class="number">11</span>:(<span class="number">43.79</span>, <span class="number">103.68</span>),<span class="number">12</span>:(<span class="number">49.45</span>, <span class="number">113.29</span>),<span class="number">13</span>:(<span class="number">55.07</span>, <span class="number">122.99</span>),<span class="number">14</span>:(<span class="number">60.59</span>, <span class="number">132.79</span>),<span class="number">15</span>:(<span class="number">65.95</span>, <span class="number">142.70</span>),<span class="number">16</span>:(<span class="number">71.07</span>, <span class="number">152.74</span>),<span class="number">17</span>:(<span class="number">75.89</span>, <span class="number">162.91</span>),<span class="number">18</span>:(<span class="number">80.35</span>, <span class="number">173.22</span>),<span class="number">19</span>:(<span class="number">84.39</span>, <span class="number">183.68</span>),<span class="number">20</span>:(<span class="number">87.94</span>, <span class="number">194.30</span>),<span class="number">21</span>:(<span class="number">90.93</span>, <span class="number">205.09</span>),<span class="number">22</span>:(<span class="number">93.32</span>, <span class="number">216.04</span>),<span class="number">23</span>:(<span class="number">95.04</span>, <span class="number">227.18</span>),<span class="number">24</span>:(<span class="number">96.04</span>, <span class="number">238.50</span>),<span class="number">25</span>:(<span class="number">96.25</span>, <span class="number">250.00</span>),<span class="number">26</span>:(<span class="number">95.62</span>, <span class="number">261.70</span>),<span class="number">27</span>:(<span class="number">94.10</span>, <span class="number">273.59</span>),<span class="number">28</span>:(<span class="number">91.62</span>, <span class="number">285.68</span>),<span class="number">29</span>:(<span class="number">88.15</span>, <span class="number">297.97</span>),<span class="number">30</span>:(<span class="number">83.62</span>, <span class="number">310.46</span>),<span class="number">31</span>:(<span class="number">77.98</span>, <span class="number">323.16</span>),<span class="number">32</span>:(<span class="number">71.19</span>, <span class="number">336.06</span>),<span class="number">33</span>:(<span class="number">63.19</span>, <span class="number">349.17</span>),<span class="number">34</span>:(<span class="number">53.94</span>, <span class="number">362.47</span>),<span class="number">35</span>:(<span class="number">43.39</span>, <span class="number">375.98</span>),<span class="number">36</span>:(<span class="number">31.49</span>, <span class="number">389.69</span>),<span class="number">37</span>:(<span class="number">18.20</span>, <span class="number">403.60</span>),<span class="number">38</span>:(<span class="number">3.47</span>, <span class="number">417.70</span>),<span class="number">39</span>:(-<span class="number">12.74</span>, <span class="number">431.99</span>),<span class="number">40</span>:(-<span class="number">30.46</span>, <span class="number">446.46</span>),<span class="number">41</span>:(-<span class="number">49.75</span>, <span class="number">461.12</span>),<span class="number">42</span>:(-<span class="number">70.65</span>, <span class="number">475.95</span>),<span class="number">43</span>:(-<span class="number">93.18</span>, <span class="number">490.95</span>),<span class="number">44</span>:(-<span class="number">117.40</span>, <span class="number">506.11</span>),<span class="number">45</span>:(-<span class="number">143.33</span>, <span class="number">521.42</span>),<span class="number">46</span>:(-<span class="number">171.02</span>, <span class="number">536.88</span>),<span class="number">47</span>:(-<span class="number">200.50</span>, <span class="number">552.48</span>),<span class="number">48</span>:(-<span class="number">231.80</span>, <span class="number">568.21</span>),<span class="number">49</span>:(-<span class="number">264.95</span>, <span class="number">584.05</span>),);</span></span><br></pre></td></tr></table></figure>
+<p>相关的 mixin 如下</p>
+<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="at_rule">@<span class="keyword">mixin</span><span class="preprocessor"> fly</span>(<span class="variable">$animation_name</span>, <span class="variable">$pos</span>) &#123;</span></span><br><span class="line">    <span class="attribute">animation</span><span class="value">: <span class="variable">$animation_name</span> <span class="number">2.5s</span> <span class="number">5s</span> forwards;</span></span><br><span class="line"></span><br><span class="line">    <span class="at_rule">@keyframes #&#123;</span><span class="variable">$animation_name</span>&#125; &#123;</span><br><span class="line">        <span class="at_rule">@<span class="keyword">each</span> <span class="variable">$time</span>, <span class="variable">$translate</span><span class="preprocessor"> in</span> <span class="variable">$pos</span> &#123;</span></span><br><span class="line">            #&#123;(<span class="variable">$time</span> + 1)*2%&#125; &#123;</span><br><span class="line">                <span class="attribute">opacity</span><span class="value">: <span class="number">1</span>;</span></span><br><span class="line">                <span class="attribute">transform</span><span class="value">: <span class="function">translate</span>(<span class="function">rem</span>(<span class="function">nth</span>(<span class="variable">$translate</span>, <span class="number">1</span>)), <span class="function">rem</span>(<span class="function">nth</span>(<span class="variable">$translate</span>, <span class="number">2</span>)));</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br><span class="line">&amp;<span class="class">.play</span> <span class="class">.paper</span> <span class="tag">i</span> &#123;</span><br><span class="line">    &amp;<span class="pseudo">:nth-child</span>(1) &#123;</span><br><span class="line">        <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> fly</span>(ani-paper-<span class="number">0</span>, <span class="variable">$paper0</span>);</span></span><br><span class="line">    &#125;</span><br><span class="line">    &amp;<span class="pseudo">:nth-child</span>(2) &#123;</span><br><span class="line">        <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> fly</span>(ani-paper-<span class="number">1</span>, <span class="variable">$paper1</span>);</span></span><br><span class="line">    &#125;</span><br><span class="line">    &amp;<span class="pseudo">:nth-child</span>(3) &#123;</span><br><span class="line">        <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> fly</span>(ani-paper-<span class="number">2</span>, <span class="variable">$paper2</span>);</span></span><br><span class="line">    &#125;</span><br><span class="line">    &amp;<span class="pseudo">:nth-child</span>(4) &#123;</span><br><span class="line">        <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> fly</span>(ani-paper-<span class="number">3</span>, <span class="variable">$paper3</span>);</span></span><br><span class="line">    &#125;</span><br><span class="line">    &amp;<span class="pseudo">:nth-child</span>(5) &#123;</span><br><span class="line">        <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> fly</span>(ani-paper-<span class="number">4</span>, <span class="variable">$paper4</span>);</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="动画缩写">动画缩写</h2><p>还写了个简单的 mixin, 用来写简单状态变化的动画，代码很简单就不继续巴拉了。<s>（感觉自己写 mixin 写上瘾了噗）</s></p>
+<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="at_rule">@<span class="keyword">mixin</span><span class="preprocessor"> animation</span> (<span class="variable">$animation_name</span>, <span class="variable">$duration</span>, <span class="variable">$delay</span>:<span class="preprocessor"> 0.5s</span>, <span class="variable">$bezier</span>:<span class="preprocessor"> linear</span>, <span class="variable">$times</span>:<span class="preprocessor"> infinite</span>, <span class="variable">$from</span>: (), <span class="variable">$middle</span>:<span class="preprocessor"> null</span>, <span class="variable">$to</span>: ()) &#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="attribute">animation</span><span class="value">: <span class="variable">$animation_name</span> <span class="variable">$duration</span> <span class="variable">$delay</span> <span class="variable">$bezier</span> <span class="variable">$times</span>;</span></span><br><span class="line"></span><br><span class="line">    <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> keyframes</span> (<span class="variable">$animation_name</span>) &#123;</span></span><br><span class="line">        0% &#123;</span><br><span class="line">            <span class="at_rule">@<span class="keyword">each</span> <span class="variable">$style</span>, <span class="variable">$val</span><span class="preprocessor"> in</span> <span class="variable">$from</span> &#123;</span></span><br><span class="line">                #&#123;<span class="variable">$style</span>&#125;<span class="value">: <span class="variable">$val</span>;</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="at_rule">@<span class="function">if</span>(<span class="variable">$middle</span> !=<span class="preprocessor"> null</span>) &#123;</span></span><br><span class="line">            50% &#123;</span><br><span class="line">                <span class="at_rule">@<span class="keyword">each</span> <span class="variable">$style</span>, <span class="variable">$val</span><span class="preprocessor"> in</span> <span class="variable">$middle</span> &#123;</span></span><br><span class="line">                    #&#123;<span class="variable">$style</span>&#125;<span class="value">: <span class="variable">$val</span>;</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="at_rule">@<span class="function">if</span>(<span class="variable">$to</span> !=<span class="preprocessor"> null</span>) &#123;</span></span><br><span class="line">            100% &#123;</span><br><span class="line">                <span class="at_rule">@<span class="keyword">each</span> <span class="variable">$style</span>, <span class="variable">$val</span><span class="preprocessor"> in</span> <span class="variable">$to</span> &#123;</span></span><br><span class="line">                    #&#123;<span class="variable">$style</span>&#125;<span class="value">: <span class="variable">$val</span>;</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="小结">小结</h2><p>很遗憾之前没有开窍把这些特性用到项目中，仔细想想应该也是项目这么多动画需要才有了这些尝试。对于以往一些小需求来说，也就是杀鸡用不到屠龙宝刀这个意思吧~但其实用屠龙宝刀杀鸡也会很舒服的说，我现在是这样觉得的。</p>
+<p><s>虽然上面的东西都是用的 Sass, 还是喜欢 Stylus 多一点的感觉🙊</s></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/01050/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">星座测试的一些杂货</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 liyh
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: false,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-67000695-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
