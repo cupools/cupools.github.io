@@ -101,7 +101,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/Wordpress/" style="font-size: 10px;">Wordpress</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/sass/" style="font-size: 10px;">sass</a> <a href="/tags/three-js/" style="font-size: 12.5px;">three.js</a> <a href="/tags/学习/" style="font-size: 12.5px;">学习</a> <a href="/tags/安全/" style="font-size: 10px;">安全</a> <a href="/tags/碎屑/" style="font-size: 10px;">碎屑</a> <a href="/tags/读书笔记/" style="font-size: 17.5px;">读书笔记</a> <a href="/tags/配置/" style="font-size: 10px;">配置</a>
+						<a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/Wordpress/" style="font-size: 10px;">Wordpress</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/sass/" style="font-size: 10px;">sass</a> <a href="/tags/three-js/" style="font-size: 12.5px;">three.js</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/学习/" style="font-size: 12.5px;">学习</a> <a href="/tags/安全/" style="font-size: 10px;">安全</a> <a href="/tags/碎屑/" style="font-size: 10px;">碎屑</a> <a href="/tags/读书笔记/" style="font-size: 17.5px;">读书笔记</a> <a href="/tags/配置/" style="font-size: 10px;">配置</a>
 					</div>
 				</section>
 				
@@ -158,6 +158,68 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-notes/Webpack 你好" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05090/" class="article-date">
+  	<time datetime="2016-05-08T16:00:00.000Z" itemprop="datePublished">2016-05-09</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05090/">Webpack 你好</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>花了一个多月的时间捣鼓 Webpack 的各种东西，终于把毕业设计搞出来了，看起来很糟糕的工作流程。然后就是拖了一个多月时间的总结咯，会记录 Webpack 的使用以及自己对 Webpack 和 FIS3 的一些想法，然后插件开发就留着下次好了。</p>
+<h2 id="介绍">介绍</h2><blockquote>
+<p>webpack is a bundler for modules. The main purpose is to bundle JavaScript files for usage in a browser, yet it is also capable of transforming, bundling, or packaging just about any resource or asset.</p>
+</blockquote>
+<p>Webpack 是一个模块打包工具，和 Grunt、Gulp 之类的任务管理工具有本质上的区别。根据其设计理念，开发过程中接触到的所有文件资源都是模块。不同类型的文件能够被 Webpack 转换为 js 模块并被 js 代码直接引用,同时在打包过程中能够静态分析模块间的依赖关系。</p>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/05090/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-notes/用 Sass 写 css3 动画" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -706,68 +768,6 @@
       
         <p class="article-more-link">
           <a  href="/2015/091315/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-notes/移动端踩过的坑" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/091012/" class="article-date">
-  	<time datetime="2015-09-09T16:00:00.000Z" itemprop="datePublished">2015-09-10</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/091012/">移动端踩过的坑</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>想着自己是不是要写点什么，马上想到了上半年移动端遇到的坑坑洼洼。有这样的小剧场：汪，红米这里有问题；汪汪汪，魅族怎么显示不出来呢；汪汪… (o`･ω･)ﾉ(ﾉД`)</p>
-<p>后天就要回广州啦，北京再见_(:з」∠)_</p>
-</blockquote>
-<h2 id="position:_fixed">position: fixed</h2><h3 id="场景">场景</h3><p>移动端的在线客服，聊天室风格，输入框置底，参考手Q，需求方坚持这种聊天风格不肯妥协，考虑 UC 浏览器和 app 内置浏览器，忽略 wp</p>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/091012/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
