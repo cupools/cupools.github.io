@@ -3,17 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: 配置 | 一环的笔记</title>
+  <title>Git 配置 | 一环的笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="一环的笔记">
-<meta property="og:url" content="http://cupools.github.io/tags/配置/index.html">
+  <meta name="description" content="每次跟别人说 Git 要怎么使用的时候都要手把手教怎么配置 (为什么你不自己谷歌咧)，拖到现在终于落实到文档了，以后就丢这个过去就行了虽然以后也没什么机会了。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git 配置">
+<meta property="og:url" content="http://cupools.github.io/2016/05010/index.html">
 <meta property="og:site_name" content="一环的笔记">
-<meta property="og:description">
+<meta property="og:description" content="每次跟别人说 Git 要怎么使用的时候都要手把手教怎么配置 (为什么你不自己谷歌咧)，拖到现在终于落实到文档了，以后就丢这个过去就行了虽然以后也没什么机会了。">
+<meta property="og:updated_time" content="2016-05-15T01:22:50.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一环的笔记">
-<meta name="twitter:description">
+<meta name="twitter:title" content="Git 配置">
+<meta name="twitter:description" content="每次跟别人说 Git 要怎么使用的时候都要手把手教怎么配置 (为什么你不自己谷歌咧)，拖到现在终于落实到文档了，以后就丢这个过去就行了虽然以后也没什么机会了。">
   
     <link rel="alternative" href="/atom.xml" title="一环的笔记" type="application/atom+xml">
   
@@ -157,53 +158,90 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-notes/Git 配置" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/092914/" class="archive-article-date">
-  	<time datetime="2015-09-28T16:00:00.000Z" itemprop="datePublished">Sep 29</time>
+    <div class="article-meta">
+      <a href="/2016/05010/" class="article-date">
+  	<time datetime="2016-04-30T16:00:00.000Z" itemprop="datePublished">2016-05-01</time>
 </a>
-        </div>
-    	 
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/092914/">安装 GraphicsMagick 这个大坑</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Git 配置
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/配置/">配置</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/碎屑/">碎屑</a></li></ul>
 	</div>
 
-          
+        
 
-        </div>
         <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
+      </div>
+      
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>每次跟别人说 Git 要怎么使用的时候都要手把手教怎么配置 (为什么你不自己谷歌咧)，拖到现在终于落实到文档了，以后就丢这个过去就行了虽然以后也没什么机会了。</p>
+<a id="more"></a>
+<h2 id="安装">安装</h2><p><a href="https://git-scm.com/" target="_blank" rel="external">官方下载地址</a>，下载安装即可</p>
+<h2 id="配置">配置</h2><h3 id="配置_SSH_key">配置 SSH key</h3><p>这里通过 ssh 管理代码仓库，需要配置 SSH key; 如果通过 http 管理代码仓库，则直接使用 Github 的账号密码即可。</p>
+<h4 id="1-_检查_SSH_key_是否存在">1. 检查 SSH key 是否存在</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.ssh</span><br></pre></td></tr></table></figure>
+<h4 id="2-_备份已有的_key,_如果有的话~">2. 备份已有的 key, 如果有的话~</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir key_backup</span><br><span class="line">mv id_rsa* key_backup</span><br></pre></td></tr></table></figure>
+<h4 id="3-_生成_SSH_key">3. 生成 SSH key</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C 邮箱</span><br></pre></td></tr></table></figure>
+<p>之后会提示输入路径，默认 <code>~/.ssh</code>, 回车确认；之后会提示创建密码，之后使用 SSH key 的过程中会用到，输入后回车确认，也可以直接回车不使用密码</p>
+<p>(发现 OS X 需要 Xcode 支持)</p>
+<p>创建完成之后， 在 <code>~/.ssh</code> 里面找到 id_rsa.pub 这个文件，即是 SSH key.</p>
+<h4 id="4-_将_SSH_key_添加到_GitHub">4. 将 SSH key 添加到 GitHub</h4><p>登录到 GitHub ，Settings-&gt;SSH and GPG keys-&gt;New SSH key, 将生成的 key(id_rsa.pub 文件)内容复制到输入框中，填写标题后保存即可。</p>
+<h4 id="5-_验证">5. 验证</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh git@github.com</span><br><span class="line"></span><br><span class="line">The authenticity of host <span class="string">'github.com (207.97.227.239)'</span> can<span class="string">'t be established.</span><br><span class="line"></span><br><span class="line">RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48.</span><br><span class="line"></span><br><span class="line">Are you sure you want to continue connecting (yes/no)? yes</span><br><span class="line"></span><br><span class="line">PTY allocation request failed on channel 0</span><br><span class="line"></span><br><span class="line">Hi Xiao Ming! You'</span>ve successfully authenticated, but GitHub does not provide shell access.</span><br><span class="line"></span><br><span class="line">Connection to github.com closed.</span><br></pre></td></tr></table></figure>
+<p>出现上述提示信息说明连接成功 (Github 并不提供 shell 登陆但已经连接成功)</p>
+<h3 id="设置个人信息">设置个人信息</h3><p>主要是个人姓名和邮箱，在提交代码的时候会带上这部分信息。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git config --global user.name <span class="string">"Xiao Ming"</span></span><br><span class="line">$ git config --global user.email xiaoming@gmail.com</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/05070/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          用 Sass 写 css3 动画
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/01050/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">星座测试的一些杂货</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
 
 </div>
       <footer id="footer">
@@ -229,9 +267,9 @@
 		mathjax: true,
 		animate: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false
 	}
