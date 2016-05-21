@@ -350,60 +350,6 @@
 
 
   
-    <article id="post-study/猴子补丁" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/071619/" class="article-date">
-  	<time datetime="2015-07-15T16:00:00.000Z" itemprop="datePublished">2015-07-16</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/071619/">猴子补丁</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 为函数 a 打补丁</span></span><br><span class="line"><span class="keyword">var</span> b = a;</span><br><span class="line">a = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    a = b;</span><br><span class="line">    a();</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">2</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">a();	<span class="comment">// 1, 2</span></span><br><span class="line">a();	<span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
     <article id="post-notes/关于apply和call" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -430,10 +376,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>最近喵了这么多书也算是熟悉了这两个纠结过很久的方法_(:3」∠)_  把以前复制过来的东西弄好开看一点吧~</p>
-</blockquote>
-<p>总算弄明白这两个东西了。。。<br>先是定义~</p>
+        <p>最近喵了这么多书也算是熟悉了这两个纠结过很久的方法_(:3」∠)_  把以前复制的东西整理一下好了。</p>
 <h2 id="call方法">call方法</h2><p><strong>语法</strong></p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">call([thisObj[,arg1[, arg2[,   [,.argN]]]]])</span><br></pre></td></tr></table></figure>
       
@@ -786,7 +729,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
     </nav>
   
 </div>
