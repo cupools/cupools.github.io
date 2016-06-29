@@ -101,7 +101,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/Wordpress/" style="font-size: 10px;">Wordpress</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/sass/" style="font-size: 10px;">sass</a> <a href="/tags/three-js/" style="font-size: 12.5px;">three.js</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/学习/" style="font-size: 12.5px;">学习</a> <a href="/tags/安全/" style="font-size: 10px;">安全</a> <a href="/tags/碎屑/" style="font-size: 12.5px;">碎屑</a> <a href="/tags/读书笔记/" style="font-size: 17.5px;">读书笔记</a> <a href="/tags/配置/" style="font-size: 10px;">配置</a>
+						<a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Wordpress/" style="font-size: 10px;">Wordpress</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/sass/" style="font-size: 10px;">sass</a> <a href="/tags/three-js/" style="font-size: 12.5px;">three.js</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/学习/" style="font-size: 12.5px;">学习</a> <a href="/tags/安全/" style="font-size: 10px;">安全</a> <a href="/tags/碎屑/" style="font-size: 12.5px;">碎屑</a> <a href="/tags/读书笔记/" style="font-size: 17.5px;">读书笔记</a> <a href="/tags/配置/" style="font-size: 10px;">配置</a>
 					</div>
 				</section>
 				
@@ -158,6 +158,68 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-notes/Sprite 的各种尝试" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/06280/" class="article-date">
+  	<time datetime="2016-06-27T16:00:00.000Z" itemprop="datePublished">2016-06-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06280/">Sprite 的各种尝试</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>去年十月份，为了在 Grunt 上快速合并精灵图，写了 <a href="https://github.com/cupools/img-sprite">img-sprite</a>，允许基于 CSS 文件合并精灵图并更新样式。结果回到公司发现构建流程由 Grunt 迁移到了 FIS3，就把它丢一边了。</p>
+<p>今年三月份，毕业设计使用 Webpack 作为构建工具的时候也想要 Auto Sprite 的功能，于是很粗糙地改造了 img-sprite 为 img-sprite-plugin，总算完成了任务。</p>
+<p>然后到六月份的这段时间里，渐渐的发现 FIS3 自带的 <a href="https://github.com/fex-team/fis-spriter-csssprites">fis-spriter-csssprites</a> 不能够满足已有项目的需要，又有了重新写一个的冲动。</p>
+<p>由于 img-sprite 无法适应到 FIS3 的编译流程中，干脆用 ES2015 重写，也就是 <a href="https://github.com/cupools/emilia">Emilia</a>；此外，为了解决团队组帧动画的使用和 Canvas 一些使用场景上的痛点，又写了另一个模块 <a href="https://github.com/cupools/lia">Lia</a>，允许基于图片产出样式文件和精灵图。</p>
+<p>于是，去年十月份考虑的 <strong>基于样式文件产出精灵图</strong> 和 <strong>基于图片资源产出精灵图</strong> 两种方式分别通过 <strong>Emilia</strong> 和 <strong>Lia</strong> 都实现了一遍，撒花撒花。</p>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/06280/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-notes/Webpack 你好" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -375,7 +437,7 @@
       
       
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/three-js/">three.js</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/three-js/">three.js</a></li></ul>
 	</div>
 
       
@@ -436,7 +498,7 @@
       
       
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/three-js/">three.js</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/three-js/">three.js</a></li></ul>
 	</div>
 
       
@@ -495,7 +557,7 @@
       
       
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
 	</div>
 
       
@@ -629,7 +691,7 @@
       
       
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
 	</div>
 
       
@@ -691,7 +753,7 @@
       
       
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
 	</div>
 
       
@@ -699,72 +761,6 @@
       
         <p class="article-more-link">
           <a  href="/2015/093014/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-notes/安装 GraphicsMagick这个大坑" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/092914/" class="article-date">
-  	<time datetime="2015-09-28T16:00:00.000Z" itemprop="datePublished">2015-09-29</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/092914/">安装 GraphicsMagick 这个大坑</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>这段时间在搞 img-sprite 这个东西，然后需要缩小图片，然后发现 Jimp 的表现不理想，于是只能妥协使用 gm，然后一下子就掉坑里了弄了整个下午😢</p>
-</blockquote>
-<h2 id="windows_安装">windows 安装</h2><p>去 <a href="http://www.graphicsmagick.org/">官网</a> 下载 .exe 安装一直 next 就行了</p>
-<h2 id="osx_安装">osx 安装</h2><ol>
-<li><p>首先安装 <a href="http://brew.sh/index_zh-cn.html">Homebrew</a>，osx 的套件管理器，命令行安装即可</p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ruby <span class="operator">-e</span> <span class="string">"<span class="variable">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)</span>"</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/配置/">配置</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/092914/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
