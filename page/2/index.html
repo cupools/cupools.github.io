@@ -101,7 +101,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Wordpress/" style="font-size: 10px;">Wordpress</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/sass/" style="font-size: 10px;">sass</a> <a href="/tags/three-js/" style="font-size: 12.5px;">three.js</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/学习/" style="font-size: 12.5px;">学习</a> <a href="/tags/安全/" style="font-size: 10px;">安全</a> <a href="/tags/碎屑/" style="font-size: 12.5px;">碎屑</a> <a href="/tags/读书笔记/" style="font-size: 17.5px;">读书笔记</a> <a href="/tags/配置/" style="font-size: 10px;">配置</a>
+						<a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Wordpress/" style="font-size: 10px;">Wordpress</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/sass/" style="font-size: 10px;">sass</a> <a href="/tags/three-js/" style="font-size: 12.5px;">three.js</a> <a href="/tags/webpack/" style="font-size: 12.5px;">webpack</a> <a href="/tags/学习/" style="font-size: 12.5px;">学习</a> <a href="/tags/安全/" style="font-size: 10px;">安全</a> <a href="/tags/碎屑/" style="font-size: 12.5px;">碎屑</a> <a href="/tags/读书笔记/" style="font-size: 17.5px;">读书笔记</a> <a href="/tags/配置/" style="font-size: 10px;">配置</a>
 					</div>
 				</section>
 				
@@ -158,6 +158,68 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-notes/img-sprite 设想" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/093014/" class="article-date">
+  	<time datetime="2015-09-29T16:00:00.000Z" itemprop="datePublished">2015-09-30</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/093014/">img-sprite 设想</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言">前言</h2><p>大概有两种方法制作精灵图</p>
+<ol>
+<li>开发阶段，工具处理图片得到对应的<code>.icon-class</code>，再直接使用相应的 class、或者通过 css 预处理工具 mixin 即可。不具有入侵性</li>
+<li>构建阶段，工具处理 css 文件并在生成精灵图后将路径和大小替换回去，在原本 css 文件的基础上产出新的 css 文件</li>
+</ol>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/093014/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-notes/安装 GraphicsMagick这个大坑" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -415,67 +477,6 @@
 
 
   
-    <article id="post-study/关于 CSRF" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/090111/" class="article-date">
-  	<time datetime="2015-08-31T16:00:00.000Z" itemprop="datePublished">2015-09-01</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/090111/">关于 CSRF</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>之前在《编写高质量代码》中第一次看到 CSRF 这个东西，没能理解。最近刚好喵了 Session 和 Cookie 相关，又在查阅 XSS 的过程中看到 CSRF，于是简单整理一下</p>
-</blockquote>
-<h2 id="关于_CSRF">关于 CSRF</h2><p>CSRF（Cross-site request forgery），即跨站请求伪造，也被称为 One Click Attack 或者 Session Riding。与 XSS 不同，XSS利用站点内的信任用户，而CSRF则通过伪装来自受信任用户的请求，在受信任的网站做危险的事情<br>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/安全/">安全</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/090111/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
     <article id="post-study/XMLHttpRequest 整理" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -522,6 +523,67 @@
       
         <p class="article-more-link">
           <a  href="/2015/090116/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-study/关于 CSRF" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/090111/" class="article-date">
+  	<time datetime="2015-08-31T16:00:00.000Z" itemprop="datePublished">2015-09-01</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/090111/">关于 CSRF</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>之前在《编写高质量代码》中第一次看到 CSRF 这个东西，没能理解。最近刚好喵了 Session 和 Cookie 相关，又在查阅 XSS 的过程中看到 CSRF，于是简单整理一下</p>
+</blockquote>
+<h2 id="关于_CSRF">关于 CSRF</h2><p>CSRF（Cross-site request forgery），即跨站请求伪造，也被称为 One Click Attack 或者 Session Riding。与 XSS 不同，XSS利用站点内的信任用户，而CSRF则通过伪装来自受信任用户的请求，在受信任的网站做危险的事情<br>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/安全/">安全</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/090111/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -722,78 +784,9 @@
 
 
   
-    <article id="post-books/基于MVC的Javascript Web富应用开发" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/080121/" class="article-date">
-  	<time datetime="2015-07-31T16:00:00.000Z" itemprop="datePublished">2015-08-01</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/080121/">基于MVC的Javascript Web富应用开发</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>接到 HR 的面试通知，NodeJS 还没喵完便急匆匆地翻了这本书。等了好久还是没货打折只能跟别人借了</p>
-</blockquote>
-<h2 id="MVC和类">MVC和类</h2><h3 id="什么是_MVC">什么是 MVC</h3><p>MVC 是一种设计模式，将应用划分为3个部分：数据（模型），展示层（视图），用户交互层（控制器）。一个事件发生的过程是这样的</p>
-<ol>
-<li>用户和应用发生交互</li>
-</ol>
-<ul>
-<li>控制器的事件处理器被触发</li>
-<li>控制器从模型中请求数据，并将棋交给视图</li>
-<li>视图将数据呈现给用户</li>
-</ul>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/080121/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 </div>
