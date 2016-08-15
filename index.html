@@ -101,7 +101,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Wordpress/" style="font-size: 10px;">Wordpress</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/sass/" style="font-size: 10px;">sass</a> <a href="/tags/three-js/" style="font-size: 12.5px;">three.js</a> <a href="/tags/webpack/" style="font-size: 12.5px;">webpack</a> <a href="/tags/学习/" style="font-size: 12.5px;">学习</a> <a href="/tags/安全/" style="font-size: 10px;">安全</a> <a href="/tags/碎屑/" style="font-size: 12.5px;">碎屑</a> <a href="/tags/读书笔记/" style="font-size: 17.5px;">读书笔记</a> <a href="/tags/配置/" style="font-size: 10px;">配置</a>
+						<a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Wordpress/" style="font-size: 10px;">Wordpress</a> <a href="/tags/css/" style="font-size: 16px;">css</a> <a href="/tags/sass/" style="font-size: 10px;">sass</a> <a href="/tags/three-js/" style="font-size: 12px;">three.js</a> <a href="/tags/webpack/" style="font-size: 12px;">webpack</a> <a href="/tags/学习/" style="font-size: 12px;">学习</a> <a href="/tags/安全/" style="font-size: 10px;">安全</a> <a href="/tags/碎屑/" style="font-size: 14px;">碎屑</a> <a href="/tags/读书笔记/" style="font-size: 18px;">读书笔记</a> <a href="/tags/配置/" style="font-size: 10px;">配置</a>
 					</div>
 				</section>
 				
@@ -158,6 +158,64 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-notes/近两个月的一点总结" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08140/" class="article-date">
+  	<time datetime="2016-08-14T14:46:00.000Z" itemprop="datePublished">2016-08-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08140/">近两个月的一点总结</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>六月份到现在利用空闲的时间尝试了挺多之前没有接触过的东西，总的来说挺充实的感觉。趁着加班一个月的项目刚上线， Lia 也在今天迭代了 v2.0.0，抽空理一下这段时间的流水账。</p>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/碎屑/">碎屑</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/08140/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-notes/Hot Module Replacement" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -690,76 +748,6 @@
       
         <p class="article-more-link">
           <a  href="/2015/102722/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-notes/img-sprite 实现" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/100122/" class="article-date">
-  	<time datetime="2015-09-30T16:00:00.000Z" itemprop="datePublished">2015-10-01</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/100122/">img-sprite 实现</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>喵了很久没有发现 Grunt 上有比较舒服的合并精灵图工具，于是有了自己写一个的想法，于是有了 <a href="https://github.com/cupools/img-sprite">img-sprite</a>，于是有了 <a href="https://github.com/cupools/grunt-img-sprite">grunt-img-sprite</a></p>
-</blockquote>
-<h2 id="需求">需求</h2><p>针对之前页面重构的方式，我对于一个精灵图处理工具的设想是这样的：</p>
-<ol>
-<li>像 FIS 一般，通过在 css 文件中背景图片添加标识合并精灵图。<strong>跟平时一样写样式，仅在打包阶段产出精灵图和新的 css 文件</strong>。不关心是否使用 LESS 等</li>
-<li>能够根据标识产出多个精灵图</li>
-<li>不依赖 Less 等 CSS 预处理器</li>
-<li>兼容 Retina，并自动插入媒体查询代码</li>
-<li>Base64 内联图片，通过 <code>?__inline</code> 标识</li>
-<li>使用要简单，简单，简单，<strong>不依赖于 GM 等图像处理库</strong></li>
-<li>设计稿每次导出 @2x 的图片即可，由工具产出 @1x 的图片</li>
-</ol>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/100122/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>

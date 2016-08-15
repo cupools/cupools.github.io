@@ -101,7 +101,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Wordpress/" style="font-size: 10px;">Wordpress</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/sass/" style="font-size: 10px;">sass</a> <a href="/tags/three-js/" style="font-size: 12.5px;">three.js</a> <a href="/tags/webpack/" style="font-size: 12.5px;">webpack</a> <a href="/tags/学习/" style="font-size: 12.5px;">学习</a> <a href="/tags/安全/" style="font-size: 10px;">安全</a> <a href="/tags/碎屑/" style="font-size: 12.5px;">碎屑</a> <a href="/tags/读书笔记/" style="font-size: 17.5px;">读书笔记</a> <a href="/tags/配置/" style="font-size: 10px;">配置</a>
+						<a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Wordpress/" style="font-size: 10px;">Wordpress</a> <a href="/tags/css/" style="font-size: 16px;">css</a> <a href="/tags/sass/" style="font-size: 10px;">sass</a> <a href="/tags/three-js/" style="font-size: 12px;">three.js</a> <a href="/tags/webpack/" style="font-size: 12px;">webpack</a> <a href="/tags/学习/" style="font-size: 12px;">学习</a> <a href="/tags/安全/" style="font-size: 10px;">安全</a> <a href="/tags/碎屑/" style="font-size: 14px;">碎屑</a> <a href="/tags/读书笔记/" style="font-size: 18px;">读书笔记</a> <a href="/tags/配置/" style="font-size: 10px;">配置</a>
 					</div>
 				</section>
 				
@@ -158,6 +158,64 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-notes/几个好用的函数" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/041923/" class="article-date">
+  	<time datetime="2015-04-18T16:00:00.000Z" itemprop="datePublished">2015-04-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/041923/">几个好用的函数</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="url_取值">url 取值</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getUrlParam</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'(^|&amp;)'</span> + name + <span class="string">'=([^&amp;]*)(&amp;|$)'</span>);</span><br><span class="line">    <span class="keyword">var</span> r = <span class="built_in">window</span>.location.search.substr(<span class="number">1</span>).match(reg);</span><br><span class="line">    <span class="keyword">if</span> (r !== <span class="literal">null</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">window</span>.unescape(r[<span class="number">2</span>]);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/041923/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-notes/几个好用的样式" class="article article-type-post" itemscope itemprop="blogPost">
   

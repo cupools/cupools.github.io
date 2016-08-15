@@ -101,7 +101,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Wordpress/" style="font-size: 10px;">Wordpress</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/sass/" style="font-size: 10px;">sass</a> <a href="/tags/three-js/" style="font-size: 12.5px;">three.js</a> <a href="/tags/webpack/" style="font-size: 12.5px;">webpack</a> <a href="/tags/学习/" style="font-size: 12.5px;">学习</a> <a href="/tags/安全/" style="font-size: 10px;">安全</a> <a href="/tags/碎屑/" style="font-size: 12.5px;">碎屑</a> <a href="/tags/读书笔记/" style="font-size: 17.5px;">读书笔记</a> <a href="/tags/配置/" style="font-size: 10px;">配置</a>
+						<a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Wordpress/" style="font-size: 10px;">Wordpress</a> <a href="/tags/css/" style="font-size: 16px;">css</a> <a href="/tags/sass/" style="font-size: 10px;">sass</a> <a href="/tags/three-js/" style="font-size: 12px;">three.js</a> <a href="/tags/webpack/" style="font-size: 12px;">webpack</a> <a href="/tags/学习/" style="font-size: 12px;">学习</a> <a href="/tags/安全/" style="font-size: 10px;">安全</a> <a href="/tags/碎屑/" style="font-size: 14px;">碎屑</a> <a href="/tags/读书笔记/" style="font-size: 18px;">读书笔记</a> <a href="/tags/配置/" style="font-size: 10px;">配置</a>
 					</div>
 				</section>
 				
@@ -158,6 +158,76 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-notes/img-sprite 实现" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/100122/" class="article-date">
+  	<time datetime="2015-09-30T16:00:00.000Z" itemprop="datePublished">2015-10-01</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/100122/">img-sprite 实现</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>喵了很久没有发现 Grunt 上有比较舒服的合并精灵图工具，于是有了自己写一个的想法，于是有了 <a href="https://github.com/cupools/img-sprite">img-sprite</a>，于是有了 <a href="https://github.com/cupools/grunt-img-sprite">grunt-img-sprite</a></p>
+</blockquote>
+<h2 id="需求">需求</h2><p>针对之前页面重构的方式，我对于一个精灵图处理工具的设想是这样的：</p>
+<ol>
+<li>像 FIS 一般，通过在 css 文件中背景图片添加标识合并精灵图。<strong>跟平时一样写样式，仅在打包阶段产出精灵图和新的 css 文件</strong>。不关心是否使用 LESS 等</li>
+<li>能够根据标识产出多个精灵图</li>
+<li>不依赖 Less 等 CSS 预处理器</li>
+<li>兼容 Retina，并自动插入媒体查询代码</li>
+<li>Base64 内联图片，通过 <code>?__inline</code> 标识</li>
+<li>使用要简单，简单，简单，<strong>不依赖于 GM 等图像处理库</strong></li>
+<li>设计稿每次导出 @2x 的图片即可，由工具产出 @1x 的图片</li>
+</ol>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/100122/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-notes/img-sprite 设想" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -477,6 +547,67 @@
 
 
   
+    <article id="post-study/关于 CSRF" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/090111/" class="article-date">
+  	<time datetime="2015-08-31T16:00:00.000Z" itemprop="datePublished">2015-09-01</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/090111/">关于 CSRF</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>之前在《编写高质量代码》中第一次看到 CSRF 这个东西，没能理解。最近刚好喵了 Session 和 Cookie 相关，又在查阅 XSS 的过程中看到 CSRF，于是简单整理一下</p>
+</blockquote>
+<h2 id="关于_CSRF">关于 CSRF</h2><p>CSRF（Cross-site request forgery），即跨站请求伪造，也被称为 One Click Attack 或者 Session Riding。与 XSS 不同，XSS利用站点内的信任用户，而CSRF则通过伪装来自受信任用户的请求，在受信任的网站做危险的事情<br>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/安全/">安全</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2015/090111/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-study/XMLHttpRequest 整理" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -539,67 +670,6 @@
 
 
   
-    <article id="post-study/关于 CSRF" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/090111/" class="article-date">
-  	<time datetime="2015-08-31T16:00:00.000Z" itemprop="datePublished">2015-09-01</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/090111/">关于 CSRF</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>之前在《编写高质量代码》中第一次看到 CSRF 这个东西，没能理解。最近刚好喵了 Session 和 Cookie 相关，又在查阅 XSS 的过程中看到 CSRF，于是简单整理一下</p>
-</blockquote>
-<h2 id="关于_CSRF">关于 CSRF</h2><p>CSRF（Cross-site request forgery），即跨站请求伪造，也被称为 One Click Attack 或者 Session Riding。与 XSS 不同，XSS利用站点内的信任用户，而CSRF则通过伪装来自受信任用户的请求，在受信任的网站做危险的事情<br>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/安全/">安全</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/090111/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
     <article id="post-study/模板引擎" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -645,67 +715,6 @@
       
         <p class="article-more-link">
           <a  href="/2015/083123/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-books/jQuery技术内幕" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/081020/" class="article-date">
-  	<time datetime="2015-08-09T16:00:00.000Z" itemprop="datePublished">2015-08-10</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/081020/">jQuery技术内幕</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>丢笔记了有点可怜..重新写好了。书和代码一样重，拿在手上很有分量恩。</p>
-</blockquote>
-<h2 id="总体架构">总体架构</h2><h4 id="总体架构-1">总体架构</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">window, undefined</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 构造 jQuery 对象</span></span><br><span class="line">    <span class="keyword">var</span> jQuery = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> jQuery = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> jQuery = <span class="function"><span class="keyword">function</span>(<span class="params">selector, context</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> jQuery.fn.init(selector, context, rootjQuery);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> jQuery;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)();</span><br><span class="line">    <span class="comment">// 工具方法 Utilities</span></span><br><span class="line">    <span class="comment">// 回调函数列表 Callbacks Object</span></span><br><span class="line">    <span class="comment">// 异步队列 Deferred Object</span></span><br><span class="line">    <span class="comment">// 浏览器功能测试 Support</span></span><br><span class="line">    <span class="comment">// 数据缓存 Data</span></span><br><span class="line">    <span class="comment">// 队列 Queue</span></span><br><span class="line">    <span class="comment">// 属性操作 Attributes</span></span><br><span class="line">    <span class="comment">// 事件系统 Events</span></span><br><span class="line">    <span class="comment">// 选择器 Sizzle</span></span><br><span class="line">    <span class="comment">// DOM 遍历 Traversing</span></span><br><span class="line">    <span class="comment">// DOM 操作 Manipulation</span></span><br><span class="line">    <span class="comment">// 样式操作 CSS（计算样式、内联样式）</span></span><br><span class="line">    <span class="comment">// 异步请求 Ajax</span></span><br><span class="line">    <span class="comment">// 动画 Effects</span></span><br><span class="line">    <span class="comment">// 坐标 Offset、尺寸 Dimensions</span></span><br><span class="line">&#125;)(<span class="built_in">window</span>);</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/081020/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
