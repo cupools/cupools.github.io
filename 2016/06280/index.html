@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  <title>Sprite 的各种尝试 | 一环的笔记</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="去年十月份，为了在 Grunt 上快速合并精灵图，写了 img-sprite，允许基于 CSS 文件合并精灵图并更新样式。结果回到公司发现构建流程由 Grunt 迁移到了 FIS3，就把它丢一边了。
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Sprite 的各种尝试 · 一环的笔记</title><meta name="description" content="Sprite 的各种尝试 - liyh"><meta name="description" content="去年十月份，为了在 Grunt 上快速合并精灵图，写了 img-sprite，允许基于 CSS 文件合并精灵图并更新样式。结果回到公司发现构建流程由 Grunt 迁移到了 FIS3，就把它丢一边了。
 今年三月份，毕业设计使用 Webpack 作为构建工具的时候也想要 Auto Sprite 的功能，于是很粗糙地改造了 img-sprite 为 img-sprite-plugin，总算完成了任务。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Sprite 的各种尝试">
@@ -13,201 +6,20 @@
 <meta property="og:site_name" content="一环的笔记">
 <meta property="og:description" content="去年十月份，为了在 Grunt 上快速合并精灵图，写了 img-sprite，允许基于 CSS 文件合并精灵图并更新样式。结果回到公司发现构建流程由 Grunt 迁移到了 FIS3，就把它丢一边了。
 今年三月份，毕业设计使用 Webpack 作为构建工具的时候也想要 Auto Sprite 的功能，于是很粗糙地改造了 img-sprite 为 img-sprite-plugin，总算完成了任务。">
-<meta property="og:updated_time" content="2016-06-29T13:12:40.000Z">
+<meta property="og:updated_time" content="2016-08-26T06:36:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Sprite 的各种尝试">
 <meta name="twitter:description" content="去年十月份，为了在 Grunt 上快速合并精灵图，写了 img-sprite，允许基于 CSS 文件合并精灵图并更新样式。结果回到公司发现构建流程由 Grunt 迁移到了 FIS3，就把它丢一边了。
-今年三月份，毕业设计使用 Webpack 作为构建工具的时候也想要 Auto Sprite 的功能，于是很粗糙地改造了 img-sprite 为 img-sprite-plugin，总算完成了任务。">
-  
-    <link rel="alternative" href="/atom.xml" title="一环的笔记" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
-</head>
-<body>
-  <div id="container">
-    <div class="left-col">
-    <div class="overlay"></div>
-<div class="intrude-less">
-	<header id="header" class="inner">
-		<a href="/" class="profilepic">
-			
-			<img src="/img/avatar.jpg" class="js-avatar" style="width: 100%;height: 100%;opacity: 1;">
-			
-		</a>
-
-		<hgroup>
-		  <h1 class="header-author"><a href="/">liyh</a></h1>
-		</hgroup>
-
-		
-
-		
-			<div class="switch-btn">
-				<div class="icon">
-					<div class="icon-ctn">
-						<div class="icon-wrap icon-house" data-idx="0">
-							<div class="birdhouse"></div>
-							<div class="birdhouse_holes"></div>
-						</div>
-						<div class="icon-wrap icon-ribbon hide" data-idx="1">
-							<div class="ribbon"></div>
-						</div>
-						
-						
-						<div class="icon-wrap icon-me hide" data-idx="3">
-							<div class="user"></div>
-							<div class="shoulder"></div>
-						</div>
-						
-					</div>
-					
-				</div>
-				<div class="tips-box hide">
-					<div class="tips-arrow"></div>
-					<ul class="tips-inner">
-						<li>菜单</li>
-						<li>标签</li>
-						
-						
-						<li>关于我</li>
-						
-					</ul>
-				</div>
-			</div>
-		
-
-		<div class="switch-area">
-			<div class="switch-wrap">
-				<section class="switch-part switch-part1">
-					<nav class="header-menu">
-						<ul>
-						
-							<li><a href="/">主页</a></li>
-				        
-							<li><a href="/archives">笔记</a></li>
-				        
-						</ul>
-					</nav>
-					<nav class="header-nav">
-						<div class="social">
-							
-								<a class="github" target="_blank" href="https://github.com/cupools" title="github">github</a>
-					        
-								<a class="mail" target="_blank" href="mailto:cupools@gmail.com" title="mail">mail</a>
-					        
-						</div>
-					</nav>
-				</section>
-				
-				
-				<section class="switch-part switch-part2">
-					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Wordpress/" style="font-size: 10px;">Wordpress</a> <a href="/tags/css/" style="font-size: 16px;">css</a> <a href="/tags/sass/" style="font-size: 10px;">sass</a> <a href="/tags/three-js/" style="font-size: 12px;">three.js</a> <a href="/tags/webpack/" style="font-size: 12px;">webpack</a> <a href="/tags/学习/" style="font-size: 12px;">学习</a> <a href="/tags/安全/" style="font-size: 10px;">安全</a> <a href="/tags/碎屑/" style="font-size: 14px;">碎屑</a> <a href="/tags/读书笔记/" style="font-size: 18px;">读书笔记</a> <a href="/tags/配置/" style="font-size: 10px;">配置</a>
-					</div>
-				</section>
-				
-				
-				
-
-				
-				
-				<section class="switch-part switch-part3">
-				
-					<div id="js-aboutme">在校学生，连滚带爬啃书</div>
-				</section>
-				
-			</div>
-		</div>
-	</header>				
-</div>
-    </div>
-    <div class="mid-col">
-      <nav id="mobile-nav">
-  	<div class="overlay">
-  		<div class="slider-trigger"></div>
-  		<h1 class="header-author js-mobile-header hide">liyh</h1>
-  	</div>
-	<div class="intrude-less">
-		<header id="header" class="inner">
-			<div class="profilepic">
-				<img src="/img/avatar.jpg" class="js-avatar show" style="width: 100%;height: 100%;opacity: 1;">
-			</div>
-			<hgroup>
-			  <h1 class="header-author">liyh</h1>
-			</hgroup>
-			
-			<nav class="header-menu">
-				<ul>
-				
-					<li><a href="/">主页</a></li>
-		        
-					<li><a href="/archives">笔记</a></li>
-		        
-		        <div class="clearfix"></div>
-				</ul>
-			</nav>
-			<nav class="header-nav">
-				<div class="social">
-					
-						<a class="github" target="_blank" href="https://github.com/cupools" title="github">github</a>
-			        
-						<a class="mail" target="_blank" href="mailto:cupools@gmail.com" title="mail">mail</a>
-			        
-				</div>
-			</nav>
-		</header>				
-	</div>
-</nav>
-      <div class="body-wrap"><article id="post-notes/Sprite 的各种尝试" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/06280/" class="article-date">
-  	<time datetime="2016-06-27T16:00:00.000Z" itemprop="datePublished">2016-06-28</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      Sprite 的各种尝试
-    </h1>
-  
-
-      </header>
-      
-      <div class="article-info article-info-post">
-        
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
-	</div>
-
-        
-
-        <div class="clearfix"></div>
-      </div>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>去年十月份，为了在 Grunt 上快速合并精灵图，写了 <a href="https://github.com/cupools/img-sprite" target="_blank" rel="external">img-sprite</a>，允许基于 CSS 文件合并精灵图并更新样式。结果回到公司发现构建流程由 Grunt 迁移到了 FIS3，就把它丢一边了。</p>
+今年三月份，毕业设计使用 Webpack 作为构建工具的时候也想要 Auto Sprite 的功能，于是很粗糙地改造了 img-sprite 为 img-sprite-plugin，总算完成了任务。"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://cupools.github.io/atom.xml" title="一环的笔记"></head><body><div class="wrap"><header><a href="/" class="logo-link">EXPORT DEFAULT LIYH</a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/cupools" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="mailto:cupools@gmail.com" target="_self" class="nav-list-link">GMAIL</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">Sprite 的各种尝试</h1><div class="post-info">Jun 28, 2016<ul class="post-tag-list"><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul></div><div class="post-content"><p>去年十月份，为了在 Grunt 上快速合并精灵图，写了 <a href="https://github.com/cupools/img-sprite" target="_blank" rel="external">img-sprite</a>，允许基于 CSS 文件合并精灵图并更新样式。结果回到公司发现构建流程由 Grunt 迁移到了 FIS3，就把它丢一边了。</p>
 <p>今年三月份，毕业设计使用 Webpack 作为构建工具的时候也想要 Auto Sprite 的功能，于是很粗糙地改造了 img-sprite 为 img-sprite-plugin，总算完成了任务。</p>
 <p>然后到六月份的这段时间里，渐渐的发现 FIS3 自带的 <a href="https://github.com/fex-team/fis-spriter-csssprites" target="_blank" rel="external">fis-spriter-csssprites</a> 不能够满足已有项目的需要，又有了重新写一个的冲动。</p>
 <p>由于 img-sprite 无法适应到 FIS3 的编译流程中，干脆用 ES2015 重写，也就是 <a href="https://github.com/cupools/emilia" target="_blank" rel="external">Emilia</a>；此外，为了解决团队组帧动画的使用和 Canvas 一些使用场景上的痛点，又写了另一个模块 <a href="https://github.com/cupools/lia" target="_blank" rel="external">Lia</a>，允许基于图片产出样式文件和精灵图。</p>
 <p>于是，去年十月份考虑的 <strong>基于样式文件产出精灵图</strong> 和 <strong>基于图片资源产出精灵图</strong> 两种方式分别通过 <strong>Emilia</strong> 和 <strong>Lia</strong> 都实现了一遍，撒花撒花。</p>
 <a id="more"></a>
-<h2 id="Emilia">Emilia</h2><blockquote>
+<h2 id="Emilia"><a href="#Emilia" class="headerlink" title="Emilia"></a>Emilia</h2><blockquote>
 <p><code>Emilia</code> 通过分析样式文件并识别其中的标记，如 <code>url(a.png?__sprite)</code>，最终输出更新的样式文件和精灵图片。支持 <code>rem</code> 和 <code>px</code>，包括数值转换。此外，这个模块被设计得更加容易适应不同的框架，如 FIS3 或 Webpack。</p>
 </blockquote>
-<h3 id="设计">设计</h3><p>编译的步骤其实跟 img-sprite 类似，几个关键步骤如下：</p>
+<h3 id="设计"><a href="#设计" class="headerlink" title="设计"></a>设计</h3><p>编译的步骤其实跟 img-sprite 类似，几个关键步骤如下：</p>
 <ol>
 <li>获取样式</li>
 <li>分析样式</li>
@@ -217,11 +29,11 @@
 <li>更新样式</li>
 <li>输出样式</li>
 </ol>
-<h4 id="获取样式">获取样式</h4><p>为了适应不同的框架，“获取”和“输出”相关的接口被设计为方便开发者重写。如在 fis3-spriter-emilia 中，重写输出样式文件的代码如下，仅替换了 FIS3 中 file 对象（保存引用在 file.node）的内容，而没有写到磁盘。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">emilia.outputStyle = <span class="function"><span class="keyword">function</span>(<span class="params">file</span>) </span>&#123;</span><br><span class="line">     file.node.setContent(file.content);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h4 id="分析样式">分析样式</h4><p>在“分析样式”阶段，通过 postcss 对样式文件进行遍历，抓取标记。而我之前在 img-sprite 的实现中，则是实现了 <a href="https://github.com/cupools/img-sprite/blob/master/lib/traverse.js" target="_blank" rel="external">Traverse</a> 用于深度遍历 <a href="https://github.com/reworkcss/css" target="_blank" rel="external">css</a> 转换出来的 AST，与 postcss 的做法感觉很相似。</p>
-<h4 id="合并图片">合并图片</h4><p>这里为了兼容 FIS3，Emilia 在整个编译过程中没有使用异步操作。为此在合并图片的过程中通过 <code>child_process.execFileSync</code> 阻塞事件循环。这或许是造成编译速度慢的原因之一。</p>
-<h3 id="比较">比较</h3><p>fis-spriter-emilia 与 fis-spriter-csssprite 比较如下：</p>
+<h3 id="获取样式"><a href="#获取样式" class="headerlink" title="获取样式"></a>获取样式</h3><p>为了适应不同的框架，“获取”和“输出”相关的接口被设计为方便开发者重写。如在 fis3-spriter-emilia 中，重写输出样式文件的代码如下，仅替换了 FIS3 中 file 对象（保存引用在 file.node）的内容，而没有写到磁盘。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">emilia.outputStyle = <span class="function"><span class="keyword">function</span>(<span class="params">file</span>) </span>&#123;</div><div class="line">     file.node.setContent(file.content);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="分析样式"><a href="#分析样式" class="headerlink" title="分析样式"></a>分析样式</h3><p>在“分析样式”阶段，通过 postcss 对样式文件进行遍历，抓取标记。而我之前在 img-sprite 的实现中，则是实现了 <a href="https://github.com/cupools/img-sprite/blob/master/lib/traverse.js" target="_blank" rel="external">Traverse</a> 用于深度遍历 <a href="https://github.com/reworkcss/css" target="_blank" rel="external">css</a> 转换出来的 AST，与 postcss 的做法感觉很相似。</p>
+<h3 id="合并图片"><a href="#合并图片" class="headerlink" title="合并图片"></a>合并图片</h3><p>这里为了兼容 FIS3，Emilia 在整个编译过程中没有使用异步操作。为此在合并图片的过程中通过 <code>child_process.execFileSync</code> 阻塞事件循环。这或许是造成编译速度慢的原因之一。</p>
+<h3 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h3><p>fis-spriter-emilia 与 fis-spriter-csssprite 比较如下：</p>
 <table>
 <thead>
 <tr>
@@ -270,135 +82,27 @@
 </table>
 <p>由表格可见，fis-spriter-emilia 的优势体现在 <strong><code>rem</code>的支持</strong> 和 <strong>多套精灵图的产出</strong>，而这恰恰解决了我们团队在移动端的两个使用场景：<code>rem</code> 用于自适应；多套精灵图片用于图片懒加载。</p>
 <p>速度慢的问题将在搞定手上的这一波需求之后进行优化，可能会完全重构计算和合并图片部分代码。</p>
-<h2 id="Lia">Lia</h2><blockquote>
+<h2 id="Lia"><a href="#Lia" class="headerlink" title="Lia"></a>Lia</h2><blockquote>
 <p><code>Lia</code> 通过 <code>sprite_conf.js</code> 的配置命中图片资源，然后输出精灵图片和样式文件到指定文件夹。</p>
 </blockquote>
 <p>我自己很喜欢 Lia 这个模块，原因是简单。合并组帧图只需要 <code>lia here</code>，初始化配置文件用 <code>lia init</code>，开发偶尔 <code>lia</code> 更新精灵图样式文件或者直接 <code>lia -w</code> 就完成了所有事情。</p>
-<h3 id="特点">特点</h3><ol>
+<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ol>
 <li>支持 <code>rem</code>，支持数值转换</li>
 <li>一次性输出多套精灵图片和样式文件</li>
 <li>监听文件变化并且按需编译输出样式文件和图片</li>
 <li>允许在当前文件夹下快速合并图片，多用于合并组帧动画的图片</li>
 <li>支持自定义模板，以此支持输出 SCSS, LESS, JS, JSON 等等任意格式的文件</li>
 </ol>
-<h3 id="设计-1">设计</h3><h4 id="模块设计">模块设计</h4><p>主模块 <a href="https://github.com/cupools/lia/blob/master/src/lia.js" target="_blank" rel="external">lia.js</a> 的代码量不多，提供了根据路径命中图片并输出精灵图和样式文件的功能。其他功能如快速合并图片、文件监听则通过相应的扩展实现，最终代码结构也就比较清晰。在这个基础上，也容易根据需要继续扩展其他功能。</p>
-<h4 id="文件监听">文件监听</h4><p>文件监听这部分功能基于 <a href="https://github.com/paulmillr/chokidar" target="_blank" rel="external">chokidar</a> 实现。在文件改动的时候按需重新编译，其中做了几点优化：</p>
+<h3 id="模块设计"><a href="#模块设计" class="headerlink" title="模块设计"></a>模块设计</h3><p>主模块 <a href="https://github.com/cupools/lia/blob/master/src/lia.js" target="_blank" rel="external">lia.js</a> 的代码量不多，提供了根据路径命中图片并输出精灵图和样式文件的功能。其他功能如快速合并图片、文件监听则通过相应的扩展实现，最终代码结构也就比较清晰。在这个基础上，也容易根据需要继续扩展其他功能。</p>
+<h3 id="文件监听"><a href="#文件监听" class="headerlink" title="文件监听"></a>文件监听</h3><p>文件监听这部分功能基于 <a href="https://github.com/paulmillr/chokidar" target="_blank" rel="external">chokidar</a> 实现。在文件改动的时候按需重新编译，其中做了几点优化：</p>
 <ol>
 <li>一个时间段内（1000ms）的多个文件改动记录会被归并到一次变更检查中。</li>
 <li>变更检查时，先重新匹配命中规则的图片，判断需要合并的图片数量是否变化；否则会拿到所有改动的文件判断是否从属与某个精灵图。有效的改动会触发所属的精灵图的重新编译。</li>
 <li>在命中规则中过滤产出的精灵图，避免触发不必要的变更检查。</li>
 </ol>
-<h4 id="自定义模板">自定义模板</h4><p>提供了 <code>tmpl</code> 和 <code>wrap</code> 两个参数，以支持产出 JS, JSON 等格式，可用于 canvas 动画场景中提供精灵图的坐标等信息。</p>
-<h2 id="小结">小结</h2><p>Emilia 和 Lia 同样处理 sprite 却是以两种不用的形式，满足了目前团队不同使用场景的需要。当然目前可优化的点还有很多，至少跟竞品的比较就有许多不足了，也有实践不足的原因导致一些潜在的问题没有被抛出来。</p>
+<h3 id="自定义模板"><a href="#自定义模板" class="headerlink" title="自定义模板"></a>自定义模板</h3><p>提供了 <code>tmpl</code> 和 <code>wrap</code> 两个参数，以支持产出 JS, JSON 等格式，可用于 canvas 动画场景中提供精灵图的坐标等信息。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>Emilia 和 Lia 同样处理 sprite 却是以两种不用的形式，满足了目前团队不同使用场景的需要。当然目前可优化的点还有很多，至少跟竞品的比较就有许多不足了，也有实践不足的原因导致一些潜在的问题没有被抛出来。</p>
 <p>在写这两个模块的过程中我也会考虑这类型的 sprite 工具随着国内移动网络速度的提升以及在和 Lazyload，Icon Fonts 等优化手段的比较下是否还有合并图片的必要性。回头想想，作为一种开发和使用成本都较低的优化手段，能够解决目前存在的一两个痛点已经值得去尝试了。</p>
 <p><s>然后 Emilia 其实是《Re:从零开始的异世界生活》的银发半精灵少女</s></p>
 <p>最后感谢老大支持这种东西，给了一个多星期的时间没压需求下来😂</p>
-
-      
-    </div>
-    
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2016/07010/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          Hot Module Replacement 介绍
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2016/05090/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">webpack 你好</div>
-      <strong class="article-nav-caption">></strong>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-
-
-
-
-
-</div>
-      <footer id="footer">
-  <div class="outer">
-    <div id="footer-info">
-    	<div class="footer-left">
-    		&copy; 2016 liyh
-    	</div>
-      	<div class="footer-right">
-      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
-      	</div>
-    </div>
-  </div>
-</footer>
-    </div>
-    
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
-
-
-<script>
-	var yiliaConfig = {
-		fancybox: true,
-		mathjax: true,
-		animate: false,
-		isHome: false,
-		isPost: true,
-		isArchive: false,
-		isTag: false,
-		isCategory: false,
-		open_in_new: false
-	}
-</script>
-<script src="/js/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
-<script src="/js/main.js" type="text/javascript"></script>
-
-
-
-<!-- Google Analytics -->
-<script type="text/javascript">
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-67000695-1', 'auto');
-ga('send', 'pageview');
-
-</script>
-<!-- End Google Analytics -->
-
-
-
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    }
-});
-
-MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';                 
-    }       
-});
-</script>
-
-<script src="/js/MathJax/MathJax.js" type="text/javascript"></script>
-
-
-  </div>
-</body>
-</html>
+</div></article></div></section><footer><div class="paginator"><a href="/2016/07010/" class="prev">PREV</a><a href="/2016/05090/" class="next">NEXT</a></div><div class="copyright"><p>© 2016 <a href="http://cupools.github.io">liyh</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-67000695-1",'auto');ga('send','pageview');</script></body></html>

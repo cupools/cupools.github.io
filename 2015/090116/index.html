@@ -1,216 +1,17 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  <title>XMLHttpRequest 整理 | 一环的笔记</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="有空便整理了一下 xhr 的内容，内容基本上来自 W3C。同时对其进行了简单封装，方便以后使用。
-
-简介XMLHttpRequest 对象提供了对 HTTP 协议的完全的访问，包括做出 POST 和 HEAD 请求以及普通的 GET 请求的能力。可以同步或异步地返回 Web 服务器的响应，并且能够以文本或者一个 DOM 文档的形式返回内容
-XMLHttpRequest 得到了所有现代浏览器较好的支">
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> XMLHttpRequest 整理 · 一环的笔记</title><meta name="description" content="XMLHttpRequest 整理 - liyh"><meta name="description" content="有空便整理了一下 xhr 的内容，内容基本上来自 W3C。同时对其进行了简单封装，方便以后使用。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="XMLHttpRequest 整理">
 <meta property="og:url" content="http://cupools.github.io/2015/090116/index.html">
 <meta property="og:site_name" content="一环的笔记">
-<meta property="og:description" content="有空便整理了一下 xhr 的内容，内容基本上来自 W3C。同时对其进行了简单封装，方便以后使用。
-
-简介XMLHttpRequest 对象提供了对 HTTP 协议的完全的访问，包括做出 POST 和 HEAD 请求以及普通的 GET 请求的能力。可以同步或异步地返回 Web 服务器的响应，并且能够以文本或者一个 DOM 文档的形式返回内容
-XMLHttpRequest 得到了所有现代浏览器较好的支">
-<meta property="og:updated_time" content="2016-06-29T13:04:31.000Z">
+<meta property="og:description" content="有空便整理了一下 xhr 的内容，内容基本上来自 W3C。同时对其进行了简单封装，方便以后使用。">
+<meta property="og:updated_time" content="2016-08-26T07:58:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="XMLHttpRequest 整理">
-<meta name="twitter:description" content="有空便整理了一下 xhr 的内容，内容基本上来自 W3C。同时对其进行了简单封装，方便以后使用。
-
-简介XMLHttpRequest 对象提供了对 HTTP 协议的完全的访问，包括做出 POST 和 HEAD 请求以及普通的 GET 请求的能力。可以同步或异步地返回 Web 服务器的响应，并且能够以文本或者一个 DOM 文档的形式返回内容
-XMLHttpRequest 得到了所有现代浏览器较好的支">
-  
-    <link rel="alternative" href="/atom.xml" title="一环的笔记" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
-</head>
-<body>
-  <div id="container">
-    <div class="left-col">
-    <div class="overlay"></div>
-<div class="intrude-less">
-	<header id="header" class="inner">
-		<a href="/" class="profilepic">
-			
-			<img src="/img/avatar.jpg" class="js-avatar" style="width: 100%;height: 100%;opacity: 1;">
-			
-		</a>
-
-		<hgroup>
-		  <h1 class="header-author"><a href="/">liyh</a></h1>
-		</hgroup>
-
-		
-
-		
-			<div class="switch-btn">
-				<div class="icon">
-					<div class="icon-ctn">
-						<div class="icon-wrap icon-house" data-idx="0">
-							<div class="birdhouse"></div>
-							<div class="birdhouse_holes"></div>
-						</div>
-						<div class="icon-wrap icon-ribbon hide" data-idx="1">
-							<div class="ribbon"></div>
-						</div>
-						
-						
-						<div class="icon-wrap icon-me hide" data-idx="3">
-							<div class="user"></div>
-							<div class="shoulder"></div>
-						</div>
-						
-					</div>
-					
-				</div>
-				<div class="tips-box hide">
-					<div class="tips-arrow"></div>
-					<ul class="tips-inner">
-						<li>菜单</li>
-						<li>标签</li>
-						
-						
-						<li>关于我</li>
-						
-					</ul>
-				</div>
-			</div>
-		
-
-		<div class="switch-area">
-			<div class="switch-wrap">
-				<section class="switch-part switch-part1">
-					<nav class="header-menu">
-						<ul>
-						
-							<li><a href="/">主页</a></li>
-				        
-							<li><a href="/archives">笔记</a></li>
-				        
-						</ul>
-					</nav>
-					<nav class="header-nav">
-						<div class="social">
-							
-								<a class="github" target="_blank" href="https://github.com/cupools" title="github">github</a>
-					        
-								<a class="mail" target="_blank" href="mailto:cupools@gmail.com" title="mail">mail</a>
-					        
-						</div>
-					</nav>
-				</section>
-				
-				
-				<section class="switch-part switch-part2">
-					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Wordpress/" style="font-size: 10px;">Wordpress</a> <a href="/tags/css/" style="font-size: 16px;">css</a> <a href="/tags/sass/" style="font-size: 10px;">sass</a> <a href="/tags/three-js/" style="font-size: 12px;">three.js</a> <a href="/tags/webpack/" style="font-size: 12px;">webpack</a> <a href="/tags/学习/" style="font-size: 12px;">学习</a> <a href="/tags/安全/" style="font-size: 10px;">安全</a> <a href="/tags/碎屑/" style="font-size: 14px;">碎屑</a> <a href="/tags/读书笔记/" style="font-size: 18px;">读书笔记</a> <a href="/tags/配置/" style="font-size: 10px;">配置</a>
-					</div>
-				</section>
-				
-				
-				
-
-				
-				
-				<section class="switch-part switch-part3">
-				
-					<div id="js-aboutme">在校学生，连滚带爬啃书</div>
-				</section>
-				
-			</div>
-		</div>
-	</header>				
-</div>
-    </div>
-    <div class="mid-col">
-      <nav id="mobile-nav">
-  	<div class="overlay">
-  		<div class="slider-trigger"></div>
-  		<h1 class="header-author js-mobile-header hide">liyh</h1>
-  	</div>
-	<div class="intrude-less">
-		<header id="header" class="inner">
-			<div class="profilepic">
-				<img src="/img/avatar.jpg" class="js-avatar show" style="width: 100%;height: 100%;opacity: 1;">
-			</div>
-			<hgroup>
-			  <h1 class="header-author">liyh</h1>
-			</hgroup>
-			
-			<nav class="header-menu">
-				<ul>
-				
-					<li><a href="/">主页</a></li>
-		        
-					<li><a href="/archives">笔记</a></li>
-		        
-		        <div class="clearfix"></div>
-				</ul>
-			</nav>
-			<nav class="header-nav">
-				<div class="social">
-					
-						<a class="github" target="_blank" href="https://github.com/cupools" title="github">github</a>
-			        
-						<a class="mail" target="_blank" href="mailto:cupools@gmail.com" title="mail">mail</a>
-			        
-				</div>
-			</nav>
-		</header>				
-	</div>
-</nav>
-      <div class="body-wrap"><article id="post-study/XMLHttpRequest 整理" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/090116/" class="article-date">
-  	<time datetime="2015-08-31T16:00:00.000Z" itemprop="datePublished">2015-09-01</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      XMLHttpRequest 整理
-    </h1>
-  
-
-      </header>
-      
-      <div class="article-info article-info-post">
-        
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
-	</div>
-
-        
-
-        <div class="clearfix"></div>
-      </div>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>有空便整理了一下 xhr 的内容，内容基本上来自 W3C。同时对其进行了简单封装，方便以后使用。</p>
-</blockquote>
-<h2 id="简介">简介</h2><p>XMLHttpRequest 对象提供了对 HTTP 协议的完全的访问，包括做出 POST 和 HEAD 请求以及普通的 GET 请求的能力。可以同步或异步地返回 Web 服务器的响应，并且能够以文本或者一个 DOM 文档的形式返回内容</p>
-<p>XMLHttpRequest 得到了所有现代浏览器较好的支持。唯一的浏览器依赖性涉及 XMLHttpRequest 对象的创建。在 IE 5 和 IE 6 中，必须使用特定于 IE 的 ActiveXObject() 构造函数</p>
+<meta name="twitter:description" content="有空便整理了一下 xhr 的内容，内容基本上来自 W3C。同时对其进行了简单封装，方便以后使用。"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://cupools.github.io/atom.xml" title="一环的笔记"></head><body><div class="wrap"><header><a href="/" class="logo-link">EXPORT DEFAULT LIYH</a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/cupools" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="mailto:cupools@gmail.com" target="_self" class="nav-list-link">GMAIL</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">XMLHttpRequest 整理</h1><div class="post-info">Sep 1, 2015<ul class="post-tag-list"><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul></div><div class="post-content"><p>有空便整理了一下 xhr 的内容，内容基本上来自 W3C。同时对其进行了简单封装，方便以后使用。</p>
 <a id="more"></a>
-<h2 id="属性">属性</h2><h3 id="readyState">readyState</h3><table>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>XMLHttpRequest 对象提供了对 HTTP 协议的完全的访问，包括做出 POST 和 HEAD 请求以及普通的 GET 请求的能力。可以同步或异步地返回 Web 服务器的响应，并且能够以文本或者一个 DOM 文档的形式返回内容</p>
+<p>XMLHttpRequest 得到了所有现代浏览器较好的支持。唯一的浏览器依赖性涉及 XMLHttpRequest 对象的创建。在 IE 5 和 IE 6 中，必须使用特定于 IE 的 ActiveXObject() 构造函数</p>
+<h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><h3 id="readyState"><a href="#readyState" class="headerlink" title="readyState"></a>readyState</h3><table>
 <thead>
 <tr>
 <th>状态</th>
@@ -246,131 +47,23 @@ XMLHttpRequest 得到了所有现代浏览器较好的支">
 </tr>
 </tbody>
 </table>
-<h3 id="responseText">responseText</h3><p>目前为止为服务器接收到的<strong>响应体</strong>（不包括头部），或者如果还没有接收到数据的话，就是空字符串。当 readyState 为 3，这个属性返回目前已经接收的响应部分。如果 readyState 为 4，这个属性保存了完整的响应体。</p>
+<h3 id="responseText"><a href="#responseText" class="headerlink" title="responseText"></a>responseText</h3><p>目前为止为服务器接收到的<strong>响应体</strong>（不包括头部），或者如果还没有接收到数据的话，就是空字符串。当 readyState 为 3，这个属性返回目前已经接收的响应部分。如果 readyState 为 4，这个属性保存了完整的响应体。</p>
 <p>如果响应包含了为响应体指定字符编码的头部，就使用该编码。否则，假定使用 Unicode UTF-8</p>
-<h3 id="responseXML">responseXML</h3><p>对请求的响应，解析为 XML 并作为 Document 对象返回</p>
-<h3 id="status">status</h3><p>由服务器返回的 HTTP 状态代码。当 readyState 小于 3 的时候读取这一属性会导致一个异常</p>
-<h3 id="statusText">statusText</h3><p>这个属性用名称而不是数字指定了请求的 HTTP 的状态代码。也就是说，当状态为 200 的时候它是 “OK”，当状态为 404 的时候它是 “Not Found”。和 status 属性一样，当 readyState 小于 3 的时候读取这一属性会导致一个异常</p>
-<h2 id="方法">方法</h2><h3 id="abort()">abort()</h3><p>取消当前响应，关闭连接并且结束任何未决的网络活动</p>
+<h3 id="responseXML"><a href="#responseXML" class="headerlink" title="responseXML"></a>responseXML</h3><p>对请求的响应，解析为 XML 并作为 Document 对象返回</p>
+<h3 id="status"><a href="#status" class="headerlink" title="status"></a>status</h3><p>由服务器返回的 HTTP 状态代码。当 readyState 小于 3 的时候读取这一属性会导致一个异常</p>
+<h3 id="statusText"><a href="#statusText" class="headerlink" title="statusText"></a>statusText</h3><p>这个属性用名称而不是数字指定了请求的 HTTP 的状态代码。也就是说，当状态为 200 的时候它是 “OK”，当状态为 404 的时候它是 “Not Found”。和 status 属性一样，当 readyState 小于 3 的时候读取这一属性会导致一个异常</p>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><h3 id="abort"><a href="#abort" class="headerlink" title="abort()"></a>abort()</h3><p>取消当前响应，关闭连接并且结束任何未决的网络活动</p>
 <p>这个方法把 XMLHttpRequest 对象重置为 readyState 为 0 的状态，并且取消所有未决的网络活动。例如，如果请求用了太长时间，而且响应不再必要的时候，可以调用这个方法</p>
-<h3 id="getAllResponseHeaders()">getAllResponseHeaders()</h3><p>把 HTTP 响应头部作为未解析的字符串返回。<br>如果 readyState 小于 3，这个方法返回 null。否则，它返回服务器发送的所有 HTTP 响应的头部。头部作为单个的字符串返回，一行一个头部。每行用换行符 “\r\n” 隔开</p>
-<h3 id="getResponseHeader()">getResponseHeader()</h3><p>返回指定的 HTTP 响应头部的值。其参数是要返回的 HTTP 响应头部的名称。可以使用任何大小写来制定这个头部名字，和响应头部的比较是不区分大小写的</p>
+<h3 id="getAllResponseHeaders"><a href="#getAllResponseHeaders" class="headerlink" title="getAllResponseHeaders()"></a>getAllResponseHeaders()</h3><p>把 HTTP 响应头部作为未解析的字符串返回。<br>如果 readyState 小于 3，这个方法返回 null。否则，它返回服务器发送的所有 HTTP 响应的头部。头部作为单个的字符串返回，一行一个头部。每行用换行符 “\r\n” 隔开</p>
+<h3 id="getResponseHeader"><a href="#getResponseHeader" class="headerlink" title="getResponseHeader()"></a>getResponseHeader()</h3><p>返回指定的 HTTP 响应头部的值。其参数是要返回的 HTTP 响应头部的名称。可以使用任何大小写来制定这个头部名字，和响应头部的比较是不区分大小写的</p>
 <p>该方法的返回值是指定的 HTTP 响应头部的值，如果没有接收到这个头部或者 readyState 小于 3 则为空字符串。如果接收到多个有指定名称的头部，这个头部的值被连接起来并返回，使用逗号和空格分隔开各个头部的值</p>
-<h3 id="open()">open()</h3><p>初始化 HTTP 请求参数，例如 URL 和 HTTP 方法，但是并不发送请求</p>
-<h3 id="send()">send()</h3><p>发送 HTTP 请求，使用传递给 open() 方法的参数，以及传递给该方法的可选请求体</p>
-<h3 id="setRequestHeader()">setRequestHeader()</h3><p>向一个打开但未发送的请求设置或添加一个 HTTP 请求</p>
-<h2 id="简单代码">简单代码</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> xhr;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadXMLDoc</span>(<span class="params">url</span>) </span>&#123;</span><br><span class="line">    xhr = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">window</span>.XMLHttpRequest) &#123;</span><br><span class="line">        xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">window</span>.ActiveXObject) &#123;</span><br><span class="line">        xhr = <span class="keyword">new</span> ActiveXObject(<span class="string">"Microsoft.XMLHTTP"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (xhr != <span class="literal">null</span>) &#123;</span><br><span class="line">        xhr.onreadystatechange = stateChange;</span><br><span class="line">        xhr.open(<span class="string">"GET"</span>, url, <span class="literal">true</span>);</span><br><span class="line">        xhr.send(<span class="literal">null</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        alert(<span class="string">"Your browser does not support XMLHTTP."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">stateChange</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (xhr.readyState == <span class="number">4</span>) &#123; <span class="comment">// 4 = "loaded"</span></span><br><span class="line">        <span class="keyword">if</span> (xhr.status == <span class="number">200</span>) &#123; <span class="comment">// 200 = OK</span></span><br><span class="line">            <span class="comment">// ...our code here...</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            alert(<span class="string">"Problem retrieving XML data"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="简单封装">简单封装</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * EasyAjax</span><br><span class="line"> * 简单封装 xhr 对象</span><br><span class="line"> * 提供 get，post 方法</span><br><span class="line"> *  ajax.get(url, params, success, error);</span><br><span class="line"> */</span></span><br><span class="line">;(<span class="function"><span class="keyword">function</span>(<span class="params">w</span>) </span>&#123;</span><br><span class="line"><span class="pi">	'use strict'</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> uid = <span class="number">0</span>,</span><br><span class="line">        cache = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">EasyAjax</span>(<span class="params">opt</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.url = opt.url;</span><br><span class="line">        <span class="keyword">this</span>.method = opt.method || <span class="string">'GET'</span>;</span><br><span class="line">        <span class="keyword">this</span>.data = opt.data || <span class="string">''</span>;</span><br><span class="line">        <span class="keyword">this</span>.onsuccess = <span class="keyword">typeof</span> opt.onsuccess === <span class="string">'function'</span> ? opt.onsuccess : <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">this</span>.onerror = <span class="keyword">typeof</span> opt.onerror === <span class="string">'function'</span> ? opt.onerror : <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">this</span>.async = <span class="keyword">typeof</span> opt.async !== <span class="string">'undefined'</span> ? !!opt.async : <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">this</span>.timeout = opt.timeout || <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">this</span>.xhr = <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">this</span>._ajax();</span><br><span class="line">        <span class="keyword">this</span>.uid = <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    EasyAjax.prototype = &#123;</span><br><span class="line">        constructor: EasyAjax,</span><br><span class="line">        _ajax: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> xhr = <span class="keyword">this</span>.xhr = <span class="keyword">this</span>._getXHR(),</span><br><span class="line">                that = <span class="keyword">this</span>,</span><br><span class="line">                data = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (xhr) &#123;</span><br><span class="line">                xhr.timeout = <span class="keyword">this</span>.timeout;</span><br><span class="line"></span><br><span class="line">                xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                    that._onreadystatuschange.call(that);</span><br><span class="line">                &#125;;</span><br><span class="line">                xhr.ontimeout = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                    that._ontimeout.call(that);</span><br><span class="line">                &#125;;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (<span class="keyword">this</span>.method === <span class="string">'POST'</span>) &#123;</span><br><span class="line">                    xhr.open(<span class="keyword">this</span>.method, <span class="keyword">this</span>.url, <span class="keyword">this</span>.async);</span><br><span class="line">                    xhr.setRequestHeader(<span class="string">'Content-type'</span>, <span class="string">'application/x-www-form-urlencoded;'</span>);</span><br><span class="line">                    data = json2params(<span class="keyword">this</span>.data);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    xhr.open(<span class="keyword">this</span>.method, parseURL(<span class="keyword">this</span>.url, <span class="keyword">this</span>.data), <span class="keyword">this</span>.async);</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                xhr.send(data);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        _getXHR: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> xhr = <span class="literal">null</span>;</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">window</span>.XMLHttpRequest) &#123;</span><br><span class="line">                xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">window</span>.ActiveXObject) &#123;</span><br><span class="line">                xhr = <span class="keyword">new</span> ActiveXObject(<span class="string">'Microsoft.XMLHTTP'</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> xhr;</span><br><span class="line">        &#125;,</span><br><span class="line">        _onreadystatuschange: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> xhr = <span class="keyword">this</span>.xhr;</span><br><span class="line">            <span class="keyword">if</span> (xhr.readyState === <span class="number">4</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (xhr.status &gt;= <span class="number">200</span> &amp;&amp; xhr.status &lt; <span class="number">300</span>) &#123;</span><br><span class="line">                    <span class="keyword">this</span>.onsuccess &amp;&amp; <span class="keyword">this</span>.onsuccess(xhr.responseText, xhr.statusText);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">this</span>.onerror &amp;&amp; <span class="keyword">this</span>.onerror(xhr.responseText, xhr.statusText);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">this</span>._destory();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        _ontimeout: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.error(<span class="string">'ajax timeout: '</span> + <span class="keyword">this</span>.timeout);</span><br><span class="line">            <span class="comment">// TODO</span></span><br><span class="line">        &#125;,</span><br><span class="line">        _destory: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            cache[<span class="keyword">this</span>.uid] = <span class="literal">null</span>;</span><br><span class="line">        &#125;,</span><br><span class="line">        abort: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.xhr.abort();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">parseURL</span>(<span class="params">url, json</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> params = json2params(json);</span><br><span class="line">        <span class="keyword">return</span> params.length &gt; <span class="number">0</span> ? (url + (url.indexOf(<span class="string">'?'</span>) &gt; -<span class="number">1</span> ? <span class="string">'&amp;'</span> : <span class="string">'?'</span>) + json2params(json)) : url;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">json2params</span>(<span class="params">json</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> json === <span class="string">'string'</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> json;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> str = <span class="string">''</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> json) &#123;</span><br><span class="line">            <span class="keyword">if</span> (json.hasOwnProperty(i) &amp;&amp; json[i] != <span class="literal">null</span>) &#123;</span><br><span class="line">                str += i + <span class="string">'='</span> + json[i] + <span class="string">'&amp;'</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (str.lastIndexOf(<span class="string">'&amp;'</span>) &gt; -<span class="number">1</span>) &#123;</span><br><span class="line">            str = str.slice(<span class="number">0</span>, -<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> str;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> obj = &#123;&#125;,</span><br><span class="line">            method = [<span class="string">'get'</span>, <span class="string">'post'</span>];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; method.length; i++) &#123;</span><br><span class="line">            obj[method[i]] = factory(method[i]);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> obj;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">factory</span>(<span class="params">m</span>) </span>&#123;</span><br><span class="line">        m = m.toUpperCase();</span><br><span class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">url, data, onsuccess, onerror</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> ajax = <span class="literal">null</span>;</span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">typeof</span> url === <span class="string">'string'</span>) &#123;</span><br><span class="line">                ajax = <span class="keyword">new</span> EasyAjax(&#123;</span><br><span class="line">                    url: url,</span><br><span class="line">                    data: data,</span><br><span class="line">                    method: m,</span><br><span class="line">                    onsuccess: onsuccess,</span><br><span class="line">                    onerror: onerror</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> url === <span class="string">'object'</span>) &#123;</span><br><span class="line">                url.method = m;</span><br><span class="line">                ajax = <span class="keyword">new</span> EasyAjax(url);</span><br><span class="line">            &#125;</span><br><span class="line">            ajax.uid = uid++;</span><br><span class="line">            cache[ajax.uid] = ajax;</span><br><span class="line">            <span class="keyword">return</span> ajax;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    w.ajax = init();</span><br><span class="line"></span><br><span class="line">&#125;)(<span class="built_in">window</span>);</span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 示例</span></span><br><span class="line">ajax.get(<span class="string">'http://uc.cn'</span>, &#123;</span><br><span class="line">    a:<span class="number">1</span>,</span><br><span class="line">    b:<span class="number">2</span></span><br><span class="line">&#125;, <span class="function"><span class="keyword">function</span>(<span class="params">data, status</span>) </span>&#123;</span><br><span class="line">    render(<span class="built_in">JSON</span>.parse(data));</span><br><span class="line">&#125;, <span class="function"><span class="keyword">function</span>(<span class="params">data, status</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.error(status);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="open"><a href="#open" class="headerlink" title="open()"></a>open()</h3><p>初始化 HTTP 请求参数，例如 URL 和 HTTP 方法，但是并不发送请求</p>
+<h3 id="send"><a href="#send" class="headerlink" title="send()"></a>send()</h3><p>发送 HTTP 请求，使用传递给 open() 方法的参数，以及传递给该方法的可选请求体</p>
+<h3 id="setRequestHeader"><a href="#setRequestHeader" class="headerlink" title="setRequestHeader()"></a>setRequestHeader()</h3><p>向一个打开但未发送的请求设置或添加一个 HTTP 请求</p>
+<h2 id="简单代码"><a href="#简单代码" class="headerlink" title="简单代码"></a>简单代码</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> xhr;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadXMLDoc</span>(<span class="params">url</span>) </span>&#123;</div><div class="line">    xhr = <span class="literal">null</span>;</div><div class="line">    <span class="keyword">if</span> (<span class="built_in">window</span>.XMLHttpRequest) &#123;</div><div class="line">        xhr = <span class="keyword">new</span> XMLHttpRequest();</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">window</span>.ActiveXObject) &#123;</div><div class="line">        xhr = <span class="keyword">new</span> ActiveXObject(<span class="string">"Microsoft.XMLHTTP"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (xhr != <span class="literal">null</span>) &#123;</div><div class="line">        xhr.onreadystatechange = stateChange;</div><div class="line">        xhr.open(<span class="string">"GET"</span>, url, <span class="literal">true</span>);</div><div class="line">        xhr.send(<span class="literal">null</span>);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        alert(<span class="string">"Your browser does not support XMLHTTP."</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">stateChange</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (xhr.readyState == <span class="number">4</span>) &#123; <span class="comment">// 4 = "loaded"</span></div><div class="line">        <span class="keyword">if</span> (xhr.status == <span class="number">200</span>) &#123; <span class="comment">// 200 = OK</span></div><div class="line">            <span class="comment">// ...our code here...</span></div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            alert(<span class="string">"Problem retrieving XML data"</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="简单封装"><a href="#简单封装" class="headerlink" title="简单封装"></a>简单封装</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * EasyAjax</div><div class="line"> * 简单封装 xhr 对象</div><div class="line"> * 提供 get，post 方法</div><div class="line"> *  ajax.get(url, params, success, error);</div><div class="line"> */</div><div class="line">;(<span class="function"><span class="keyword">function</span>(<span class="params">w</span>) </span>&#123;</div><div class="line"><span class="meta">	'use strict'</span>;</div><div class="line"></div><div class="line">    <span class="keyword">var</span> uid = <span class="number">0</span>,</div><div class="line">        cache = &#123;&#125;;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">EasyAjax</span>(<span class="params">opt</span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.url = opt.url;</div><div class="line">        <span class="keyword">this</span>.method = opt.method || <span class="string">'GET'</span>;</div><div class="line">        <span class="keyword">this</span>.data = opt.data || <span class="string">''</span>;</div><div class="line">        <span class="keyword">this</span>.onsuccess = <span class="keyword">typeof</span> opt.onsuccess === <span class="string">'function'</span> ? opt.onsuccess : <span class="literal">null</span>;</div><div class="line">        <span class="keyword">this</span>.onerror = <span class="keyword">typeof</span> opt.onerror === <span class="string">'function'</span> ? opt.onerror : <span class="literal">null</span>;</div><div class="line">        <span class="keyword">this</span>.async = <span class="keyword">typeof</span> opt.async !== <span class="string">'undefined'</span> ? !!opt.async : <span class="literal">true</span>;</div><div class="line">        <span class="keyword">this</span>.timeout = opt.timeout || <span class="number">0</span>;</div><div class="line">        <span class="keyword">this</span>.xhr = <span class="literal">null</span>;</div><div class="line">        <span class="keyword">this</span>._ajax();</div><div class="line">        <span class="keyword">this</span>.uid = <span class="literal">null</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    EasyAjax.prototype = &#123;</div><div class="line">        <span class="keyword">constructor</span>: EasyAjax,</div><div class="line">        _ajax: function() &#123;</div><div class="line">            <span class="keyword">var</span> xhr = <span class="keyword">this</span>.xhr = <span class="keyword">this</span>._getXHR(),</div><div class="line">                that = <span class="keyword">this</span>,</div><div class="line">                data = <span class="literal">null</span>;</div><div class="line"></div><div class="line">            <span class="keyword">if</span> (xhr) &#123;</div><div class="line">                xhr.timeout = <span class="keyword">this</span>.timeout;</div><div class="line"></div><div class="line">                xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">                    that._onreadystatuschange.call(that);</div><div class="line">                &#125;;</div><div class="line">                xhr.ontimeout = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">                    that._ontimeout.call(that);</div><div class="line">                &#125;;</div><div class="line"></div><div class="line">                <span class="keyword">if</span> (<span class="keyword">this</span>.method === <span class="string">'POST'</span>) &#123;</div><div class="line">                    xhr.open(<span class="keyword">this</span>.method, <span class="keyword">this</span>.url, <span class="keyword">this</span>.async);</div><div class="line">                    xhr.setRequestHeader(<span class="string">'Content-type'</span>, <span class="string">'application/x-www-form-urlencoded;'</span>);</div><div class="line">                    data = json2params(<span class="keyword">this</span>.data);</div><div class="line">                &#125; <span class="keyword">else</span> &#123;</div><div class="line">                    xhr.open(<span class="keyword">this</span>.method, parseURL(<span class="keyword">this</span>.url, <span class="keyword">this</span>.data), <span class="keyword">this</span>.async);</div><div class="line">                &#125;</div><div class="line"></div><div class="line">                xhr.send(data);</div><div class="line">            &#125;</div><div class="line">        &#125;,</div><div class="line">        _getXHR: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> xhr = <span class="literal">null</span>;</div><div class="line">            <span class="keyword">if</span> (<span class="built_in">window</span>.XMLHttpRequest) &#123;</div><div class="line">                xhr = <span class="keyword">new</span> XMLHttpRequest();</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">window</span>.ActiveXObject) &#123;</div><div class="line">                xhr = <span class="keyword">new</span> ActiveXObject(<span class="string">'Microsoft.XMLHTTP'</span>);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">return</span> xhr;</div><div class="line">        &#125;,</div><div class="line">        _onreadystatuschange: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> xhr = <span class="keyword">this</span>.xhr;</div><div class="line">            <span class="keyword">if</span> (xhr.readyState === <span class="number">4</span>) &#123;</div><div class="line">                <span class="keyword">if</span> (xhr.status &gt;= <span class="number">200</span> &amp;&amp; xhr.status &lt; <span class="number">300</span>) &#123;</div><div class="line">                    <span class="keyword">this</span>.onsuccess &amp;&amp; <span class="keyword">this</span>.onsuccess(xhr.responseText, xhr.statusText);</div><div class="line">                &#125; <span class="keyword">else</span> &#123;</div><div class="line">                    <span class="keyword">this</span>.onerror &amp;&amp; <span class="keyword">this</span>.onerror(xhr.responseText, xhr.statusText);</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">this</span>._destory();</div><div class="line">            &#125;</div><div class="line">        &#125;,</div><div class="line">        _ontimeout: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="built_in">console</span>.error(<span class="string">'ajax timeout: '</span> + <span class="keyword">this</span>.timeout);</div><div class="line">            <span class="comment">// TODO</span></div><div class="line">        &#125;,</div><div class="line">        _destory: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            cache[<span class="keyword">this</span>.uid] = <span class="literal">null</span>;</div><div class="line">        &#125;,</div><div class="line">        abort: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.xhr.abort();</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">parseURL</span>(<span class="params">url, json</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> params = json2params(json);</div><div class="line">        <span class="keyword">return</span> params.length &gt; <span class="number">0</span> ? (url + (url.indexOf(<span class="string">'?'</span>) &gt; <span class="number">-1</span> ? <span class="string">'&amp;'</span> : <span class="string">'?'</span>) + json2params(json)) : url;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">json2params</span>(<span class="params">json</span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> json === <span class="string">'string'</span>) &#123;</div><div class="line">            <span class="keyword">return</span> json;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">var</span> str = <span class="string">''</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> json) &#123;</div><div class="line">            <span class="keyword">if</span> (json.hasOwnProperty(i) &amp;&amp; json[i] != <span class="literal">null</span>) &#123;</div><div class="line">                str += i + <span class="string">'='</span> + json[i] + <span class="string">'&amp;'</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (str.lastIndexOf(<span class="string">'&amp;'</span>) &gt; <span class="number">-1</span>) &#123;</div><div class="line">            str = str.slice(<span class="number">0</span>, <span class="number">-1</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> str;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> obj = &#123;&#125;,</div><div class="line">            method = [<span class="string">'get'</span>, <span class="string">'post'</span>];</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; method.length; i++) &#123;</div><div class="line">            obj[method[i]] = factory(method[i]);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> obj;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">factory</span>(<span class="params">m</span>) </span>&#123;</div><div class="line">        m = m.toUpperCase();</div><div class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">url, data, onsuccess, onerror</span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> ajax = <span class="literal">null</span>;</div><div class="line">            <span class="keyword">if</span> (<span class="keyword">typeof</span> url === <span class="string">'string'</span>) &#123;</div><div class="line">                ajax = <span class="keyword">new</span> EasyAjax(&#123;</div><div class="line">                    url: url,</div><div class="line">                    data: data,</div><div class="line">                    method: m,</div><div class="line">                    onsuccess: onsuccess,</div><div class="line">                    onerror: onerror</div><div class="line">                &#125;);</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> url === <span class="string">'object'</span>) &#123;</div><div class="line">                url.method = m;</div><div class="line">                ajax = <span class="keyword">new</span> EasyAjax(url);</div><div class="line">            &#125;</div><div class="line">            ajax.uid = uid++;</div><div class="line">            cache[ajax.uid] = ajax;</div><div class="line">            <span class="keyword">return</span> ajax;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    w.ajax = init();</div><div class="line"></div><div class="line">&#125;)(<span class="built_in">window</span>);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 示例</span></div><div class="line">ajax.get(<span class="string">'http://uc.cn'</span>, &#123;</div><div class="line">    a:<span class="number">1</span>,</div><div class="line">    b:<span class="number">2</span></div><div class="line">&#125;, <span class="function"><span class="keyword">function</span>(<span class="params">data, status</span>) </span>&#123;</div><div class="line">    render(<span class="built_in">JSON</span>.parse(data));</div><div class="line">&#125;, <span class="function"><span class="keyword">function</span>(<span class="params">data, status</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.error(status);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <p>对 xhr 做了简单的封装，只提供了 .get() 和 .post() 方法。兼容性方面手上没有 IE 浏览器所以暂时没做测试，功能上可能会遇到什么问题慢慢再补充上去吧（比如超时控制什么的）。看上去好像会出现内存泄露的问题_(:з」∠)_</p>
-<h2 id="参考链接">参考链接</h2><p><a href="http://www.w3school.com.cn/xmldom/dom_httprequest.asp" target="_blank" rel="external">W3C</a></p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="http://www.w3school.com.cn/xmldom/dom_httprequest.asp" target="_blank" rel="external">W3C</a></p>
 <p><a href="http://segmentfault.com/a/1190000002782175" target="_blank" rel="external">XHR 对象</a></p>
-
-      
-    </div>
-    
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2015/090111/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          关于 CSRF
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2015/083123/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">模板引擎</div>
-      <strong class="article-nav-caption">></strong>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-
-
-
-
-
-</div>
-      <footer id="footer">
-  <div class="outer">
-    <div id="footer-info">
-    	<div class="footer-left">
-    		&copy; 2016 liyh
-    	</div>
-      	<div class="footer-right">
-      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
-      	</div>
-    </div>
-  </div>
-</footer>
-    </div>
-    
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
-
-
-<script>
-	var yiliaConfig = {
-		fancybox: true,
-		mathjax: true,
-		animate: false,
-		isHome: false,
-		isPost: true,
-		isArchive: false,
-		isTag: false,
-		isCategory: false,
-		open_in_new: false
-	}
-</script>
-<script src="/js/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
-<script src="/js/main.js" type="text/javascript"></script>
-
-
-
-<!-- Google Analytics -->
-<script type="text/javascript">
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-67000695-1', 'auto');
-ga('send', 'pageview');
-
-</script>
-<!-- End Google Analytics -->
-
-
-
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    }
-});
-
-MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';                 
-    }       
-});
-</script>
-
-<script src="/js/MathJax/MathJax.js" type="text/javascript"></script>
-
-
-  </div>
-</body>
-</html>
+</div></article></div></section><footer><div class="paginator"><a href="/2015/090716/" class="prev">PREV</a><a href="/2015/090111/" class="next">NEXT</a></div><div class="copyright"><p>© 2016 <a href="http://cupools.github.io">liyh</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-67000695-1",'auto');ga('send','pageview');</script></body></html>

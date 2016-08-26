@@ -1,0 +1,131 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 围绕 Vue.js 展开项目 · 一环的笔记</title><meta name="description" content="围绕 Vue.js 展开项目 - liyh"><meta name="description" content="Vue 在今年有一种大杀特杀的感觉，有机会尝试了一下，然后记录一下使用过程的一些想法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="围绕 Vue.js 展开项目">
+<meta property="og:url" content="http://cupools.github.io/2016/08260/index.html">
+<meta property="og:site_name" content="一环的笔记">
+<meta property="og:description" content="Vue 在今年有一种大杀特杀的感觉，有机会尝试了一下，然后记录一下使用过程的一些想法">
+<meta property="og:image" content="http://cupools.github.io/images/vue-loader.png">
+<meta property="og:updated_time" content="2016-08-26T09:38:39.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="围绕 Vue.js 展开项目">
+<meta name="twitter:description" content="Vue 在今年有一种大杀特杀的感觉，有机会尝试了一下，然后记录一下使用过程的一些想法">
+<meta name="twitter:image" content="http://cupools.github.io/images/vue-loader.png"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://cupools.github.io/atom.xml" title="一环的笔记"></head><body><div class="wrap"><header><a href="/" class="logo-link">EXPORT DEFAULT LIYH</a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/cupools" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="mailto:cupools@gmail.com" target="_self" class="nav-list-link">GMAIL</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">围绕 Vue.js 展开项目</h1><div class="post-info">Aug 26, 2016<ul class="post-tag-list"><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/Vue/">Vue</a></li></ul></div><div class="post-content"><p>Vue 在今年有一种大杀特杀的感觉，有机会尝试了一下，然后记录一下使用过程的一些想法</p>
+<a id="more"></a>
+<h2 id="为什么是-Vue"><a href="#为什么是-Vue" class="headerlink" title="为什么是 Vue"></a>为什么是 Vue</h2><p>首先业务场景大概是这样：前后端分离的开发模式，移动端，15 个页面重构，需要与服务端同步数据和状态，需要用户身份验证，需要跑一个 Node 应用托管静态资源和提供日志接口，需要全站屏蔽 SEO，需要打通 CI 和发布平台。</p>
+<p>需求评审完开始定前端的技术栈。首先很开心地抛弃已有的基于 FIS3 的整套构建链路，原因如下：</p>
+<ol>
+<li>以往项目以营销类为主，生命周期短，已有的实践不适用于这种小型立项（考虑组件的管理，开发人员交接）</li>
+<li>FIS3 在 Vue 和 React 上的开发体验不够友好，可能耗费过多时间去解决构建工具的兼容问题</li>
+<li><s>对 webpack 好感度上升</s></li>
+</ol>
+<p>然后是 Vue.js 1.0.26 和 React 15.1.0 的取舍。考虑如下：</p>
+<ol>
+<li>移动端场景，Vue 更加轻量、灵活（双向绑定，指令，插件）</li>
+<li>Vue 的官方最佳实践足够成熟</li>
+<li>vue-loader 以类似 Web Component 的形式组织代码，组件的资源容易管理，方便后续维护迭代</li>
+<li>工作交接，Vue 更容易让人接受</li>
+<li><s>已经试过了 React 想再试试 Vue</s></li>
+</ol>
+<h2 id="主要技术栈"><a href="#主要技术栈" class="headerlink" title="主要技术栈"></a>主要技术栈</h2><p>主角是 Vue 全家桶</p>
+<ul>
+<li>vue.js</li>
+<li>vuex</li>
+<li>vue-router</li>
+<li>vue-resource</li>
+</ul>
+<p>构建工具</p>
+<ul>
+<li>webpack</li>
+<li>Babel</li>
+<li>vue-loader</li>
+<li>px2rem-loader</li>
+</ul>
+<p>服务端</p>
+<ul>
+<li>Koa</li>
+</ul>
+<p>测试框架</p>
+<ul>
+<li>Co Mocha &amp; Chai</li>
+<li>Karma</li>
+</ul>
+<p>其他</p>
+<ul>
+<li>ESLint</li>
+<li>Bower</li>
+</ul>
+<h2 id="构建项目"><a href="#构建项目" class="headerlink" title="构建项目"></a>构建项目</h2><h3 id="目录规范"><a href="#目录规范" class="headerlink" title="目录规范"></a>目录规范</h3><p>基于 vue-cli 初始化 webpack 项目，已经能满足大部分需要了</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ vue init webpack demo</div></pre></td></tr></table></figure>
+<p>然后根据需要做一些调整。最终的目录结构如下</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">+ bower_components</div><div class="line">+ build</div><div class="line">+ ci</div><div class="line">+ config</div><div class="line">+ docs</div><div class="line">+ node_modules</div><div class="line">+ server</div><div class="line">+ src</div><div class="line">+ test</div><div class="line">- bower.json</div><div class="line">- index.ejs</div><div class="line">- package.json</div><div class="line">- README.json</div></pre></td></tr></table></figure>
+<p>差不多是这样的角色：</p>
+<ul>
+<li><code>bower_components</code>: 没有放到 <code>src</code> 里面，通过 webpack 配置 <code>resolve</code> 允许直接引用第三方模块</li>
+<li><code>build</code>: 构建的配置，同时包括 <code>mock.js</code>，一个 Express 中间件，用以在开发过程中模拟服务端数据接口，基于 Mockjs</li>
+<li><code>ci</code>: CI 的配置</li>
+<li><code>config</code>: 服务端的配置</li>
+<li><code>server</code>: Koa 应用，仅用于生产环境中托管静态资源和提供日志接口</li>
+<li><code>index.ejs</code>: 应用的入口页面，使用 Ejs 是考虑到页面自适应的代码希望内联到页面顶部，但 html-loader 在这方面的支持不够友好，于是通过 Ejs 注入文件引用和内联代码，最终构建输出 index.html </li>
+</ul>
+<p>展开 <code>src</code>, 目录结构如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">- src</div><div class="line">    - assets</div><div class="line">        + css</div><div class="line">        + images</div><div class="line">        - vue-auth.js</div><div class="line">        - vue-logger.js</div><div class="line">        ...</div><div class="line">    - components</div><div class="line">        + Modal</div><div class="line">        - List.vue</div><div class="line">        ...</div><div class="line">    - constants</div><div class="line">        - ActionTypes.js</div><div class="line">        - API.js</div><div class="line">        ...</div><div class="line">    - containers</div><div class="line">        - Home.vue</div><div class="line">        - Register</div><div class="line">            + images</div><div class="line">            - package.json</div><div class="line">            - Protocol.vue</div><div class="line">            - Register.vue</div><div class="line">        ...</div><div class="line">    - router</div><div class="line">        - router.js</div><div class="line">    - vuex</div><div class="line">        - actions.js</div><div class="line">        - getters.js</div><div class="line">        - mutations.js</div><div class="line">        - plugins.js</div><div class="line">        - store.js</div><div class="line">    - App.vue</div><div class="line">    - main.js</div></pre></td></tr></table></figure>
+<p>也记录下 <code>src</code> 目录结构的设计意图</p>
+<ul>
+<li><code>assets</code>: 多个页面通用的样式 mixin 和图片 icon, 还包括根据业务需要写的一些 Vue 插件和指令</li>
+<li><code>components</code>: 通用的 Vue 组件，如 Modal 和 List，部分可视为纯组件 (pure component)</li>
+<li><code>constants</code>: 各种常量，包括 ActionTypes 和服务端接口等</li>
+<li><code>containers</code>: 每个页面是一个 Vue 组件，同时也被视为一个容器，包括相关的业务组件和静态资源。初衷是每个页面的资源能够集中管理，方便维护</li>
+<li><code>router</code>: vue-router 的配置</li>
+<li><code>vuex</code>: vuex 的配置</li>
+<li><code>App.vue</code>: 应用的根容器</li>
+<li><code>main.js</code>: 入口文件，引用并初始化根容器和路由，并注入 Vue 插件和指令</li>
+</ul>
+<p>其他打包和测试的配置大部分还是按照 vue-cli 提供的方案，很厉害的 vue-cli</p>
+<h3 id="组件管理"><a href="#组件管理" class="headerlink" title="组件管理"></a>组件管理</h3><p>首先，自己把组件区分了四个类型：根组件、容器组件、业务组件、通用组件。</p>
+<ul>
+<li>根组件：应用只有一个根组件，vue-router 通过根组件创建路由实例，直接挂载在 DOM 上面，并接管了 store</li>
+<li>容器组件：相当于页面，生命周期由路由管理</li>
+<li>业务组件：与业务较多耦合，可复用性差，作为容器组件的子组件</li>
+<li>通用组件：与业务耦合小，可复用性强，状态和数据由父组件传入</li>
+</ul>
+<p>组件以 vue-loader 推荐的形式开发，逻辑、样式、模板都体现在 <code>.vue</code> 中，一个 <code>.vue</code> 文件既是一个完整的组件。比较复杂的组件通过文件夹的形式组织资源，包括图片、业务组件等，并通过 <code>package.json</code> 配置指定组件 <code>.vue</code> 的引用</p>
+<p>这样做的好处如下：</p>
+<ol>
+<li>组件资源聚合，更容易管理和维护，考虑到长期迭代和工作交接应该是必要的</li>
+<li>引用组件时不需要关心资源依赖的问题</li>
+<li>区分业务组件和通用组件有利于更好把握组件的粒度和方法的抽象程度</li>
+</ol>
+<p><img src="/images/vue-loader.png" alt="vue-loader"></p>
+<h3 id="状态管理"><a href="#状态管理" class="headerlink" title="状态管理"></a>状态管理</h3><p>数据和状态通过 vuex 管理，大体的使用与官方介绍的实践相似。与 Redux 做比较的话，感觉有这样的异同点</p>
+<ol>
+<li>两者都限制了数据单向流动，只允许抛出 action 触发状态变更</li>
+<li>vuex 中组件接触 state 的方式却更加简单，相比 Redux 少了层级传递的限制</li>
+<li>vuex 中 action 被直接分发到对应命名的 mutation，而避免了 reducer 中 <code>switch</code> 的结构。好处是更加简单和对 action 更少的约束，坏处是状态变更方法的组织变得松散，更少的约束使得 action 的结构不好把控</li>
+</ol>
+<p>vuex 在使用上明显更加轻便和简单，很有 Vue.js 的风格</p>
+<p>然后提一下与服务端同步数据的方式。这次的尝试中，对于应用层面的状态，直接由组件 dispatch 一个 fetch 的 action，之后被 plugins 拦截，再由 plugins 发起请求，请求完成后 dispatch 一个 update 的 action 通过 mutation 更新 state，最终触发视图的更新。虽然不好说这是一种最佳实践，但有利于将与服务端交互的逻辑从组件中剥离开并统一管理，组件只关心 state。简单代码如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// component.vue</span></div><div class="line"><span class="keyword">import</span> &#123; fetchUser &#125; <span class="keyword">from</span> <span class="string">'src/vuex/actions'</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">    vuex: &#123;</div><div class="line">        getters: &#123;</div><div class="line">            user: state =&gt; state.user</div><div class="line">        &#125;,</div><div class="line">        actions: &#123;</div><div class="line">            fetchUser</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    created() &#123;</div><div class="line">        <span class="keyword">this</span>.fetchUser()</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// plugin.js</span></div><div class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">'./store'</span></div><div class="line"><span class="keyword">const</span> plugin = store =&gt; &#123;</div><div class="line">    store.subscribe((&#123;type, payload&#125;) =&gt; &#123;</div><div class="line">        <span class="keyword">switch</span> (type) &#123;</div><div class="line">            <span class="keyword">case</span> ActionTypes.USER_FETCH:</div><div class="line">                fetchUserInfo()</div><div class="line">                <span class="keyword">break</span></div><div class="line">        &#125;</div><div class="line">    &#125;)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fetchUserInfo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    Vue.http.get(<span class="string">'url'</span>).then(ret =&gt; &#123;</div><div class="line">        store.dispatch(ActionTypes.USER_UPDATE, ret)</div><div class="line">    &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>其他要做的就是区分好组件本地状态和应用层级状态就行啦。</p>
+<h3 id="插件-amp-指令"><a href="#插件-amp-指令" class="headerlink" title="插件 &amp; 指令"></a>插件 &amp; 指令</h3><p>Vue 的插件和指令学习成本很低，但根据项目需要编写合适的插件或指令能够发挥很大的作用。前者能够很好地封装工具函数和方法，后者能够快速创建轻量实用的组件。简单示例如下</p>
+<p>插件：统计日志</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// vue-logger.js</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span>(<span class="params">Vue</span>) </span>&#123;</div><div class="line">    <span class="keyword">const</span> logger = &#123;</div><div class="line">        logClick() &#123;&#125;,</div><div class="line">        logVisit() &#123;&#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    Vue.prototype.$logger = Vue.logger = logger</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// component.vue</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">    methods: &#123;</div><div class="line">        share() &#123;</div><div class="line">            <span class="keyword">this</span>.$logger.logClick(<span class="string">'share'</span>)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>指令：获取手机验证码</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// vue-code.js</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span>(<span class="params">Vue</span>) </span>&#123;</div><div class="line">    Vue.directive(<span class="string">'code'</span>) &#123;</div><div class="line">        params: [<span class="string">'mobile'</span>],</div><div class="line">        data: &#123;</div><div class="line">            ticking: <span class="number">60</span></div><div class="line">        &#125;,</div><div class="line">        bind() &#123;</div><div class="line">            <span class="keyword">this</span>.el.addEventListener(<span class="string">'click'</span>, <span class="keyword">this</span>.getCode.bind(<span class="keyword">this</span>), <span class="literal">false</span>)</div><div class="line">        &#125;,</div><div class="line">        unbind() &#123;</div><div class="line">            <span class="comment">// unbind event</span></div><div class="line">        &#125;,</div><div class="line">        getCode() &#123;</div><div class="line">            <span class="keyword">let</span> &#123;mobile&#125; = <span class="keyword">this</span>.params</div><div class="line">            Vue.http.get(<span class="string">`url?m=<span class="subst">$&#123;mobile&#125;</span>`</span>)</div><div class="line">            <span class="comment">// count down tips...</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="comment">&lt;!-- component.vue --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"tel"</span> <span class="attr">name</span>=<span class="string">"mobile"</span> <span class="attr">v-model</span>=<span class="string">"mobile"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">v-code</span> <span class="attr">:mobile</span>=<span class="string">"mobile"</span>&gt;</span>获取验证码<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">    data() &#123;</div><div class="line">        <span class="keyword">return</span> &#123;</div><div class="line">            mobile: <span class="string">''</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>前端测试基于 Karma 展开，主要关注逻辑方面而不是 UI。这次测试基于整个应用进行，而不是独立挂载单个组件，存在不足的地方。<code>spec</code> 按照组件的粒度组织，并对关键业务相关的组件进行 100% 测试覆盖，最终的质量也比较理想。</p>
+<p>然后由于存在比较多的异步操作，使用 Co Mocha 以支持 ES6 generator。</p>
+<p>在组织测试用例的过程中，需要模拟服务端返回不同状态码以确保被正确处理。这里提供模拟数据的依然是本地的开发服务器，但是响应数据在测试用例中声明。基于 vue-resource 的 interceptor 的特性，拦截应用中发起的请求并响应测试数据。封装之后的使用方法如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; interceptor, wait &#125; <span class="keyword">from</span> <span class="string">'./utils'</span></div><div class="line">describe(<span class="string">'page Profile'</span>, <span class="function"><span class="keyword">function</span>*(<span class="params"></span>) </span>&#123;</div><div class="line">    beforeEach(<span class="function"><span class="keyword">function</span>*(<span class="params"></span>) </span>&#123;</div><div class="line">        interceptor.reset()</div><div class="line">    &#125;)</div><div class="line"></div><div class="line">    it(<span class="string">'bad auth forbidden'</span>, <span class="function"><span class="keyword">function</span>*(<span class="params"></span>) </span>&#123;</div><div class="line">        interceptor.mock(<span class="string">'/user/detail'</span>, &#123;</div><div class="line">            code: <span class="number">502</span>,</div><div class="line">            message: <span class="string">'非法访问拦截'</span></div><div class="line">        &#125;)</div><div class="line">        App.$el.querySelector(<span class="string">'#button'</span>).click()</div><div class="line">        <span class="keyword">yield</span> wait(<span class="number">500</span>)</div><div class="line">        expect(App.$el.querySelector(<span class="string">'.modal-body'</span>).textContent).to.contain(<span class="string">'非法访问拦截'</span>)</div><div class="line">    &#125;)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h3 id="打包上线"><a href="#打包上线" class="headerlink" title="打包上线"></a>打包上线</h3><p>这次采取的打包方案是推送分支触发 Git hook 然后推送到 Jenkins 进行线上打包，再直接推送到发布平台。之后迭代会考虑抛弃 Jenkins 通过 Gitlab-ci-runner 实现。</p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>其他一些零碎的东西</p>
+<ul>
+<li><code>slot</code> 使得组件的复用灵活很多很多</li>
+<li>html-minify 对尖括号 <code>&lt;</code> 敏感，如果 template 中表达式使用了尖括号会造成打包压缩 html 的时候抛出异常，需要避免</li>
+<li>Karma 使用的服务端中间件是 Connect 而不是 Express</li>
+<li>Karma 手动配置自定义的 <code>plugins</code> 时需要指定其他所有的插件，或者配置 <code>karma-*</code> 可自动引用其他插件</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>第一次尝试 Vue 还是挺舒服的，印象最深刻的居然是 <code>vue-cli</code>；Vue.js 本身十分出色，从 MVVM 框架发展到现在有能力提供一整套前端应用解决方案，<strong>“简单”</strong>也是框架本身强大的地方；官方全家桶的搭配使用比 React 舒服，踩的坑也比之前自己摸索 React 少很多很多，两者有很多共通的地方，更适合新手尝试；vue-loader 应该是一个亮点，自己感觉类似的组织方法优势在于资源聚合，然后会觉得 JSX 好看一点。</p>
+<p>期待 Vue 2.0 和全家桶的升级</p>
+</div></article></div></section><footer><div class="paginator"><a href="/2016/08140/" class="next">NEXT</a></div><div class="copyright"><p>© 2016 <a href="http://cupools.github.io">liyh</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-67000695-1",'auto');ga('send','pageview');</script></body></html>

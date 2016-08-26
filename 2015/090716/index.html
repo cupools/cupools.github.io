@@ -1,243 +1,33 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  <title>几个排序算法 | 一环的笔记</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="被企鹅线上笔试虐哭了😢
-
-冒泡排序步骤：
-
-比较相邻的元素。如果第一个比第二个大，就交换他们两个。
-对第0个到第n-1个数据做同样的工作。这时，最大的数就浮到了数组最后的位置上
-针对所有的元素重复以上的步骤，除了最后一个
-持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较">
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 几个排序算法 · 一环的笔记</title><meta name="description" content="几个排序算法 - liyh"><meta name="description" content="被企鹅线上笔试虐哭了😢">
 <meta property="og:type" content="article">
 <meta property="og:title" content="几个排序算法">
 <meta property="og:url" content="http://cupools.github.io/2015/090716/index.html">
 <meta property="og:site_name" content="一环的笔记">
-<meta property="og:description" content="被企鹅线上笔试虐哭了😢
-
-冒泡排序步骤：
-
-比较相邻的元素。如果第一个比第二个大，就交换他们两个。
-对第0个到第n-1个数据做同样的工作。这时，最大的数就浮到了数组最后的位置上
-针对所有的元素重复以上的步骤，除了最后一个
-持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较">
+<meta property="og:description" content="被企鹅线上笔试虐哭了😢">
 <meta property="og:image" content="http://cupools.github.io/images/Insertion-sort.gif">
 <meta property="og:image" content="http://cupools.github.io/images/Merge-sort.gif">
 <meta property="og:image" content="http://cupools.github.io/images/Quicksort-example.gif">
 <meta property="og:image" content="http://cupools.github.io/images/Heapsort-example.gif">
-<meta property="og:updated_time" content="2015-11-11T02:55:49.000Z">
+<meta property="og:updated_time" content="2016-08-26T07:58:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="几个排序算法">
-<meta name="twitter:description" content="被企鹅线上笔试虐哭了😢
-
-冒泡排序步骤：
-
-比较相邻的元素。如果第一个比第二个大，就交换他们两个。
-对第0个到第n-1个数据做同样的工作。这时，最大的数就浮到了数组最后的位置上
-针对所有的元素重复以上的步骤，除了最后一个
-持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较">
-  
-    <link rel="alternative" href="/atom.xml" title="一环的笔记" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
-</head>
-<body>
-  <div id="container">
-    <div class="left-col">
-    <div class="overlay"></div>
-<div class="intrude-less">
-	<header id="header" class="inner">
-		<a href="/" class="profilepic">
-			
-			<img src="/img/avatar.jpg" class="js-avatar" style="width: 100%;height: 100%;opacity: 1;">
-			
-		</a>
-
-		<hgroup>
-		  <h1 class="header-author"><a href="/">liyh</a></h1>
-		</hgroup>
-
-		
-
-		
-			<div class="switch-btn">
-				<div class="icon">
-					<div class="icon-ctn">
-						<div class="icon-wrap icon-house" data-idx="0">
-							<div class="birdhouse"></div>
-							<div class="birdhouse_holes"></div>
-						</div>
-						<div class="icon-wrap icon-ribbon hide" data-idx="1">
-							<div class="ribbon"></div>
-						</div>
-						
-						
-						<div class="icon-wrap icon-me hide" data-idx="3">
-							<div class="user"></div>
-							<div class="shoulder"></div>
-						</div>
-						
-					</div>
-					
-				</div>
-				<div class="tips-box hide">
-					<div class="tips-arrow"></div>
-					<ul class="tips-inner">
-						<li>菜单</li>
-						<li>标签</li>
-						
-						
-						<li>关于我</li>
-						
-					</ul>
-				</div>
-			</div>
-		
-
-		<div class="switch-area">
-			<div class="switch-wrap">
-				<section class="switch-part switch-part1">
-					<nav class="header-menu">
-						<ul>
-						
-							<li><a href="/">主页</a></li>
-				        
-							<li><a href="/archives">笔记</a></li>
-				        
-						</ul>
-					</nav>
-					<nav class="header-nav">
-						<div class="social">
-							
-								<a class="github" target="_blank" href="https://github.com/cupools" title="github">github</a>
-					        
-								<a class="mail" target="_blank" href="mailto:cupools@gmail.com" title="mail">mail</a>
-					        
-						</div>
-					</nav>
-				</section>
-				
-				
-				<section class="switch-part switch-part2">
-					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Wordpress/" style="font-size: 10px;">Wordpress</a> <a href="/tags/css/" style="font-size: 16px;">css</a> <a href="/tags/sass/" style="font-size: 10px;">sass</a> <a href="/tags/three-js/" style="font-size: 12px;">three.js</a> <a href="/tags/webpack/" style="font-size: 12px;">webpack</a> <a href="/tags/学习/" style="font-size: 12px;">学习</a> <a href="/tags/安全/" style="font-size: 10px;">安全</a> <a href="/tags/碎屑/" style="font-size: 14px;">碎屑</a> <a href="/tags/读书笔记/" style="font-size: 18px;">读书笔记</a> <a href="/tags/配置/" style="font-size: 10px;">配置</a>
-					</div>
-				</section>
-				
-				
-				
-
-				
-				
-				<section class="switch-part switch-part3">
-				
-					<div id="js-aboutme">在校学生，连滚带爬啃书</div>
-				</section>
-				
-			</div>
-		</div>
-	</header>				
-</div>
-    </div>
-    <div class="mid-col">
-      <nav id="mobile-nav">
-  	<div class="overlay">
-  		<div class="slider-trigger"></div>
-  		<h1 class="header-author js-mobile-header hide">liyh</h1>
-  	</div>
-	<div class="intrude-less">
-		<header id="header" class="inner">
-			<div class="profilepic">
-				<img src="/img/avatar.jpg" class="js-avatar show" style="width: 100%;height: 100%;opacity: 1;">
-			</div>
-			<hgroup>
-			  <h1 class="header-author">liyh</h1>
-			</hgroup>
-			
-			<nav class="header-menu">
-				<ul>
-				
-					<li><a href="/">主页</a></li>
-		        
-					<li><a href="/archives">笔记</a></li>
-		        
-		        <div class="clearfix"></div>
-				</ul>
-			</nav>
-			<nav class="header-nav">
-				<div class="social">
-					
-						<a class="github" target="_blank" href="https://github.com/cupools" title="github">github</a>
-			        
-						<a class="mail" target="_blank" href="mailto:cupools@gmail.com" title="mail">mail</a>
-			        
-				</div>
-			</nav>
-		</header>				
-	</div>
-</nav>
-      <div class="body-wrap"><article id="post-study/排序算法" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/090716/" class="article-date">
-  	<time datetime="2015-09-06T16:00:00.000Z" itemprop="datePublished">2015-09-07</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      几个排序算法
-    </h1>
-  
-
-      </header>
-      
-      <div class="article-info article-info-post">
-        
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习/">学习</a></li></ul>
-	</div>
-
-        
-
-        <div class="clearfix"></div>
-      </div>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>被企鹅线上笔试虐哭了😢</p>
-</blockquote>
-<h2 id="冒泡排序">冒泡排序</h2><p>步骤：</p>
+<meta name="twitter:description" content="被企鹅线上笔试虐哭了😢">
+<meta name="twitter:image" content="http://cupools.github.io/images/Insertion-sort.gif"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://cupools.github.io/atom.xml" title="一环的笔记"></head><body><div class="wrap"><header><a href="/" class="logo-link">EXPORT DEFAULT LIYH</a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/cupools" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="mailto:cupools@gmail.com" target="_self" class="nav-list-link">GMAIL</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">几个排序算法</h1><div class="post-info">Sep 7, 2015<ul class="post-tag-list"><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/学习/">学习</a></li></ul></div><div class="post-content"><p>被企鹅线上笔试虐哭了😢</p>
+<a id="more"></a>
+<h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><p>步骤：</p>
 <ol>
 <li>比较相邻的元素。如果第一个比第二个大，就交换他们两个。</li>
 <li>对第0个到第n-1个数据做同样的工作。这时，最大的数就浮到了数组最后的位置上</li>
 <li>针对所有的元素重复以上的步骤，除了最后一个</li>
 <li>持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较</li>
 </ol>
-<a id="more"></a>
-<h2 id="选择排序">选择排序</h2><p>步骤：</p>
+<h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><p>步骤：</p>
 <ol>
 <li>在未排序序列中找到最小（大）元素，存放到排序序列的起始位置</li>
 <li>再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾</li>
 <li>以此类推，直到所有元素均排序完毕</li>
 </ol>
-<h2 id="插入排序">插入排序</h2><p>步骤：</p>
+<h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><p>步骤：</p>
 <ol>
 <li>从第一个元素开始，该元素可以认为已经被排序</li>
 <li>取出下一个元素，在已经排序的元素序列中从后向前扫描</li>
@@ -247,13 +37,13 @@
 <li>重复步骤2~5</li>
 </ol>
 <p><img src="/images/Insertion-sort.gif" alt="img"></p>
-<h2 id="希尔排序">希尔排序</h2><p>步骤：</p>
+<h2 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h2><p>步骤：</p>
 <ol>
 <li>以 n/2 为步长，对 n/2 个分组进行插入排序</li>
 <li>n/4 为步长，重复步骤1</li>
 <li>当步长为 1 时为普通的插入排序</li>
 </ol>
-<h2 id="归并排序">归并排序</h2><p>步骤：</p>
+<h2 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h2><p>步骤：</p>
 <ol>
 <li>申请空间，使其大小为两个已经排序序列之和，该空间用来存放合并后的序列</li>
 <li>设定两个指针，最初位置分别为两个已经排序序列的起始位置</li>
@@ -262,7 +52,7 @@
 <li>将另一序列剩下的所有元素直接复制到合并序列尾</li>
 </ol>
 <p><img src="/images/Merge-sort.gif" alt="img"></p>
-<h2 id="快速排序">快速排序</h2><p>步骤：</p>
+<h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><p>步骤：</p>
 <ol>
 <li>设置两个变量i、j，排序开始的时候：i=0，j=N-1</li>
 <li>以第一个数组元素作为关键数据，赋值给key，即key=A[0]</li>
@@ -274,8 +64,8 @@
 <p>每一次循环都会把一个元素（key）放到正确的位置</p>
 <p><img src="/images/Quicksort-example.gif" alt="img"></p>
 <p>实现：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sort</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    qsort(<span class="number">0</span>, arr.length-<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">qsort</span>(<span class="params">start, end</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> left = start,</span><br><span class="line">            right = end,</span><br><span class="line">            flag = arr[left];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(start &lt; end) &#123;</span><br><span class="line">            <span class="keyword">while</span>(left &lt; right) &#123;</span><br><span class="line">                <span class="keyword">for</span>(; left &lt; right; right--) &#123;</span><br><span class="line">                    <span class="keyword">if</span>(arr[right] &lt; flag) &#123;</span><br><span class="line">                        arr[left++] = arr[right];</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">for</span>(; left &lt; right; left++) &#123;</span><br><span class="line">                    <span class="keyword">if</span>(arr[left] &gt; flag) &#123;</span><br><span class="line">                        arr[right++] = arr[left];</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            arr[left] = flag;</span><br><span class="line">            qsort(start, left);</span><br><span class="line">            qsort(left+<span class="number">1</span>, end);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>, arr=[]; i&lt;<span class="number">50</span>; i++) &#123;</span><br><span class="line">    arr.push(<span class="built_in">Math</span>.ceil(<span class="built_in">Math</span>.random()*<span class="number">100</span>));</span><br><span class="line">&#125;</span><br><span class="line">sort(arr);</span><br><span class="line"><span class="built_in">console</span>.log(arr);</span><br></pre></td></tr></table></figure>
-<h2 id="堆排序">堆排序</h2><p>步骤：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sort</span>(<span class="params">arr</span>) </span>&#123;</div><div class="line">    qsort(<span class="number">0</span>, arr.length<span class="number">-1</span>);</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">qsort</span>(<span class="params">start, end</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> left = start,</div><div class="line">            right = end,</div><div class="line">            flag = arr[left];</div><div class="line"></div><div class="line">        <span class="keyword">if</span>(start &lt; end) &#123;</div><div class="line">            <span class="keyword">while</span>(left &lt; right) &#123;</div><div class="line">                <span class="keyword">for</span>(; left &lt; right; right--) &#123;</div><div class="line">                    <span class="keyword">if</span>(arr[right] &lt; flag) &#123;</div><div class="line">                        arr[left++] = arr[right];</div><div class="line">                        <span class="keyword">break</span>;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">for</span>(; left &lt; right; left++) &#123;</div><div class="line">                    <span class="keyword">if</span>(arr[left] &gt; flag) &#123;</div><div class="line">                        arr[right++] = arr[left];</div><div class="line">                        <span class="keyword">break</span>;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            arr[left] = flag;</div><div class="line">            qsort(start, left);</div><div class="line">            qsort(left+<span class="number">1</span>, end);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>, arr=[]; i&lt;<span class="number">50</span>; i++) &#123;</div><div class="line">    arr.push(<span class="built_in">Math</span>.ceil(<span class="built_in">Math</span>.random()*<span class="number">100</span>));</div><div class="line">&#125;</div><div class="line">sort(arr);</div><div class="line"><span class="built_in">console</span>.log(arr);</div></pre></td></tr></table></figure>
+<h2 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h2><p>步骤：</p>
 <ol>
 <li><p>构造最大堆（Build_Max_Heap）：若数组下标范围为0~n，考虑到单独一个元素是大根堆，则从下标n/2开始的元素均为大根堆。于是只要从n/2-1开始，向前依次构造大根堆，这样就能保证，构造到某个节点时，它的左右子树都已经是大根堆。</p>
 </li>
@@ -286,8 +76,8 @@
 </ol>
 <p><img src="/images/Heapsort-example.gif" alt="img"></p>
 <p>实现：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sort</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> len = arr.length;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">adjust</span>(<span class="params">idx, size</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> lchild = idx * <span class="number">2</span> + <span class="number">1</span>,</span><br><span class="line">            rchild = lchild + <span class="number">1</span>,</span><br><span class="line">            max = idx;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(idx &gt; size/<span class="number">2</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(arr[lchild] &gt; arr[max] &amp;&amp; lchild &lt; size) &#123;</span><br><span class="line">            max = lchild;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(arr[rchild] &gt; arr[max] &amp;&amp; rchild &lt; size) &#123;</span><br><span class="line">            max = rchild;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(max !== idx) &#123;</span><br><span class="line">            <span class="keyword">var</span> tmp = arr[max];</span><br><span class="line">            arr[max] = arr[idx];</span><br><span class="line">            arr[idx] = tmp;</span><br><span class="line">            adjust(max, size);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">build</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="built_in">Math</span>.floor(len/<span class="number">2</span>); i&gt;-<span class="number">1</span>; i--) &#123;</span><br><span class="line">            adjust(i, len);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">hsort</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        build();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i=len-<span class="number">1</span>; i&gt;-<span class="number">1</span>; i--) &#123;</span><br><span class="line">            <span class="keyword">var</span> tmp = arr[<span class="number">0</span>];</span><br><span class="line">            arr[<span class="number">0</span>] = arr[i];</span><br><span class="line">            arr[i] = tmp;</span><br><span class="line">            adjust(<span class="number">0</span>, i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    hsort();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>, arr=[]; i&lt;<span class="number">50</span>; i++) &#123;</span><br><span class="line">    arr.push(<span class="built_in">Math</span>.ceil(<span class="built_in">Math</span>.random()*<span class="number">100</span>));</span><br><span class="line">&#125;</span><br><span class="line">sort(arr);</span><br><span class="line"><span class="built_in">console</span>.log(arr);</span><br></pre></td></tr></table></figure>
-<h2 id="总结">总结</h2><table>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sort</span>(<span class="params">arr</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> len = arr.length;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">adjust</span>(<span class="params">idx, size</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> lchild = idx * <span class="number">2</span> + <span class="number">1</span>,</div><div class="line">            rchild = lchild + <span class="number">1</span>,</div><div class="line">            max = idx;</div><div class="line"></div><div class="line">        <span class="keyword">if</span>(idx &gt; size/<span class="number">2</span>) &#123;</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">if</span>(arr[lchild] &gt; arr[max] &amp;&amp; lchild &lt; size) &#123;</div><div class="line">            max = lchild;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(arr[rchild] &gt; arr[max] &amp;&amp; rchild &lt; size) &#123;</div><div class="line">            max = rchild;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">if</span>(max !== idx) &#123;</div><div class="line">            <span class="keyword">var</span> tmp = arr[max];</div><div class="line">            arr[max] = arr[idx];</div><div class="line">            arr[idx] = tmp;</div><div class="line">            adjust(max, size);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">build</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="built_in">Math</span>.floor(len/<span class="number">2</span>); i&gt;<span class="number">-1</span>; i--) &#123;</div><div class="line">            adjust(i, len);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">hsort</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        build();</div><div class="line"></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i=len<span class="number">-1</span>; i&gt;<span class="number">-1</span>; i--) &#123;</div><div class="line">            <span class="keyword">var</span> tmp = arr[<span class="number">0</span>];</div><div class="line">            arr[<span class="number">0</span>] = arr[i];</div><div class="line">            arr[i] = tmp;</div><div class="line">            adjust(<span class="number">0</span>, i);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    hsort();</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>, arr=[]; i&lt;<span class="number">50</span>; i++) &#123;</div><div class="line">    arr.push(<span class="built_in">Math</span>.ceil(<span class="built_in">Math</span>.random()*<span class="number">100</span>));</div><div class="line">&#125;</div><div class="line">sort(arr);</div><div class="line"><span class="built_in">console</span>.log(arr);</div></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><table>
 <thead>
 <tr>
 <th>排序方法</th>
@@ -357,114 +147,6 @@
 </tr>
 </tbody>
 </table>
-<h2 id="参考链接">参考链接</h2><p><a href="http://wuchong.me/blog/2014/02/09/algorithm-sort-summary/" target="_blank" rel="external">经典排序算法总结与实现</a></p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="http://wuchong.me/blog/2014/02/09/algorithm-sort-summary/" target="_blank" rel="external">经典排序算法总结与实现</a></p>
 <p><a href="http://bubkoo.com/2014/01/14/sort-algorithm/heap-sort/" target="_blank" rel="external">堆排序</a></p>
-
-      
-    </div>
-    
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2015/091012/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          移动端踩过的坑
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2015/090111/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">关于 CSRF</div>
-      <strong class="article-nav-caption">></strong>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-
-
-
-
-
-</div>
-      <footer id="footer">
-  <div class="outer">
-    <div id="footer-info">
-    	<div class="footer-left">
-    		&copy; 2016 liyh
-    	</div>
-      	<div class="footer-right">
-      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
-      	</div>
-    </div>
-  </div>
-</footer>
-    </div>
-    
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
-
-
-<script>
-	var yiliaConfig = {
-		fancybox: true,
-		mathjax: true,
-		animate: false,
-		isHome: false,
-		isPost: true,
-		isArchive: false,
-		isTag: false,
-		isCategory: false,
-		open_in_new: false
-	}
-</script>
-<script src="/js/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
-<script src="/js/main.js" type="text/javascript"></script>
-
-
-
-<!-- Google Analytics -->
-<script type="text/javascript">
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-67000695-1', 'auto');
-ga('send', 'pageview');
-
-</script>
-<!-- End Google Analytics -->
-
-
-
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    }
-});
-
-MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';                 
-    }       
-});
-</script>
-
-<script src="/js/MathJax/MathJax.js" type="text/javascript"></script>
-
-
-  </div>
-</body>
-</html>
+</div></article></div></section><footer><div class="paginator"><a href="/2015/091012/" class="prev">PREV</a><a href="/2015/090116/" class="next">NEXT</a></div><div class="copyright"><p>© 2016 <a href="http://cupools.github.io">liyh</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-67000695-1",'auto');ga('send','pageview');</script></body></html>

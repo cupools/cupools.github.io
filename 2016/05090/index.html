@@ -1,245 +1,52 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  <title>webpack 你好 | 一环的笔记</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="花了一个多月的时间捣鼓 webpack 的各种东西，终于把毕业设计搞出来了，看起来很糟糕的工作流程。然后就是拖了一个多月时间的总结咯，会记录 webpack 的使用以及自己对 webpack 和 FIS3 的一些想法，然后插件开发就留着下次好了。
-介绍
-webpack is a bundler for modules. The main purpose is to bundle JavaScrip">
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> webpack 你好 · 一环的笔记</title><meta name="description" content="webpack 你好 - liyh"><meta name="description" content="花了一个多月的时间捣鼓 webpack 的各种东西，终于把毕业设计搞出来了，看起来很糟糕的工作流程。然后就是拖了一个多月时间的总结咯，会记录 webpack 的使用以及自己对 webpack 和 FIS3 的一些想法，然后插件开发就留着下次好了。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="webpack 你好">
 <meta property="og:url" content="http://cupools.github.io/2016/05090/index.html">
 <meta property="og:site_name" content="一环的笔记">
-<meta property="og:description" content="花了一个多月的时间捣鼓 webpack 的各种东西，终于把毕业设计搞出来了，看起来很糟糕的工作流程。然后就是拖了一个多月时间的总结咯，会记录 webpack 的使用以及自己对 webpack 和 FIS3 的一些想法，然后插件开发就留着下次好了。
-介绍
-webpack is a bundler for modules. The main purpose is to bundle JavaScrip">
+<meta property="og:description" content="花了一个多月的时间捣鼓 webpack 的各种东西，终于把毕业设计搞出来了，看起来很糟糕的工作流程。然后就是拖了一个多月时间的总结咯，会记录 webpack 的使用以及自己对 webpack 和 FIS3 的一些想法，然后插件开发就留着下次好了。">
 <meta property="og:image" content="http://cupools.github.io/images/webpack/demo0_bundle.gif">
 <meta property="og:image" content="http://cupools.github.io/images/webpack/demo0.png">
 <meta property="og:image" content="http://cupools.github.io/images/webpack/demo1_shell.png">
 <meta property="og:image" content="http://cupools.github.io/images/webpack/demo1_bundle.png">
-<meta property="og:updated_time" content="2016-08-16T15:12:46.000Z">
+<meta property="og:updated_time" content="2016-08-26T07:52:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="webpack 你好">
-<meta name="twitter:description" content="花了一个多月的时间捣鼓 webpack 的各种东西，终于把毕业设计搞出来了，看起来很糟糕的工作流程。然后就是拖了一个多月时间的总结咯，会记录 webpack 的使用以及自己对 webpack 和 FIS3 的一些想法，然后插件开发就留着下次好了。
-介绍
-webpack is a bundler for modules. The main purpose is to bundle JavaScrip">
-  
-    <link rel="alternative" href="/atom.xml" title="一环的笔记" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
-</head>
-<body>
-  <div id="container">
-    <div class="left-col">
-    <div class="overlay"></div>
-<div class="intrude-less">
-	<header id="header" class="inner">
-		<a href="/" class="profilepic">
-			
-			<img src="/img/avatar.jpg" class="js-avatar" style="width: 100%;height: 100%;opacity: 1;">
-			
-		</a>
-
-		<hgroup>
-		  <h1 class="header-author"><a href="/">liyh</a></h1>
-		</hgroup>
-
-		
-
-		
-			<div class="switch-btn">
-				<div class="icon">
-					<div class="icon-ctn">
-						<div class="icon-wrap icon-house" data-idx="0">
-							<div class="birdhouse"></div>
-							<div class="birdhouse_holes"></div>
-						</div>
-						<div class="icon-wrap icon-ribbon hide" data-idx="1">
-							<div class="ribbon"></div>
-						</div>
-						
-						
-						<div class="icon-wrap icon-me hide" data-idx="3">
-							<div class="user"></div>
-							<div class="shoulder"></div>
-						</div>
-						
-					</div>
-					
-				</div>
-				<div class="tips-box hide">
-					<div class="tips-arrow"></div>
-					<ul class="tips-inner">
-						<li>菜单</li>
-						<li>标签</li>
-						
-						
-						<li>关于我</li>
-						
-					</ul>
-				</div>
-			</div>
-		
-
-		<div class="switch-area">
-			<div class="switch-wrap">
-				<section class="switch-part switch-part1">
-					<nav class="header-menu">
-						<ul>
-						
-							<li><a href="/">主页</a></li>
-				        
-							<li><a href="/archives">笔记</a></li>
-				        
-						</ul>
-					</nav>
-					<nav class="header-nav">
-						<div class="social">
-							
-								<a class="github" target="_blank" href="https://github.com/cupools" title="github">github</a>
-					        
-								<a class="mail" target="_blank" href="mailto:cupools@gmail.com" title="mail">mail</a>
-					        
-						</div>
-					</nav>
-				</section>
-				
-				
-				<section class="switch-part switch-part2">
-					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Wordpress/" style="font-size: 10px;">Wordpress</a> <a href="/tags/css/" style="font-size: 16px;">css</a> <a href="/tags/sass/" style="font-size: 10px;">sass</a> <a href="/tags/three-js/" style="font-size: 12px;">three.js</a> <a href="/tags/webpack/" style="font-size: 12px;">webpack</a> <a href="/tags/学习/" style="font-size: 12px;">学习</a> <a href="/tags/安全/" style="font-size: 10px;">安全</a> <a href="/tags/碎屑/" style="font-size: 14px;">碎屑</a> <a href="/tags/读书笔记/" style="font-size: 18px;">读书笔记</a> <a href="/tags/配置/" style="font-size: 10px;">配置</a>
-					</div>
-				</section>
-				
-				
-				
-
-				
-				
-				<section class="switch-part switch-part3">
-				
-					<div id="js-aboutme">在校学生，连滚带爬啃书</div>
-				</section>
-				
-			</div>
-		</div>
-	</header>				
-</div>
-    </div>
-    <div class="mid-col">
-      <nav id="mobile-nav">
-  	<div class="overlay">
-  		<div class="slider-trigger"></div>
-  		<h1 class="header-author js-mobile-header hide">liyh</h1>
-  	</div>
-	<div class="intrude-less">
-		<header id="header" class="inner">
-			<div class="profilepic">
-				<img src="/img/avatar.jpg" class="js-avatar show" style="width: 100%;height: 100%;opacity: 1;">
-			</div>
-			<hgroup>
-			  <h1 class="header-author">liyh</h1>
-			</hgroup>
-			
-			<nav class="header-menu">
-				<ul>
-				
-					<li><a href="/">主页</a></li>
-		        
-					<li><a href="/archives">笔记</a></li>
-		        
-		        <div class="clearfix"></div>
-				</ul>
-			</nav>
-			<nav class="header-nav">
-				<div class="social">
-					
-						<a class="github" target="_blank" href="https://github.com/cupools" title="github">github</a>
-			        
-						<a class="mail" target="_blank" href="mailto:cupools@gmail.com" title="mail">mail</a>
-			        
-				</div>
-			</nav>
-		</header>				
-	</div>
-</nav>
-      <div class="body-wrap"><article id="post-notes/webpack 你好" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/05090/" class="article-date">
-  	<time datetime="2016-05-08T16:00:00.000Z" itemprop="datePublished">2016-05-09</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      webpack 你好
-    </h1>
-  
-
-      </header>
-      
-      <div class="article-info article-info-post">
-        
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
-	</div>
-
-        
-
-        <div class="clearfix"></div>
-      </div>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>花了一个多月的时间捣鼓 webpack 的各种东西，终于把毕业设计搞出来了，看起来很糟糕的工作流程。然后就是拖了一个多月时间的总结咯，会记录 webpack 的使用以及自己对 webpack 和 FIS3 的一些想法，然后插件开发就留着下次好了。</p>
-<h2 id="介绍">介绍</h2><blockquote>
+<meta name="twitter:description" content="花了一个多月的时间捣鼓 webpack 的各种东西，终于把毕业设计搞出来了，看起来很糟糕的工作流程。然后就是拖了一个多月时间的总结咯，会记录 webpack 的使用以及自己对 webpack 和 FIS3 的一些想法，然后插件开发就留着下次好了。">
+<meta name="twitter:image" content="http://cupools.github.io/images/webpack/demo0_bundle.gif"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://cupools.github.io/atom.xml" title="一环的笔记"></head><body><div class="wrap"><header><a href="/" class="logo-link">EXPORT DEFAULT LIYH</a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/cupools" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="mailto:cupools@gmail.com" target="_self" class="nav-list-link">GMAIL</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">webpack 你好</h1><div class="post-info">May 9, 2016<ul class="post-tag-list"><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/webpack/">webpack</a></li></ul></div><div class="post-content"><p>花了一个多月的时间捣鼓 webpack 的各种东西，终于把毕业设计搞出来了，看起来很糟糕的工作流程。然后就是拖了一个多月时间的总结咯，会记录 webpack 的使用以及自己对 webpack 和 FIS3 的一些想法，然后插件开发就留着下次好了。</p>
+<a id="more"></a>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><blockquote>
 <p>webpack is a bundler for modules. The main purpose is to bundle JavaScript files for usage in a browser, yet it is also capable of transforming, bundling, or packaging just about any resource or asset.</p>
 </blockquote>
 <p>webpack 是一个模块打包工具，和 Grunt、Gulp 之类的任务管理工具有本质上的区别。根据其设计理念，开发过程中接触到的所有文件资源都是模块。不同类型的文件能够被 webpack 转换为 js 模块并被 js 代码直接引用,同时在打包过程中能够静态分析模块间的依赖关系。</p>
-<a id="more"></a>
-<h2 id="简单的_demo">简单的 demo</h2><p><img src="/images/webpack/demo0_bundle.gif" alt="demo0 bundle"></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// main.js</span></span><br><span class="line"><span class="built_in">document</span>.body.innerHTML += <span class="string">'&lt;p&gt;main.js works&lt;/p&gt;'</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">require</span>(<span class="string">'./style.scss'</span>);</span><br><span class="line"><span class="built_in">document</span>.body.innerHTML += <span class="string">'&lt;p&gt;style.scss works&lt;/p&gt;'</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">require</span>(<span class="string">'./foo.js'</span>);</span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// webpack.config.js</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    entry: <span class="string">'./src/main.js'</span>,</span><br><span class="line">    output: &#123;</span><br><span class="line">        path: <span class="string">'build/'</span>,</span><br><span class="line">        filename: <span class="string">'bundle.js'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="built_in">module</span>: &#123;</span><br><span class="line">        loaders: [&#123;</span><br><span class="line">            test: <span class="regexp">/\.scss$/</span>,</span><br><span class="line">            loader: <span class="string">'style!css!sass'</span></span><br><span class="line">        &#125;]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="简单的-demo"><a href="#简单的-demo" class="headerlink" title="简单的 demo"></a>简单的 demo</h2><p><img src="/images/webpack/demo0_bundle.gif" alt="demo0 bundle"></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// main.js</span></div><div class="line"><span class="built_in">document</span>.body.innerHTML += <span class="string">'&lt;p&gt;main.js works&lt;/p&gt;'</span>;</div><div class="line"></div><div class="line"><span class="built_in">require</span>(<span class="string">'./style.scss'</span>);</div><div class="line"><span class="built_in">document</span>.body.innerHTML += <span class="string">'&lt;p&gt;style.scss works&lt;/p&gt;'</span>;</div><div class="line"></div><div class="line"><span class="built_in">require</span>(<span class="string">'./foo.js'</span>);</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// webpack.config.js</span></div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">    entry: <span class="string">'./src/main.js'</span>,</div><div class="line">    output: &#123;</div><div class="line">        path: <span class="string">'build/'</span>,</div><div class="line">        filename: <span class="string">'bundle.js'</span></div><div class="line">    &#125;,</div><div class="line">    <span class="built_in">module</span>: &#123;</div><div class="line">        loaders: [&#123;</div><div class="line">            test: <span class="regexp">/\.scss$/</span>,</div><div class="line">            loader: <span class="string">'style!css!sass'</span></div><div class="line">        &#125;]</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <p>目录下执行 <code>webpack</code>, 构建结果如下，输出了 bundle.js。由于 main.js, foo.js, style.scss 都被打包到 bundle.js, 因此 index.html 只需要加载 bundle.js 就可以了。</p>
 <p><img src="/images/webpack/demo0.png" alt="demo0"></p>
 <p>webpack 就做了这么些东西。</p>
 <p><a href="https://github.com/cupools/webpack-demo/tree/master/demo0" target="_blank" rel="external">DEMO 代码仓库</a></p>
-<h2 id="entry_&amp;_output">entry &amp; output</h2><blockquote>
+<h2 id="entry-amp-output"><a href="#entry-amp-output" class="headerlink" title="entry &amp; output"></a>entry &amp; output</h2><blockquote>
 <p>entry: The entry point for the bundle.<br>output: Options affecting the output of the compilation.</p>
 </blockquote>
 <p>简单理解，entry 是页面的入口文件，有点“启动器”的感觉；output 是输出文件的一些配置，包括文件输出路径，文件命名，CDN 之类的。以之前的 demo 为例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 入口文件</span></span><br><span class="line">    entry: <span class="string">'./src/main.js'</span>,</span><br><span class="line">    <span class="comment">// 输出配置</span></span><br><span class="line">    output: &#123;</span><br><span class="line">         <span class="comment">// 输出的路径</span></span><br><span class="line">        path: <span class="string">'build/'</span>,</span><br><span class="line">        <span class="comment">// 输出文件名，相对路径</span></span><br><span class="line">        filename: <span class="string">'bundle.js'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Loader_&amp;_Plugin">Loader &amp; Plugin</h2><h3 id="Loader">Loader</h3><blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="comment">// 入口文件</span></div><div class="line">    entry: <span class="string">'./src/main.js'</span>,</div><div class="line">    <span class="comment">// 输出配置</span></div><div class="line">    output: &#123;</div><div class="line">         <span class="comment">// 输出的路径</span></div><div class="line">        path: <span class="string">'build/'</span>,</div><div class="line">        <span class="comment">// 输出文件名，相对路径</span></div><div class="line">        filename: <span class="string">'bundle.js'</span></div><div class="line">    &#125;,</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Loader-amp-Plugin"><a href="#Loader-amp-Plugin" class="headerlink" title="Loader &amp; Plugin"></a>Loader &amp; Plugin</h2><h3 id="Loader"><a href="#Loader" class="headerlink" title="Loader"></a>Loader</h3><blockquote>
 <p>Loaders are transformations that are applied on a resource file of your app</p>
 </blockquote>
 <p>webpack 通过配置 loader (加载器)实现对任意类型文件的打包。还是以之前的 demo 为例：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="built_in">module</span>: &#123;</span><br><span class="line">        loaders: [&#123;</span><br><span class="line">            test: <span class="regexp">/\.scss$/</span>,</span><br><span class="line">            loader: <span class="string">'style!css!sass'</span></span><br><span class="line">        &#125;]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line">    ...</div><div class="line">    module: &#123;</div><div class="line">        loaders: [&#123;</div><div class="line">            test: <span class="regexp">/\.scss$/</span>,</div><div class="line">            loader: <span class="string">'style!css!sass'</span></div><div class="line">        &#125;]</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><code>test</code> 通过正则表达式匹配命中的文件，<code>loader</code> 指定该文件被哪些 loader 处理。</p>
 <p>这里匹配的是 .scss 文件；<code>!</code> 作为分隔符，实际上指定了 style-loader, css-loader, sass-loader 三个加载器，等价于 <code>[&#39;style&#39;, &#39;css&#39;, &#39;sass&#39;]</code>。每一个文件依序被 sass-loader, css-loader, style-loader 处理，最终转换为 js 模块被 main.js 直接引用，并在执行过程中向页面插入 style 标签，以此嵌入样式。</p>
 <p>使用 webpack 还会经常见到类似 <code>style!css?sourceMap!sass?sourceMap</code> 的写法，为 loader 提供配置参数。把他当做 URL query 看待就舒服多了。</p>
 <p>瞄一下简单的 <a href="https://github.com/webpack/html-loader/blob/master/index.js#L93-L102" target="_blank" rel="external">html-loader</a> 能够更好地理解 loader 是如何工作。</p>
-<h3 id="Plugin">Plugin</h3><blockquote>
+<h3 id="Plugin"><a href="#Plugin" class="headerlink" title="Plugin"></a>Plugin</h3><blockquote>
 <p>Use plugins to add functionality typically related to bundles in webpack. </p>
 </blockquote>
 <p>webpack 中的插件比 loader 有更多能力，能够在构建过程中的各个阶段对文件资源进行操作。常见的配置方式如下：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="built_in">module</span>: &#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;,</span><br><span class="line">    plugins: [</span><br><span class="line">        <span class="keyword">new</span> webpack.optimize.UglifyJsPlugin(),</span><br><span class="line">        <span class="keyword">new</span> webpack.optimize.CommonsChunkPlugin(<span class="string">'common.js'</span>)</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="built_in">module</span>: &#123;</div><div class="line">        ...</div><div class="line">    &#125;,</div><div class="line">    plugins: [</div><div class="line">        <span class="keyword">new</span> webpack.optimize.UglifyJsPlugin(),</div><div class="line">        <span class="keyword">new</span> webpack.optimize.CommonsChunkPlugin(<span class="string">'common.js'</span>)</div><div class="line">    ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>这里使用的 webpack 自带的 <a href="https://webpack.github.io/docs/optimization.html#minimize" target="_blank" rel="external">optimize.UglifyJsPlugin</a>，直接将其实例作为参数就能够根据默认配置选项对代码进行压缩混淆；<a href="https://webpack.github.io/docs/code-splitting.html#multiple-entry-chunks" target="_blank" rel="external">optimize.CommonsChunkPlugin</a> 则将公共代码模块提取出来独立打包。同时还有其他常用的插件还有 <a href="https://github.com/webpack/extract-text-webpack-plugin" target="_blank" rel="external">extract-text-plugin</a>, <a href="https://github.com/ampedandwired/html-webpack-plugin" target="_blank" rel="external">html-webpack-plugin</a> 等。</p>
 <p>由于 webpack 的 plugin 的配置没有规范，感觉就和 Grunt 差不多然后导致了要用什么插件就去找什么文档，所以就不继续巴拉咯。</p>
-<h2 id="复杂的_demo">复杂的 demo</h2><p>列举一些要实现的功能，然后通过 webpack 实现。</p>
+<h2 id="复杂的-demo"><a href="#复杂的-demo" class="headerlink" title="复杂的 demo"></a>复杂的 demo</h2><p>列举一些要实现的功能，然后通过 webpack 实现。</p>
 <ol>
 <li>es2015，sass 等支持</li>
 <li>各种模块规范支持</li>
@@ -251,14 +58,14 @@ webpack is a bundler for modules. The main purpose is to bundle JavaScrip">
 <li>添加 CDN 地址</li>
 </ol>
 <p>考虑到上面的东西，webpack.config.js 代码如下</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// webpack.config.js</span></span><br><span class="line"><span class="pi">'use strict'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>),</span><br><span class="line">    HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">'html-webpack-plugin'</span>),</span><br><span class="line">    ExtractTextPlugin = <span class="built_in">require</span>(<span class="string">'extract-text-webpack-plugin'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    <span class="comment">// 基本目录(绝对路径)，entry 配置项会基于 context 定位文件</span></span><br><span class="line">    context: __dirname + <span class="string">'/app'</span>,</span><br><span class="line">    <span class="comment">// 入口文件的配置，这里每个 page 配置一个入口 js</span></span><br><span class="line">    entry: &#123;</span><br><span class="line">        page0: <span class="string">'./page0/page0.js'</span>,</span><br><span class="line">        page1: <span class="string">'./page1/page1.js'</span>,</span><br><span class="line">        <span class="comment">// 这里配合 commonPlugin 实现JS库的独立打包，实现长缓存</span></span><br><span class="line">        vendor: [<span class="string">'./lib/webpack-zepto'</span>]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 输出配置</span></span><br><span class="line">    output: &#123;</span><br><span class="line">        <span class="comment">// 输出路径，默认是 process.cwd()</span></span><br><span class="line">        path: <span class="string">'build/'</span>,</span><br><span class="line">        <span class="comment">// 输出的文件名，name 对应 `entry` 配置的键名</span></span><br><span class="line">        filename: <span class="string">'assets/[name].entry.[chunkhash:6].js'</span>,</span><br><span class="line">        <span class="comment">// 发布地址</span></span><br><span class="line">        publicPath: <span class="string">'/'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="built_in">module</span>: &#123;</span><br><span class="line">        <span class="comment">// 在 loader 处理之前处理匹配模块</span></span><br><span class="line">        preLoaders: [</span><br><span class="line">            &#123;</span><br><span class="line">                test: <span class="regexp">/\.js$/</span>,</span><br><span class="line">                loader: <span class="string">'jshint-loader'</span>,</span><br><span class="line">                exclude: <span class="regexp">/node_modules|lib/</span></span><br><span class="line">            &#125;</span><br><span class="line">        ],</span><br><span class="line">        loaders: [&#123;</span><br><span class="line">            <span class="comment">// babel-loader 的配置，排除 node_modules</span></span><br><span class="line">            test: <span class="regexp">/\.js$/</span>,</span><br><span class="line">            loader: <span class="string">'babel?presets=es2015'</span>,</span><br><span class="line">            exclude: <span class="regexp">/node_modules/</span></span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            <span class="comment">// css-loader 和 sass-loader，同时配置 extract-text-plugin 输出独立的样式文件</span></span><br><span class="line">            test: <span class="regexp">/\.(css|scss)$/</span>,</span><br><span class="line">            loader: ExtractTextPlugin.extract([<span class="string">'css'</span>, <span class="string">'sass'</span>])</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            <span class="comment">// url-loader，配置图片输出命名和内联大小限制</span></span><br><span class="line">            test: <span class="regexp">/\.(png|jpg)$/</span>,</span><br><span class="line">            loader: <span class="string">'url'</span>,</span><br><span class="line">            query: &#123;</span><br><span class="line">                name: <span class="string">'assets/images/[name].[hash:6].[ext]'</span>,</span><br><span class="line">                limit: <span class="number">8192</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            <span class="comment">// html-loader，解决 img 标签的图片资源定位</span></span><br><span class="line">            test: <span class="regexp">/\.html$/</span>,</span><br><span class="line">            loader: <span class="string">'html?-minimize'</span></span><br><span class="line">        &#125;]</span><br><span class="line">    &#125;,</span><br><span class="line">    plugins: [</span><br><span class="line">        <span class="comment">// html-webpack-plugin</span></span><br><span class="line">        <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</span><br><span class="line">            filename: <span class="string">'page0.html'</span>,</span><br><span class="line">            template: <span class="string">'page0/page0.html'</span>,</span><br><span class="line">            excludeChunks: [<span class="string">'page1'</span>]</span><br><span class="line">        &#125;),</span><br><span class="line">        <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</span><br><span class="line">            filename: <span class="string">'page1.html'</span>,</span><br><span class="line">            template: <span class="string">'page1/page1.html'</span>,</span><br><span class="line">            excludeChunks: [<span class="string">'page0'</span>]</span><br><span class="line">        &#125;),</span><br><span class="line">        <span class="comment">// 提取公共模块</span></span><br><span class="line">        <span class="keyword">new</span> webpack.optimize.CommonsChunkPlugin(<span class="string">'commons'</span>, <span class="string">'assets/common.[hash:6].js'</span>, [<span class="string">'page0'</span>, <span class="string">'page1'</span>]),</span><br><span class="line">        <span class="comment">// 提取公共库，vendor 见 `entry` 配置</span></span><br><span class="line">        <span class="keyword">new</span> webpack.optimize.CommonsChunkPlugin(<span class="string">'vendor'</span>, <span class="string">'assets/vendor.[chunkhash:6].js'</span>),</span><br><span class="line">        <span class="comment">// 输出独立样式文件，配置文件命名</span></span><br><span class="line">        <span class="keyword">new</span> ExtractTextPlugin(<span class="string">'assets/[name].[chunkhash:6].css'</span>, &#123;</span><br><span class="line">            allChunks: <span class="literal">true</span></span><br><span class="line">        &#125;),</span><br><span class="line">        <span class="comment">// 代码混淆压缩</span></span><br><span class="line">        <span class="keyword">new</span> webpack.optimize.UglifyJsPlugin()</span><br><span class="line">    ],</span><br><span class="line">    resolve: &#123;</span><br><span class="line">        <span class="comment">// 增加解析根路径，可直接 require 到 lib 里面的模块</span></span><br><span class="line">        root: [process.cwd() + <span class="string">'/app/lib'</span>],</span><br><span class="line">        alias: &#123;</span><br><span class="line">            zepto: <span class="string">'webpack-zepto'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// jshint 配置</span></span><br><span class="line">    jshint: &#123;</span><br><span class="line">        esnext: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// webpack.config.js</span></div><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"></div><div class="line"><span class="keyword">var</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>),</div><div class="line">    HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">'html-webpack-plugin'</span>),</div><div class="line">    ExtractTextPlugin = <span class="built_in">require</span>(<span class="string">'extract-text-webpack-plugin'</span>);</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">    <span class="comment">// 基本目录(绝对路径)，entry 配置项会基于 context 定位文件</span></div><div class="line">    context: __dirname + <span class="string">'/app'</span>,</div><div class="line">    <span class="comment">// 入口文件的配置，这里每个 page 配置一个入口 js</span></div><div class="line">    entry: &#123;</div><div class="line">        page0: <span class="string">'./page0/page0.js'</span>,</div><div class="line">        page1: <span class="string">'./page1/page1.js'</span>,</div><div class="line">        <span class="comment">// 这里配合 commonPlugin 实现JS库的独立打包，实现长缓存</span></div><div class="line">        vendor: [<span class="string">'./lib/webpack-zepto'</span>]</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">// 输出配置</span></div><div class="line">    output: &#123;</div><div class="line">        <span class="comment">// 输出路径，默认是 process.cwd()</span></div><div class="line">        path: <span class="string">'build/'</span>,</div><div class="line">        <span class="comment">// 输出的文件名，name 对应 `entry` 配置的键名</span></div><div class="line">        filename: <span class="string">'assets/[name].entry.[chunkhash:6].js'</span>,</div><div class="line">        <span class="comment">// 发布地址</span></div><div class="line">        publicPath: <span class="string">'/'</span></div><div class="line">    &#125;,</div><div class="line">    <span class="built_in">module</span>: &#123;</div><div class="line">        <span class="comment">// 在 loader 处理之前处理匹配模块</span></div><div class="line">        preLoaders: [</div><div class="line">            &#123;</div><div class="line">                test: <span class="regexp">/\.js$/</span>,</div><div class="line">                loader: <span class="string">'jshint-loader'</span>,</div><div class="line">                exclude: <span class="regexp">/node_modules|lib/</span></div><div class="line">            &#125;</div><div class="line">        ],</div><div class="line">        loaders: [&#123;</div><div class="line">            <span class="comment">// babel-loader 的配置，排除 node_modules</span></div><div class="line">            test: <span class="regexp">/\.js$/</span>,</div><div class="line">            loader: <span class="string">'babel?presets=es2015'</span>,</div><div class="line">            exclude: <span class="regexp">/node_modules/</span></div><div class="line">        &#125;, &#123;</div><div class="line">            <span class="comment">// css-loader 和 sass-loader，同时配置 extract-text-plugin 输出独立的样式文件</span></div><div class="line">            test: <span class="regexp">/\.(css|scss)$/</span>,</div><div class="line">            loader: ExtractTextPlugin.extract([<span class="string">'css'</span>, <span class="string">'sass'</span>])</div><div class="line">        &#125;, &#123;</div><div class="line">            <span class="comment">// url-loader，配置图片输出命名和内联大小限制</span></div><div class="line">            test: <span class="regexp">/\.(png|jpg)$/</span>,</div><div class="line">            loader: <span class="string">'url'</span>,</div><div class="line">            query: &#123;</div><div class="line">                name: <span class="string">'assets/images/[name].[hash:6].[ext]'</span>,</div><div class="line">                limit: <span class="number">8192</span></div><div class="line">            &#125;</div><div class="line">        &#125;, &#123;</div><div class="line">            <span class="comment">// html-loader，解决 img 标签的图片资源定位</span></div><div class="line">            test: <span class="regexp">/\.html$/</span>,</div><div class="line">            loader: <span class="string">'html?-minimize'</span></div><div class="line">        &#125;]</div><div class="line">    &#125;,</div><div class="line">    plugins: [</div><div class="line">        <span class="comment">// html-webpack-plugin</span></div><div class="line">        <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</div><div class="line">            filename: <span class="string">'page0.html'</span>,</div><div class="line">            template: <span class="string">'page0/page0.html'</span>,</div><div class="line">            excludeChunks: [<span class="string">'page1'</span>]</div><div class="line">        &#125;),</div><div class="line">        <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</div><div class="line">            filename: <span class="string">'page1.html'</span>,</div><div class="line">            template: <span class="string">'page1/page1.html'</span>,</div><div class="line">            excludeChunks: [<span class="string">'page0'</span>]</div><div class="line">        &#125;),</div><div class="line">        <span class="comment">// 提取公共模块</span></div><div class="line">        <span class="keyword">new</span> webpack.optimize.CommonsChunkPlugin(<span class="string">'commons'</span>, <span class="string">'assets/common.[hash:6].js'</span>, [<span class="string">'page0'</span>, <span class="string">'page1'</span>]),</div><div class="line">        <span class="comment">// 提取公共库，vendor 见 `entry` 配置</span></div><div class="line">        <span class="keyword">new</span> webpack.optimize.CommonsChunkPlugin(<span class="string">'vendor'</span>, <span class="string">'assets/vendor.[chunkhash:6].js'</span>),</div><div class="line">        <span class="comment">// 输出独立样式文件，配置文件命名</span></div><div class="line">        <span class="keyword">new</span> ExtractTextPlugin(<span class="string">'assets/[name].[chunkhash:6].css'</span>, &#123;</div><div class="line">            allChunks: <span class="literal">true</span></div><div class="line">        &#125;),</div><div class="line">        <span class="comment">// 代码混淆压缩</span></div><div class="line">        <span class="keyword">new</span> webpack.optimize.UglifyJsPlugin()</div><div class="line">    ],</div><div class="line">    resolve: &#123;</div><div class="line">        <span class="comment">// 增加解析根路径，可直接 require 到 lib 里面的模块</span></div><div class="line">        root: [process.cwd() + <span class="string">'/app/lib'</span>],</div><div class="line">        alias: &#123;</div><div class="line">            zepto: <span class="string">'webpack-zepto'</span></div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">// jshint 配置</span></div><div class="line">    jshint: &#123;</div><div class="line">        esnext: <span class="literal">true</span></div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <p>然后执行打包，结果如下</p>
 <p><img src="/images/webpack/demo1_shell.png" alt="demo1_shell"></p>
 <p><img src="/images/webpack/demo1_bundle.png" alt="demo1_build"></p>
 <p>注意到 entry 配置变成了一个 Object, 这里 page0 和 page1 分别是两个不同页面的入口文件，分开打包依赖文件；vendor 则是为了实现公共库的独立打包，而与 page0 和 page1 区分开。</p>
 <p>还有这里提到的都是生产环境的打包配置，开发过程中需要 sourceMap, 不需要打 hash 和压缩混淆，还有愉悦的 HMR 虽然看起来很爽但也有很多东西要注意所以拉出来单独巴拉，这里就没有啦。</p>
 <p><a href="https://github.com/cupools/webpack-demo/tree/master/demo1" target="_blank" rel="external">DEMO 代码仓库</a></p>
-<h2 id="webpack_&amp;_FIS3">webpack &amp; FIS3</h2><p>一开始接触的 FIS3, 发现它确实把我们团队所需要的东西都给考虑进去了，用起来也十分顺手，但总有点不温不火的感觉。考虑了一下 webpack 跟 FIS3 的区别，有以下几点</p>
+<h2 id="webpack-amp-FIS3"><a href="#webpack-amp-FIS3" class="headerlink" title="webpack &amp; FIS3"></a>webpack &amp; FIS3</h2><p>一开始接触的 FIS3, 发现它确实把我们团队所需要的东西都给考虑进去了，用起来也十分顺手，但总有点不温不火的感觉。考虑了一下 webpack 跟 FIS3 的区别，有以下几点</p>
 <ol>
 <li>定位不同。webpack 作为模块打包工具，FIS3 作为解决方案。</li>
 <li>如果说 FIS3 的亮点在于建立资源依赖表，但其实 webpack 也进行了静态资源分析并维护了 compilation.module, 两者的差别在于 FIS3 核心高度模块化之后提供的资源依赖表简洁清晰、能够轻易被其它前后端的构建框架接受，而 webpack 好像没这方面考虑，提供了 <code>webpack-stats-plugin</code></li>
@@ -269,113 +76,5 @@ webpack is a bundler for modules. The main purpose is to bundle JavaScrip">
 <li>webpack 有 HMR, FIS3 有简单的 LiveReload。</li>
 <li>webpack 插件开发的学习成本高，很难找到相关的文档，只能听作者的话啃源码，相比 FIS3 就低很多了，更加清爽。</li>
 </ol>
-<h2 id="小结">小结</h2><p>webpack 用起来还是很吸引人的，但是配置文件的维护在短周期项目大量存在的情况下会增加使用成本；FIS3 在这类项目中使用很让人放心，偶尔遇到问题了就偶尔纠结一下。看项目类型需要咯~</p>
-
-      
-    </div>
-    
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2016/06280/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          Sprite 的各种尝试
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2016/05070/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">用 Sass 写 css3 动画</div>
-      <strong class="article-nav-caption">></strong>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-
-
-
-
-
-</div>
-      <footer id="footer">
-  <div class="outer">
-    <div id="footer-info">
-    	<div class="footer-left">
-    		&copy; 2016 liyh
-    	</div>
-      	<div class="footer-right">
-      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
-      	</div>
-    </div>
-  </div>
-</footer>
-    </div>
-    
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
-
-
-<script>
-	var yiliaConfig = {
-		fancybox: true,
-		mathjax: true,
-		animate: false,
-		isHome: false,
-		isPost: true,
-		isArchive: false,
-		isTag: false,
-		isCategory: false,
-		open_in_new: false
-	}
-</script>
-<script src="/js/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
-<script src="/js/main.js" type="text/javascript"></script>
-
-
-
-<!-- Google Analytics -->
-<script type="text/javascript">
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-67000695-1', 'auto');
-ga('send', 'pageview');
-
-</script>
-<!-- End Google Analytics -->
-
-
-
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    }
-});
-
-MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';                 
-    }       
-});
-</script>
-
-<script src="/js/MathJax/MathJax.js" type="text/javascript"></script>
-
-
-  </div>
-</body>
-</html>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>webpack 用起来还是很吸引人的，但是配置文件的维护在短周期项目大量存在的情况下会增加使用成本；FIS3 在这类项目中使用很让人放心，偶尔遇到问题了就偶尔纠结一下。看项目类型需要咯~</p>
+</div></article></div></section><footer><div class="paginator"><a href="/2016/06280/" class="prev">PREV</a><a href="/2016/05070/" class="next">NEXT</a></div><div class="copyright"><p>© 2016 <a href="http://cupools.github.io">liyh</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-67000695-1",'auto');ga('send','pageview');</script></body></html>
