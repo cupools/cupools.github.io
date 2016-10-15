@@ -1,37 +1,54 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 基于 Tesseract 和 GM 识别验证码 · 一环的笔记</title><meta name="description" content="基于 Tesseract 和 GM 识别验证码 - liyh"><meta name="description" content="之前爬代理 IP 的时候发现一些网站把端口号用验证码的形式显示，于是花了一个下午的时间瞄了一些识别验证码的东西，并用 Node.js 包装了一下，暂时叫 verify 好了。">
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 基于 Tesseract 和 GM 识别验证码 · 一环的笔记</title><meta name="description" content="基于 Tesseract 和 GM 识别验证码 - liyh"><meta name="description" content="之前爬代理 IP 的时候发现一些网站把端口号用验证码的形式显示，于是花了一个下午的时间瞄了一些识别验证码的东西，并用 Node.js 包装了一下，暂时叫 verify 好了">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基于 Tesseract 和 GM 识别验证码">
 <meta property="og:url" content="http://cupools.github.io/2016/10130/index.html">
 <meta property="og:site_name" content="一环的笔记">
-<meta property="og:description" content="之前爬代理 IP 的时候发现一些网站把端口号用验证码的形式显示，于是花了一个下午的时间瞄了一些识别验证码的东西，并用 Node.js 包装了一下，暂时叫 verify 好了。">
+<meta property="og:description" content="之前爬代理 IP 的时候发现一些网站把端口号用验证码的形式显示，于是花了一个下午的时间瞄了一些识别验证码的东西，并用 Node.js 包装了一下，暂时叫 verify 好了">
 <meta property="og:image" content="http://cupools.github.io/images/201610130/threshold.png">
 <meta property="og:image" content="http://cupools.github.io/images/201610130/sample.png">
-<meta property="og:updated_time" content="2016-10-13T11:52:34.000Z">
+<meta property="og:updated_time" content="2016-10-15T05:57:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于 Tesseract 和 GM 识别验证码">
-<meta name="twitter:description" content="之前爬代理 IP 的时候发现一些网站把端口号用验证码的形式显示，于是花了一个下午的时间瞄了一些识别验证码的东西，并用 Node.js 包装了一下，暂时叫 verify 好了。">
-<meta name="twitter:image" content="http://cupools.github.io/images/201610130/threshold.png"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://cupools.github.io/atom.xml" title="一环的笔记"></head><body><div class="wrap"><header><a href="/" class="logo-link">EXPORT DEFAULT LIYH</a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/cupools" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="mailto:cupools@gmail.com" target="_self" class="nav-list-link">GMAIL</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">基于 Tesseract 和 GM 识别验证码</h1><div class="post-info">Oct 13, 2016<ul class="post-tag-list"><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul></div><div class="post-content"><p>之前爬代理 IP 的时候发现一些网站把端口号用验证码的形式显示，于是花了一个下午的时间瞄了一些识别验证码的东西，并用 Node.js 包装了一下，暂时叫 <a href="https://github.com/cupools/verify" target="_blank" rel="external">verify</a> 好了。</p>
+<meta name="twitter:description" content="之前爬代理 IP 的时候发现一些网站把端口号用验证码的形式显示，于是花了一个下午的时间瞄了一些识别验证码的东西，并用 Node.js 包装了一下，暂时叫 verify 好了">
+<meta name="twitter:image" content="http://cupools.github.io/images/201610130/threshold.png"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://cupools.github.io/atom.xml" title="一环的笔记"></head><body><div class="wrap"><header><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="" class="nav-list-link">Home</a></li><li class="nav-list-item"><a href="/archives/" target="" class="nav-list-link">Archive</a></li><li class="nav-list-item"><a href="https://github.com/cupools" target="_blank" class="nav-list-link">GitHub</a></li><li class="nav-list-item"><a href="mailto:cupools@gmail.com" target="" class="nav-list-link">Gmail</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">基于 Tesseract 和 GM 识别验证码</h1><div class="post-info">Oct 13, 2016<ul class="post-tag-list"><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul></div><div class="post-content"><p>之前爬代理 IP 的时候发现一些网站把端口号用验证码的形式显示，于是花了一个下午的时间瞄了一些识别验证码的东西，并用 Node.js 包装了一下，暂时叫 <a href="https://github.com/cupools/verify" target="_blank" rel="external">verify</a> 好了</p>
 <a id="more"></a>
-<h2 id="依赖环境"><a href="#依赖环境" class="headerlink" title="依赖环境"></a>依赖环境</h2><p>这里主要用到两个工具，分别是 <a href="https://github.com/tesseract-ocr/tesseract" target="_blank" rel="external">Tesseract</a> 和 <a href="http://www.graphicsmagick.org/" target="_blank" rel="external">GraphicsMagick</a>。前者是开源的 OCR (Optical Character Recognition, 光学字符识别) 工具，目前由谷歌维护；后者是是图像处理的瑞士军刀。这两个工具的安装也挺繁琐的，具体安装的说明放到另外的地方。Node.js 还需要安装前面两个工具对应 Node.js 的封装模块 <a href="https://github.com/desmondmorris/node-tesseract" target="_blank" rel="external">node-tesseract</a> 和 <a href="https://github.com/aheckmann/gm" target="_blank" rel="external">gm</a>。</p>
-<h2 id="识别验证码"><a href="#识别验证码" class="headerlink" title="识别验证码"></a>识别验证码</h2><p>一般情况下，为了防止验证码简单地被识别，一般会在验证码背景加上干扰的线条或噪点。类似的做法会使得 tesseract-orc 的识别成功率极大地降低。因此在识别图像之前，需要通过 GM 对图片进行处理以降低干扰。</p>
+<h2 id="依赖环境"><a href="#依赖环境" class="headerlink" title="依赖环境"></a>依赖环境</h2><p>这里主要用到两个工具，分别是 <a href="https://github.com/tesseract-ocr/tesseract" target="_blank" rel="external">Tesseract</a> 和 <a href="http://www.graphicsmagick.org/" target="_blank" rel="external">GraphicsMagick</a>。前者是开源的 OCR (Optical Character Recognition, 光学字符识别) 工具，目前由谷歌维护；后者是是图像处理的瑞士军刀。macOS 下推荐使用 <a href="http://brew.sh/index_zh-cn.html" target="_blank" rel="external">Homebrew</a> 安装，这样会省去很多安装依赖库之类的麻烦。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">ruby <span class="_">-e</span> <span class="string">"<span class="variable">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)</span>"</span></div></pre></td></tr></table></figure>
+<p>通过 Homebrew 安装 GM 和 Tesseract，安装 GM 出现问题可以参考 <a href="https://cupools.github.io/2015/092914/">这里</a></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ brew install graphicsmagick</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ brew install --with-training-tools tesseract</div></pre></td></tr></table></figure>
+<p>Tesseract 中参数 <code>--with-training-tools</code> 表示同时安装训练识别库的工具，不需要可以忽略；默认安装会带有英文字符的识别库，文件夹路径为 <code>/usr/local/share/tessdata</code>，也可以添加参数 <code>--all-languages</code> 下载官方提供的各个语言的识别库，不过体积较大推荐<a href="https://github.com/tesseract-ocr/tessdata" target="_blank" rel="external">手动下载</a>。如果需要手动指定识别库的路径可以添加环境变量然后重启终端。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment"># ~/.bash_profile</span></div><div class="line"><span class="built_in">export</span> TESSDATA_PREFIX=/usr/<span class="built_in">local</span>/share/</div></pre></td></tr></table></figure>
+<p>除了依赖环境，Node.js 还需要安装前面两个工具对应 Node.js 的封装模块 <a href="https://github.com/desmondmorris/node-tesseract" target="_blank" rel="external">node-tesseract</a> 和 <a href="https://github.com/aheckmann/gm" target="_blank" rel="external">gm</a>。</p>
+<h2 id="识别验证码"><a href="#识别验证码" class="headerlink" title="识别验证码"></a>识别验证码</h2><p>一般情况下，为了防止验证码简单地被识别，一般会在验证码背景加上干扰的线条或噪点。类似的做法会使得 tesseract-ocr 的识别成功率极大地降低。因此在识别图像之前，需要通过 GM 对图片进行处理以降低干扰。</p>
 <p>简单粗暴的处理方法是调整图片的阈值。在 PhotoShop 里面，“阈值”命令将灰色或彩色图像转换为高对比度的黑白图像。可以指定某个色阶作为阈值。所有比阈值亮的像素转换为白色；而所有比阈值暗的像素转换为黑色。</p>
 <p>以下图为例，是将验证码的阈值调整为 55(22%) 的结果，也可以手动在 PhotoShop 尝试调整阈值并预览。</p>
 <p><img src="/images/201610130/threshold.png" alt="pic/threshold"></p>
 <p>基于 GM 处理阈值的实现如下：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> gm = <span class="built_in">require</span>(<span class="string">'gm'</span>)</div><div class="line"><span class="keyword">var</span> src = <span class="string">'./code.jpg'</span></div><div class="line"><span class="keyword">var</span> output = <span class="string">'./code.gm.jpg'</span></div><div class="line"></div><div class="line">gm(src)</div><div class="line">  .threshold(<span class="number">22</span>, <span class="string">'%'</span>)</div><div class="line">  .write(output, <span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(err || <span class="string">'success'</span>)</div><div class="line">  &#125;)</div></pre></td></tr></table></figure>
-<p>得到优化过的图片之后，就可以将输出的图片路径交给 tesseract-orc 进行识别了，代码也比较简单：</p>
+<p>得到优化过的图片之后，就可以将输出的图片路径交给 Tesseract 进行识别了，代码也比较简单：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> tesseract = <span class="built_in">require</span>(<span class="string">'node-tesseract'</span>)</div><div class="line"><span class="keyword">var</span> filepath = <span class="string">'./code.gm.jpg'</span></div><div class="line"><span class="keyword">var</span> option = &#123;</div><div class="line">  psm: <span class="number">7</span>    </div><div class="line">&#125;</div><div class="line"></div><div class="line">tesseract</div><div class="line">  .process(filepath, option, <span class="function"><span class="keyword">function</span> (<span class="params">err, txt</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(err || txt)</div><div class="line">    <span class="comment">// txt =&gt; fjtr</span></div><div class="line">  &#125;)</div></pre></td></tr></table></figure>
 <p>到这里已经完成了识别验证码的所有工作了~</p>
 <p><img src="/images/201610130/sample.png" alt="pic/sample"></p>
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>实际上，处理验证码的过程不会这么顺利。有下面几个问题：</p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>实际上，处理验证码的过程不会这么顺利。有下面几个问题：</p>
 <ol>
 <li>GM 调整阈值如果直接使用数值会导致输出的图片空白</li>
 <li>图片的透明通道会被 GM 干掉变成黑色</li>
-<li>由于 Tesseract 中 <code>pixRead</code> 模块在 OSX 上存在问题导致无法识别 .gif 图片</li>
+<li>由于 Tesseract 中 <code>Leptonica</code> 模块在 OSX 上存在问题导致无法识别 .gif 图片</li>
 <li>Tesseract 默认配置下的识别准确度不足，经常遇到识别错误的情况</li>
 </ol>
-<p>第 1 个问题通过阈值的百分比绕过，第 2 个问题通过 GM 的 <code>-flattern</code> 解决，第 2 个问题只要把提供识别的图片转换为 .jpg 格式就行了。修改后：</p>
+<p>第 1 个问题通过阈值的百分比绕过，第 2 个问题通过 GM 的 <code>-flattern</code> 解决，第 3 个问题只要把提供识别的图片转换为 .jpg 格式就行了。修改后：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line">gm(src)</div><div class="line">  .flattern()</div><div class="line">  .threshold(<span class="number">22</span>, <span class="string">'%'</span>)</div><div class="line">  .write(<span class="string">'output.jpg'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(err || <span class="string">'success'</span>)</div><div class="line">  &#125;)</div></pre></td></tr></table></figure>
-<p>第 4 个问题可以通过训练样本提高识别准确度，也放在其他地方巴拉。</p>
-<p>然后上面提到的过程除了训练样本之外，都封装为 <a href="https://github.com/cupools/verify" target="_blank" rel="external">verify</a> 了，有兴趣可以瞄一下。</p>
+<p>第 4 个问题可以通过训练样本提高识别准确度，有点繁琐但也好上手，具体可参考：</p>
+<ul>
+<li><a href="https://github.com/tesseract-ocr/tesseract/wiki/TrainingTesseract" target="_blank" rel="external">官方文档</a></li>
+<li><a href="http://www.zmonster.me/2015/05/05/tesseract-training.html" target="_blank" rel="external">Tesseract:训练</a></li>
+<li><a href="http://blog.csdn.net/robitmind/article/details/14223539" target="_blank" rel="external">Tesseract-OCR 字符识别—样本训练</a></li>
+</ul>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>GM 的<a href="http://aheckmann.github.io/gm/" target="_blank" rel="external">官方文档</a>已经比较完善了，然后在 node-tesseract 使用过程中发现接触到的可配置参数主要有这几个：</p>
+<ul>
+<li><code>l</code>: 指定训练生成的语言包，默认为 <code>eng</code></li>
+<li><code>psm</code>: 识别模式，常用的为 <code>psm: 7</code>，即单行文本</li>
+<li><code>config</code>: 可配置项，比如 <code>config: [&#39;digits&#39;]</code> 会指定为只识别数字</li>
+</ul>
 </div></article></div></section><footer><div class="paginator"><a href="/2016/09120/" class="next">NEXT</a></div><div class="copyright"><p>© 2016 <a href="http://cupools.github.io">liyh</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-67000695-1",'auto');ga('send','pageview');</script></body></html>
