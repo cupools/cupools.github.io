@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://cupools.github.io/"/>
-  <updated>2016-10-15T07:43:09.000Z</updated>
+  <updated>2016-11-28T05:15:30.000Z</updated>
   <id>http://cupools.github.io/</id>
   
   <author>
@@ -14,6 +14,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>入冬前的流水账</title>
+    <link href="http://cupools.github.io/2016/11270/"/>
+    <id>http://cupools.github.io/2016/11270/</id>
+    <published>2016-11-27T14:00:00.000Z</published>
+    <updated>2016-11-28T05:15:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>快十二月了，好冷啊。然后这个月做了很多琐碎的东西，新上手的内容还不够熟练又没有其他好玩的东西，简单写下过去两个月的流水账好了。</p>
+<a id="more"></a>
+<h2 id="FP"><a href="#FP" class="headerlink" title="FP"></a>FP</h2><p>最开始是通过 <a href="https://www.gitbook.com/book/llh911001/mostly-adequate-guide-chinese/details" target="_blank" rel="external">JS函数式编程指南</a> 了解了相关的内容，然后对自己的代码风格产生了挺大的影响，在最近写的模块中或多或少都体现了出来。最开始的时候尝试基于 <a href="https://github.com/ramda/ramda" target="_blank" rel="external">Ramda</a> 去写 taida, 然后发现适应不了，最后依样画葫芦写了大概<a href="https://github.com/cupools/taida/blob/master/src/index.js" target="_blank" rel="external">这样子</a>的东西，很怪异是吧。现在不会刻意地写类似的代码，但会考虑如何清楚地表达代码片段的功能，以及”纯“的函数。在这方面还是个新手，慢慢体会咯。</p>
+<h2 id="各种模块"><a href="#各种模块" class="headerlink" title="各种模块"></a>各种模块</h2><p>这两个月按照个人喜好写了好几个模块，比较耐心维护的有 <a href="https://github.com/cupools/taida" target="_blank" rel="external">taida</a>, <a href="https://github.com/cupools/proof" target="_blank" rel="external">proof</a>, <a href="https://github.com/cupools/pxrem" target="_blank" rel="external">pxrem</a>, <a href="https://github.com/cupools/chai-css" target="_blank" rel="external">chai-css</a>，占用了挺多时间。虽然不够出色也没人关注，但也确实满足了自己的各种需求。写 taida 的原因是节省手动压缩图片的时间；写 proof 的原因是 taida 等其他模块中手写配置项校验太麻烦了；写 pxrem 的原因是 px2rem 无法满足已有的需求；写 chai-css 的原因是 pxrem 的测试用例没有找到其他舒服的写法便自己扩展了断言的类型。这样的结果是为了写 taida 而写了 proof，为了写 pxrem 而写了 chai-css，最终耗费了双倍的时间去达到原先的目标，很折腾但也不错的样子。</p>
+<h2 id="GraphQL"><a href="#GraphQL" class="headerlink" title="GraphQL"></a>GraphQL</h2><p>A query language for your API. 接触它的契机是上班路上瞄到的知乎的<a href="https://zhuanlan.zhihu.com/p/20468051" target="_blank" rel="external">一篇文章</a>，然后就直接在内部系统用上了。官方文档过了一遍了解了个大概，然后开始写代码又踩了一些其它地方的坑，前后大概两天时间跑通整个流程。GraphQL 的使用感受是简单灵活，但由于系统是 Vue2.0 及 Egg 的配套，找不到类似的实践经验可以参考，只能自己摸索；当然也没有类似 Relay 的实现，只能围绕 apollo-client 展开，也接触到挺多有意思的东西，具体的细节等完成之后再写一下好了。</p>
+<p><s>因为文件服务器是 IIS6 所以还写了一点点点 asp，没想到四年了还有机会写这个。</s></p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>因为各种契机也花了小点时间尝试了 <a href="https://cupools.github.io/2016/10150/">代理</a> 和 <a href="https://cupools.github.io/2016/10130/">Tesseract</a>，挺好玩的说。如果早些时间接触这些东西，说不定大学期间抢课就没那么麻烦了。</p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>函数没有返回值跟咸鱼有什么区别！</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;快十二月了，好冷啊。然后这个月做了很多琐碎的东西，新上手的内容还不够熟练又没有其他好玩的东西，简单写下过去两个月的流水账好了。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="碎屑" scheme="http://cupools.github.io/tags/%E7%A2%8E%E5%B1%91/"/>
+    
+  </entry>
   
   <entry>
     <title>代理与爬虫的尝试</title>
@@ -1338,39 +1366,6 @@
       <category term="JavaScript" scheme="http://cupools.github.io/tags/JavaScript/"/>
     
       <category term="css" scheme="http://cupools.github.io/tags/css/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>关于 CSRF</title>
-    <link href="http://cupools.github.io/2015/090111/"/>
-    <id>http://cupools.github.io/2015/090111/</id>
-    <published>2015-08-31T16:00:00.000Z</published>
-    <updated>2016-08-26T07:58:47.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>之前在《编写高质量代码》中第一次看到 CSRF 这个东西，没能理解。最近刚好喵了 Session 和 Cookie 相关，又在查阅 XSS 的过程中看到 CSRF，于是简单整理一下</p>
-<a id="more"></a>
-<h2 id="关于-CSRF"><a href="#关于-CSRF" class="headerlink" title="关于 CSRF"></a>关于 CSRF</h2><p>CSRF（Cross-site request forgery），即跨站请求伪造，也被称为 One Click Attack 或者 Session Riding。与 XSS 不同，XSS利用站点内的信任用户，而CSRF则通过伪装来自受信任用户的请求，在受信任的网站做危险的事情</p>
-<h2 id="攻击方式"><a href="#攻击方式" class="headerlink" title="攻击方式"></a>攻击方式</h2><p><img src="/images/csrf-09-01.png" alt="CSRF 示意"></p>
-<p>看图片应该很好理解了。要完成一次CSRF攻击，用户必须依次完成两个步骤</p>
-<ol>
-<li>登录受信任网站 A，并在本地生成 Cookie</li>
-<li>在不登出 A 的情况下，访问危险网站 B</li>
-</ol>
-<p>B 有可能是一个纯粹的恶意网站，也有可能是受信任网站遭受 XSS 攻击。当 B 向 A 发送请求时，如果没有登出 A 站点，那么 B 发出的请求将携带 A 储存在浏览器的 cookie，被 A 当做信任的请求处理，由此产生极大的风险</p>
-<h2 id="防范方法"><a href="#防范方法" class="headerlink" title="防范方法"></a>防范方法</h2><p>最简单有效的防范方法是在提交表单时增加一个伪随机数，提交之后服务器验证所提交的随机数是否与服务器保存的一致即可</p>
-<p>然而这会带来一个问题是用户如果同时打开两个页面提交表单，比较慢打开的表单页面产生的伪随机数会覆盖之前产生的伪随机数，使先打开的表单页面无法提交。解决方法是为不同表单生成不同的伪随机数，这里就不展开了</p>
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="http://www.cnblogs.com/hyddd/archive/2009/04/09/1432744.html" target="_blank" rel="external">浅谈 CSRF 攻击方式</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;之前在《编写高质量代码》中第一次看到 CSRF 这个东西，没能理解。最近刚好喵了 Session 和 Cookie 相关，又在查阅 XSS 的过程中看到 CSRF，于是简单整理一下&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="安全" scheme="http://cupools.github.io/tags/%E5%AE%89%E5%85%A8/"/>
     
   </entry>
   
