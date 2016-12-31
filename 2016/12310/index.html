@@ -1,0 +1,43 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> PostCSS 相关 · 一环的笔记</title><meta name="description" content="PostCSS 相关 - liyh"><meta name="description" content="加班加点忙到元旦前一天终于有空写点什么东西，原本打算记录一下年终项目的思考，然后发现没法理清思路动不了键盘。然后写下 PostCSS 相关好了，不会涉及具体 API 的使用，主要是“是什么”，“能做什么”两个点和自己的一些想法。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PostCSS 相关">
+<meta property="og:url" content="http://cupools.github.io/2016/12310/index.html">
+<meta property="og:site_name" content="一环的笔记">
+<meta property="og:description" content="加班加点忙到元旦前一天终于有空写点什么东西，原本打算记录一下年终项目的思考，然后发现没法理清思路动不了键盘。然后写下 PostCSS 相关好了，不会涉及具体 API 的使用，主要是“是什么”，“能做什么”两个点和自己的一些想法。">
+<meta property="og:updated_time" content="2016-12-31T15:52:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PostCSS 相关">
+<meta name="twitter:description" content="加班加点忙到元旦前一天终于有空写点什么东西，原本打算记录一下年终项目的思考，然后发现没法理清思路动不了键盘。然后写下 PostCSS 相关好了，不会涉及具体 API 的使用，主要是“是什么”，“能做什么”两个点和自己的一些想法。"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://cupools.github.io/atom.xml" title="一环的笔记"></head><body><div class="wrap"><header><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="" class="nav-list-link">Home</a></li><li class="nav-list-item"><a href="/archives/" target="" class="nav-list-link">Archive</a></li><li class="nav-list-item"><a href="https://github.com/cupools" target="_blank" class="nav-list-link">GitHub</a></li><li class="nav-list-item"><a href="mailto:cupools@gmail.com" target="" class="nav-list-link">Gmail</a></li></ul></header><section class="container"><div class="post"><article class="post-block"><h1 class="post-title">PostCSS 相关</h1><div class="post-info">Dec 31, 2016<ul class="post-tag-list"><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="post-tag-list-item"><a class="post-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul></div><div class="post-content"><p>加班加点忙到元旦前一天终于有空写点什么东西，原本打算记录一下年终项目的思考，然后发现没法理清思路动不了键盘。然后写下 PostCSS 相关好了，不会涉及具体 API 的使用，主要是“是什么”，“能做什么”两个点和自己的一些想法。</p>
+<a id="more"></a>
+<h2 id="是什么"><a href="#是什么" class="headerlink" title="是什么"></a>是什么</h2><p>引用 <a href="http://postcss.org/" target="_blank" rel="external">官网</a> 的描述，然后自己又给补充了一句，PostCSS 差不多就是这样了</p>
+<ul>
+<li>以 JavaScript 插件的形式对样式文本进行操作</li>
+<li>区别于 Stylus，SASS 等预处理工具</li>
+</ul>
+<h2 id="能做什么"><a href="#能做什么" class="headerlink" title="能做什么"></a>能做什么</h2><p>PostCSS 能做的东西就多啦。 <a href="http://postcss.org/" target="_blank" rel="external">官网</a> 高亮的 feature 有下面几点：</p>
+<ul>
+<li>Autoprefixer</li>
+<li>cssnext</li>
+<li>CSS Module</li>
+<li>stylelint</li>
+</ul>
+<h2 id="还能做什么"><a href="#还能做什么" class="headerlink" title="还能做什么"></a>还能做什么</h2><p>举个简单的栗子，我们通过 PostCSS 把样式文件的 px 单位都通过工具转换为 rem, 这样子我们在写样式的时候就不用人肉计算或者 mixin 那么麻烦啦</p>
+<p>然后大概有三种方式去做这个事情：</p>
+<ol>
+<li>基于正则表达式</li>
+<li>基于 css-parse</li>
+<li>基于 PostCSS</li>
+</ol>
+<h3 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h3><p>通过正则表达式处理样式文本的步骤如下：</p>
+<ol>
+<li>通过正则表达式命中所有符合 px 的片段</li>
+<li>对命中内容进行替换</li>
+</ol>
+<p>不负责任的代码如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">const</span> content = fs.readFileSync(<span class="string">'style.css'</span>, <span class="string">'utf8'</span>)</div><div class="line"><span class="keyword">const</span> reg = <span class="regexp">/(?::\s*)(\d+?)(px)/g</span></div><div class="line"></div><div class="line">content.replace(reg, ‘$<span class="number">1</span>rem’)</div></pre></td></tr></table></figure>
+<p>然后不难发现基于正则表达式实现的话有如下缺点：</p>
+<ol>
+<li>针对性强，可复用性低</li>
+<li>要求正则兼容各种情况和意外，容错性不足</li>
+</ol>
+</div></article></div></section><footer><div class="paginator"><a href="/2016/11270/" class="next">NEXT</a></div><div class="copyright"><p>© 2016 <a href="http://cupools.github.io">liyh</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-67000695-1",'auto');ga('send','pageview');</script></body></html>
