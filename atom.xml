@@ -792,11 +792,11 @@
   </entry>
   
   <entry>
-    <title>星座测试的杂货</title>
+    <title>three.js 相关</title>
     <link href="http://cupools.github.io/2016/01050/"/>
     <id>http://cupools.github.io/2016/01050/</id>
     <published>2016-01-05T02:18:00.000Z</published>
-    <updated>2016-08-26T07:52:57.000Z</updated>
+    <updated>2017-01-02T03:57:57.000Z</updated>
     
     <content type="html"><![CDATA[<p>从接触 WebGL，到入门 three.js，到各种修修改改，到活动上线，前后耗费了14个工作日。而后耗时3天又上了一个版本，整个十二月也就过去了。如果以后项目中没有用到这货估计也不会再接触了吧，安心搞自己乱七八糟的东西比较开心，写点东西纪念一下咯。</p>
 <a id="more"></a>
@@ -819,17 +819,15 @@
 <p>以上，其他有什么想法可以直接到<a href="http://threejs.org/examples/#webgl_camera" target="_blank" rel="external">官网</a>找示例看源码如何实现。官方文档有部分对象没有提到，谷歌就是了。</p>
 <h2 id="坐标系"><a href="#坐标系" class="headerlink" title="坐标系"></a>坐标系</h2><p>一张图片就够了吧，右手坐标系</p>
 <p><img src="/images/constellation/coordinates.png" alt="coordinates"></p>
-<h2 id="踩过的坑"><a href="#踩过的坑" class="headerlink" title="踩过的坑"></a>踩过的坑</h2><h3 id="1-移动端画面模糊，锯齿严重"><a href="#1-移动端画面模糊，锯齿严重" class="headerlink" title="1. 移动端画面模糊，锯齿严重"></a>1. 移动端画面模糊，锯齿严重</h3><p><img src="/images/constellation/view.png" alt="view"></p>
-<p>移动端画面模糊，锯齿严重。跟着示例源码加了这样一句，发现没用。</p>
+<h2 id="踩过的坑"><a href="#踩过的坑" class="headerlink" title="踩过的坑"></a>踩过的坑</h2><h3 id="1-移动端画面模糊，锯齿严重"><a href="#1-移动端画面模糊，锯齿严重" class="headerlink" title="1. 移动端画面模糊，锯齿严重"></a>1. 移动端画面模糊，锯齿严重</h3><p>移动端画面模糊，锯齿严重。跟着示例源码加了这样一句，发现没用。</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">renderer.setPixelRatio(<span class="built_in">window</span>.devicePixelRatio);</div></pre></td></tr></table></figure>
 <p>继续查资料发现是 <code>viewport</code> 的问题。做这样的修改可以保证 Android 和 iOS 下显示清晰</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"initial-scale=0.5,maximum-scale=0.5,minimum-scale=0.5,user-scalable=no"</span> /&gt;</span></div></pre></td></tr></table></figure>
 <p>然后在锤子手机上又发现 viewport 出了问题，于是又做了这种奇怪的修改，保证了锤子手机能正确渲染。具体关于 viewport 之后再整理一下</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"initial-scale=1,maximum-scale=0.5,minimum-scale=0.5,user-scalable=no"</span> /&gt;</span></div></pre></td></tr></table></figure>
-<h3 id="2-着色器控制"><a href="#2-着色器控制" class="headerlink" title="2. 着色器控制"></a>2. 着色器控制</h3><p><img src="/images/constellation/shader-bad.png" alt="view-bad"></p>
-<p>发现闪烁的贴图周期性出现左图的情况，然后定位到自己写的着色器，有这部分代码</p>
+<h3 id="2-着色器控制"><a href="#2-着色器控制" class="headerlink" title="2. 着色器控制"></a>2. 着色器控制</h3><p>发现画面间歇性出现绘制异常，然后定位到自己写的着色器，有这部分代码</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">attribute float size;</div><div class="line">attribute float idx; <span class="comment">// 星星下标</span></div><div class="line">uniform float timeline; <span class="comment">// 时间轴，实现闪烁效果</span></div><div class="line">...</div><div class="line">void main() &#123;</div><div class="line">    ...</div><div class="line">    if(length(mvPosition.xyz) &lt; <span class="number">400.0</span>) &#123;</div><div class="line">        enlarge = (sin(timeline - idx) * <span class="number">40.0</span>);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        enlarge = (sin(timeline - idx) * <span class="number">10.0</span>);</div><div class="line">    &#125;</div><div class="line">    ...</div><div class="line">    gl_Position = projectionMatrix * mvPosition;</div><div class="line">    gl_PointSize = <span class="number">1500.0</span> / length(mvPosition.xyz) * size + enlarge;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在计算中，<code>enlarge</code> 可能是负值，导致最终计算的 <code>gl_PointSize</code> 也可能是负值，然后导致了以上问题。加个判断修正就可以啦</p>
+<p>在计算中，<code>enlarge</code> 可能是负值，导致最终计算的 <code>gl_PointSize</code> 也可能是负值，然后导致了绘制的点直接呈现在相机前。加个判断修正就可以啦</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">if</span>(enlarge &lt; <span class="number">0.1</span>) &#123;</div><div class="line">    enlarge = <span class="number">.0</span> - enlarge + <span class="number">1.0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="3-兼容问题"><a href="#3-兼容问题" class="headerlink" title="3. 兼容问题"></a>3. 兼容问题</h3><p>第一次尝试 WebGL，用身边有限的测试机子跑了一遍感觉兼容性出乎意料的好，为了兼容到旧的 Android 手机，这里使用 three.js r71 版本。可是在项目临近上线前发现兼容问题远比预想的严重。从线上返回的数据看，有接近三分之一的用户手机或浏览器因为不支持 WebGL 或者对其兼容有问题，而访问到降级页面。如果有打算将 WebGL 运用到项目里的话，需要在一开始关注如何平稳退化</p>
 <h2 id="压缩构建-three-js"><a href="#压缩构建-three-js" class="headerlink" title="压缩构建 three.js"></a>压缩构建 three.js</h2><p>想在移动端上面使用 three.js 的话，重新构建打包剔除不必要的代码是必须的。在 github 上的源码也提供了重新构建的方法，各个平台都考虑到了的样子，然后使用 node 构建的话主要参数如下：</p>
@@ -1376,7 +1374,7 @@
     <link href="http://cupools.github.io/2015/091012/"/>
     <id>http://cupools.github.io/2015/091012/</id>
     <published>2015-09-09T16:00:00.000Z</published>
-    <updated>2016-08-26T07:57:41.000Z</updated>
+    <updated>2017-01-02T03:54:56.000Z</updated>
     
     <content type="html"><![CDATA[<p>想着自己是不是要写点什么，马上想到了上半年移动端遇到的坑坑洼洼。有这样的小剧场：汪，红米这里有问题；汪汪汪，魅族怎么显示不出来呢；汪汪… (o`･ω･)ﾉ(ﾉД`)</p>
 <p>后天就要回广州啦，北京再见_(:з」∠)_</p>
