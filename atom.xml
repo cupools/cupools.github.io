@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://cupools.github.io/"/>
-  <updated>2017-01-01T15:53:35.000Z</updated>
+  <updated>2017-03-02T15:51:25.000Z</updated>
   <id>http://cupools.github.io/</id>
   
   <author>
@@ -14,6 +14,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>动画实践</title>
+    <link href="http://cupools.github.io/2017/03020/"/>
+    <id>http://cupools.github.io/2017/03020/</id>
+    <published>2017-03-02T14:00:00.000Z</published>
+    <updated>2017-03-02T15:51:25.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近做的好几个营销项目的页面都有比较多的动画，把 CSS3, DOM, Canvas 这几种方式都给实践了一下。期间也考虑着是不是能够产出一套方案来解决动画开发维护繁琐的问题，然后也算是落地了一些想法，这里记录一下。</p>
+<h2 id="痛点"><a href="#痛点" class="headerlink" title="痛点"></a>痛点</h2><p>常见的动画开发方式包括 CSS3, DOM, Canvas, WebGL 这几种，根据不同的动画形式选择不同的实现方法。对于变换简单、数量少的动画需求，CSS3 是最简单的实现方式。简答的动画简单写就行了，这里讨论动画数量多，时间轴要求严格的场景。在这种场景下，我们会考虑通过操作 DOM 或者 Canvas 甚至 WebGL 去实现。不管是哪种实现方法，大概都会经历这样子的开发步骤：</p>
+<ol>
+<li>切图和重构：通常需要把设计稿里面数十个动画元素的图片切出来，然后逐个测量它们的位置，并定位到页面或者画布中</li>
+<li>动效的编写：根据设计师提供的 Demo 和关键帧标注，用代码实现每个元素的动效。通常会是位移、旋转、渐变或者精灵图变换</li>
+<li>时间轴的控制：编写好每个动画元素的动效之后，需要把它们都组织起来，安排动画的顺序和切入的时间点，包括用户的交互行为对动画的影响</li>
+<li>代码的维护：部署并体验之后，需求方或者设计师会跟你说这里需求变动了或者效果不理想需要返工，然后就再来一次</li>
+</ol>
+<p>试过一次就会发现以上每个步骤很揪心。切图和重构有大量重复操作在设计稿上面折腾；动效的编写需要不断调用动画框架接口但仅仅传入不同的参数；时间轴的控制需要编写大量的胶水代码把之前所有的动画元素组织起来；最后由于代码繁多造成维护的成本提高，返工消耗大量时间。</p>
+<p>在发现每次动画开发都会有这么多重复且单一的工作量之后，肯定就会想法设法地通过工具的支撑或者新的开发模式把开发的成本减下来啦。</p>
+<h2 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h2><p>TODO</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近做的好几个营销项目的页面都有比较多的动画，把 CSS3, DOM, Canvas 这几种方式都给实践了一下。期间也考虑着是不是能够产出一套方案来解决动画开发维护繁琐的问题，然后也算是落地了一些想法，这里记录一下。&lt;/p&gt;
+&lt;h2 id=&quot;痛点&quot;&gt;&lt;a href=&quot;#痛点
+    
+    </summary>
+    
+    
+      <category term="碎屑" scheme="http://cupools.github.io/tags/%E7%A2%8E%E5%B1%91/"/>
+    
+  </entry>
   
   <entry>
     <title>PostCSS 相关</title>
@@ -1366,84 +1398,6 @@
     
     
       <category term="碎屑" scheme="http://cupools.github.io/tags/%E7%A2%8E%E5%B1%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>移动端踩过的坑</title>
-    <link href="http://cupools.github.io/2015/091012/"/>
-    <id>http://cupools.github.io/2015/091012/</id>
-    <published>2015-09-09T16:00:00.000Z</published>
-    <updated>2017-01-02T03:54:56.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>想着自己是不是要写点什么，马上想到了上半年移动端遇到的坑坑洼洼。有这样的小剧场：汪，红米这里有问题；汪汪汪，魅族怎么显示不出来呢；汪汪… (o`･ω･)ﾉ(ﾉД`)</p>
-<p>后天就要回广州啦，北京再见_(:з」∠)_</p>
-<a id="more"></a>
-<h2 id="position-fixed"><a href="#position-fixed" class="headerlink" title="position: fixed"></a>position: fixed</h2><h3 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h3><p>移动端的在线客服，聊天室风格，输入框置底，参考手Q，需求方坚持这种聊天风格不肯妥协，考虑 UC 浏览器和 app 内置浏览器，忽略 wp</p>
-<h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><ol>
-<li>ios 中点浏览器顶部显示地址栏，随后呼出软键盘的时候会导致 fixed 元素上移，稳定重现；小米2中呼出软键盘会导致 fixed 在底部的元素位置错乱，具体表现为与软键盘之间存在较大间隙，不稳定重现。华为和魅族表现良好（图片回头补上）</li>
-<li>webView 中呼出软键盘，底部输入框被完全遮挡，页面没有向上滑</li>
-</ol>
-<h3 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h3><ol>
-<li>有如下几种尝试，无法彻底解决问题<ul>
-<li>尝试 flex 布局。ios 中出现顶部 banner 被地址栏覆盖的问题</li>
-<li>尝试绝对定位，容器高度由 js 计算。ios 中，在浏览器地址栏显示的情况下，由于页面高度过长，底部输入框需要滚动才能看到，严重影响用户体验。android 地址栏不会自动隐藏，因此不会出现该问题。然而 android 的第三方输入法在输入待选上面一般会有一行工具栏，不稳定出现覆盖底部输入框的问题。</li>
-<li>尝试在呼出软键盘之后做绝对定位和相对定位的切换。浏览器无法及时反馈软键盘的状态。ios 可以通过监听 focus 得知是否呼出软键盘；android 中，由于软键盘呼出后可以手动点击隐藏软键盘却不丢失输入框焦点，使用轮询的方式监听 viewport 的高度判断是否呼出软键盘（呼出软键盘，viewpoet 的高度将减小，有一个逐步变化过程）。但由于这种暴力的方式在红米下改变 scrollTop 显示输入框的过程中出现高度错乱，弃用</li>
-</ul>
-</li>
-<li>在简单的例子测试中发现软键盘不会影响到页面的表现，沟通后是 webView 配置的问题，交给客户端的同学解决（写简单的例子做测试很重要啊）</li>
-</ol>
-<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>千万不要置底输入框！千万不要置底输入框！千万不要置底输入框！移动 web 中的输入场景大部分使用弹窗，或者切换页面置顶输入框提供输入和单词联想</p>
-<h2 id="android-中-webkit-transform-无效"><a href="#android-中-webkit-transform-无效" class="headerlink" title="android 中 (-webkit-)transform 无效"></a>android 中 (-webkit-)transform 无效</h2><h3 id="问题描述-1"><a href="#问题描述-1" class="headerlink" title="问题描述"></a>问题描述</h3><p>做 H5 滑动页面经常会有提示滚动下一页的小三角形，使用伪元素和<code>transform</code>实现（包括-webkit-前缀）。发现 android 2.x 和 4.x 下 transform 和 animation 无效</p>
-<h3 id="解决思路-1"><a href="#解决思路-1" class="headerlink" title="解决思路"></a>解决思路</h3><p>抛弃伪元素使用标签实现。在 android 2.x 下发现<code>transform:rotate</code>仍然无效，在父元素添加<code>transform: rotate(0)</code>即可</p>
-<h2 id="小屏幕兼容"><a href="#小屏幕兼容" class="headerlink" title="小屏幕兼容"></a>小屏幕兼容</h2><h3 id="问题描述-2"><a href="#问题描述-2" class="headerlink" title="问题描述"></a>问题描述</h3><p>有些暴力的设计师会在单屏的页面或者 dialog 里面塞很多很多东西，可能是表单或者动画元素，导致 iphone 4s 之类的 3.5 寸屏幕压力山大</p>
-<h3 id="解决思路-2"><a href="#解决思路-2" class="headerlink" title="解决思路"></a>解决思路</h3><p>添加适当的断点，使用<code>transform: scale</code>或者<code>zoom</code>对容器做缩放比重新设置宽高要方便的多多。前者可通过改变<code>transform-origin</code>修改缩放的支点，后者不支持字体缩放的样子，没具体使用过。如果是 dialog 之类进入页面不会立即显示出来的元素，也可以通过 js 计算得到最适合的缩放比例</p>
-<p>可以尝试通过百分比或者 rem 解决类似问题。举个例子，手机 UC 浏览器下载官网，一个页面会有多个动画元素，有时候是多个居中，有时候是垂直多个不重叠。多个元素需要定位到准确的位置，然后加上动画并保持动画的连贯，此时如果用百分比为单位会有比较繁琐的计算</p>
-<p><strong>rem 是十分有效的解决方法！！</strong></p>
-<h2 id="小米手机绝对定位元素消失"><a href="#小米手机绝对定位元素消失" class="headerlink" title="小米手机绝对定位元素消失"></a>小米手机绝对定位元素消失</h2><h3 id="问题描述-3"><a href="#问题描述-3" class="headerlink" title="问题描述"></a>问题描述</h3><p>小米手机自带浏览器上使用绝对定位的元素没有显示出来，调高 z-index 无果</p>
-<h3 id="解决思路-3"><a href="#解决思路-3" class="headerlink" title="解决思路"></a>解决思路</h3><p>添加一个设置<code>opacity: 1</code>的动画即可</p>
-<h2 id="UC-浏览器图片降色问题"><a href="#UC-浏览器图片降色问题" class="headerlink" title="UC 浏览器图片降色问题"></a>UC 浏览器图片降色问题</h2><h3 id="场景-1"><a href="#场景-1" class="headerlink" title="场景"></a>场景</h3><p>忘了哪一天开始，android 上的 UC 浏览器发现了这个问题，吓坏我和我的小伙伴了。找了内核的同学沟通，是 android 上的 UC 浏览器为了更好地控制内存，对体积比较大的图片做了优化处理，结果跑偏了。问题已反馈，UC 10.x 好像还有这个问题，现在不知道解决了没有</p>
-<h3 id="问题描述-4"><a href="#问题描述-4" class="headerlink" title="问题描述"></a>问题描述</h3><p>android 上的 UC 浏览器都会不稳定出现，低端机更为明显。体积比较大的图片（20kb+）不稳定出现这个问题，表现为图片颜色变得偏灰色，透明颜色渐变的区域直接变成一块灰色。png8、 png24 和 jpg 都没法避免</p>
-<h3 id="解决思路-4"><a href="#解决思路-4" class="headerlink" title="解决思路"></a>解决思路</h3><p>完全透明不会受影响。将图片导出为交错可解决小部分问题。最优是将大图拆分为小图拼接</p>
-<h2 id="IOS-音频缓存问题"><a href="#IOS-音频缓存问题" class="headerlink" title="IOS 音频缓存问题"></a>IOS 音频缓存问题</h2><h3 id="场景-2"><a href="#场景-2" class="headerlink" title="场景"></a>场景</h3><p>UC 浏览器中点击按钮通过创建 audio 标签加载音频并播放，调起浏览器分享接口分享到微信后回到 UC 发现已缓存的音频无法播放</p>
-<h3 id="问题描述-5"><a href="#问题描述-5" class="headerlink" title="问题描述"></a>问题描述</h3><p>ios 中切换应用程序会导致浏览器中已缓存的音频无法播放，稳定重现</p>
-<h3 id="解决思路-5"><a href="#解决思路-5" class="headerlink" title="解决思路"></a>解决思路</h3><p>在调用分享接口后添加时间戳重新加载已缓存的音频文件</p>
-<h3 id="小结-1"><a href="#小结-1" class="headerlink" title="小结"></a>小结</h3><p><a href="http://people.apache.org/~pmuellr/weinre-docs/latest/" target="_blank" rel="external">weinre</a> 居家旅行调试必备</p>
-<h2 id="vuejs-0-10-动画卡顿"><a href="#vuejs-0-10-动画卡顿" class="headerlink" title="vuejs 0.10 动画卡顿"></a>vuejs 0.10 动画卡顿</h2><h3 id="场景-3"><a href="#场景-3" class="headerlink" title="场景"></a>场景</h3><p>多个页面通过<code>v-if</code>和入场动画控制切换，每个页面有两到三个动画，切换多个页面后发现 android 中动画卡顿严重</p>
-<h3 id="问题描述-6"><a href="#问题描述-6" class="headerlink" title="问题描述"></a>问题描述</h3><p>通过 weinre 查看切换多个页面后文档中的节点，发现不满足<code>v-if</code>的节点并没有被移除，而只是简单隐藏，与 chrome 中的表现不符。切换多个页面后，有多个动画同时运行导致了严重的卡顿</p>
-<h3 id="解决思路-6"><a href="#解决思路-6" class="headerlink" title="解决思路"></a>解决思路</h3><p>添加一个<code>class=&quot;playing&quot;</code>的标记，限制多个页面的动画同时运行</p>
-<h2 id="canvas-绘制图片模糊"><a href="#canvas-绘制图片模糊" class="headerlink" title="canvas 绘制图片模糊"></a>canvas 绘制图片模糊</h2><h3 id="问题描述-7"><a href="#问题描述-7" class="headerlink" title="问题描述"></a>问题描述</h3><p>发现移动端将图片插入 canvas 容器后，图片变得模糊。原因是图片插入 canvas 不再是 @2x</p>
-<h3 id="解决思路-7"><a href="#解决思路-7" class="headerlink" title="解决思路"></a>解决思路</h3><p>将两倍大小的图片插进去 canvas 容器，再对容器进行缩放。可通过 <a href="https://github.com/jondavidjohn/hidpi-canvas-polyfill" target="_blank" rel="external">hidpi-canvas.js</a> 帮忙</p>
-<h2 id="onkeyup"><a href="#onkeyup" class="headerlink" title="onkeyup"></a>onkeyup</h2><h3 id="问题描述-8"><a href="#问题描述-8" class="headerlink" title="问题描述"></a>问题描述</h3><p>ios 中监听输入，使用 onkeyup，发现有几个手机没法触发事件，我的 5s 没问题，别人的 5s 就不行了</p>
-<h3 id="解决思路-8"><a href="#解决思路-8" class="headerlink" title="解决思路"></a>解决思路</h3><p>ios8 支持第三方键盘。ios 自带输入法的输入能触发 onkeyup，其他就不行了。改用 oninput 实现。wp 使用 onpropertychange 实现</p>
-<h2 id="border-扁角"><a href="#border-扁角" class="headerlink" title="border 扁角"></a>border 扁角</h2><h3 id="问题描述-9"><a href="#问题描述-9" class="headerlink" title="问题描述"></a>问题描述</h3><p>使用 border 画扁扁的三角形，在宽度大大于高度的情况下会出现锯齿的情况。chrome pc 比较明显，手机看着也有点不舒服</p>
-<h3 id="解决思路-9"><a href="#解决思路-9" class="headerlink" title="解决思路"></a>解决思路</h3><p>改用<code>transform: rotate</code>和<code>overflow: hidden</code>实现</p>
-<h2 id="border-radius-和-overflow-hidden"><a href="#border-radius-和-overflow-hidden" class="headerlink" title="border-radius 和 overflow: hidden"></a>border-radius 和 overflow: hidden</h2><h3 id="问题描述-10"><a href="#问题描述-10" class="headerlink" title="问题描述"></a>问题描述</h3><p>高度固定的容器A里面有一个高度固定的列表B，将列表B设置为<code>overflow: auto</code>。容器A为<code>overflow:hidden;</code>，如果容器A有一个<code>border-radius:5px</code>，可见到列表B会溢出</p>
-<h3 id="解决思路-10"><a href="#解决思路-10" class="headerlink" title="解决思路"></a>解决思路</h3><p>使用贴图做圆角（一下子回到解放前。。）</p>
-<h2 id="动画闪烁"><a href="#动画闪烁" class="headerlink" title="动画闪烁"></a>动画闪烁</h2><h3 id="问题描述-11"><a href="#问题描述-11" class="headerlink" title="问题描述"></a>问题描述</h3><p>使用<code>transition: height .5s</code>实现下拉菜单，在 ios 出现闪烁现象</p>
-<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>添加<code>-webkit-backface-visibility: hidden;</code>。建议避免修改<code>height</code>、 <code>margin</code>等会引起页面重排的样式，<code>opacity</code>和<code>transform</code>实现的动画在移动端上表现更好</p>
-<h2 id="推荐的工具"><a href="#推荐的工具" class="headerlink" title="推荐的工具"></a>推荐的工具</h2><ol>
-<li><p><a href="http://people.apache.org/~pmuellr/weinre-docs/latest/" target="_blank" rel="external">Weinre</a><br> 允许在 PC 通过控制台调试移动端页面。很方便部署，也可以配合 grunt 使用</p>
-</li>
-<li><p>Charles<br> Mac 下的抓包工具，在一些场景下抓包工具能提供很大的帮助，比如确认手机页面发出的请求参数是否正确，统计请求等。window 用 Fiddler 然后 mac 用 Charles 都能玩的很愉快</p>
-</li>
-<li><p><a href="https://chrome.google.com/webstore/detail/uc-qr-code/nhelohnehpahakjoklmodmogclacjgdj?hl=zh-CN" target="_blank" rel="external">UC Qr Code</a><br> Chrome 的二维码插件，简单却又方便到没朋友</p>
-</li>
-</ol>
-<h2 id="未完待续"><a href="#未完待续" class="headerlink" title="未完待续"></a>未完待续</h2><p>如果发现有写不对的地方可以邮件联系_(:з」∠)_</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;想着自己是不是要写点什么，马上想到了上半年移动端遇到的坑坑洼洼。有这样的小剧场：汪，红米这里有问题；汪汪汪，魅族怎么显示不出来呢；汪汪… (o`･ω･)ﾉ(ﾉД`)&lt;/p&gt;
-&lt;p&gt;后天就要回广州啦，北京再见_(:з」∠)_&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="JavaScript" scheme="http://cupools.github.io/tags/JavaScript/"/>
-    
-      <category term="css" scheme="http://cupools.github.io/tags/css/"/>
     
   </entry>
   
