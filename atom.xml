@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://cupools.github.io/"/>
-  <updated>2017-03-02T15:57:52.000Z</updated>
+  <updated>2017-03-03T15:49:11.000Z</updated>
   <id>http://cupools.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://cupools.github.io/2017/02280/"/>
     <id>http://cupools.github.io/2017/02280/</id>
     <published>2017-02-28T14:00:00.000Z</published>
-    <updated>2017-03-02T15:57:52.000Z</updated>
+    <updated>2017-03-03T15:49:11.000Z</updated>
     
     <content type="html"><![CDATA[<p>最近做的好几个营销项目的页面都有比较多的动画，把 CSS3, DOM, Canvas 这几种方式都给实践了一下。期间也考虑着是不是能够产出一套方案来解决动画开发维护繁琐的问题，然后也算是落地了一些想法，这里记录一下。</p>
 <a id="more"></a>
@@ -33,8 +33,10 @@
 </ol>
 <p>试过一次就会发现以上每个步骤很揪心。切图和重构有大量重复操作在设计稿上面折腾；动效的编写需要通过动画框架根据不同动效元素创建不同的实例，不断调用接口但仅仅传入不同的参数；时间轴的控制需要编写大量的胶水代码把之前所有的动画元素组织起来；最后由于代码繁多造成维护的成本提高，返工消耗大量时间。</p>
 <p>在发现每次动画开发都会有这么多重复且单一的工作量之后，肯定就会想法设法地通过工具的支撑或者新的开发模式把开发的成本减下来啦，然后就有了下面的尝试。</p>
-<h2 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h2><p>TODO</p>
-]]></content>
+<h2 id="Canvas-与-Preact"><a href="#Canvas-与-Preact" class="headerlink" title="Canvas 与 Preact"></a>Canvas 与 Preact</h2><p>由于目前项目中大量使用 Preact，因此在也想着是不是也可以用类似的方式给 Canvas 动画框架的各个类做一层 Preact 的组件封装。在使用的过程中通过组件的嵌套对动画元素进行组合，减少胶水代码；通过<strong>配置数据</strong>的形式驱动动画，使得动画框架的接口对于开发者透明，开发动画变成了编写配置的过程，后续代码的维护性还是蛮高的。这里贴下简单的示例代码：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 配置数据</span></div><div class="line"><span class="keyword">const</span> material = &#123;</div><div class="line">  shadow: &#123;</div><div class="line">    opts: &#123;</div><div class="line">      width: <span class="number">640</span>,</div><div class="line">      height: <span class="number">1136</span>,</div><div class="line">      opacity: <span class="number">1</span>,</div><div class="line">      color: <span class="string">'#000'</span>,</div><div class="line">    &#125;,</div><div class="line">    animation: [&#123;</div><div class="line">      opacity: <span class="number">0.4</span>,</div><div class="line">      delay: <span class="number">1000</span>,</div><div class="line">      time: <span class="number">1250</span>,</div><div class="line">      timeFunction: <span class="string">'linear'</span>,</div><div class="line">    &#125;],</div><div class="line">  &#125;,</div><div class="line">  <span class="comment">// ...</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> </span>&#123;</div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;div id="page_index"&gt;</div><div class="line">        &lt;FrameScene&gt;</div><div class="line">          &lt;FrameContainer&gt;</div><div class="line">            &lt;FrameVideo &#123;...material.video&#125; /&gt;</div><div class="line">            &lt;FrameQuadangle &#123;...material.shadow&#125; /&gt;</div><div class="line">            &lt;FrameText &#123;...materia.text&#125; /&gt;</div><div class="line">            &lt;FrameImage &#123;...material.logo&#125; /&gt;</div><div class="line">            &lt;FrameImage &#123;...material.slogan&#125; /&gt;</div><div class="line">          &lt;/FrameContainer&gt;</div><div class="line">        &lt;/FrameScene&gt;</div><div class="line">      &lt;/div&gt;</div><div class="line">    )</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在 Canvas 动画框架中，上面的 Scene, Container, Image, Text 应该都是比较常见的类了。在封装成 Preact 的组件之后，可以用组件标签声明一个元素，并添加到场景或者容器中，然后通过 props 提供配置数据，就完成了重构和动效编写这一块的工作。配置数据提供了 opts 和 animation 两个属性。opts 是提供给动画框架的实例属性配置，animation 以数组的形式声明了元素会有怎样的动效。元素组件会在 animation 属性更新的时候启动动画。至于时间轴的控制，只要关心数据，在正确的时候提供正确的数据配置就是了。</p>
+<h2 id="Velovity-与-Preact"><a href="#Velovity-与-Preact" class="headerlink" title="Velovity 与 Preact"></a>Velovity 与 Preact</h2><h2 id="Ani"><a href="#Ani" class="headerlink" title="Ani"></a>Ani</h2>]]></content>
     
     <summary type="html">
     
